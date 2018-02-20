@@ -1,0 +1,55 @@
+.example-card {
+    max-width: 60%;
+    margin-right: 20%;
+    margin-top: 5%;
+    margin-left: 20%;
+  }
+  
+  .example-header-image {
+    /* background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg'); */
+    background-size: cover;
+  }
+  .example-header-image img
+  {
+      width: 100%;
+      height: 100%;
+  }
+  table
+  {
+      text-align: right;
+      width: 100%;
+  }
+
+  .viewProduct
+{
+    width: 35%;
+    height: 35%;
+    max-height: 150px;
+    max-width: 150px;
+    min-height: 100px;  
+    min-width: 100px;
+    text-align: center;
+    border: 25px;
+    margin: 12px 0px 7px 9px;
+    display: inline-table;
+}
+.ViewsContainer
+{
+    margin-right:15px; 
+    align-content: center;
+    align-self: center;
+    align-items: center;
+}
+.OptionBtn
+{
+    width: fit-content;
+    height: fit-content;
+}
+.Viewimg
+{
+    width: 75%;
+    height: 60%;
+    overflow-wrap: normal;
+    overflow: hidden;
+    align-content: center
+}

@@ -1,0 +1,104 @@
+
+<mat-card class="formContainer" >
+    <mat-card-title>	
+      <h2> إضافة منتج </h2>
+    </mat-card-title>
+  
+    <form class="example-form" [formGroup]='rForm' (ngSubmit)=addEmp(rForm.value)>
+  <table>
+    <tr>
+      <td>
+        <mat-form-field class="example-full-width">
+            <input matInput placeholder="الباركود  " [formControl]="ID" >
+            <mat-hint> رقم المنتج </mat-hint>
+            <!-- <mat-error *ngIf="ID.invalid">خانة مطلوبة </mat-error> -->
+        </mat-form-field>
+      </td>
+    </tr>
+    <tr>
+        <td>
+            <mat-form-field class="example-full-width">
+                <input matInput placeholder="اسم المنتج "  [formControl]="Fname" >
+                <!-- <mat-error *ngIf="Fname.invalid"> خانة مطلوبة </mat-error> -->
+              </mat-form-field>
+        </td>
+    </tr>
+        <tr>
+        <td>
+            <mat-form-field class="example-full-width">
+                <textarea matInput placeholder="الوصف"></textarea>
+              </mat-form-field>
+        </td>
+      </tr>
+    <tr>
+        <td>
+            <mat-form-field class="example-full-width">
+                <input type="number" matInput placeholder="سعر البيع " [formControl]="Email">
+                <mat-icon matSuffix>money</mat-icon>
+                <mat-hint> سعر بيع المنتج  </mat-hint>
+                  <!-- <mat-error *ngIf="Email.invalid">
+                    Email is <strong>required</strong>
+                  </mat-error> -->
+              </mat-form-field>
+          </td>
+
+          <td>
+              <mat-form-field class="example-full-width">
+                  <input type="number" matInput placeholder="سعر الشراء " [formControl]="Email">
+                  <mat-icon matSuffix>money</mat-icon>
+                  <mat-hint> سعر شراء المنتج من الوكيل أو المصنع  </mat-hint>
+                    <!-- <mat-error *ngIf="Email.invalid">
+                      Email is <strong>required</strong>
+                    </mat-error> -->
+                </mat-form-field>
+            </td>
+          </tr>
+          <tr>
+          <td>
+              <mat-form-field class="example-full-width">
+                  <input type="number" matInput placeholder="الكمية المتوفرة "  [formControl]="Phone">
+                 
+                  <!-- <mat-error *ngIf="Phone.invalid">خانة مطلوبة </mat-error> -->
+                </mat-form-field>
+          </td>
+        </tr>
+   
+    <tr>
+      <td>
+          <mat-form-field>
+              <mat-select placeholder="التصنيف ">
+                <mat-option value="option">تصنيف1</mat-option>
+                <mat-option value="option">تصنيف2</mat-option>
+              </mat-select>
+            </mat-form-field>
+      </td>
+    </tr>
+    <tr>
+      <td>
+          <mat-form-field class="example-full-width ">
+              <app-input-file formControlName="basicfile" placeholder="  إضافة صورة للمنتج" ></app-input-file>
+              <mat-icon matSuffix>folder</mat-icon>
+            </mat-form-field>
+      </td>
+    </tr>
+<tr>
+ <td>
+  <button type="submit" color="primary" mat-button>إضافة </button>
+ </td>  
+  
+ <td>
+  <button type="cancel" color="accent" mat-button>إلغاء  </button>
+
+ </td> 
+</tr>
+
+    
+    </table>
+     <!-- <p>
+      <mat-form-field class="example-full-width">
+        <input  type="" >
+      </mat-form-field>
+     </p>  -->
+  
+    </form>
+  </mat-card>

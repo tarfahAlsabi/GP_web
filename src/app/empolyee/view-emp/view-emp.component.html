@@ -1,0 +1,43 @@
+<mat-card class="example-card">
+    <mat-card-header>
+      <div mat-card-avatar class="example-header-image"><img src={{img}}></div>
+      <mat-card-title>{{name}} </mat-card-title>
+      <mat-card-subtitle> {{Id}} </mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <table>
+        <tr>
+       
+          <td>
+              <h3> البريد الألكتروني  </h3>
+          </td>
+
+          <td>
+              <p> {{Email}} </p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+              <h3> الجوال </h3>
+          </td>
+          <td>
+              <p>  {{phone}}  </p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+              <h3> الراتب  </h3>
+          </td>
+          <td>
+              <p> {{salary}}ريال   </p>
+          </td>
+        </tr>
+      </table>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-button>عرض تقرير أداء الموظف </button>
+      <button mat-button>عرض تقرير ساعات عمل الموظف </button>
+      <button mat-button>تسريح الموظف  </button>
+    </mat-card-actions>
+  </mat-card>
+  

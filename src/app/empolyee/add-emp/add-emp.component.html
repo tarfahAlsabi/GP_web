@@ -1,0 +1,95 @@
+
+<mat-card class="formContainer" >
+    <mat-card-title>	
+      <h2> إضافة تصنيف </h2>
+    </mat-card-title>
+  
+    <form class="example-form" [formGroup]='rForm' (ngSubmit)=addEmp(rForm.value)>
+  <table>
+    <tr>
+      <td>
+        <mat-form-field class="example-full-width">
+            <input matInput placeholder="حساب الموظف " [formControl]="ID" >
+            <mat-hint> باللغة الإنجليزية </mat-hint>
+            <!-- <mat-error *ngIf="ID.invalid">خانة مطلوبة </mat-error> -->
+        </mat-form-field>
+      </td>
+    </tr>
+    <tr>
+        <td>
+            <mat-form-field class="example-full-width">
+                <input matInput placeholder="الاسم الأول"  [formControl]="Fname" >
+                <!-- <mat-error *ngIf="Fname.invalid"> خانة مطلوبة </mat-error> -->
+              </mat-form-field>
+        </td>
+
+      <td>
+          <mat-form-field class="example-full-width">
+              <input matInput placeholder="العائلة  " [formControl]="Lname" >
+              <!-- <mat-error *ngIf="Lname.invalid">خانة مطلوبة </mat-error> -->
+            </mat-form-field>
+      </td>
+
+    </tr>
+    <tr>
+        <td>
+            <mat-form-field class="example-full-width">
+                <input type="email" matInput placeholder="البريد الإلكتروني " [formControl]="Email">
+                <mat-icon matSuffix>mail</mat-icon>
+                <!-- <mat-error *ngIf="EmailFormControl.hasError('email') && !EmailFormControl.hasError('required')">
+                    Please enter a valid email address
+                  </mat-error> -->
+                  <!-- <mat-error *ngIf="Email.invalid">
+                    Email is <strong>required</strong>
+                  </mat-error> -->
+              </mat-form-field>
+          </td>
+          </tr>
+          <tr>
+          <td>
+              <mat-form-field class="example-full-width">
+                  <input type="tel" matInput placeholder="الجوال"  [formControl]="Phone">
+                  <mat-icon matSuffix>phone</mat-icon>
+                  <!-- <mat-error *ngIf="Phone.invalid">خانة مطلوبة </mat-error> -->
+                </mat-form-field>
+          </td>
+        </tr>
+   
+    <tr>
+      <td>
+          <mat-form-field class="example-full-width">
+              <input type="number" matInput placeholder="الراتب " [formControl]="Salary">
+              <mat-icon matSuffix>money</mat-icon>
+              <!-- <mat-error *ngIf="Salary.invalid">خانة مطلوبة </mat-error> -->
+          </mat-form-field>
+      </td>
+    </tr>
+    <tr>
+      <td>
+          <mat-form-field class="example-full-width ">
+              <app-input-file formControlName="basicfile" placeholder=" إضافة صورة " ></app-input-file>
+              <mat-icon matSuffix>folder</mat-icon>
+            </mat-form-field>
+      </td>
+    </tr>
+<tr>
+ <td>
+  <button type="submit" color="primary" mat-button>إضافة </button>
+ </td>  
+  
+ <td>
+  <button type="cancel" color="accent" mat-button>إلغاء  </button>
+
+ </td> 
+</tr>
+
+    
+    </table>
+     <!-- <p>
+      <mat-form-field class="example-full-width">
+        <input  type="" >
+      </mat-form-field>
+     </p>  -->
+  
+    </form>
+  </mat-card>

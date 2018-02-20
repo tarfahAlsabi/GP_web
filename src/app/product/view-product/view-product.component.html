@@ -1,0 +1,67 @@
+<mat-card class="example-card">
+    <mat-card-header>
+      <div mat-card-avatar class="example-header-image"><img src={{img}}></div>
+      <mat-card-title>{{name}} </mat-card-title>
+      <mat-card-subtitle> {{Id}} </mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <table>
+        <tr>      
+          <td>
+              <h3> الوصف   </h3>
+          </td>
+
+          <td>
+              <p> {{description}} </p>
+          </td>
+        </tr>
+        <tr>
+
+            <tr>      
+                <td>
+                    <h3> التصنيف   </h3>
+                </td>
+      
+                <td>
+                    <p> {{Tag}} </p>
+                </td>
+              </tr>
+              <tr>
+
+          <td>
+              <h3> سعر الشراء </h3>
+          </td>
+          <td>
+              <p>  {{BPrice}}  </p>
+          </td>
+        </tr>
+        <tr>
+            <td>
+                <h3> سعر البيع </h3>
+            </td>
+            <td>
+                <p>  {{SPrice}}  </p>
+            </td>
+          </tr>
+        <tr>
+          <td>
+              <h3> الكمية المتوفرة  </h3>
+          </td>
+          <td>
+              <p> {{quantity}}  </p>
+          </td>
+        </tr>
+      </table>
+    </mat-card-content>
+   
+    <mat-card-actions>
+        <table>
+          <tr>
+     <td> <button mat-button>عرض مبيعات المنتج   </button> </td>
+     <td> <button mat-button> تعديل بيانات المنتج  </button> </td> 
+     <td> <button mat-button>حذف المنتج  </button> </td>
+    </tr>
+    </table>
+    </mat-card-actions>
+  </mat-card>
+  

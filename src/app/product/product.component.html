@@ -1,0 +1,26 @@
+<mat-card class=PageTitle>
+  <mat-card-title>
+    <a>
+      <button mat-raised-button color="primary" class="btn-Add" (click)='Add()'>
+       {{AddBtn}}
+      </button>
+    </a>
+    <h2> {{ title }} </h2>
+  </mat-card-title>
+</mat-card>
+
+<section class="ViewsContainer"  >
+
+<mat-card class="viewProduct"  *ngFor="let item of items" >
+    <img mat-card-image class="Viewimg" src={{item.img}}>
+    <mat-card-content role="group" >
+     <h3>{{item.name }}</h3> 
+    </mat-card-content>
+    <mat-card-actions role="group" class="OptionBtn">	
+    <button mat-button (click)="viewProduct(item )"> <mat-icon> description </mat-icon> عرض البيانات</button>
+    <button mat-button (click)="deletItem( item)"> <mat-icon> delete </mat-icon> حذف </button>
+    </mat-card-actions>	
+</mat-card>
+
+</section>
+

@@ -1,0 +1,129 @@
+<mat-toolbar color="primary" class="example-is-mobile example-toolbar">
+    <mat-toolbar-row>
+      <button mat-icon-button (click)="snav.toggle()"><mat-icon>menu</mat-icon></button>
+      <span> إيراد </span>
+      <span class="toolbar-spacer"></span>
+      
+      <button mat-raised-button color="accent" [matMenuTriggerFor]="menu">
+          مرحبا بك مره أخرى 
+        </button>
+    </mat-toolbar-row>
+  
+  </mat-toolbar>
+
+
+
+
+<mat-menu #menu>
+
+<button mat-menu-item>
+
+  <mat-icon> account_box </mat-icon>
+  <span> الحساب الشخصي </span>
+</button>
+
+<button mat-menu-item>
+    <mat-icon> build </mat-icon>
+    <span> الإعدادات  </span>
+  </button>
+
+  <button mat-menu-item>
+      <mat-icon> help </mat-icon>
+      <span> المساعدة  </span>
+    </button>
+
+    <button mat-menu-item>
+        <mat-icon> exit_to_app </mat-icon>
+        <span> تسجيل الخروج  </span>
+      </button>
+</mat-menu>
+
+
+
+
+  <mat-sidenav-container class="example-sidenav-container" [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
+    <mat-sidenav   class="mat-sidenav"  #snav [mode]="mobileQuery.matches ? 'push' : 'over'"
+    [fixedInViewport]="mobileQuery.matches" fixedTopGap="56">
+      <mat-nav-list>
+ 
+        <mat-accordion>
+            <mat-expansion-panel  [style.border-right]="EmpState ?  '5px solid grey': '' " 
+            (opened)="EmpState = true"
+            (closed)="EmpState = false"
+                       >
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                    <mat-icon>supervisor_account </mat-icon> <span>الموظفين </span>
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+              <a mat-list-item routerLink="empolyee" >  <mat-icon>supervisor_account </mat-icon> <span>عرض الموظفين   </span></a>
+              <a mat-list-item routerLink="Add_employee" >  <mat-icon>supervisor_account </mat-icon> <span>إضافة موظف جديد  </span></a>
+            </mat-expansion-panel>
+
+            <mat-expansion-panel [style.border-right]="TagState ?  '5px solid grey': '' " 
+            (opened)="TagState = true"
+            (closed)="TagState = false">
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  <mat-icon> local_offer </mat-icon> <span>التصنيفات  </span>
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+                <a mat-list-item routerLink="tags" >  <mat-icon>local_offer </mat-icon> <span>عرض التصنيفات    </span></a>
+                <a mat-list-item routerLink="Add_Tag" >  <mat-icon>local_offer</mat-icon> <span>إضافة تصنيف جديد   </span></a>
+              </mat-expansion-panel>
+        
+          <mat-expansion-panel [style.border-right]="ProdState ?  '5px solid grey': '' " 
+          (opened)="ProdState = true"
+          (closed)="ProdState = false">
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                    <mat-icon> work </mat-icon> <span>المنتجات  </span>
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+                <a mat-list-item routerLink="product" >  <mat-icon>work </mat-icon> <span>عرض المنتجات    </span></a>
+                <a mat-list-item routerLink="Add_Product" >  <mat-icon>work </mat-icon> <span>إضافة منتج جديد   </span></a>
+              </mat-expansion-panel>
+          
+
+          <mat-expansion-panel [style.border-right]="ChartsState ?  '5px solid grey': '' " 
+          (opened)="ChartsState = true"
+          (closed)="ChartsState = false">
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  <mat-icon> show_chart </mat-icon> <span>التقارير والرسوم البيانية  </span>
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+                <a mat-list-item routerLink="charts" >  <mat-icon>show_chart </mat-icon> <span>عرض التقارير     </span></a>
+              </mat-expansion-panel>
+     
+          <mat-expansion-panel
+          [style.border-right]="InvState ?  '5px solid grey': '' " 
+          (opened)="InvState = true"
+          (closed)="InvState = false" >
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  <mat-icon> store </mat-icon> <span>المخزون   </span>
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+                <a mat-list-item routerLink="inventory" >  <mat-icon>store </mat-icon> <span>عرض المخزون      </span></a>
+                <a mat-list-item routerLink="inventory" >  <mat-icon>store </mat-icon> <span>إضافة كمية للمخزون    </span></a>
+              </mat-expansion-panel>
+          </mat-accordion>
+      </mat-nav-list>
+
+    </mat-sidenav>
+
+
+       
+
+    <mat-sidenav-content class="example-sidenav-content">
+    <router-outlet> </router-outlet>
+    </mat-sidenav-content>  
+    
+  </mat-sidenav-container>
+
+  
+<!-- Copyright 2018 Google Inc. All Rights Reserved.
+    Use of this source code is governed by an MIT-style license that
+    can be found in the LICENSE file at http://angular.io/license -->
+
