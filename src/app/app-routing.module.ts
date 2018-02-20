@@ -13,7 +13,7 @@ import { ViewEmpComponent } from './empolyee/view-emp/view-emp.component';
 
 import { AddProductComponent } from './product/add-product/add-product.component';
 import { ViewProductComponent } from './product/view-product/view-product.component';
-import { IndexComponent } from './index/index.component';
+
 import { TagComponent } from './tag/tag.component';
 import { AddTagComponent } from './tag/add-tag/add-tag.component';
 import { ViewTagComponent } from './tag/view-tag/view-tag.component';
@@ -31,7 +31,7 @@ const routes: Routes =[
     {path:'View_employee/:id',component:ViewEmpComponent},
     {path:'View_Tag/:id',component:ViewTagComponent},
     {path:'View_Producct/:id',component:ViewProductComponent},
-    {path:'HomePage',component:IndexComponent}
+    
 ];
 
 @NgModule({
@@ -41,4 +41,4 @@ exports: [RouterModule]
 })
 export class AppRoutingModule {   
 }
-export const routingComponents =[IndexComponent,ViewInv,ViewProductComponent,AddProductComponent,TagComponent,ViewTagComponent,AddTagComponent,ProductComponent,EmpolyeeComponent,MyFormComponent,HeaderComponent, ViewEmpComponent,AddEmpComponent,ViewTag]
+export const routingComponents =[ViewInv,ViewProductComponent,AddProductComponent,TagComponent,ViewTagComponent,AddTagComponent,ProductComponent,EmpolyeeComponent,MyFormComponent,HeaderComponent, ViewEmpComponent,AddEmpComponent,ViewTag]
