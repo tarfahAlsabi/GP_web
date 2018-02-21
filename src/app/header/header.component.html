@@ -1,11 +1,19 @@
-<mat-toolbar color="primary" class="example-is-mobile example-toolbar">
+<mat-toolbar color="accent" class="example-is-mobile example-toolbar">
     <mat-toolbar-row>
-      <button mat-icon-button (click)="snav.toggle()"><mat-icon>menu</mat-icon></button>
-      <span> إيراد </span>
-      <span class="toolbar-spacer"></span>
+       
+      <button mat-icon-button (click)="snav.toggle()"color="primary"><mat-icon>menu</mat-icon></button>
       
-      <button mat-raised-button color="accent" [matMenuTriggerFor]="menu">
-          مرحبا بك مره أخرى 
+      <span class="toolbar-spacer"></span>
+    
+      <span>
+          <div class="example-header-image"><img src='assets/imgs/EradLogo++2.png'></div> 
+          </span>
+          <span>
+        <div class="example-header-image"><img src='assets/imgs/EradLogo++1.png'></div> </span>
+      <span class="toolbar-spacer"></span>
+    
+      <button mat-icon-button color="primary" [matMenuTriggerFor]="menu">
+          <mat-icon>apps</mat-icon>
         </button>
     </mat-toolbar-row>
   
@@ -41,17 +49,18 @@
 
 
 
-  <mat-sidenav-container class="example-sidenav-container" [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
-    <mat-sidenav   class="mat-sidenav"  #snav [mode]="mobileQuery.matches ? 'push' : 'side'" [opened]='true'
+  <mat-sidenav-container class="example-sidenav-container" [style.marginTop.px]="mobileQuery.matches ? 0 : 0">
+     
+      <mat-sidenav  class="mat-sidenav primary"  #snav [mode]="mobileQuery.matches ? 'push' : 'side'" [opened]="mobileQuery.matches ? 'false':'true'"
     [fixedInViewport]="mobileQuery.matches" fixedTopGap="56">
-      <mat-nav-list>
- 
-        <mat-accordion>
-            <mat-expansion-panel  [style.border-right]="EmpState ?  '5px solid grey': '' " 
+      <mat-nav-list  >
+          <!-- <div class="example-header-image"><img src='assets/imgs/EradLogo++1.png'></div> -->
+        <mat-accordion class="primary">
+            <mat-expansion-panel  class="primary" [style.border-right]="EmpState ?  '5px solid grey': '' " 
             (opened)="EmpState = true"
             (closed)="EmpState = false"
-                       >
-              <mat-expansion-panel-header>
+            [style.box-shadow]="true ? '0 0 0 ':'0 0 0 ' "          >
+              <mat-expansion-panel-header >
                 <mat-panel-title>
                     <mat-icon>supervisor_account </mat-icon> <span>الموظفين </span>
                 </mat-panel-title>
@@ -60,9 +69,10 @@
               <a mat-list-item routerLink="Add_employee" >  <mat-icon>supervisor_account </mat-icon> <span>إضافة موظف جديد  </span></a>
             </mat-expansion-panel>
 
-            <mat-expansion-panel [style.border-right]="TagState ?  '5px solid grey': '' " 
+            <mat-expansion-panel class="primary" [style.border-right]="TagState ?  '5px solid grey': '' " 
             (opened)="TagState = true"
-            (closed)="TagState = false">
+            (closed)="TagState = false"
+            [style.box-shadow]="true ? '0 0 0 ':'0 0 0 ' ">
               <mat-expansion-panel-header>
                 <mat-panel-title>
                   <mat-icon> local_offer </mat-icon> <span>التصنيفات  </span>
@@ -72,9 +82,10 @@
                 <a mat-list-item routerLink="Add_Tag" >  <mat-icon>local_offer</mat-icon> <span>إضافة تصنيف جديد   </span></a>
               </mat-expansion-panel>
         
-          <mat-expansion-panel [style.border-right]="ProdState ?  '5px solid grey': '' " 
+          <mat-expansion-panel class="primary" [style.border-right]="ProdState ?  '5px solid grey': '' " 
           (opened)="ProdState = true"
-          (closed)="ProdState = false">
+          (closed)="ProdState = false"
+          [style.box-shadow]="true ? '0 0 0 ':'0 0 0 ' ">
               <mat-expansion-panel-header>
                 <mat-panel-title>
                     <mat-icon> work </mat-icon> <span>المنتجات  </span>
@@ -85,9 +96,10 @@
               </mat-expansion-panel>
           
 
-          <mat-expansion-panel [style.border-right]="ChartsState ?  '5px solid grey': '' " 
+          <mat-expansion-panel class="primary" [style.border-right]="ChartsState ?  '5px solid grey': '' " 
           (opened)="ChartsState = true"
-          (closed)="ChartsState = false">
+          (closed)="ChartsState = false"
+          [style.box-shadow]="true ? '0 0 0 ':'0 0 0 ' ">
               <mat-expansion-panel-header>
                 <mat-panel-title>
                   <mat-icon> show_chart </mat-icon> <span>التقارير والرسوم البيانية  </span>
@@ -96,10 +108,11 @@
                 <a mat-list-item routerLink="charts" >  <mat-icon>show_chart </mat-icon> <span>عرض التقارير     </span></a>
               </mat-expansion-panel>
      
-          <mat-expansion-panel
+          <mat-expansion-panel class="primary"
           [style.border-right]="InvState ?  '5px solid grey': '' " 
           (opened)="InvState = true"
-          (closed)="InvState = false" >
+          (closed)="InvState = false" 
+          [style.box-shadow]="true ? '0 0 0 ':'0 0 0 ' ">
               <mat-expansion-panel-header>
                 <mat-panel-title>
                   <mat-icon> store </mat-icon> <span>المخزون   </span>
@@ -116,9 +129,14 @@
 
        
 
-    <mat-sidenav-content class="example-sidenav-content">
+    <mat-sidenav-content class="example-sidenav-content"
+    [style.margin-right.px]="snav.opened ? 240 : 0"
+    [style.margin-right.px]="mobileQuery.matches ? 0 : 240"
+   
+     >
     <router-outlet> </router-outlet>
     </mat-sidenav-content>  
+    
     
   </mat-sidenav-container>
 

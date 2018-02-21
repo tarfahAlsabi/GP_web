@@ -1,6 +1,6 @@
-import { NgModule } from "@angular/core";
-import {Routes , RouterModule} from '@angular/router'
-import { Route } from "@angular/router/src/config";
+import { NgModule } from '@angular/core';
+import {Routes , RouterModule} from '@angular/router';
+import { Route } from '@angular/router/src/config';
 import { EmpolyeeComponent } from './empolyee/empolyee.component';
 import { ProductComponent } from './product/product.component';
 import { ViewTag } from './product/tag.component';
@@ -17,28 +17,27 @@ import { ViewProductComponent } from './product/view-product/view-product.compon
 import { TagComponent } from './tag/tag.component';
 import { AddTagComponent } from './tag/add-tag/add-tag.component';
 import { ViewTagComponent } from './tag/view-tag/view-tag.component';
-const routes: Routes =[
-    {path:'empolyee' , component: EmpolyeeComponent },
-    {path:'product',component:ProductComponent},
-    {path:'header',component:HeaderComponent},
-    {path:'tags',component:ViewTag},
-    {path:'inventory',component:ViewInv},
-    {path:'addQuantity',component:ViewInv},
-    {path:'charts',component:MyFormComponent},
-    {path:'Add_employee',component:AddEmpComponent},
-    {path:'Add_Tag',component:AddTagComponent},
-    {path:'Add_Product',component:AddProductComponent},
-    {path:'View_employee/:id',component:ViewEmpComponent},
-    {path:'View_Tag/:id',component:ViewTagComponent},
-    {path:'View_Producct/:id',component:ViewProductComponent},
-    
-];
+const routes: Routes = [
+    {path: 'empolyee' , component: EmpolyeeComponent },
+    {path: 'product', component: ProductComponent},
+    {path: 'header', component: HeaderComponent},
+    {path: 'tags', component: ViewTag},
+    {path: 'inventory', component: ViewInv},
+    {path: 'addQuantity', component: ViewInv},
+    {path: 'charts', component: MyFormComponent},
+    {path: 'Add_employee', component: AddEmpComponent},
+    {path: 'Add_Tag', component: AddTagComponent},
+    {path: 'Add_Product', component: AddProductComponent},
+    {path: 'View_employee/:id', component: ViewEmpComponent},
+    {path: 'View_Tag/:id', component: ViewTagComponent},
+    {path: 'View_Producct/:id', component: ViewProductComponent} ];
 
 @NgModule({
 imports: [RouterModule.forRoot(routes)],
 exports: [RouterModule]
 
 })
-export class AppRoutingModule {   
-}
-export const routingComponents =[ViewInv,ViewProductComponent,AddProductComponent,TagComponent,ViewTagComponent,AddTagComponent,ProductComponent,EmpolyeeComponent,MyFormComponent,HeaderComponent, ViewEmpComponent,AddEmpComponent,ViewTag]
+export class AppRoutingModule { }
+export const routingComponents = [ ViewInv , ViewProductComponent , AddProductComponent , TagComponent ,
+    ViewTagComponent , AddTagComponent , ProductComponent , EmpolyeeComponent,
+    MyFormComponent, HeaderComponent, ViewEmpComponent , AddEmpComponent , ViewTag ];
