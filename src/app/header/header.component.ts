@@ -10,10 +10,10 @@ import {ChangeDetectorRef, Component} from '@angular/core';
 
 export class HeaderComponent  {
   mobileQuery: MediaQueryList;
-    TagState:boolean=false;
+    TagState: boolean = false;
     ProdState: boolean = false;
     EmpState: boolean = false;
-    ChartsState:boolean = false;
+    ChartsState: boolean = false;
     InvState:boolean = false;
 
 
@@ -28,6 +28,7 @@ export class HeaderComponent  {
   ngOnDestroy(): void {
     this.mobileQuery.removeListener(this._mobileQueryListener);
   }
+
 
   shouldRun = true;
 }

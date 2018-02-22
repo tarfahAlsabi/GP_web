@@ -5,11 +5,11 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {FormsModule,ReactiveFormsModule} from'@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 import { AppComponent } from './app.component';
 
-import {AppRoutingModule,routingComponents} from './app-routing.module'
+import {AppRoutingModule, routingComponents} from './app-routing.module';
 
 import {MatFormFieldModule} from '@angular/material/form-field';
 // import { MyErrorStateMatcher } from './empolyee/add-emp/add-emp.component';
@@ -18,7 +18,6 @@ import {HttpClientModule} from '@angular/common/http';
 import {HttpModule} from '@angular/http';
 import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
 import {
-  
   MatAutocompleteModule,
   MatButtonModule,
   MatButtonToggleModule,
