@@ -53,9 +53,16 @@ import {
   MatTooltipModule,
 } from '@angular/material';
 
-
 import { InputFileComponent } from './input-file/input-file.component';
 import { AddQuantityComponent } from './add-quantity/add-quantity.component';
+import { EmpolyeeComponent } from'./empolyee/empolyee.component';
+import { AddEmpComponent } from'./empolyee/add-emp/add-emp.component';
+import { ViewEmpComponent } from'./empolyee/view-emp/view-emp.component';
+
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { environment } from '../environments/environment';
+
 
 
 @NgModule({
@@ -64,6 +71,9 @@ import { AddQuantityComponent } from './add-quantity/add-quantity.component';
     routingComponents,
     InputFileComponent,
     AddQuantityComponent,
+    EmpolyeeComponent,
+    AddEmpComponent,
+    ViewEmpComponent
 
   ],
   imports: [
@@ -115,7 +125,9 @@ import { AddQuantityComponent } from './add-quantity/add-quantity.component';
     MatIconModule,
     MatCardModule,
     MatSidenavModule,
-    MatToolbarModule
+    MatToolbarModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireDatabaseModule
   ],
   providers: [],
   bootstrap: [AppComponent]

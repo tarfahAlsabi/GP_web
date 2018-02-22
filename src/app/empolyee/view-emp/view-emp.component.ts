@@ -1,13 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 
+import { EmployeeService } from '../shared/employee.service';
+
+
 @Component({
   selector: 'app-view-emp',
   templateUrl: './view-emp.component.html',
-  styleUrls: ['./view-emp.component.css']
+  styleUrls: ['./view-emp.component.css'],
+  providers :[EmployeeService]
 })
 export class ViewEmpComponent implements OnInit {
 
-  constructor() { }
+  constructor(private employeeService: EmployeeService) { }
 name:String="أحمد الصالح ";
 Id:String="MyID!";
 Email:string="aa@aa.a";

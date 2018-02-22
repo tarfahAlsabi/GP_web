@@ -2,14 +2,17 @@ import { Component, OnInit } from '@angular/core';
 import { print } from 'util';
 import {Router} from '@angular/router';
 
+import { EmployeeService } from './shared/employee.service'
+
 @Component({
   selector: 'app-empolyee',
   templateUrl: './empolyee.component.html',
-  styleUrls: ['./empolyee.component.css']
+  styleUrls: ['./empolyee.component.css'],
+  providers :[EmployeeService]
 })
 export class EmpolyeeComponent implements OnInit {
 
-  constructor(private router:Router) { }
+  constructor(private router:Router, private employeeService : EmployeeService) { }
 
   public title="الموظفين";
   public AddBtn="إضافة موظف  ";

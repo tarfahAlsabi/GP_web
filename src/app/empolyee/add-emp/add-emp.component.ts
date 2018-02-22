@@ -1,41 +1,90 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup,Validators,FormControl} from '@angular/forms';
 import {MatInputModule} from '@angular/material/input';
 import { MatExpansionPanelDescription } from '@angular/material';
-import { FileValidators } from '../../input-file/file-validators';
 import {FormGroupDirective, NgForm} from '@angular/forms';
 import {ErrorStateMatcher} from '@angular/material/core';
 import { StateKey } from '@angular/platform-browser/src/browser/transfer_state';
+
+
+import { EmployeeService } from '../shared/employee.service';
+import * as firebase from 'firebase';
+
 @Component({
   selector: 'app-add-emp',
   templateUrl: './add-emp.component.html',
-  styleUrls: ['./add-emp.component.css']
+  styleUrls: ['./add-emp.component.css'],
+  providers :[EmployeeService]
 })
 
 
 export class AddEmpComponent  {
-rForm:FormGroup;
-Email:any;
-Fname:string;
-Lname:String;
-ID:number;
-salary:number;
-phone:number;
+  selectedFiles: FileList;
+  num: number;
 
-constructor(private fb: FormBuilder)
+
+constructor(private fb: FormBuilder,private employeeService: EmployeeService)
 {
   
-  this.rForm=fb.group({
-    'Email':['', Validators.compose([ Validators.required , Validators.email])],
-    'Fname':['' , Validators.required],
-    'Lname':['' , Validators.required],
-    'ID':['',Validators.required],
-    'salary':['',Validators.required],
-    'phone':['',Validators.compose([ Validators.required, Validators.maxLength(10)])]
-   })
-}
-addEmp(form)
-{
+ }
 
+ngOnInit() {
+  this.employeeService.getData();
+  this.resetForm();
 }
+
+detectFiles(event) {
+  this.selectedFiles = event.target.files;
+}
+onSubmit(employeeForm) {
+
+  if(this.selectedFiles){
+
+  const file = this.selectedFiles.item(0);
+  const storageRef = firebase.storage().ref(file.name);
+  const uploadTask = storageRef.put(file); 
+
+  uploadTask.on(firebase.storage.TaskEvent.STATE_CHANGED,
+    (snapshot) =>  {
+      // upload in progress
+     this.num = (uploadTask.snapshot.bytesTransferred / uploadTask.snapshot.totalBytes) * 100
+    },
+    (error) => {
+      // upload failed
+      console.log(error)
+    },
+    () => { 
+      // upload success
+      console.log( uploadTask.snapshot.downloadURL);
+      this.employeeService.insert(employeeForm.value,uploadTask.snapshot.downloadURL,file.name);
+      this.resetForm(employeeForm);
+     // this.tostr.success('Submitted Succcessfully', 'Employee Register');
+    }
+  );
+}else{
+  this.employeeService.insert(employeeForm.value, 'none','none');
+  this.resetForm(employeeForm);
+ // this.tostr.success('Submitted Succcessfully', 'Employee Register');
+}
+}
+
+resetForm(employeeForm?) {
+  if (employeeForm != null){ 
+    employeeForm.reset();
+    this.num = null;
+    this.selectedFiles = null;
+  }
+  this.employeeService.selectedEmployee = {
+    $key: null,
+    firstName: '',
+    lastName: '',
+    email: '',
+    phone: '',
+    salary: 0,
+    username:'',  
+    password: '',
+    picPATH: '',
+  }
+} 
+
 }
