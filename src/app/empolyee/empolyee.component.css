@@ -19,8 +19,14 @@
     align-self: center;
     align-items: center;
 }
+.toolbar-spacer {
+    flex: 1 1 auto;
+  }
 .OptionBtn
 {
+    margin: 0px;
+    width: 100%;
+    align-content: center;
     width: fit-content;
     height: fit-content;
 }
