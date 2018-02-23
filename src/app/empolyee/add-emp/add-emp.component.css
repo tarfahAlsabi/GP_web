@@ -11,7 +11,7 @@
   {
     font-family: 'Amiri' !important;
       margin: 5% 10%;
-      align-self: center;
+      align-self: center; 
       
   }
   td mat-form-field
@@ -24,6 +24,7 @@
   }
  table
  {
+
      width: 100%;
  }
  td button
@@ -33,7 +34,6 @@
  }
   td mat-form-field app-input-file
   {
-    width: 100%;
     float: right;
     text-indent: 1.5px;
     text-align: right;

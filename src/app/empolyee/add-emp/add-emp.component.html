@@ -3,27 +3,30 @@
     <mat-card-title>	
       <h2> إضافة موظف </h2>
     </mat-card-title>
+<mat-card-content>
     <form #employeeForm="ngForm" (ngSubmit)="onSubmit(employeeForm)">
         <input type="hidden" name="$key" #$key="ngModel" [(ngModel)]="employeeService.selectedEmployee.$key">
         <input type="hidden" name="picPATH" #picPATH="ngModel" [(ngModel)]="employeeService.selectedEmployee.picPATH">
         <input type="hidden" name="username" #username="ngModel" [(ngModel)]="employeeService.selectedEmployee.username">
         <input type="hidden" name="password" #password="ngModel" [(ngModel)]="employeeService.selectedEmployee.password" >
        
-<table>
-    <tr>
+        
+  <table>
+    <tr> 
         <td>
         <mat-form-field class="example-full-width">
         <input matInput class="form-control" name="firstName" #firstName="ngModel" [(ngModel)]="employeeService.selectedEmployee.firstName" placeholder="الاسم الأول" required>
       </mat-form-field>
         </td>
-
+       </tr>
+       <tr>
         <td>
       <mat-form-field class="example-full-width">
           <input matInput class="form-control" name="lastName" #lastName="ngModel" [(ngModel)]="employeeService.selectedEmployee.lastName" placeholder="العائلة" required>
         </mat-form-field>
       </td>
 
-      </tr>
+    </tr>
 
       <tr>
         <td>
@@ -76,18 +79,78 @@
   <tr>
       <td>
        
-        <button class="btn btn-default"  type="submit" color="primary" mat-button [disabled]="!employeeForm.valid">
+        <button  type="submit" color="primary" mat-button [disabled]="!employeeForm.valid">
            Submit</button>
       </td>
+    </tr>
+      <tr>
       <td>
            <button type="button" color="accent" mat-button (click)="resetForm(employeeForm)">
-          <i class="fa fa-repeat"></i>
-           Reset</button>
+          <i class="fa fa-repeat"></i> Reset</button>
 
            </td>
+
            </tr>
 
           </table>
 
+
+
+            <!-- <div class="formFilled">
+                  <mat-form-field class="example-full-width">
+                  <input matInput class="form-control" name="firstName" #firstName="ngModel" [(ngModel)]="employeeService.selectedEmployee.firstName" placeholder="الاسم الأول" required>
+                </mat-form-field>
+                
+                <mat-form-field class="example-full-width">
+                    <input matInput class="form-control" name="lastName" #lastName="ngModel" [(ngModel)]="employeeService.selectedEmployee.lastName" placeholder="العائلة" required>
+                  </mat-form-field>
+                </div>
+
+
+           
+                <div class="formFilled" >
+                  <mat-form-field class="example-full-width">
+                  <input matInput class="form-control" name="email" #email="ngModel" [(ngModel)]="employeeService.selectedEmployee.email" placeholder="البريد الإلكتروني">
+                </mat-form-field>
+              </div>
+
+
+              <div class="formFilled">            
+                <mat-form-field class="example-full-width">
+                  <input matInput class="form-control" name="phone" #phone="ngModel" [(ngModel)]="employeeService.selectedEmployee.phone" placeholder="الجوال">
+                  <mat-icon matSuffix>phone</mat-icon>
+                </mat-form-field>
+            </div>
+            
+            <div class="formFilled">
+                <mat-form-field class="example-full-width">
+                      <input  matInput class="form-control" name="salary" #salary="ngModel" [(ngModel)]="employeeService.selectedEmployee.salary" placeholder="الراتب">
+                      <mat-icon matSuffix>money</mat-icon>   
+                </mat-form-field>
+              </div>
+
+              <br>
+                <div class="form-group formFilled" >
+                  <label>
+                    <input  type="file" (change)="detectFiles($event)">
+                  </label>
+                  
+                  </div>
+                
+                <div *ngIf="num" >
+                  <div class="progress">
+                    <div class="progress-bar progress-bar-animated" [ngStyle]="{ 'width': num + '%' }"></div>
+                  </div>
+                  Progress: | {{num}}% Complete
+                </div>
+                <div class="formFilled">
+                  <button  type="submit" color="primary" mat-button [disabled]="!employeeForm.valid">
+                     Submit</button>
+
+                     <button type="button" color="accent" mat-button (click)="resetForm(employeeForm)">
+                    <i class="fa fa-repeat"></i>
+                     Reset</button>
+                    </div>  -->
           </form>
+          </mat-card-content>
   </mat-card>
