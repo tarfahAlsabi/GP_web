@@ -57,7 +57,7 @@ import { AddQuantityComponent } from './add-quantity/add-quantity.component';
 import { EmpolyeeComponent } from'./empolyee/empolyee.component';
 import { AddEmpComponent } from'./empolyee/add-emp/add-emp.component';
 import { ViewEmpComponent } from'./empolyee/view-emp/view-emp.component';
-
+import {viewTag} from './tag/tag.component';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { environment } from '../environments/environment';
@@ -72,7 +72,8 @@ import { environment } from '../environments/environment';
     AddQuantityComponent,
     EmpolyeeComponent,
     AddEmpComponent,
-    ViewEmpComponent
+    ViewEmpComponent,
+    viewTag
 
   ],
   imports: [
@@ -128,6 +129,7 @@ import { environment } from '../environments/environment';
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireDatabaseModule
   ],
+  entryComponents: [viewTag,routingComponents[routingComponents.length-1]],
   providers: [],
   bootstrap: [AppComponent]
 })

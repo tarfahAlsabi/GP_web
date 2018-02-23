@@ -3,7 +3,7 @@ import {Routes , RouterModule} from '@angular/router';
 import { Route } from '@angular/router/src/config';
 import { EmpolyeeComponent } from './empolyee/empolyee.component';
 import { ProductComponent } from './product/product.component';
-import { ViewTag } from './product/tag.component';
+
 import { ViewInv } from './product/Inv.component';
 import { HeaderComponent } from './header/header.component';
 import { MyFormComponent } from './my-form/my-form.component';
@@ -21,7 +21,7 @@ const routes: Routes = [
     {path: 'empolyee' , component: EmpolyeeComponent },
     {path: 'product', component: ProductComponent},
     {path: 'header', component: HeaderComponent},
-    {path: 'tags', component: ViewTag},
+    {path: 'tags', component: TagComponent},
     {path: 'inventory', component: ViewInv},
     {path: 'addQuantity', component: ViewInv},
     {path: 'charts', component: MyFormComponent},
@@ -40,4 +40,4 @@ exports: [RouterModule]
 export class AppRoutingModule { }
 export const routingComponents = [ ViewInv , ViewProductComponent , AddProductComponent , TagComponent ,
     ViewTagComponent , AddTagComponent , ProductComponent , EmpolyeeComponent,
-    MyFormComponent, HeaderComponent, ViewEmpComponent , AddEmpComponent , ViewTag ];
+    MyFormComponent, HeaderComponent, ViewEmpComponent , AddEmpComponent , TagComponent ];

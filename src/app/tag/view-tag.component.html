@@ -1,0 +1,18 @@
+<div class="ViewsContainer">
+<h1 mat-dialog-title> تعديل {{data.name}}</h1>
+<div mat-dialog-content>
+  <mat-form-field>
+    <input matInput [(ngModel)]="newname">
+  </mat-form-field>
+</div>
+<div mat-dialog-actions class="OptionBtn">
+  
+  <button mat-button [mat-dialog-close]="newname" cdkFocusInitial>تعديل </button>
+  <button mat-button (click)="delete()"  >حذف التصنيف  </button>
+  <button mat-button [mat-dialog-close]="data.name"  >إلغاء الأمر </button>
+</div>
+
+</div>
+<!-- Copyright 2018 Google Inc. All Rights Reserved.
+    Use of this source code is governed by an MIT-style license that
+    can be found in the LICENSE file at http://angular.io/license -->
