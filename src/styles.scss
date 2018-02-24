@@ -1,6 +1,6 @@
-/* @import "~bootstrap/dist/css/bootstrap.css";
+/* @import "~bootstrap/dist/css/bootstrap.css";*/
 
-@import "~font-awesome/css/font-awesome.min.css"; */
+@import "~font-awesome/css/font-awesome.min.css"; 
 @import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
 @import "https://fonts.googleapis.com/css?family=Amiri|Cairo|Changa|Scheherazade";
 body
@@ -9,3 +9,17 @@ body
     direction:rtl ;
     text-align: center;
 }
+<<<<<<< HEAD
+=======
+input.ng-invalid.ng-dirty{
+}
+button:hover,a.btn:hover{
+    cursor: pointer;
+   }
+
+h2 , h1 , h3 , h4 ,h5  {
+    color: lightblue;
+    
+}
+
+>>>>>>> 4feecb742d80aaf22e8129c717d12b2c17be0e25

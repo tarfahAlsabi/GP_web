@@ -3,7 +3,7 @@ import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-view-tag',
-  templateUrl: './view-tag.component.html',
+  templateUrl: '../view-tag.component.html',
   styleUrls: ['./view-tag.component.css']
 })
 export class ViewTagComponent implements OnInit {
