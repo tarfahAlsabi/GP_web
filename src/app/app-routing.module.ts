@@ -40,9 +40,4 @@ exports: [RouterModule]
 export class AppRoutingModule { }
 export const routingComponents = [ ViewInv , ViewProductComponent , AddProductComponent , TagComponent ,
     ViewTagComponent , AddTagComponent , ProductComponent , EmpolyeeComponent,
-<<<<<<< HEAD
-    MyFormComponent, HeaderComponent, ViewEmpComponent , AddEmpComponent , ViewTag ];
- 
-=======
     MyFormComponent, HeaderComponent, ViewEmpComponent , AddEmpComponent , TagComponent ];
->>>>>>> 4feecb742d80aaf22e8129c717d12b2c17be0e25
