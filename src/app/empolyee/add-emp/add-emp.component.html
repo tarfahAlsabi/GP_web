@@ -6,40 +6,75 @@
     <form #employeeForm="ngForm" (ngSubmit)="onSubmit(employeeForm)">
         <input type="hidden" name="$key" #$key="ngModel" [(ngModel)]="employeeService.selectedEmployee.$key">
         <input type="hidden" name="picPATH" #picPATH="ngModel" [(ngModel)]="employeeService.selectedEmployee.picPATH">
+        <input type="hidden" name="picName" #picName="ngModel" [(ngModel)]="employeeService.selectedEmployee.picName">       
         <input type="hidden" name="username" #username="ngModel" [(ngModel)]="employeeService.selectedEmployee.username">
         <input type="hidden" name="password" #password="ngModel" [(ngModel)]="employeeService.selectedEmployee.password" >
        
 <table>
     <tr>
-        <td>
+     <td>
         <mat-form-field class="example-full-width">
-        <input matInput class="form-control" name="firstName" #firstName="ngModel" [(ngModel)]="employeeService.selectedEmployee.firstName" placeholder="الاسم الأول" required>
-      </mat-form-field>
-        </td>
+          <input matInput class="form-control" name="firstName" #firstName="ngModel" 
+          [(ngModel)]="employeeService.selectedEmployee.firstName"
+          placeholder="الاسم الأول" required>
+        </mat-form-field>
+      </td>
+
 
         <td>
       <mat-form-field class="example-full-width">
-          <input matInput class="form-control" name="lastName" #lastName="ngModel" [(ngModel)]="employeeService.selectedEmployee.lastName" placeholder="العائلة" required>
+          <input matInput class="form-control" name="lastName" #lastName="ngModel" 
+          [(ngModel)]="employeeService.selectedEmployee.lastName" 
+          placeholder="العائلة" required>
         </mat-form-field>
       </td>
 
       </tr>
-
+      <tr>
+        <td>
+      <div [hidden]="firstName.valid || firstName.pristine"
+      class="alert alert-danger">
+      <label class="red">*الأسم الأول مطلوب </label>
+     </div>
+     
+        </td>
+     <td>
+      <div [hidden]="lastName.valid || lastName.pristine"
+      class="alert alert-danger">
+      <label class="red">*العائلة مطلوبة </label>
+     </div>
+     </td>
+      </tr>
       <tr>
         <td>
         <mat-form-field class="example-full-width">
-        <input matInput class="form-control" name="email" #email="ngModel" [(ngModel)]="employeeService.selectedEmployee.email" placeholder="البريد الإلكتروني">
+        <input matInput class="form-control" type="email" name="email" #email="ngModel" 
+        [(ngModel)]="employeeService.selectedEmployee.email" 
+        placeholder="البريد الإلكتروني" required>
       </mat-form-field>
       </td>
-
+      <td>
+        <div [hidden]="email.valid || email.pristine"
+        class="alert alert-danger">
+       <label class="red"> *البريد الإلكتروني مطلوب </label>
+       </div>
+          </td>
       </tr>
       
       <tr>
           <td>
       <mat-form-field class="example-full-width">
-        <input matInput class="form-control" name="phone" #phone="ngModel" [(ngModel)]="employeeService.selectedEmployee.phone" placeholder="الجوال">
+        <input matInput type="tel" class="form-control" name="phone" #phone="ngModel" 
+        [(ngModel)]="employeeService.selectedEmployee.phone" 
+        minlength="10" placeholder="الجوال">
         <mat-icon matSuffix>phone</mat-icon>
       </mat-form-field>
+    </td>
+    <td>
+      <div [hidden]="phone.valid || phone.pristine"
+      class="alert alert-danger">
+      <label class="red"> *رقم الجوال يجب ان يكون أن لا يقل عن 10 أرقام </label>
+     </div>
     </td>
 
   </tr>
@@ -47,9 +82,10 @@
   <tr>
       <td>
       <mat-form-field class="example-full-width">
-            <input  matInput class="form-control" name="salary" #salary="ngModel" [(ngModel)]="employeeService.selectedEmployee.salary" placeholder="الراتب">
+            <input  matInput type="number" class="form-control" name="salary" #salary="ngModel" 
+            [(ngModel)]="employeeService.selectedEmployee.salary" 
+            placeholder="الراتب">
             <mat-icon matSuffix>money</mat-icon>
-
       </mat-form-field>
           </td>
           </tr>
@@ -61,7 +97,10 @@
         </label>
         
         </div>
-      
+      </td>
+      </tr>
+      <tr>
+        <td>
       <div *ngIf="num" >
         <div class="progress">
           <div class="progress-bar progress-bar-animated" [ngStyle]="{ 'width': num + '%' }"></div>
@@ -77,10 +116,11 @@
       <td>
        
         <button class="btn btn-default"  type="submit" color="primary" mat-button [disabled]="!employeeForm.valid">
-           Submit</button>
+         <i class="fa fa-floppy-o"></i>
+          Submit</button>
       </td>
       <td>
-           <button type="button" color="accent" mat-button (click)="resetForm(employeeForm)">
+           <button type="button" color="primary" mat-button (click)="resetForm(employeeForm)">
           <i class="fa fa-repeat"></i>
            Reset</button>
 

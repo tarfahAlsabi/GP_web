@@ -7,18 +7,17 @@
     </a>
     <h2> {{ title }} </h2>
   </mat-card-title>
-</mat-card>
+</mat-card> 
 
-<section class="ViewsContainer"  >
+<section class="ViewsContainer"  > 
 
-<mat-card class="viewProduct"  *ngFor="let item of items" >
-    <img mat-card-image class="Viewimg" src={{item.img}}>
+<mat-card class="viewProduct"  *ngFor="let product of productList" >
+    <img mat-card-image class="Viewimg" src={{product.picPath}}>
     <mat-card-content role="group" >
-     <h3>{{item.name }}</h3> 
+     <h3>{{product.name }}</h3> 
     </mat-card-content>
     <mat-card-actions role="group" class="OptionBtn">	
-    <button mat-button (click)="viewProduct(item )"> <mat-icon> description </mat-icon> عرض البيانات</button>
-    <button mat-button (click)="deletItem( item)"> <mat-icon> delete </mat-icon> حذف </button>
+    <button mat-button (click)="viewProduct(product )"> <mat-icon> description </mat-icon> عرض البيانات</button>
     </mat-card-actions>	
 </mat-card>
 

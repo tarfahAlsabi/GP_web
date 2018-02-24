@@ -8,5 +8,6 @@ export class Employee {
     phone: string;
     salary: number;
     picPATH: string;
+    picName: string;
 
 }

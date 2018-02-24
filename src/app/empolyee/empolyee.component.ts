@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { print } from 'util';
 import {Router} from '@angular/router';
 
-import { EmployeeService } from './shared/employee.service'
+import { EmployeeService } from './shared/employee.service';
+import { Employee } from'./shared/employee.model';
 
 @Component({
   selector: 'app-empolyee',
@@ -11,29 +12,42 @@ import { EmployeeService } from './shared/employee.service'
   providers :[EmployeeService]
 })
 export class EmpolyeeComponent implements OnInit {
+  employeeList: Employee[];
+  num: number;
 
   constructor(private router:Router, private employeeService : EmployeeService) { }
 
   public title="الموظفين";
   public AddBtn="إضافة موظف  ";
-  public items= [
-    {'name' : 'emp1','img' :'http://shfcs.org/en/wp-content/uploads/2015/11/MedRes_Product-presentation-2.jpg','id':'3'},
-   {'name' : 'product6','img' :'http://shfcs.org/en/wp-content/uploads/2015/11/MedRes_Product-presentation-2.jpg','id':'1'}
-  ]
-    ngOnInit() {
-  
-     let itemNumber=(this.items.length/3);
+    ngOnInit() { 
+      
+    var x = this.employeeService.getData();
+     x.snapshotChanges().subscribe(item => {
+      this.employeeList = [];
+      item.forEach(element => {
+        var y = element.payload.toJSON();
+        y["$key"] = element.key;
+      //  y["picPATH"] = this.getImg(y["picPATH"]);
+        this.employeeList.push(y as Employee);
+        this.num++;
+      });
+    });
+    // let employeesNumber=(this.employeeList.length/3);
   }
-    viewProduct(item)
-    {
-      confirm('inside the method'+item.id);
 
-    this.router.navigate(['View_employee',item.id]);
-     
+ /* getImg(url: String){
+    return url.substring(0,url.indexOf(','));
+  }*/
+  
+  
+    viewemployee(employee : Employee)
+    { 
+      //this.employeeService.delete(employee);
+      
+      let id=employee.$key+","+employee.email+","+employee.firstName+","+employee.lastName+","+employee.phone+","+employee.picPATH+","+employee.salary+","+employee.picPATH+","+employee.username+","+employee.password;
+      this.router.navigate(['View_employee/',id]);
+    }   
+    add(){
+      this.router.navigate(['Add_employee']);
     }
-    deletItem()
-    {
-      confirm("are you sure ?");
-    }
-    
 }

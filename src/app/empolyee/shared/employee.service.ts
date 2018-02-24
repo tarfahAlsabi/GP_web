@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
 import { Employee} from './employee.model';
 import * as firebase from 'firebase';
+import { Router } from '@angular/router';
 
 
 @Injectable()
@@ -10,7 +11,7 @@ export class EmployeeService {
   employeeList: AngularFireList<any>;
   selectedEmployee: Employee = new Employee(); 
 
-  constructor(private firebase: AngularFireDatabase,private db:AngularFireDatabase ) {}
+  constructor(private firebase: AngularFireDatabase,private router:Router,private db:AngularFireDatabase ) {}
   
   getData(){ 
     this.employeeList = this.firebase.list('employees');
@@ -36,11 +37,22 @@ export class EmployeeService {
    //end genrat password
 
 //if(result){
-   employee.username = employee.firstName;
-   if(path == 'none')
-     employee.picPATH = 'https://firebasestorage.googleapis.com/v0/b/erad-system.appspot.com/o/defaultEmployee.jpg?alt=media&token=cb0d86a8-cea9-4f19-9177-d12d0a054b62,defaultEmployee.jpg';
-   else
-     employee.picPATH = path+(',')+fileName;
+   employee.username = employee.firstName; 
+   if(path == 'none'){
+     employee.picPATH = 'https://firebasestorage.googleapis.com/v0/b/erad-system.appspot.com/o/defaultEmployee.jpg?alt=media&token=cb0d86a8-cea9-4f19-9177-d12d0a054b62';
+     employee.picName = 'defaultEmployee.jpg';
+    }else{
+     employee.picPATH = path;
+     employee.picName = fileName;
+   }
+
+     if(employee.phone == ''){
+       employee.phone = 'لا يوجد رقم';
+     }
+     if(employee.salary  == null){
+      employee.salary = 0;
+    }
+    
 
     this.employeeList.push({
     username: employee.username,  
@@ -50,7 +62,8 @@ export class EmployeeService {
     password: employee.password,
     phone: employee.phone,
     salary: employee.salary,
-    picPATH: employee.picPATH
+    picPATH: employee.picPATH,
+    picName: employee.picName
     });
  // }else{
     //fire alarm
@@ -58,14 +71,17 @@ export class EmployeeService {
 
   }
 
-  delete(employee: Employee){
+  delete(employee : Employee){
+    if(confirm("هل انت متأكد من تسريح الموظف")){
     this.employeeList.remove(employee.$key);
-    let fileName = employee.picPATH.substring(employee.picPATH.indexOf(',')+1);
-    
-    if(fileName != 'defaultEmployee.jpg'){
+   //let fileName = employee.picPATH.substring(employee.picPATH.indexOf(',')+1);
+
+    if(employee.picName != 'defaultEmployee.jpg'){
      let storageRef = firebase.storage().ref();
-     storageRef.child(fileName).delete();
+     storageRef.child(employee.picName).delete();
     }
+    this.router.navigate(['empolyee']);
+  }
 
   }
   

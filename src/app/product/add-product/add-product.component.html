@@ -3,102 +3,153 @@
     <mat-card-title>	
       <h2> إضافة منتج </h2>
     </mat-card-title>
-  
-    <form class="example-form" [formGroup]='rForm' (ngSubmit)=addEmp(rForm.value)>
-  <table>
-    <tr>
-      <td>
+    <form #productForm="ngForm" (ngSubmit)="onSubmit(productForm)">
+
+      <input type="hidden" name="$key" #$key="ngModel" 
+      [(ngModel)]="productService.selectedProduct.$key">
+
+      <input type="hidden" name="picPath" #picPath="ngModel" 
+      [(ngModel)]="productService.selectedProduct.picPath">
+
+      <input type="hidden" name="picName" #picName="ngModel" 
+      [(ngModel)]="productService.selectedProduct.picName">
+
+      <table>
+        <tr>
+          <td>
+            <mat-form-field class="example-full-width">
+          <input matInput class="form-control" name="name" #name="ngModel" 
+          [(ngModel)]="productService.selectedProduct.name" 
+          placeholder="اسم المنتج" required>
+          <!-- <mat-error *ngIf="ID.invalid">خانة مطلوبة </mat-error> -->
+      </mat-form-field>
+    </td>
+  <td>
+    <div [hidden]="name.valid || name.pristine"
+    class="alert alert-danger">
+   <label class="red"> *اسم المنتج مطلوب </label>
+   </div>
+      </td>
+  </tr>
+
+  <tr>
+    <td>
         <mat-form-field class="example-full-width">
-            <input matInput placeholder="الباركود  " [formControl]="ID" >
-            <mat-hint> رقم المنتج </mat-hint>
-            <!-- <mat-error *ngIf="ID.invalid">خانة مطلوبة </mat-error> -->
+          <input matInput class="form-control" name="description" #description="ngModel" 
+          [(ngModel)]="productService.selectedProduct.description" 
+          placeholder="الوصف">
         </mat-form-field>
       </td>
     </tr>
+    
     <tr>
-        <td>
-            <mat-form-field class="example-full-width">
-                <input matInput placeholder="اسم المنتج "  [formControl]="Fname" >
-                <!-- <mat-error *ngIf="Fname.invalid"> خانة مطلوبة </mat-error> -->
-              </mat-form-field>
+      <td>
+          <mat-form-field class="example-full-width">
+            <input matInput type="number" class="form-control" name="price" #price="ngModel" 
+            [(ngModel)]="productService.selectedProduct.price" 
+            placeholder="سعر البيع" required>
+            <mat-icon matSuffix>money</mat-icon>
+          </mat-form-field>
         </td>
-    </tr>
-        <tr>
+      
+    
         <td>
-            <mat-form-field class="example-full-width">
-                <textarea matInput placeholder="الوصف"></textarea>
-              </mat-form-field>
+          <mat-form-field class="example-full-width">
+           <input matInput type="number" class="form-control" name="cost" #cost="ngModel" 
+           [(ngModel)]="productService.selectedProduct.cost" 
+           placeholder="سعر الشراء" required>
+           <mat-icon matSuffix>money</mat-icon>
+          </mat-form-field>
         </td>
       </tr>
-    <tr>
+      <tr>
+        <td>
+      <div [hidden]="price.valid || price.pristine"
+      class="alert alert-danger">
+      <label class="red">*سعر البيع مطلوب </label>
+     </div>
+     
+        </td>
+     <td>
+      <div [hidden]="cost.valid || cost.pristine"
+      class="alert alert-danger">
+      <label class="red">*سعر الشراء مطلوبة </label>
+     </div>
+     </td>
+      </tr>
+       
+      <tr>
         <td>
             <mat-form-field class="example-full-width">
-                <input type="number" matInput placeholder="سعر البيع " [formControl]="Email">
-                <mat-icon matSuffix>money</mat-icon>
-                <mat-hint> سعر بيع المنتج  </mat-hint>
-                  <!-- <mat-error *ngIf="Email.invalid">
-                    Email is <strong>required</strong>
-                  </mat-error> -->
-              </mat-form-field>
+             <input matInput type="number" class="form-control" name="inventory" #inventory="ngModel" 
+             [(ngModel)]="productService.selectedProduct.inventory" 
+             placeholder="الكمية المتوفرة" required>
+             <mat-icon matSuffix></mat-icon>
+            </mat-form-field>
           </td>
-
           <td>
-              <mat-form-field class="example-full-width">
-                  <input type="number" matInput placeholder="سعر الشراء " [formControl]="Email">
-                  <mat-icon matSuffix>money</mat-icon>
-                  <mat-hint> سعر شراء المنتج من الوكيل أو المصنع  </mat-hint>
-                    <!-- <mat-error *ngIf="Email.invalid">
-                      Email is <strong>required</strong>
-                    </mat-error> -->
-                </mat-form-field>
-            </td>
-          </tr>
-          <tr>
-          <td>
-              <mat-form-field class="example-full-width">
-                  <input type="number" matInput placeholder="الكمية المتوفرة "  [formControl]="Phone">
-                 
-                  <!-- <mat-error *ngIf="Phone.invalid">خانة مطلوبة </mat-error> -->
-                </mat-form-field>
+        <div [hidden]="inventory.valid || inventory.pristine"
+        class="alert alert-danger">
+        <label class="red">*الكمية مطلوبة </label>
+       </div>
+       
+          </td>
+   </tr>
+       <tr>
+        <td>
+            <mat-form-field class="example-full-width">
+              <input matInput class="form-control" name="category" #category="ngModel" 
+              [(ngModel)]="productService.selectedProduct.category"
+               placeholder="التصنيف">
+            </mat-form-field>
           </td>
         </tr>
-   
     <tr>
       <td>
-          <mat-form-field>
-              <mat-select placeholder="التصنيف ">
-                <mat-option value="option">تصنيف1</mat-option>
-                <mat-option value="option">تصنيف2</mat-option>
-              </mat-select>
-            </mat-form-field>
+       <div class="form-group" >
+         <label> 
+           <input type="file" (change)="detectFiles($event)">
+         </label>
+      
+        </div>
       </td>
     </tr>
-    <tr>
-      <td>
-          <mat-form-field class="example-full-width ">
-           <!--   <app-input-file  placeholder="  إضافة صورة للمنتج" ></app-input-file>-->
-              <mat-icon matSuffix>folder</mat-icon>
-            </mat-form-field>
-      </td>
-    </tr>
-<tr>
- <td>
-  <button type="submit" color="primary" mat-button>إضافة </button>
- </td>  
-  
- <td>
-  <button type="cancel" color="accent" mat-button>إلغاء  </button>
-
- </td> 
-</tr>
-
     
-    </table>
-     <!-- <p>
-      <mat-form-field class="example-full-width">
-        <input  type="" >
-      </mat-form-field>
-     </p>  -->
-  
+<tr>
+  <td>
+    <div *ngIf="num" >
+      <div class="progress">
+        <div class="progress-bar progress-bar-animated" [ngStyle]="{ 'width': num + '%' }"></div>
+      </div>
+      Progress: | {{num}}% Complete
+    </div>
+  </td>
+</tr>
+    <!--
+    <div class="form-group">
+      <label>Salary</label>
+      <div class="input-group">
+          <div class="input-group-addon">
+            <i class="fa fa-dollar"></i>
+          </div>
+          <input class="form-control" name="salary" #salary="ngModel" [(ngModel)]="productService.selectedProduct.salary" placeholder="0">
+      </div>
+    </div>
+    -->
+    
+    <tr>
+        <td>     
+      <button class="btn btn-default" color="primary" mat-button type="submit" [disabled]="!productForm.valid">
+        <i class="fa fa-floppy-o"></i>
+         Submit</button>
+        </td>
+        <td>
+         <button class="btn btn-default" color="accent" type="button" mat-button (click)="resetForm(productForm)">
+        <i class="fa fa-repeat"></i>
+         Reset</button>
+        </td>
+      </tr>
+
+     </table>
     </form>
   </mat-card>

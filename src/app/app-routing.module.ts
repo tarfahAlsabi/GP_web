@@ -41,3 +41,4 @@ export class AppRoutingModule { }
 export const routingComponents = [ ViewInv , ViewProductComponent , AddProductComponent , TagComponent ,
     ViewTagComponent , AddTagComponent , ProductComponent , EmpolyeeComponent,
     MyFormComponent, HeaderComponent, ViewEmpComponent , AddEmpComponent , ViewTag ];
+ 

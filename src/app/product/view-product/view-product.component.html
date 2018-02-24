@@ -2,7 +2,6 @@
     <mat-card-header>
       <div mat-card-avatar class="example-header-image"><img src={{img}}></div>
       <mat-card-title>{{name}} </mat-card-title>
-      <mat-card-subtitle> {{Id}} </mat-card-subtitle>
     </mat-card-header>
     <mat-card-content>
       <table>
@@ -32,7 +31,7 @@
               <h3> سعر الشراء </h3>
           </td>
           <td>
-              <p>  {{BPrice}}  </p>
+              <p>  {{cost}}  </p>
           </td>
         </tr>
         <tr>
@@ -40,7 +39,7 @@
                 <h3> سعر البيع </h3>
             </td>
             <td>
-                <p>  {{SPrice}}  </p>
+                <p>  {{price}}  </p>
             </td>
           </tr>
         <tr>
@@ -58,8 +57,8 @@
         <table>
           <tr>
      <td> <button mat-button>عرض مبيعات المنتج   </button> </td>
-     <td> <button mat-button> تعديل بيانات المنتج  </button> </td> 
-     <td> <button mat-button>حذف المنتج  </button> </td>
+     <td> <button mat-button (click)="onEdit()"> تعديل بيانات المنتج  </button> </td> 
+     <td> <button mat-button (click)="delete()">حذف المنتج  </button> </td>
     </tr>
     </table>
     </mat-card-actions>

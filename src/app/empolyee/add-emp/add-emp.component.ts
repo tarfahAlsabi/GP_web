@@ -35,10 +35,15 @@ ngOnInit() {
 
 detectFiles(event) {
   this.selectedFiles = event.target.files;
+  console.log(this.selectedFiles);
+  console.log('s');
+
 }
-onSubmit(employeeForm) {
+onSubmit(employeeForm: NgForm) {
 
   if(this.selectedFiles){
+    console.log('enter');
+
 
   const file = this.selectedFiles.item(0);
   const storageRef = firebase.storage().ref(file.name);
@@ -55,7 +60,6 @@ onSubmit(employeeForm) {
     },
     () => { 
       // upload success
-      console.log( uploadTask.snapshot.downloadURL);
       this.employeeService.insert(employeeForm.value,uploadTask.snapshot.downloadURL,file.name);
       this.resetForm(employeeForm);
      // this.tostr.success('Submitted Succcessfully', 'Employee Register');
@@ -68,7 +72,7 @@ onSubmit(employeeForm) {
 }
 }
 
-resetForm(employeeForm?) {
+resetForm(employeeForm?: NgForm) {
   if (employeeForm != null){ 
     employeeForm.reset();
     this.num = null;
@@ -80,10 +84,11 @@ resetForm(employeeForm?) {
     lastName: '',
     email: '',
     phone: '',
-    salary: 0,
+    salary: null,
     username:'',  
     password: '',
     picPATH: '',
+    picName:'',
   }
 } 
 

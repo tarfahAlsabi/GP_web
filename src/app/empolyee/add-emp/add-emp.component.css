@@ -39,3 +39,10 @@
     text-align: right;
     font-size: 18px;
   }
+
+  div {
+    text-align: right;
+  }
+  .red{
+    color: red;
+  }
