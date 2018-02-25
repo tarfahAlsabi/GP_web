@@ -24,12 +24,13 @@ export class TagComponent implements OnInit {
   
   openDialog(item): void {
     let dialogRef = this.dialog.open(viewTag, {
-      width: '50%',
+      width:"auto",
       data: { name: item.name,a:item.id } 
     });
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
+      if(result)
       item.name = result;
     });
   }

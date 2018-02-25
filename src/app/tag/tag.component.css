@@ -89,4 +89,12 @@
     font-size: 18px;
     line-height: 2;
   }
+
+  
+  .dialogTitle , .DialogOptionBtn
+  {
+      display: -ms-inline-grid;;
+      direction: rtl;
+      align-content: center;
+  }
   

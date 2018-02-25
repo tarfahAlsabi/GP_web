@@ -1,14 +1,16 @@
 <div class="ViewsContainer">
+  <div class="dialogTitle">
 <h1 mat-dialog-title> تعديل {{data.name}}</h1>
 <div mat-dialog-content>
   <mat-form-field>
     <input matInput [(ngModel)]="newname">
   </mat-form-field>
 </div>
-<div mat-dialog-actions class="OptionBtn">
-  
+</div>
+
+<div mat-dialog-actions class="DialogOptionBtn"> 
   <button mat-button [mat-dialog-close]="newname" cdkFocusInitial>تعديل </button>
-  <button mat-button (click)="delete()"  >حذف التصنيف  </button>
+  <button mat-button (click)="delete()"  color="error">حذف التصنيف  </button>
   <button mat-button [mat-dialog-close]="data.name"  >إلغاء الأمر </button>
 </div>
 

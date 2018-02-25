@@ -64,6 +64,9 @@ import { environment } from '../environments/environment';
  
 
 
+import { InvComponent } from './product/inv/inv.component';
+import { addQuantity } from './product/inv/inv.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -73,8 +76,9 @@ import { environment } from '../environments/environment';
     EmpolyeeComponent,
     AddEmpComponent,
     ViewEmpComponent,
-    viewTag
-
+    viewTag,
+    addQuantity,
+   
   ],
   imports: [
     MatFormFieldModule,
@@ -129,7 +133,7 @@ import { environment } from '../environments/environment';
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireDatabaseModule
   ],
-  entryComponents: [viewTag,routingComponents[routingComponents.length-1]],
+  entryComponents: [viewTag,routingComponents[routingComponents.length-1] , addQuantity,InvComponent ],
   providers: [],
   bootstrap: [AppComponent]
 })

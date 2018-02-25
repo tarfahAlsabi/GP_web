@@ -18,11 +18,7 @@
     align-self: center;
     align-items: center;
 }
-.OptionBtn
-{
-    width: fit-content;
-    height: fit-content;
-}
+
 .PageTitle
 {
     margin: 15px;
@@ -34,6 +30,7 @@
 }
 .Viewimg
 {
+    margin-top: 0px !important ; 
     width: 75%;
     height: 60%;
     overflow-wrap: normal;
@@ -48,13 +45,21 @@
 .toolbar-spacer {
     flex: 1 1 auto;
   }
+
   .OptionBtn
   {
       margin: 0px;
       width: 100%;
+      align-self: center;
+      align-items: center;
       align-content: center;
-      width: fit-content;
+      width: 100%;
       height: fit-content;
+  }
+
+  .OptionBtn button
+  {
+      width: 100%;
   }
   .PageTitle
   {
@@ -67,10 +72,4 @@
       font-size: 22px;
       margin: 0px;
   }
-  mat-toolbar mat-toolbar-row span mat-form-field
-  {
-      text-align: right;
-      font-size: 14px;
-      float: right;
-      line-height: 2;
-  }
+  
