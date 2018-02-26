@@ -34,6 +34,7 @@
 }
 .Viewimg
 {
+    margin-top: 0px !important ; 
     width: 75%;
     height: 60%;
     overflow-wrap: normal;
@@ -74,3 +75,12 @@
       float: right;
       line-height: 2;
   }
+  .dialogTitle , .DialogOptionBtn
+  {
+    display: -ms-inline-grid;;
+    direction: rtl;
+    align-content: center;
+}
+
+
+ 
