@@ -65,24 +65,12 @@ export class ViewProductComponent implements OnInit {
   }
 
   onEdit() {
-    console.log(this.product);
-    this.productService.selectedProduct = Object.assign({}, this.product);
-    console.log('s');
-    //this.router.navigate(["Add_Product"]);
+    let id=this.key+","+this.name+","+this.Tag+","+this.cost+","+this.description+","+this.quantity+","+this.imgName+","+this.img+","+this.price;
+    //this.productService.selectedProduct = Object.assign({}, this.product);
+    this.router.navigate(["Add_Product/",id]);
   }
   delete(){
-    /*  let $key = this.key;
-      let email = this.Email;
-      let username =this.tempArray[8];
-      let firstName = this.tempArray[2];
-      let lastName = this.tempArray[3];
-      let password = this.tempArray[9];
-      let phone = this.phone;
-      let picPATH = this.img;
-      let picName = this.imgName;
-      let salary = this.salary;
-  
-      let ee:Employee ={$key,email,username,firstName,lastName,password,phone,picPATH,picName,salary};*/
+     
       if (confirm('هل أنت متأكد من حذف هذا المنتج؟') == true) {
         this.productService.deleteProduct(this.product);
         this.router.navigate(['product']);

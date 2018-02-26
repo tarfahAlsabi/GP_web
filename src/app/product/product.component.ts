@@ -49,7 +49,8 @@ viewProduct(product: Product)
 
   Add() 
   {
-      this.router.navigate(['/Add_Product']);
+      let id:string ='';
+      this.router.navigate(['/Add_Product/',id]);
   }
 
 }

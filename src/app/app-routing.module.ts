@@ -27,7 +27,7 @@ const routes: Routes = [
     {path: 'charts', component: MyFormComponent},
     {path: 'Add_employee', component: AddEmpComponent},
     {path: 'Add_Tag', component: AddTagComponent},
-    {path: 'Add_Product', component: AddProductComponent},
+    {path: 'Add_Product/:id', component: AddProductComponent},
     {path: 'View_employee/:id', component: ViewEmpComponent},
     {path: 'View_Tag/:id', component: ViewTagComponent},
     {path: 'View_Producct/:id', component: ViewProductComponent} ];

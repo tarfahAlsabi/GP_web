@@ -68,7 +68,7 @@ export class ProductService {
         picPath: product.picPath,
         picName: product.picName
       });
-  }
+  } 
  
   deleteProduct(product : Product){
     this.firebase.list('products/'+ product.category).remove(product.$key);

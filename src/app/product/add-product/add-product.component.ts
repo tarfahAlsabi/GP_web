@@ -9,6 +9,8 @@ import { StateKey } from '@angular/platform-browser/src/browser/transfer_state';
 
 import { ProductService } from '../shared/product.service';
 import * as firebase from 'firebase';
+import { ActivatedRoute } from '@angular/router';
+import { Product } from '../shared/product.model';
 
 @Component({ 
   selector: 'app-add-product',
@@ -20,13 +22,18 @@ export class AddProductComponent  {
 
   selectedFiles: FileList;
   num: number;
+  temp: string;
   
-  constructor(private productService : ProductService) {}
+  constructor(private productService : ProductService, private route: ActivatedRoute) {}
   
   
   ngOnInit() {
     this.productService.getData();
     this.resetForm();
+    this.temp = this.route.snapshot.params.id;
+    if(this.temp != '')
+      this.onEdit();
+
   }
 
   detectFiles(event) {
@@ -48,7 +55,7 @@ export class AddProductComponent  {
         },
         (error) => {
           // upload failed
-          console.log(error)
+          console.log(error) 
         },
         () => {
           // upload success
@@ -74,6 +81,25 @@ export class AddProductComponent  {
       }    
     }
      } 
+
+     onEdit() {
+      let tempArray = this.temp.split(",");
+      let $key= tempArray[0];
+      let name = tempArray[1];
+      let category = tempArray[2];
+      let cost  = Number(tempArray[3]);
+      let description = tempArray[4];
+      let inventory = Number(tempArray[5]);
+      let picName = tempArray[6];
+      let picPath = tempArray[7];
+      let price = Number(tempArray[8]);
+
+    let pp:Product ={$key,name,category,cost,price,picPath,inventory,picName,description};
+      this.productService.selectedProduct = Object.assign({}, pp);
+      //this.router.navigate(["Add_Product"]);
+    }
+
+     
  
   resetForm(productForm?: NgForm) {
     if (productForm != null){
