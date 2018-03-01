@@ -9,7 +9,7 @@ import { StateKey } from '@angular/platform-browser/src/browser/transfer_state';
 
 import { ProductService } from '../shared/product.service';
 import * as firebase from 'firebase';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Product } from '../shared/product.model';
 
 @Component({ 
@@ -24,15 +24,19 @@ export class AddProductComponent  {
   num: number;
   temp: string;
   
-  constructor(private productService : ProductService, private route: ActivatedRoute) {}
+  constructor(private productService : ProductService, private route: ActivatedRoute,
+  private router:Router) {}
   
   
   ngOnInit() {
     this.productService.getData();
     this.resetForm();
     this.temp = this.route.snapshot.params.id;
-    if(this.temp != '')
+    if((this.temp != '') && (this.temp != ':id')){
       this.onEdit();
+      console.log(this.temp);
+      console.log('s');
+    }
 
   }
 
@@ -62,10 +66,12 @@ export class AddProductComponent  {
           if (productForm.value.$key == null){
             this.productService.insertProduct(productForm.value,uploadTask.snapshot.downloadURL,file.name);
             this.resetForm(productForm); 
+            this.router.navigate(['product']);
           //  this.tostr.success('Submitted Succcessfully', 'product is added');
           }else{
             this.productService.updateProduct(productForm.value,uploadTask.snapshot.downloadURL,file.name);
             this.resetForm(productForm); 
+            this.router.navigate(['product']);
           //  this.tostr.success('Submitted Succcessfully', 'product is updated');
           }    
         });
@@ -73,10 +79,12 @@ export class AddProductComponent  {
       if (productForm.value.$key == null){
         this.productService.insertProduct(productForm.value,'none','none');
         this.resetForm(productForm); 
+        this.router.navigate(['product']);
      //   this.tostr.success('Submitted Succcessfully', 'product is added');
       }else{
         this.productService.updateProduct(productForm.value,'none','none');
         this.resetForm(productForm); 
+        this.router.navigate(['product']);
      //   this.tostr.success('Submitted Succcessfully', 'product is updated');
       }    
     }
@@ -100,7 +108,11 @@ export class AddProductComponent  {
     }
 
      
- 
+    cancel(){
+      this.resetForm();
+      this.router.navigate(['product']);
+    }
+
   resetForm(productForm?: NgForm) {
     if (productForm != null){
        productForm.reset();

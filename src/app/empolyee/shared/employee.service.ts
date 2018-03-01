@@ -4,6 +4,8 @@ import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
 import { Employee} from './employee.model';
 import * as firebase from 'firebase';
 import { Router } from '@angular/router';
+import { AngularFireAuth } from 'angularfire2/auth';
+import { AuthService } from '../../core/auth.service';
 
 
 @Injectable()
@@ -11,7 +13,8 @@ export class EmployeeService {
   employeeList: AngularFireList<any>;
   selectedEmployee: Employee = new Employee(); 
 
-  constructor(private firebase: AngularFireDatabase,private router:Router,private db:AngularFireDatabase ) {}
+  constructor(private authService: AuthService, private afAuth: AngularFireAuth,
+    private firebase: AngularFireDatabase,private router:Router,private db:AngularFireDatabase ) {}
   
   getData(){ 
     this.employeeList = this.firebase.list('employees');
@@ -68,8 +71,10 @@ export class EmployeeService {
  // }else{
     //fire alarm
  // }
-
+   console.log( this.authService.register(employee.email,employee.password));
+   return true;
   }
+  
 
   delete(employee : Employee){
     if(confirm("هل انت متأكد من تسريح الموظف")){

@@ -87,6 +87,8 @@
              <mat-icon matSuffix></mat-icon>
             </mat-form-field>
           </td>
+        </tr>
+          <tr>
           <td>
         <div [hidden]="inventory.valid || inventory.pristine"
         class="alert alert-danger">
@@ -141,12 +143,12 @@
         <td>     
       <button class="btn btn-default" color="primary" mat-button type="submit" [disabled]="!productForm.valid">
         <i class="fa fa-floppy-o"></i>
-         Submit</button>
+         إضافة</button>
         </td>
         <td>
-         <button class="btn btn-default" color="accent" type="button" mat-button (click)="resetForm(productForm)">
+         <button class="btn btn-default" color="accent" type="button" mat-button (click)="cancel()">
         <i class="fa fa-repeat"></i>
-         Reset</button>
+         إالغاء</button>
         </td>
       </tr>
 

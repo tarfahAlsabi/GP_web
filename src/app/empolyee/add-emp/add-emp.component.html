@@ -21,6 +21,14 @@
       </mat-form-field>
         </td>
        </tr>
+       <tr>
+        <td>
+      <div [hidden]="firstName.valid || firstName.pristine"
+      class="alert alert-danger">
+      <label class="red">*الأسم الأول مطلوب </label>
+     </div>
+        </td>
+      </tr>
 
        <tr>
         <td>
@@ -31,14 +39,7 @@
         </mat-form-field>
       </td>
       </tr>
-
-      <tr>
-        <td>
-      <div [hidden]="firstName.valid || firstName.pristine"
-      class="alert alert-danger">
-      <label class="red">*الأسم الأول مطلوب </label>
-     </div>
-        </td>
+        <tr>
 
      <td>
       <div [hidden]="lastName.valid || lastName.pristine"
@@ -57,6 +58,8 @@
         placeholder="البريد الإلكتروني" required>
       </mat-form-field>
       </td>
+    </tr>
+      <tr>
       <td>
         <div [hidden]="email.valid || email.pristine"
         class="alert alert-danger">
@@ -74,6 +77,8 @@
         <mat-icon matSuffix>phone</mat-icon>
       </mat-form-field>
     </td>
+  </tr>
+    <tr>
     <td>
       <div [hidden]="phone.valid || phone.pristine"
       class="alert alert-danger">
@@ -109,7 +114,7 @@
         <div class="progress">
           <div class="progress-bar progress-bar-animated" [ngStyle]="{ 'width': num + '%' }"></div>
         </div>
-        Progress: | {{num}}% Complete
+        التحميل: | : {{num}}% اكتمل
       </div>
     </td>
   </tr>
@@ -121,16 +126,16 @@
        
         <button class="btn btn-default"  type="submit" color="primary" mat-button [disabled]="!employeeForm.valid">
          <i class="fa fa-floppy-o"></i>
-          Submit</button>
+         إضافة</button>
       </td>
     </tr>
 
 
       <tr>
       <td>
-           <button type="button" color="primary" mat-button (click)="resetForm(employeeForm)">
+           <button type="button" color="primary" mat-button (click)="cancel()">
           <i class="fa fa-repeat"></i>
-           Reset</button>
+           إلغاء</button>
            </td>
            </tr>
 

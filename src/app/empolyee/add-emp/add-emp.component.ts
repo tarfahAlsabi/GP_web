@@ -9,6 +9,9 @@ import { StateKey } from '@angular/platform-browser/src/browser/transfer_state';
 
 import { EmployeeService } from '../shared/employee.service';
 import * as firebase from 'firebase';
+import { Router } from '@angular/router';
+
+
 
 @Component({
   selector: 'app-add-emp',
@@ -23,7 +26,8 @@ export class AddEmpComponent  {
   num: number;
 
 
-constructor(private fb: FormBuilder,private employeeService: EmployeeService)
+constructor(private fb: FormBuilder,private employeeService: EmployeeService
+,private router: Router)
 {
   
  }
@@ -36,14 +40,12 @@ ngOnInit() {
 
 detectFiles(event) {
   this.selectedFiles = event.target.files;
-  console.log(this.selectedFiles);
-  console.log('s');
+  
 
 }
 onSubmit(employeeForm: NgForm) {
 
   if(this.selectedFiles){
-    console.log('enter');
 
 
   const file = this.selectedFiles.item(0);
@@ -61,16 +63,22 @@ onSubmit(employeeForm: NgForm) {
     },
     () => { 
       // upload success
-      this.employeeService.insert(employeeForm.value,uploadTask.snapshot.downloadURL,file.name);
-      this.resetForm(employeeForm);
+      if(this.employeeService.insert(employeeForm.value,uploadTask.snapshot.downloadURL,file.name))
+       { this.resetForm(employeeForm);
+         this.router.navigate(['empolyee']);}
      // this.tostr.success('Submitted Succcessfully', 'Employee Register');
     }
   );
 }else{
-  this.employeeService.insert(employeeForm.value, 'none','none');
-  this.resetForm(employeeForm);
+  if(this.employeeService.insert(employeeForm.value, 'none','none'))
+    {this.resetForm(employeeForm);
+     this.router.navigate(['empolyee']);}
  // this.tostr.success('Submitted Succcessfully', 'Employee Register');
 }
+}
+cancel(){
+  this.resetForm();
+  this.router.navigate(['empolyee']);
 }
 
 resetForm(employeeForm?: NgForm) {

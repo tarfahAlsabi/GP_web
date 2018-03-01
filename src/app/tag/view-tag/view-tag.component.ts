@@ -33,9 +33,14 @@ export class ViewTagComponent implements OnInit {
   
       this.router.navigate(['View_Tag',item.id]);
     }
-    deletItem(item)
+    deletItem()
     {
-      this.router.navigate(['/Add_Tag']);
+      if(confirm(' عند حذفك للتصنيف سوف تحذف جميع المنتجات هذا التصنيف هل أنت متأكد من الحذف؟ '))
+        console.log('deleted');
+        else 
+        console.log('not deleted');
+
+
     }
 
 

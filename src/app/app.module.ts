@@ -61,11 +61,15 @@ import {viewTag} from './tag/tag.component';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { environment } from '../environments/environment';
- 
-
 
 import { InvComponent } from './product/inv/inv.component';
 import { addQuantity } from './product/inv/inv.component';
+
+import { AngularFireAuthModule } from 'angularfire2/auth';
+
+import { CoreModule } from './core/core.module';
+
+
 
 @NgModule({
   declarations: [
@@ -131,7 +135,8 @@ import { addQuantity } from './product/inv/inv.component';
     MatSidenavModule,
     MatToolbarModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
-    AngularFireDatabaseModule
+    AngularFireDatabaseModule,
+    CoreModule
   ],
   entryComponents: [viewTag,routingComponents[routingComponents.length-1] , addQuantity,InvComponent ],
   providers: [],
