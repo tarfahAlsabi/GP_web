@@ -22,10 +22,12 @@ import { AddTagComponent } from './tag/add-tag/add-tag.component';
 import { ViewTagComponent } from './tag/view-tag/view-tag.component';
 
 
+import { HomePageComponent } from './home-page/home-page.component';
 
 import { ChartsComponent } from './charts/charts.component';
 
 const routes: Routes = [
+    {path: 'Home', component: HomePageComponent},
     {path: 'empolyee' , component: EmpolyeeComponent },
     {path: 'product', component: ProductComponent},
     {path: 'header', component: HeaderComponent},
@@ -46,6 +48,6 @@ exports: [RouterModule]
 
 })
 export class AppRoutingModule { }
-export const routingComponents = [ ViewInv , ViewProductComponent , AddProductComponent , TagComponent ,ChartsComponent,
+export const routingComponents = [ ViewInv ,HomePageComponent, ViewProductComponent , AddProductComponent , TagComponent ,ChartsComponent,
     ViewTagComponent , AddTagComponent , ProductComponent , EmpolyeeComponent,InvComponent,
     MyFormComponent, HeaderComponent, ViewEmpComponent , AddEmpComponent , TagComponent ];

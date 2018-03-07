@@ -82,7 +82,7 @@ import { CoreModule } from './core/core.module';
     ViewEmpComponent,
     viewTag,
     addQuantity,
-   
+  
   ],
   imports: [
     MatFormFieldModule,

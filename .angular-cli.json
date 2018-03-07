@@ -23,7 +23,8 @@
         "theme.scss" 
       ],
       "scripts": [
-        "../src/assets/js/custom.min.js"
+        "../src/assets/js/custom.min.js",
+        "../node_modules/jquery/dist/jquery.min.js"
       ],
       "environmentSource": "environments/environment.ts",
       "environments": {
