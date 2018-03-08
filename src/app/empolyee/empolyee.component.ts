@@ -34,6 +34,7 @@ export class EmpolyeeComponent implements OnInit {
     });
     // let employeesNumber=(this.employeeList.length/3);
   }
+  
 
  /* getImg(url: String){
     return url.substring(0,url.indexOf(','));

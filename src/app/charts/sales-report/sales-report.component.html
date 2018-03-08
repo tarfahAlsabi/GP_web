@@ -1,0 +1,44 @@
+<mat-toolbar  class="PageTitle">
+  <mat-toolbar-row>
+
+              <span class="toolbar-spacer"></span>
+
+      <span color="primary">   <h2>  تقرير المبيعات  </h2> </span>
+        
+      <span class="toolbar-spacer"></span>
+
+    <span> 
+          <mat-form-field >
+        <input  matInput  type="search" class="search" color="primary" placeholder=" ابحث"> 
+      </mat-form-field>
+  </span>
+
+
+  </mat-toolbar-row>
+
+</mat-toolbar>
+
+<mat-card (click)="s()" class="viewProduct">
+    <table border="1">
+        <tr>
+          <th>المنتج</th>
+          <th>الكمية المباعة</th>
+          <th>المكسب</th>
+        </tr>
+      </table>
+<div *ngFor="let product of newProducts">
+  <table border="1">
+    <tr>
+      <td>{{product.category}}</td>
+      <td>{{product.quantity}}</td>
+      <td>{{product.price}}</td>
+    </tr> 
+  </table></div>
+  <table border="1">
+      <tr>
+        <td>المجموع الكلي</td>
+        <td>{{totalSales}}</td>
+      </tr>
+    </table>
+
+</mat-card>

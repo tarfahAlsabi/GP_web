@@ -14,12 +14,12 @@ export class AuthService {
 
   async register(email:string,password:string){
     try{
-  const resulth = await this.afAuth.auth.createUserWithEmailAndPassword(email,password);
+  const result = await this.afAuth.auth.createUserWithEmailAndPassword(email,password);
 
  
 
-   if(resulth){
-    console.log('success');
+   if(result){
+    return result.uid;
 
 
      // this.navCtrl.push(HomePage);
@@ -28,7 +28,7 @@ export class AuthService {
      }
      catch(e){
       //this.navCtrl.push(WelcomePage);
-      console.log('fail');
+      return 'fail';
   
   
      }

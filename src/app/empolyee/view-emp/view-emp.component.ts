@@ -1,17 +1,19 @@
 import { Component, OnInit } from '@angular/core';
 
-import { EmployeeService } from '../shared/employee.service';
+//import { EmployeeService } from '../shared/employee.service';
 import { Employee } from '../shared/employee.model';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 //import 'rxjs/add/operator/switchMap';
 //import { Observable } from 'rxjs/Observable';
+
+import * as firebase from 'firebase'; 
 
 
 @Component({
   selector: 'app-view-emp',
   templateUrl: './view-emp.component.html',
-  styleUrls: ['./view-emp.component.css'],
-  providers :[EmployeeService]
+  styleUrls: ['./view-emp.component.css']
+  //providers :[EmployeeService]
 }) 
 export class ViewEmpComponent implements OnInit {
   temp:any;
@@ -24,9 +26,9 @@ export class ViewEmpComponent implements OnInit {
   salary:number;
   imgName: string;
   employee: Employee;
-  employeeList: Employee[];
+  //employeeList: Employee[];
 
-  constructor(private employeeService: EmployeeService,private route: ActivatedRoute) { }
+  constructor(private route: ActivatedRoute,private router:Router) { }
 /*name:String="أحمد الصالح ";
 Id:String="MyID!";
 Email:string="aa@aa.a";
@@ -47,36 +49,20 @@ salary:number=5000;*/
     this.imgName = this.tempArray[7];
 
       
-      var x = this.employeeService.getData();
-       x.snapshotChanges().subscribe(item => {
-        this.employeeList = [];
-        item.forEach(element => {
-          var y = element.payload.toJSON();
-          y["$key"] = element.key;
-        //  y["picPATH"] = this.getImg(y["picPATH"]);
-          this.employeeList.push(y as Employee);
-          if(this.key == element.key)
-            this.employee= y as Employee;
-        });
-      });
       // let employeesNumber=(this.employeeList.length/3);
     
 }
 
 delete(){
-  /*  let $key = this.key;
-    let email = this.Email;
-    let username =this.tempArray[8];
-    let firstName = this.tempArray[2];
-    let lastName = this.tempArray[3];
-    let password = this.tempArray[9];
-    let phone = this.phone;
-    let picPATH = this.img;
-    let picName = this.imgName;
-    let salary = this.salary;
 
-    let ee:Employee ={$key,email,username,firstName,lastName,password,phone,picPATH,picName,salary};*/
-    this.employeeService.delete(this.employee);
+   // this.employeeService.delete(this.employee);
+   let s= firebase.database().ref('employees');
+   s.child(this.key).remove();
+   if(this.imgName != 'defaultEmployee.jpg'){
+    let storageRef = firebase.storage().ref();
+    storageRef.child(this.imgName).delete();
+   }
+   this.router.navigate(['empolyee']);
 }
 
 

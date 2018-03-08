@@ -12,6 +12,7 @@ import { AuthService } from '../../core/auth.service';
 export class EmployeeService {
   employeeList: AngularFireList<any>;
   selectedEmployee: Employee = new Employee(); 
+  n:any;
 
   constructor(private authService: AuthService, private afAuth: AngularFireAuth,
     private firebase: AngularFireDatabase,private router:Router,private db:AngularFireDatabase ) {}
@@ -22,6 +23,8 @@ export class EmployeeService {
 
   }
   insert(employee : Employee, path: string,fileName: string){ 
+   
+    /* */
     //start genrat password
     var passArray = [];
     var lower = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
@@ -57,21 +60,42 @@ export class EmployeeService {
     }
     
 
-    this.employeeList.push({
-    username: employee.username,  
-    email: employee.email,
-    firstName: employee.firstName,
-    lastName: employee.lastName,
-    password: employee.password,
-    phone: employee.phone,
-    salary: employee.salary,
-    picPATH: employee.picPATH,
-    picName: employee.picName
-    });
+    
  // }else{
     //fire alarm
  // }
-   console.log( this.authService.register(employee.email,employee.password));
+     //let n;
+     var fRef = firebase.database().ref('employees');
+     
+     let s =  this.authService.register(employee.email,employee.password).then(
+      v => {
+        if(v != 'fail')
+        {fRef.child(v).set({
+          username: employee.username,  
+          email: employee.email,
+          firstName: employee.firstName,
+          lastName: employee.lastName,
+          password: employee.password,
+          phone: employee.phone,
+          salary: employee.salary,
+          picPATH: employee.picPATH,
+          picName: employee.picName
+          });}
+        /*this.firebase.list('employees').push({
+          username: employee.username,  
+          email: employee.email,
+          firstName: employee.firstName,
+          lastName: employee.lastName,
+          password: employee.password,
+          phone: employee.phone,
+          salary: employee.salary,
+          picPATH: employee.picPATH,
+          picName: employee.picName
+          });*/
+      }
+    );
+    console.log(s);
+     
    return true;
   }
   

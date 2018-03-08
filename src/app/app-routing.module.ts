@@ -24,6 +24,8 @@ import { ViewTagComponent } from './tag/view-tag/view-tag.component';
 
 
 import { ChartsComponent } from './charts/charts.component';
+import { SalesReportComponent } from './charts/sales-report/sales-report.component';
+
 
 const routes: Routes = [
     {path: 'empolyee' , component: EmpolyeeComponent },
@@ -38,7 +40,9 @@ const routes: Routes = [
     {path: 'Add_Product/:id', component: AddProductComponent},
     {path: 'View_employee/:id', component: ViewEmpComponent},
     {path: 'View_Tag/:id', component: ViewTagComponent},
-    {path: 'View_Producct/:id', component: ViewProductComponent} ];
+    {path: 'View_Producct/:id', component: ViewProductComponent}, 
+    {path: 'sales-report', component: SalesReportComponent}];
+
 
 @NgModule({
 imports: [RouterModule.forRoot(routes)],
@@ -48,4 +52,4 @@ exports: [RouterModule]
 export class AppRoutingModule { }
 export const routingComponents = [ ViewInv , ViewProductComponent , AddProductComponent , TagComponent ,ChartsComponent,
     ViewTagComponent , AddTagComponent , ProductComponent , EmpolyeeComponent,InvComponent,
-    MyFormComponent, HeaderComponent, ViewEmpComponent , AddEmpComponent , TagComponent ];
+    MyFormComponent, HeaderComponent, ViewEmpComponent , AddEmpComponent , TagComponent, SalesReportComponent ];

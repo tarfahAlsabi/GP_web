@@ -1,16 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 
 import { ActivatedRoute, Router } from '@angular/router';
-import { ProductService } from '../shared/product.service';
+//import { ProductService } from '../shared/product.service';
 import { Product } from '../shared/product.model';
-import { AngularFireDatabase } from 'angularfire2/database';
+//import { AngularFireDatabase } from 'angularfire2/database';
+
+import * as firebase from 'firebase';
 
 
 @Component({
   selector: 'app-view-product',
   templateUrl: './view-product.component.html',
-  styleUrls: ['./view-product.component.css'],
-  providers:[ProductService]
+  styleUrls: ['./view-product.component.css']
+//  providers:[ProductService]
 })
 export class ViewProductComponent implements OnInit {
   temp:any;
@@ -25,10 +27,9 @@ export class ViewProductComponent implements OnInit {
   description:string;
   Tag:string;
   product: Product;
-  productList: Product[];
+  //productList: Product[];
   
-  constructor(private productService :ProductService,private router: Router,private route: ActivatedRoute
-    ,private db :AngularFireDatabase) { }
+  constructor(private router: Router, private route: ActivatedRoute) { }
 
   
   ngOnInit() {
@@ -45,6 +46,7 @@ export class ViewProductComponent implements OnInit {
     this.img = this.tempArray[7];
     this.price = Number(this.tempArray[8]);
 
+ /* 
   this.productList = [];
   let x = this.productService.getData();
   x.snapshotChanges().subscribe(item => {
@@ -61,7 +63,7 @@ export class ViewProductComponent implements OnInit {
   });
   }
   this.productList = [];
-});
+});*/
   }
 
   onEdit() {
@@ -72,7 +74,14 @@ export class ViewProductComponent implements OnInit {
   delete(){
      
       if (confirm('هل أنت متأكد من حذف هذا المنتج؟') == true) {
-        this.productService.deleteProduct(this.product);
+       let s = firebase.database().ref('products/'+this.Tag).child(this.key).remove();
+
+       if(this.imgName != 'defaultproduct.png'){
+        let storageRef = firebase.storage().ref();
+        storageRef.child(this.imgName).delete();
+       }
+         //console.log(s);
+        //this.productService.deleteProduct(s as Product);
         this.router.navigate(['product']);
       }
   }

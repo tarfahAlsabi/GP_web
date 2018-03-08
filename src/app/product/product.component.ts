@@ -30,7 +30,6 @@ ngOnInit() {
     element.forEach(element2 => {
     var y = element2.payload.toJSON();
     y["$key"] = element2.key;
-   // y["picPath"] = this.getImg(y["picPath"]);
    this.productList.push(y as Product);
     });
   });
