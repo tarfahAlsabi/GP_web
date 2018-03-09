@@ -88,6 +88,7 @@ td {
 tr:nth-child(even) {
     background-color: #dddddd;
 }
-th {
+.head {
     background-color: #73bfe2;
+
 }

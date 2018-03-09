@@ -18,27 +18,29 @@
 
 </mat-toolbar>
 
-<mat-card (click)="s()" class="viewProduct">
-    <table border="1">
+ <!--   <table border="1">
         <tr>
           <th>المنتج</th>
           <th>الكمية المباعة</th>
           <th>المكسب</th>
         </tr>
-      </table>
-<div *ngFor="let product of newProducts">
-  <table border="1">
-    <tr>
+      </table>-->
+
+  <table (click)="s()" border="1">
+    <tr class="head">
+        <td>المنتج</td>
+        <td>الكمية المباعة</td>
+        <td>المكسب</td>
+    </tr>
+    <tr *ngFor="let product of newProducts">
       <td>{{product.category}}</td>
       <td>{{product.quantity}}</td>
       <td>{{product.price}}</td>
     </tr> 
-  </table></div>
-  <table border="1">
+ 
       <tr>
         <td>المجموع الكلي</td>
-        <td>{{totalSales}}</td>
+        <td colspan="2">{{totalSales}}</td>
       </tr>
     </table>
 
-</mat-card>

@@ -43,11 +43,12 @@ export class SalesReportComponent implements OnInit {
       this.receiptList.push(y as Receipt);
 
     });
-  });    
+  });
+    
 
   
 
-  //console.log(this.receiptList);
+  console.log(this.receiptList);
   }
 
   s(){
@@ -58,7 +59,7 @@ export class SalesReportComponent implements OnInit {
     let x = 0;
     this.newProducts = [];
     console.log("out side");
-  //  console.log(this.products[0]);
+    console.log(this.products[0]);
     let r = this.products;
 
     for(var element in this.products ) {
