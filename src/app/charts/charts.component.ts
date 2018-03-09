@@ -13,7 +13,7 @@ export class ChartsComponent implements OnInit {
   ngOnInit() {
   }
   salesReport(){
-    this.router.navigate(['sales-report']);
+    this.router.navigate(['mainPage/sales-report']);
   }
 
 }
