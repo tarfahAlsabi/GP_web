@@ -78,13 +78,13 @@ delete(category: Category){
     viewProduct(product: Product)
 {
   let id=product.$key+","+product.name+","+product.category+","+product.cost+","+product.description+","+product.inventory+","+product.picName+","+product.picPath+","+product.price;
-  this.router.navigate(['View_Producct',id]);
+  this.router.navigate(['mainPage/View_Producct',id]);
 }
     
       Add()
       {
         
-          this.router.navigate(['/Add_Tag']);
+          this.router.navigate(['mainPage/Add_Tag']);
       }
 
 

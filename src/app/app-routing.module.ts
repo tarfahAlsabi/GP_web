@@ -31,21 +31,22 @@ import { NoFoundPageComponent } from './control/no-found-page/no-found-page.comp
 
 
 const routes: Routes = [
-    {path: 'Home', component: HomePageComponent},
-    {path: 'empolyee' , component: EmpolyeeComponent },
-    {path: 'product', component: ProductComponent},
-    {path: 'header', component: HeaderComponent},
-    {path: 'tags', component: TagComponent},
-    {path: 'inventory', component: InvComponent},
-    {path: 'addQuantity', component: ViewInv},
-    {path: 'charts', component: ChartsComponent},
-    {path: 'Add_employee', component: AddEmpComponent},
-    {path: 'Add_Tag', component: AddTagComponent},
-    {path: 'Add_Product/:id', component: AddProductComponent},
-    {path: 'View_employee/:id', component: ViewEmpComponent},
-    {path: 'View_Tag/:id', component: ViewTagComponent},
-    {path: 'View_Producct/:id', component: ViewProductComponent}, 
-    {path: 'sales-report', component: SalesReportComponent},
+    {path: '', component: HomePageComponent},
+    {path: 'mainPage', component: HeaderComponent ,children: [
+        {path: 'empolyee' , component: EmpolyeeComponent },
+        {path: 'product', component: ProductComponent},
+        {path: 'tags', component: TagComponent},
+        {path: 'inventory', component: InvComponent},
+        {path: 'addQuantity', component: ViewInv},
+        {path: 'charts', component: ChartsComponent},
+        {path: 'Add_employee', component: AddEmpComponent},
+        {path: 'Add_Tag', component: AddTagComponent},
+        {path: 'Add_Product/:id', component: AddProductComponent},
+        {path: 'View_employee/:id', component: ViewEmpComponent},
+        {path: 'View_Tag/:id', component: ViewTagComponent},
+        {path: 'View_Producct/:id', component: ViewProductComponent}, 
+        {path: 'sales-report', component: SalesReportComponent}, 
+    ]},   
     {path: '**', component: NoFoundPageComponent} //لازم تكون اخر شيء
 ];
 

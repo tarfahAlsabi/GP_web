@@ -65,20 +65,20 @@ onSubmit(employeeForm: NgForm) {
       // upload success
       if(this.employeeService.insert(employeeForm.value,uploadTask.snapshot.downloadURL,file.name))
        { this.resetForm(employeeForm);
-         this.router.navigate(['empolyee']);}
+         this.router.navigate(['mainPage/empolyee']);}
      // this.tostr.success('Submitted Succcessfully', 'Employee Register');
     }
   );
 }else{
   if(this.employeeService.insert(employeeForm.value, 'none','none'))
     {this.resetForm(employeeForm);
-     this.router.navigate(['empolyee']);}
+     this.router.navigate(['mainPage/empolyee']);}
  // this.tostr.success('Submitted Succcessfully', 'Employee Register');
 }
 }
 cancel(){
   this.resetForm();
-  this.router.navigate(['empolyee']);
+  this.router.navigate(['mainPage/empolyee']);
 }
 
 resetForm(employeeForm?: NgForm) {

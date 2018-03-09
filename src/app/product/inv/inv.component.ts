@@ -51,7 +51,7 @@ export class InvComponent implements OnInit {
   {
     confirm('inside the method'+item.id);
   
-    this.router.navigate(['View_Producct',item.id]);
+    this.router.navigate(['mainPage/View_Producct',item.id]);
   }
 
   openDialog(item): void {

@@ -18,29 +18,23 @@
 
 </mat-toolbar>
 
- <!--   <table border="1">
-        <tr>
-          <th>المنتج</th>
-          <th>الكمية المباعة</th>
-          <th>المكسب</th>
-        </tr>
-      </table>-->
-
-  <table (click)="s()" border="1">
-    <tr class="head">
-        <td>المنتج</td>
-        <td>الكمية المباعة</td>
-        <td>المكسب</td>
+<!-- (matSortChange)="sortData($event)" -->
+<table matSort  (click)="s()" class="reportContent">
+    <tr>
+      <th mat-sort-header="category">التصنيف </th>
+      <th mat-sort-header="quantity">الكمية المباعة </th>
+      <th mat-sort-header="price">الربح  </th>
     </tr>
+  
     <tr *ngFor="let product of newProducts">
       <td>{{product.category}}</td>
       <td>{{product.quantity}}</td>
       <td>{{product.price}}</td>
-    </tr> 
- 
-      <tr>
-        <td>المجموع الكلي</td>
-        <td colspan="2">{{totalSales}}</td>
-      </tr>
-    </table>
+    </tr>
 
+    <tr>
+        <td>المجموع الكلي</td>
+        <td>{{totalSales}}</td>
+    </tr>
+
+  </table>

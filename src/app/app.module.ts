@@ -68,8 +68,7 @@ import { addQuantity } from './product/inv/inv.component';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 
 import { CoreModule } from './core/core.module';
-
-
+import { TagComponent } from './tag/tag.component';
 
 @NgModule({
   declarations: [
@@ -137,7 +136,7 @@ import { CoreModule } from './core/core.module';
     AngularFireDatabaseModule,
     CoreModule
   ],
-  entryComponents: [viewTag,routingComponents[routingComponents.length-1] , addQuantity,InvComponent ],
+  entryComponents: [viewTag, TagComponent, addQuantity,InvComponent ],
   providers: [],
   bootstrap: [AppComponent]
 })

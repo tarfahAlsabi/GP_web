@@ -85,7 +85,7 @@ onSubmitLogin() {
   .then( (res) => {
    /* this.flashMensaje.show('Usuario logado correctamente.',
     {cssClass: 'alert-success', timeout: 4000});*/
-    this.router.navigate(['employee']);
+    this.router.navigate(['mainPage']);
     console.log('enter login');
   }).catch((err) => {
     /*this.flashMensaje.show(err.message,
