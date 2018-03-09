@@ -64,7 +64,7 @@
               		<h2 class="animated bounceInLeft"> تبحث عن نظام لإدارة مشروعك محاسبيا </h2>
                   <p class="animated bounceInRight"> إيراد نظام محاسبي بسيط وذكي، يسهل عملية نقاط البيع المتعددة وعملية الفوترة وكذلك أوامر الشراء وتحويلها إلى فاتورة بضغطة واحدة
                                                              ! كما يقوم بعملياتك المحاسبية تلقائيا لتتمكن من استعراض التقارير والرسوم البيانية لمتابعة مشروعك. </p>
-                  <div class="scroll animated fadeInUp"><a href="Home#works" class="btn btn-default"><i class="fa fa-flask"></i>  تسجيل الدخول</a> <a href="Home#contact" class="btn btn-default"><i class="fa fa-paper-plane-o"></i> مستخدم جديد</a></div>
+                  <div class="scroll animated fadeInUp"><a (click)="onClickLogout()" class="btn btn-default"><i class="fa fa-flask"></i>  تسجيل الدخول</a> <a href="Home#contact" class="btn btn-default"><i class="fa fa-paper-plane-o"></i> مستخدم جديد</a></div>
 
               		</div>
               	</div>
@@ -81,7 +81,7 @@
              
                   <h2 class="animated bounceInLeft"> تبحث عن نظام لإدارة مشروعك محاسبيا </h2>
                   <p class="animated bounceInRight"> إيراد نظام محاسبي بسيط وذكي، يسهل عملية نقاط البيع المتعددة وعملية الفوترة وكذلك أوامر الشراء وتحويلها إلى فاتورة بضغطة واحدة! كما يقوم بعملياتك المحاسبية تلقائيا لتتمكن من استعراض التقارير والرسوم البيانية لمتابعة مشروعك. </p>
-                  <div class="scroll animated fadeInUp"><a href="#works" class="btn btn-default"><i class="fa fa-flask"></i>  تسجيل الدخول</a> <a href="#contact" class="btn btn-default"><i class="fa fa-paper-plane-o"></i> مستخدم جديد</a></div>
+                  <div class="scroll animated fadeInUp"><a (click)="onClickLogout()" href="#works" class="btn btn-default"><i class="fa fa-flask"></i>  تسجيل الدخول</a> <a href="#contact" class="btn btn-default"><i class="fa fa-paper-plane-o"></i> مستخدم جديد</a></div>
                   </div>
                 </div>
             </div>
@@ -98,7 +98,7 @@
                   
 <h2 class="animated bounceInLeft"> تبحث عن نظام لإدارة مشروعك محاسبيا </h2>
                   <p class="animated bounceInRight"> إيراد نظام محاسبي بسيط وذكي، يسهل عملية نقاط البيع المتعددة وعملية الفوترة وكذلك أوامر الشراء وتحويلها إلى فاتورة بضغطة واحدة! كما يقوم بعملياتك المحاسبية تلقائيا لتتمكن من استعراض التقارير والرسوم البيانية لمتابعة مشروعك. </p>
-                  <div class="scroll animated fadeInUp"><a href="Home#works" class="btn btn-default"><i class="fa fa-flask"></i>  تسجيل الدخول</a> <a href="#contact" class="btn btn-default"><i class="fa fa-paper-plane-o"></i> مستخدم جديد</a></div>
+                  <div class="scroll animated fadeInUp"><a (click)="onClickLogout()" href="Home#works" class="btn btn-default"><i class="fa fa-flask"></i>  تسجيل الدخول</a> <a href="#contact" class="btn btn-default"><i class="fa fa-paper-plane-o"></i> مستخدم جديد</a></div>
                   </div>
                 </div>
             </div>
@@ -114,7 +114,7 @@
            
                   <h2 class="animated bounceInLeft"> تبحث عن نظام لإدارة مشروعك محاسبيا </h2>
                   <p class="animated bounceInRight"> إيراد نظام محاسبي بسيط وذكي، يسهل عملية نقاط البيع المتعددة وعملية الفوترة وكذلك أوامر الشراء وتحويلها إلى فاتورة بضغطة واحدة! كما يقوم بعملياتك المحاسبية تلقائيا لتتمكن من استعراض التقارير والرسوم البيانية لمتابعة مشروعك. </p>
-                  <div class="scroll animated fadeInUp"><a href="Home#works" class="btn btn-default"><i class="fa fa-flask"></i>  تسجيل الدخول</a> <a href="#contact" class="btn btn-default"><i class="fa fa-paper-plane-o"></i> مستخدم جديد</a></div>
+                  <div class="scroll animated fadeInUp"><a (click)="onClickLogout()" href="Home#works" class="btn btn-default"><i class="fa fa-flask"></i>  تسجيل الدخول</a> <a href="#contact" class="btn btn-default"><i class="fa fa-paper-plane-o"></i> مستخدم جديد</a></div>
                   </div>
                 </div>
             </div>
@@ -286,15 +286,30 @@
 <h2 class="text-center  wowload fadeInUp">انشأ حسابك الآن</h2>
   <div class="row wowload fadeInLeftBig">      
       <div class="col-sm-6 col-sm-offset-3 col-xs-12">      
-        <input type="text" placeholder="الاسم">
-        <input type="text" placeholder="اسم المشروع">
-        <textarea rows="5" placeholder="Message"></textarea>
-        <button class="btn btn-primary"><i class="fa fa-paper-plane"></i> تأكيد</button>
+        <input type="text" [(ngModel)]="fname" placeholder="الإسم الاول" >
+        <input type="text" [(ngModel)]="lname" placeholder="العائلة" >
+        <input type="text" [(ngModel)]="email" placeholder="البريد الإلكتروني" required>
+        <input type="password" [(ngModel)]="password" placeholder="الرقم السري" required>
+        <input type="text" [(ngModel)]="phone" placeholder="رقم الجوال" >
+        <input type="text" [(ngModel)]="businessname" placeholder="اسم المشروع" >
+        <button class="btn btn-primary" (click)="onSubmitAddUser()"><i class="fa fa-paper-plane" ></i> تأكيد</button>
       </div>
   </div>
+  
 
 </div>
 </div>
+<div id="contact" class="spacer">
+  <!--Contact Starts-->
+  <div class="container contactform center">
+  <h2 class="text-center  wowload fadeInUp"> تسجيل الدخول</h2>
+    <div class="row wowload fadeInLeftBig">      
+        <div class="col-sm-6 col-sm-offset-3 col-xs-12">      
+          <input type="text" [(ngModel)]="emailLog" placeholder="البريد الإلكتروني" required>
+          <input type="password" [(ngModel)]="passwordLog" placeholder="الرقم السري" required>
+          <button class="btn btn-primary" (click)="onSubmitLogin()"><i class="fa fa-paper-plane"></i> تأكيد</button>
+        </div>
+    </div>
 <!--Contact Ends-->
 
 

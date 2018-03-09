@@ -26,6 +26,8 @@ import { HomePageComponent } from './home-page/home-page.component';
 
 import { ChartsComponent } from './charts/charts.component';
 import { SalesReportComponent } from './charts/sales-report/sales-report.component';
+import { NoFoundPageComponent } from './control/no-found-page/no-found-page.component';
+
 
 
 const routes: Routes = [
@@ -43,7 +45,9 @@ const routes: Routes = [
     {path: 'View_employee/:id', component: ViewEmpComponent},
     {path: 'View_Tag/:id', component: ViewTagComponent},
     {path: 'View_Producct/:id', component: ViewProductComponent}, 
-    {path: 'sales-report', component: SalesReportComponent}];
+    {path: 'sales-report', component: SalesReportComponent},
+    {path: '**', component: NoFoundPageComponent} //لازم تكون اخر شيء
+];
 
 
 @NgModule({
@@ -53,5 +57,5 @@ exports: [RouterModule]
 })
 export class AppRoutingModule { }
 export const routingComponents = [ ViewInv ,HomePageComponent, ViewProductComponent , AddProductComponent , TagComponent ,ChartsComponent,
-    ViewTagComponent , AddTagComponent , ProductComponent , EmpolyeeComponent,InvComponent,
+    ViewTagComponent , AddTagComponent , ProductComponent , EmpolyeeComponent,InvComponent,NoFoundPageComponent,
     MyFormComponent, HeaderComponent, ViewEmpComponent , AddEmpComponent , TagComponent, SalesReportComponent ];

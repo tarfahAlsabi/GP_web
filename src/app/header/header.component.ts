@@ -1,5 +1,7 @@
 import {MediaMatcher} from '@angular/cdk/layout';
 import {ChangeDetectorRef, Component} from '@angular/core';
+import {AuthService } from '../core/auth.service';
+
 
 @Component({
   selector: 'app-header',
@@ -16,13 +18,35 @@ export class HeaderComponent  {
     ChartsState: boolean = false;
     InvState:boolean = false;
 
+  public isLogin: boolean;
+  public nombreUsuario: string;
+  public emailUsuario: string;
+  public fotoUsuario: string;
+
 
   private _mobileQueryListener: () => void;
 
-  constructor(changeDetectorRef: ChangeDetectorRef, media: MediaMatcher) {
+  constructor(changeDetectorRef: ChangeDetectorRef, media: MediaMatcher, public authService :AuthService) {
     this.mobileQuery = media.matchMedia('(max-width: 600px)');
     this._mobileQueryListener = () => changeDetectorRef.detectChanges();
     this.mobileQuery.addListener(this._mobileQueryListener);
+  }
+
+  ngOnInit() {
+    this.authService.getAuth().subscribe( auth => {
+      if (auth) {
+        this.isLogin = true;
+        this.nombreUsuario = auth.displayName;
+        this.emailUsuario = auth.email;
+        this.fotoUsuario = auth.photoURL;
+      } else {
+        this.isLogin = false;
+      }
+    });
+  }
+
+  onClickLogout() {
+    this.authService.logout();
   }
 
   ngOnDestroy(): void {
