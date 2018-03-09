@@ -91,3 +91,7 @@ tr:nth-child(even) {
 th {
     background-color: #73bfe2;
 }
+.reportContent
+{
+    width: 100%;
+}

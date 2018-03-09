@@ -13,6 +13,7 @@
 }
 .ViewsContainer
 {
+    display: inline-flex;
     /* height: -webkit-fill-available; */
     margin-right:15px; 
     align-content: center;

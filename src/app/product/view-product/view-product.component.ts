@@ -69,7 +69,7 @@ export class ViewProductComponent implements OnInit {
   onEdit() {
     let id=this.key+","+this.name+","+this.Tag+","+this.cost+","+this.description+","+this.quantity+","+this.imgName+","+this.img+","+this.price;
     //this.productService.selectedProduct = Object.assign({}, this.product);
-    this.router.navigate(["Add_Product/",id]);
+    this.router.navigate(["mainPage/Add_Product/",id]);
   }
   delete(){
      
@@ -82,7 +82,7 @@ export class ViewProductComponent implements OnInit {
        }
          //console.log(s);
         //this.productService.deleteProduct(s as Product);
-        this.router.navigate(['product']);
+        this.router.navigate(['mainPage/product']);
       }
   }
   

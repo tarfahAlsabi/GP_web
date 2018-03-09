@@ -46,9 +46,9 @@ export class EmpolyeeComponent implements OnInit {
       //this.employeeService.delete(employee);
       
       let id=employee.$key+","+employee.email+","+employee.firstName+","+employee.lastName+","+employee.phone+","+employee.picPATH+","+employee.salary+","+employee.picPATH+","+employee.username+","+employee.password;
-      this.router.navigate(['View_employee/',id]);
+      this.router.navigate(['mainPage/View_employee/',id]);
     }   
     add(){
-      this.router.navigate(['Add_employee']);
+      this.router.navigate(['mainPage/Add_employee']);
     }
 }

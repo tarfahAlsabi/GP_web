@@ -62,7 +62,7 @@ delete(){
     let storageRef = firebase.storage().ref();
     storageRef.child(this.imgName).delete();
    }
-   this.router.navigate(['empolyee']);
+   this.router.navigate(['mainPage/empolyee']);
 }
 
 
