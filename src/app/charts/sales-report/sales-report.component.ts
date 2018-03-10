@@ -5,6 +5,7 @@ import {Sort} from '@angular/material';
 import { ReportsService } from '../shared/reports.service'
 import { Receipt, InnerProduct } from '../shared/receipt.model';
 import { AngularFireDatabase } from 'angularfire2/database';
+import {MatDatepickerInputEvent} from '@angular/material/datepicker';
 
 @Component({
   selector: 'app-sales-report',
@@ -89,7 +90,11 @@ export class SalesReportComponent implements OnInit {
     
   }
 
-
+  changeDate(type: string, event: MatDatepickerInputEvent<Date>) 
+{
+  console.log(type);
+  console.log(event);
+}
 
   // sortData(sort: Sort) {
   //   const data = this.products.slice();
