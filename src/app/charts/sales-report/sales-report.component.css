@@ -18,7 +18,11 @@
     align-self: center;
     align-items: center;
 }
-
+.tabContent
+{
+    padding-top:10px; 
+    height: 100%;
+}
 .PageTitle
 {
     margin: 15px;
