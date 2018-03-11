@@ -7,6 +7,7 @@ import { Receipt, InnerProduct } from '../shared/receipt.model';
 import { AngularFireDatabase } from 'angularfire2/database';
 import {MatDatepickerInputEvent} from '@angular/material/datepicker';
 
+
 @Component({
   selector: 'app-sales-report',
   templateUrl: './sales-report.component.html',
@@ -14,12 +15,16 @@ import {MatDatepickerInputEvent} from '@angular/material/datepicker';
   providers : [ReportsService]
 })
 export class SalesReportComponent implements OnInit {
+
+  //ngOnInit
   receiptList : Receipt[];
-  receipt: Receipt = new Receipt;
   products: InnerProduct[];
+  //after
   newProducts : InnerProduct[];
   totalSales: number;
   temp : InnerProduct = new InnerProduct;
+  startDate: Date;
+  endDate: Date;
   
   constructor(private reportsService: ReportsService, private firebase: AngularFireDatabase) { }
 
@@ -28,72 +33,117 @@ export class SalesReportComponent implements OnInit {
 
    this.receiptList = [];
    this.products = [];
-   this.totalSales = 0;
+  // this.totalSales = 0;
 
    x.snapshotChanges().subscribe(item =>{
     item.forEach(element => {
       var y = element.payload.toJSON();
+    //  this.products = [];
       y["$key"] = element.key;
       this.firebase.list('receipts/'+element.key+'/products').snapshotChanges().subscribe( item=> {
         item.forEach(element =>{
           var i = element.payload.toJSON();
           i["$key"] = element.key;
-          this.products.push(i as InnerProduct);
+      //    this.products.push(i as InnerProduct);
+           //add the array of products
+           y["products"].push(i as InnerProduct);
         });
       });
-      y["products"] = this.products;
-      this.totalSales += y["totalPrice"];
-      this.receiptList.push(y as Receipt);
+     
+    //this.totalSales += y["totalPrice"];
 
+    //convert date to specific format (wen mar 07 2018)
+      var mydate = new Date((y as Receipt).date);
+     // console.log(mydate);
+      y["date"] = mydate;
+
+      this.receiptList.push(y as Receipt);
+      //console.log((y as Receipt).date);
     });
   });
-    
+   
+
+  //console.log(this.receiptList);
 
   
-
-  console.log(this.receiptList);
   }
 
-  s(){
-    this.products.sort;
-    let cat = this.products[0].category;
-    let priceTemp = 0;
-    let quantityTemp = 0;
-    let x = 0;
-    this.newProducts = [];
-    console.log("out side");
-    console.log(this.products[0]);
-    let r = this.products;
+s(){
+  //console.log(this.receiptList[2].products);
+  this.products = [];
+  if(this.receiptList){
+    if(this.startDate && this.endDate){
+      if(this.startDate <= this.endDate){
 
-    for(var element in this.products ) {
-      if(!this.products.hasOwnProperty(element)){
-        continue;
+        this.totalSales = 0;
+        this.newProducts = [];
+
+        for(let element in this.receiptList){
+          let requireDate = this.receiptList[element].date;
+          if( (requireDate >= this.startDate) &&  (requireDate <= this.endDate)){
+            console.log( this.receiptList[element].date );
+            this.totalSales += this.receiptList[element].totalPrice;
+            for(let element2 in this.receiptList[element].products)
+            this.products.push(this.receiptList[element].products[element2] as InnerProduct);
+          }
+        }
+        console.log(this.products);
+      if(this.products != []){
+      this.products.sort;
+      let cat = this.products[0].category;
+      let priceTemp = 0;
+      let quantityTemp = 0;
+      let x = 0;
+      this.newProducts = [];
+      console.log("out side");
+     // console.log(this.products[0]);
+      let r = this.products;
+
+      for(var element in this.products ) {
+        if(!this.products.hasOwnProperty(element)){
+          continue;
+        }
+        if(this.products[element].category == cat){
+          priceTemp += (this.products[element].price * this.products[element].quantity);
+          quantityTemp += this.products[element].quantity;
+        }else{
+          console.log("insid else");
+          this.temp = {$key:"1",category: cat,price:priceTemp,quantity:quantityTemp}
+          this.newProducts.push(this.temp as InnerProduct);
+          cat = this.products[element].category;
+          priceTemp = this.products[element].price;
+          quantityTemp = this.products[element].quantity;
+        }
       }
-      if(this.products[element].category == cat){
-        priceTemp += (this.products[element].price * this.products[element].quantity);
-        quantityTemp += this.products[element].quantity;
-      }else{
-        console.log("insid else");
-        this.temp = {$key:"1",category: cat,price:priceTemp,quantity:quantityTemp}
-        this.newProducts.push(this.temp);
-        cat = this.products[element].category;
-        priceTemp = this.products[element].price;
-        quantityTemp = this.products[element].quantity;
-      }
-    }
-      console.log("insid last if");
       this.temp = {$key:"1",category: cat,price:priceTemp,quantity:quantityTemp};
       this.newProducts.push(this.temp as InnerProduct);
-    
-    console.log(x);
-    console.log(this.newProducts);
-    
-  }
+  
+     // console.log(x);
+     // console.log(this.newProducts);
+    }//if(this.products)
+     }else
+       console.log('the start has to come first' );
+    }else
+      console.log('enter the dates first' );
+  }else
+   console.log('you dont have sales operations' );
+
+}
 
   changeDate(type: string, event: MatDatepickerInputEvent<Date>) 
 {
-  console.log(type);
-  console.log(event);
+  if(type == 'from')
+    this.startDate = event.value;
+    
+  
+  if(type == 'to'){
+    var x = new Date(event.value);
+    this.endDate = new Date(x.getTime() + (1000 * 60 * 60 * 24));
+    }
+
+  /*  var mydate = new Date('2018-03-02');
+    console.log(mydate.toDateString());*/
+
 }
 
   // sortData(sort: Sort) {

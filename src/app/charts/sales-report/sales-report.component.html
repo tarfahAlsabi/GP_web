@@ -21,11 +21,13 @@
             <mat-datepicker #ToDate disabled="false"  ></mat-datepicker>
         </mat-form-field> 
   </span>
-
+  
 
   </mat-toolbar-row>
-
 </mat-toolbar>
+<div>
+  <button (click)="s()">go</button>
+</div>
 <mat-tab-group class="tab-group">
     <mat-tab label="التقرير" >
       <div class="tabContent" (click)="s()">
@@ -43,7 +45,7 @@
               </tr>
           
               <tr>
-                  <td class="head ">المجموع الكلي</td>
+                  <td class="head " *ngIf="totalSales">المجموع الكلي</td>
                   <td>{{totalSales}}</td>
               </tr>
           
