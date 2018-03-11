@@ -70,7 +70,7 @@ onSubmitAddUser() {
     this.manager = {email:this.email,password:this.password,fname:this.fname,lname:this.lname,phone:this.phone,businessname:this.businessname}
 
     this.authService.registerManager(this.manager);
-    this.router.navigate(['/header']);
+    this.router.navigate(['mainPage']);
    
   }).catch( (err) => {
   /*  this.flashMensaje.show(err.message,

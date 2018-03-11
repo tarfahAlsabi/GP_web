@@ -1,4 +1,5 @@
-<mat-toolbar  class="example-is-mobile example-toolbar">
+<mat-toolbar  class="example-is-mobile example-toolbar"   style='height: 45px !important;
+min-height: 25px;'>
     <mat-toolbar-row>
       <span>
         <div class="example-header-image"><img src='assets/imgs/EradLogo++2.png'></div> 
@@ -8,7 +9,7 @@
     <span class="toolbar-spacer"></span>
   
     
-      <button mat-icon-button (click)="snav.toggle()"color="primary"><mat-icon>menu</mat-icon></button>
+      <button mat-icon-button (click)="snav.toggle()"><mat-icon>menu</mat-icon></button>
       <span class="toolbar-spacer"></span>
       <span class="toolbar-spacer"></span>
       <span class="toolbar-spacer"></span>
@@ -19,8 +20,8 @@
       <span class="toolbar-spacer"></span>
     
    
-      <button mat-icon-button color="primary" [matMenuTriggerFor]="menu">
-          <mat-icon>apps</mat-icon>
+      <button mat-icon-button  [matMenuTriggerFor]="menu">
+          <mat-icon>account_balance</mat-icon>
         </button>
     </mat-toolbar-row>
   
@@ -47,7 +48,7 @@
       <span> المساعدة  </span>
     </button>
 
-    <button mat-menu-item>
+    <button mat-menu-item (click)='onClickLogout()'>
         <mat-icon> exit_to_app </mat-icon>
         <span> تسجيل الخروج  </span>
       </button>
@@ -63,7 +64,7 @@
       <mat-nav-list  >
           <!-- <div class="example-header-image"><img src='assets/imgs/EradLogo++1.png'></div> -->
         <mat-accordion color="accent" >
-            <mat-expansion-panel  [hideToggle]='true' class="primary" [style.border-right]="EmpState ?  '5px solid   #9DE4F4': '' " 
+            <mat-expansion-panel  [hideToggle]='true' class="primary" [style.border-right]="EmpState ?  '5px solid   #6dc4e2': '' " 
             (opened)="EmpState = true"
             (closed)="EmpState = false"
             [style.box-shadow]="true ? '0 0 0 ':'0 0 0 ' "          >
@@ -78,7 +79,7 @@
 
             <mat-expansion-panel 
             [hideToggle]='true'
-            class="primary" [style.border-right]="TagState ?  '5px solid   #9DE4F4': '' " 
+            class="primary" [style.border-right]="TagState ?  '5px solid   #6dc4e2': '' " 
             (opened)="TagState = true"
             (closed)="TagState = false"
             [style.box-shadow]="true ? '0 0 0 ':'0 0 0 ' ">
@@ -93,7 +94,7 @@
         
           <mat-expansion-panel 
           [hideToggle]='true'
-          class="primary" [style.border-right]="ProdState ?  '5px solid   #9DE4F4': '' " 
+          class="primary" [style.border-right]="ProdState ?  '5px solid   #6dc4e2': '' " 
           (opened)="ProdState = true"
           (closed)="ProdState = false"
           [style.box-shadow]="true ? '0 0 0 ':'0 0 0 ' ">
@@ -109,7 +110,7 @@
 
           <mat-expansion-panel 
           [hideToggle]='true'
-          class="primary" [style.border-right]="ChartsState ?  '5px solid   #9DE4F4': '' " 
+          class="primary" [style.border-right]="ChartsState ?  '5px solid   #6dc4e2': '' " 
           (opened)="ChartsState = true"
           (closed)="ChartsState = false"
           [style.box-shadow]="true ? '0 0 0 ':'0 0 0 ' ">
@@ -124,7 +125,7 @@
           <mat-expansion-panel 
           [hideToggle]='true'
           class="primary"
-          [style.border-right]="InvState ?  '5px solid #9DE4F4': '' " 
+          [style.border-right]="InvState ?  '5px solid #6dc4e2': '' " 
           (opened)="InvState = true"
           (closed)="InvState = false" 
           [style.box-shadow]="true ? '0 0 0 ':'0 0 0 ' ">

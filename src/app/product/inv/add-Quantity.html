@@ -1,7 +1,7 @@
 <div class="ViewsContainer">
   <div class="dialogTitle">
   <h1 mat-dialog-title> إضافة كمية لـ{{data.name}}</h1>
-  <h2> الكمية المتوفرة {{data.quantity}}</h2>
+  <h2> الكمية المتوفرة {{data.inventory}}</h2>
   <div mat-dialog-content>
     <mat-form-field>
       <input matInput  type="number" [(ngModel)]="newQuantity" min="0">
@@ -10,8 +10,8 @@
 </div>
   <div mat-dialog-actions class="DialogOptionBtn">
     
-    <button mat-button [mat-dialog-close]="addquantity(newQuantity,data.quantity)" cdkFocusInitial>إضافة </button>
-    <button mat-button [mat-dialog-close]="data.quantity"  >إلغاء الأمر </button>
+    <button mat-button [mat-dialog-close]="addquantity(newQuantity,data.inventory)" cdkFocusInitial>إضافة </button>
+    <button mat-button [mat-dialog-close]="data.inventory"  >إلغاء الأمر </button>
   </div>
   
   </div>

@@ -2,7 +2,7 @@ import {MediaMatcher} from '@angular/cdk/layout';
 import {ChangeDetectorRef, Component} from '@angular/core';
 import {AuthService } from '../core/auth.service';
 
-
+import {Router} from '@angular/router';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -26,7 +26,7 @@ export class HeaderComponent  {
 
   private _mobileQueryListener: () => void;
 
-  constructor(changeDetectorRef: ChangeDetectorRef, media: MediaMatcher, public authService :AuthService) {
+  constructor(changeDetectorRef: ChangeDetectorRef, media: MediaMatcher, public authService :AuthService , private router:Router) {
     this.mobileQuery = media.matchMedia('(max-width: 600px)');
     this._mobileQueryListener = () => changeDetectorRef.detectChanges();
     this.mobileQuery.addListener(this._mobileQueryListener);
@@ -47,6 +47,7 @@ export class HeaderComponent  {
 
   onClickLogout() {
     this.authService.logout();
+    this.router.navigate(['']);
   }
 
   ngOnDestroy(): void {

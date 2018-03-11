@@ -82,6 +82,14 @@ export class ProductService {
       storageRef.child(picName).delete();
     }
   }
+
+  updateProductInv(product : Product, newInv: number){
+
+    this.firebase.list('products/'+ product.category).update(product.$key,
+      {
+        inventory: newInv,
+      });
+  } 
  
 }
 

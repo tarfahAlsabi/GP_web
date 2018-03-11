@@ -35,8 +35,8 @@
 .Viewimg
 {
     margin-top: 0px !important ; 
-    width: 75%;
-    height: 60%;
+    width: 150px;
+    height: 150px;
     overflow-wrap: normal;
     overflow: hidden;
     align-content: center
