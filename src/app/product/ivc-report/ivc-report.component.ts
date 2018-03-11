@@ -95,8 +95,10 @@ creatChart()
         }]
       },
       options: {
+        responsive: true,
         legend: {
-          display: true
+          display: true,
+          position: 'right',
         },
         scales: {
           xAxes: [{
@@ -105,7 +107,11 @@ creatChart()
           yAxes: [{
             display: false
           }],
-        }
+        },
+        tooltips: {
+          mode: 'point'
+      },
+
       }
     });
 
