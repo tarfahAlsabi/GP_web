@@ -81,6 +81,7 @@ import { TagComponent } from './tag/tag.component';
     ViewEmpComponent,
     viewTag,
     addQuantity,
+   
   ],
   imports: [
     MatFormFieldModule,

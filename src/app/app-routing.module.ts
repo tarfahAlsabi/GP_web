@@ -28,6 +28,7 @@ import { ChartsComponent } from './charts/charts.component';
 import { SalesReportComponent } from './charts/sales-report/sales-report.component';
 import { NoFoundPageComponent } from './control/no-found-page/no-found-page.component';
 
+import { IvcReportComponent } from './product/ivc-report/ivc-report.component';
 
 
 const routes: Routes = [
@@ -46,6 +47,7 @@ const routes: Routes = [
         {path: 'View_Tag/:id', component: ViewTagComponent},
         {path: 'View_Producct/:id', component: ViewProductComponent}, 
         {path: 'sales-report', component: SalesReportComponent}, 
+        {path: 'Inventory report',component: IvcReportComponent}
     ]},   
     {path: '**', component: NoFoundPageComponent} //لازم تكون اخر شيء
 ];
@@ -59,4 +61,4 @@ exports: [RouterModule]
 export class AppRoutingModule { }
 export const routingComponents = [ ViewInv ,HomePageComponent, ViewProductComponent , AddProductComponent , TagComponent ,ChartsComponent,
     ViewTagComponent , AddTagComponent , ProductComponent , EmpolyeeComponent,InvComponent,NoFoundPageComponent,
-    MyFormComponent, HeaderComponent, ViewEmpComponent , AddEmpComponent , TagComponent, SalesReportComponent ];
+    MyFormComponent, HeaderComponent, ViewEmpComponent , AddEmpComponent , TagComponent, SalesReportComponent ,IvcReportComponent];

@@ -18,7 +18,7 @@ export class ProductService {
     this.productList = this.db.list('products');
     return this.productList;
   }
- 
+
   insertProduct(product : Product, path: string,fileName: string) 
   {
     if(path == 'none'){
