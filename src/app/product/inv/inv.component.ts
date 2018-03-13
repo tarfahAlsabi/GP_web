@@ -6,6 +6,7 @@ import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 import { ProductService } from '../shared/product.service';
 import { Product } from '../shared/product.model';
 import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
+import { FlashMessagesService } from 'angular2-flash-messages';
 
 @Component({
   selector: 'app-inv',
@@ -15,7 +16,9 @@ import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
 })
 export class InvComponent implements OnInit {
   productList: Product[];
-  constructor(private router:Router,private db :AngularFireDatabase,private productService : ProductService ,public dialog: MatDialog)  { }
+  constructor(private router:Router,private db :AngularFireDatabase
+    ,private productService : ProductService ,public dialog: MatDialog
+    ,public flashMensaje: FlashMessagesService)  { }
   
   
   // constructor(private router:Router,public dialog: MatDialog)  { }
@@ -63,9 +66,13 @@ export class InvComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
-      if(result)
-      this.productService.updateProductInv(item,result) ;
-    });
+      if(result){
+      let x = this.productService.updateProductInv(item,result);
+        this.flashMensaje.show('تم تحديث كمية المنتج بنجاح.',
+        {cssClass: 'alert-success', timeout: 4000});
+
+    }
+  });
   }
  
 }

@@ -3,6 +3,7 @@
     <mat-card-title>	
       <h2> إضافة موظف </h2>
     </mat-card-title>
+    <flash-messages></flash-messages>
 <mat-card-content>
     <form #employeeForm="ngForm" (ngSubmit)="onSubmit(employeeForm)">
         <input type="hidden" name="$key" #$key="ngModel" [(ngModel)]="employeeService.selectedEmployee.$key">
@@ -17,7 +18,9 @@
     <tr> 
         <td>
         <mat-form-field class="example-full-width">
-        <input matInput class="form-control" name="firstName" #firstName="ngModel" [(ngModel)]="employeeService.selectedEmployee.firstName" placeholder="الاسم الأول" required>
+        <input matInput class="form-control" name="firstName" #firstName="ngModel" 
+        [(ngModel)]="employeeService.selectedEmployee.firstName" 
+        placeholder="الاسم الأول" required>
       </mat-form-field>
         </td>
        </tr>

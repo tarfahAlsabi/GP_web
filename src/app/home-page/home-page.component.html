@@ -43,6 +43,7 @@
         </div>
       </div>
     </div>
+
 <!-- #Header Starts -->
 
 
@@ -286,20 +287,21 @@
 <h2 class="text-center  wowload fadeInUp">انشأ حسابك الآن</h2>
   <div class="row wowload fadeInLeftBig">      
       <div class="col-sm-6 col-sm-offset-3 col-xs-12">      
-        <input type="text" [(ngModel)]="fname" placeholder="الإسم الاول" >
-        <input type="text" [(ngModel)]="lname" placeholder="العائلة" >
+        <input type="text" [(ngModel)]="fname" placeholder="الإسم الاول" required>
+        <input type="text" [(ngModel)]="lname" placeholder="العائلة"  required>
         <input type="text" [(ngModel)]="email" placeholder="البريد الإلكتروني" required>
         <input type="password" [(ngModel)]="password" placeholder="الرقم السري" required>
-        <input type="text" [(ngModel)]="phone" placeholder="رقم الجوال" >
-        <input type="text" [(ngModel)]="businessname" placeholder="اسم المشروع" >
-        <button class="btn btn-primary" (click)="onSubmitAddUser()"><i class="fa fa-paper-plane" ></i> تأكيد</button>
+        <input type="text" [(ngModel)]="phone" placeholder="رقم الجوال"  required>
+        <input type="text" [(ngModel)]="businessname" placeholder="اسم المشروع"  required>
+        <button id="contact2" class="btn btn-primary" (click)="onSubmitAddUser()"><i class="fa fa-paper-plane" ></i> تأكيد</button>
       </div>
   </div>
   
 
 </div>
 </div>
-<div id="contact2" class="spacer">
+<flash-messages></flash-messages>
+<div class="spacer">
   <!--Contact Starts-->
   <div class="container contactform center">
   <h2 class="text-center  wowload fadeInUp"> تسجيل الدخول</h2>

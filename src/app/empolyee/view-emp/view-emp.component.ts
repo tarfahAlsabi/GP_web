@@ -7,6 +7,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 //import { Observable } from 'rxjs/Observable';
 
 import * as firebase from 'firebase'; 
+import { FlashMessagesService } from 'angular2-flash-messages';
 
 
 @Component({
@@ -28,7 +29,8 @@ export class ViewEmpComponent implements OnInit {
   employee: Employee;
   //employeeList: Employee[];
 
-  constructor(private route: ActivatedRoute,private router:Router) { }
+  constructor(private route: ActivatedRoute,private router:Router
+    ,public flashMensaje: FlashMessagesService) { }
 /*name:String="أحمد الصالح ";
 Id:String="MyID!";
 Email:string="aa@aa.a";
@@ -56,13 +58,18 @@ salary:number=5000;*/
 delete(){
 
    // this.employeeService.delete(this.employee);
+   if (confirm('هل أنت متأكد من تسريح هذا المنتج؟') == true){
    let s= firebase.database().ref('employees');
    s.child(this.key).remove();
    if(this.imgName != 'defaultEmployee.jpg'){
     let storageRef = firebase.storage().ref();
     storageRef.child(this.imgName).delete();
    }
-   this.router.navigate(['mainPage/empolyee']);
+   this.router.navigate(['mainPage/empolyee']).then( (res) => {
+    this.flashMensaje.show('تم تسريح الموظف بنجاح.',
+    {cssClass: 'alert-success', timeout: 4000});
+  });
+}
 }
 
 

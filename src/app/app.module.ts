@@ -70,6 +70,11 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 import { CoreModule } from './core/core.module';
 import { TagComponent } from './tag/tag.component';
 
+import {FlashMessagesModule} from 'angular2-flash-messages';
+import {FlashMessagesService} from 'angular2-flash-messages';
+import { AuthService } from './core/auth.service';
+import { AuthGuard } from './guards/auth.guard';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -135,10 +140,11 @@ import { TagComponent } from './tag/tag.component';
     MatToolbarModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireDatabaseModule,
-    CoreModule
+    CoreModule,
+    FlashMessagesModule
   ],
   entryComponents: [viewTag, TagComponent, addQuantity,InvComponent ],
-  providers: [],
+  providers: [AuthService, AuthGuard, FlashMessagesService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

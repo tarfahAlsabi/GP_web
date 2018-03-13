@@ -92,11 +92,12 @@ export class EmployeeService {
           picPATH: employee.picPATH,
           picName: employee.picName
           });*/
-      }
-    );
-    console.log(s);
+          return true;
+      }).catch((err) =>{
+      return false;
+
+    });
      
-   return true;
   }
   
 
@@ -109,6 +110,8 @@ export class EmployeeService {
      let storageRef = firebase.storage().ref();
      storageRef.child(employee.picName).delete();
     }
+   // let admin = require('firebase-admin');
+ //   firebase.auth().currentUser.(employee.$key)..deleteUser(employee.email);
     this.router.navigate(['empolyee']);
   }
 

@@ -11,6 +11,7 @@ import { ProductService } from '../shared/product.service';
 import * as firebase from 'firebase';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Product } from '../shared/product.model';
+import { FlashMessagesService } from 'angular2-flash-messages';
 
 @Component({ 
   selector: 'app-add-product',
@@ -25,7 +26,7 @@ export class AddProductComponent  {
   temp: string;
   
   constructor(private productService : ProductService, private route: ActivatedRoute,
-  private router:Router) {}
+  private router:Router,public flashMensaje: FlashMessagesService) {}
   
   
   ngOnInit() {
@@ -79,12 +80,18 @@ export class AddProductComponent  {
       if (productForm.value.$key == null){
         this.productService.insertProduct(productForm.value,'none','none');
         this.resetForm(productForm); 
-        this.router.navigate(['product']);
+        this.router.navigate(['mainPage/product']).then( (res) => {
+          this.flashMensaje.show('تم إضافة المنتج بنجاح.',
+          {cssClass: 'alert-success', timeout: 4000});
+        });
      //   this.tostr.success('Submitted Succcessfully', 'product is added');
       }else{
         this.productService.updateProduct(productForm.value,'none','none');
         this.resetForm(productForm); 
-        this.router.navigate(['product']);
+        this.router.navigate(['mainPage/product']).then( (res) => {
+          this.flashMensaje.show('تم تحديث بيانات المنتج بنجاح.',
+          {cssClass: 'alert-success', timeout: 4000});
+        });
      //   this.tostr.success('Submitted Succcessfully', 'product is updated');
       }    
     }

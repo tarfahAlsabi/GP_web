@@ -6,6 +6,7 @@ import {MatDatepickerInputEvent} from '@angular/material/datepicker';
 import { ReportsService } from '../shared/reports.service'
 import { Receipt, InnerProduct } from '../shared/receipt.model';
 import { AngularFireDatabase } from 'angularfire2/database';
+import { FlashMessagesService } from 'angular2-flash-messages';
 
 
 @Component({
@@ -26,7 +27,9 @@ export class SalesReportComponent implements OnInit {
   startDate: Date;
   endDate: Date;
   
-  constructor(private reportsService: ReportsService, private firebase: AngularFireDatabase) { }
+  constructor(private reportsService: ReportsService, private firebase: AngularFireDatabase
+    ,public flashMensaje: FlashMessagesService
+) { }
 
   ngOnInit() {
    let x = this.reportsService.getData();
@@ -71,7 +74,7 @@ export class SalesReportComponent implements OnInit {
 s(){
   //console.log(this.receiptList[2].products);
   this.products = [];
-  if(this.receiptList){
+  if(this.receiptList.length != 0){
     if(this.startDate && this.endDate){
       if(this.startDate <= this.endDate){
 
@@ -88,7 +91,7 @@ s(){
           }
         }
         console.log(this.products);
-      if(this.products != []){
+      if(this.products.length != 0){
       this.products.sort;
       let cat = this.products[0].category;
       let priceTemp = 0;
@@ -120,13 +123,23 @@ s(){
   
      // console.log(x);
      // console.log(this.newProducts);
-    }//if(this.products)
-     }else
-       console.log('the start has to come first' );
-    }else
-      console.log('enter the dates first' );
-  }else
-   console.log('you dont have sales operations' );
+    }else{
+    this.flashMensaje.show('لا يوجد فواتير في هذه الفترة الزمنية.',
+    {cssClass: 'alert-danger', timeout: 5000});
+    }
+    //if(this.products)
+     }else{
+      this.flashMensaje.show('لا يجب ان يسبق تاريخ  النهاية تاريخ البداية.',
+      {cssClass: 'alert-danger', timeout: 5000});
+      }
+    }else{
+      this.flashMensaje.show('يجب عليك ادخال الفترة الزمنية أولا.',
+      {cssClass: 'alert-danger', timeout: 5000});
+      }
+  }else{
+    this.flashMensaje.show('لا تملك عمليات بيع حاليا.',
+    {cssClass: 'alert-danger', timeout: 5000});
+    }
 
 }
 

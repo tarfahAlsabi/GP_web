@@ -5,6 +5,7 @@ import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 import { Product } from '../product/shared/product.model';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { Category } from './category.model';
+import { FlashMessagesService } from 'angular2-flash-messages';
 
 @Component({
   selector: 'app-tag',
@@ -17,7 +18,8 @@ export class TagComponent implements OnInit {
   tempProducts: Product[];
 
   constructor(private router:Router , private db :AngularFireDatabase,
-     public dialog: MatDialog)  { }
+     public dialog: MatDialog, public flashMensaje: FlashMessagesService
+    )  { }
   public title="التصنيفات";
   public AddBtn="إضافة تصنيف ";
  
@@ -36,7 +38,15 @@ export class TagComponent implements OnInit {
   }
 delete(category: Category){
       if(confirm(' عند حذفك للتصنيف سوف تحذف جميع المنتجات هذا التصنيف هل أنت متأكد من الحذف؟ '))
-      {this.db.list('products').remove(category.$key);
+      {this.db.list('products').remove(category.$key).then( (res) => {
+        this.flashMensaje.show('.تم حذ التصنيف وجميع منتجاته بنجاح',
+        {cssClass: 'alert-success', timeout: 4000});
+        this.router.navigate(['mainPage']);
+      }).catch((err) => {
+        this.flashMensaje.show('حدثت مشكلة أثناء عملية الحذف أرجو المحاولة مرة أخرى.',
+        {cssClass: 'alert-danger', timeout: 5000});
+        this.router.navigate(['']);
+      });
        this.category= [];
     
       } else 
@@ -109,9 +119,18 @@ delete(category: Category){
    delete()
     { 
       console.log(this.category)
-      if(confirm(' عند حذفك للتصنيف سوف تحذف جميع المنتجات هذا التصنيف هل أنت متأكد من الحذف؟ '))
+      if(confirm(' عند حذفك للتصنيف سوف تحذف جميع منتجات هذا التصنيف هل أنت متأكد من الحذف؟ ') == true){
       this.db.list('products').remove(this.category.$key);
-        else 
+      /*.then( (res) => {
+        this.flashMensaje.show('.تم حذ التصنيف وجميع منتجاته بنجاح',
+        {cssClass: 'alert-success', timeout: 5000});
+        this.router.navigate(['mainPage']);
+      }).catch((err) => {
+        this.flashMensaje.show('حدثت مشكلة أثناء عملية الحذف أرجو المحاولة مرة أخرى.',
+        {cssClass: 'alert-danger', timeout: 6000});
+        this.router.navigate(['']);
+      });*/
+        }else 
         console.log('not deleted');
     }
   

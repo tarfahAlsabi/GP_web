@@ -17,3 +17,7 @@
       direction: rtl;
       align-content: center;
   }
+
+  .alert.flash-message{
+    margin-top:8px;
+}

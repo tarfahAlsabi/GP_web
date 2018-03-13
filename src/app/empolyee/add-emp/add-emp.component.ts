@@ -10,6 +10,7 @@ import { StateKey } from '@angular/platform-browser/src/browser/transfer_state';
 import { EmployeeService } from '../shared/employee.service';
 import * as firebase from 'firebase';
 import { Router } from '@angular/router';
+import { FlashMessagesService } from 'angular2-flash-messages';
 
 
 
@@ -27,7 +28,8 @@ export class AddEmpComponent  {
 
 
 constructor(private fb: FormBuilder,private employeeService: EmployeeService
-,private router: Router)
+,private router: Router,public flashMensaje: FlashMessagesService
+)
 {
   
  }
@@ -72,7 +74,14 @@ onSubmit(employeeForm: NgForm) {
 }else{
   if(this.employeeService.insert(employeeForm.value, 'none','none'))
     {this.resetForm(employeeForm);
-     this.router.navigate(['mainPage/empolyee']);}
+     this.router.navigate(['mainPage/empolyee']).then( (res) => {
+      this.flashMensaje.show('تم إضافة الموظف بنجاح.',
+      {cssClass: 'alert-success', timeout: 4000});
+    });
+  }else{
+    this.flashMensaje.show('الرجاء التأكد من ادخال الإميل الصحيح.',
+      {cssClass: 'alert-danger', timeout: 6000});
+  }
  // this.tostr.success('Submitted Succcessfully', 'Employee Register');
 }
 }

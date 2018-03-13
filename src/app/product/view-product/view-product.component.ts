@@ -6,6 +6,7 @@ import { Product } from '../shared/product.model';
 //import { AngularFireDatabase } from 'angularfire2/database';
 
 import * as firebase from 'firebase';
+import { FlashMessagesService } from 'angular2-flash-messages';
 
 
 @Component({
@@ -29,7 +30,8 @@ export class ViewProductComponent implements OnInit {
   product: Product;
   //productList: Product[];
   
-  constructor(private router: Router, private route: ActivatedRoute) { }
+  constructor(private router: Router, private route: ActivatedRoute
+    ,public flashMensaje: FlashMessagesService) { }
 
   
   ngOnInit() {
@@ -82,7 +84,10 @@ export class ViewProductComponent implements OnInit {
        }
          //console.log(s);
         //this.productService.deleteProduct(s as Product);
-        this.router.navigate(['mainPage/product']);
+        this.router.navigate(['mainPage/product']).then( (res) => {
+          this.flashMensaje.show('تم حذف المنتج بنجاح.',
+          {cssClass: 'alert-success', timeout: 4000});
+        });
       }
   }
   

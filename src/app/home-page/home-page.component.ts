@@ -6,7 +6,7 @@ import {Router} from '@angular/router';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 
 import {AuthService } from '../core/auth.service';
-//import { FlashMessagesService } from 'angular2-flash-messages';
+import { FlashMessagesService } from 'angular2-flash-messages';
 import { Manager } from '../core/manager.model'
 
 
@@ -41,7 +41,7 @@ export class HomePageComponent implements OnInit {
 
 constructor(private route: ActivatedRoute,private router:Router,
   public dialog: MatDialog, public authService: AuthService
- // ,public flashMensaje: FlashMessagesService
+  ,public flashMensaje: FlashMessagesService
 )
  { }
 
@@ -64,8 +64,8 @@ ngOnInit() {
 onSubmitAddUser() {
   this.authService.registerUser(this.email, this.password)
   .then((res) => {
-   /* this.flashMensaje.show('Usuario creado correctamente.',
-    {cssClass: 'alert-success', timeout: 4000});*/
+    this.flashMensaje.show('عملية التسجيل ناجحة مرحبا بك',
+    {cssClass: 'alert-success', timeout: 5000});
     console.log('enter signup');
     this.manager = {email:this.email,password:this.password,fname:this.fname,lname:this.lname,phone:this.phone,businessname:this.businessname}
 
@@ -73,8 +73,8 @@ onSubmitAddUser() {
     this.router.navigate(['mainPage']);
    
   }).catch( (err) => {
-  /*  this.flashMensaje.show(err.message,
-    {cssClass: 'alert-danger', timeout: 4000});*/
+    this.flashMensaje.show('عملية تسجيل الدخول غير صحيحة, أرجو التأكد من ادخال جميع البيانات.',
+    {cssClass: 'alert-danger', timeout: 5000});
     console.log('error signup');
   });
 
@@ -83,21 +83,28 @@ onSubmitAddUser() {
 onSubmitLogin() {
   this.authService.loginEmail(this.emailLog, this.passwordLog)
   .then( (res) => {
-   /* this.flashMensaje.show('Usuario logado correctamente.',
-    {cssClass: 'alert-success', timeout: 4000});*/
+    this.flashMensaje.show('عملية تسجيل دخول ناجحة مرحبا بك',
+    {cssClass: 'alert-success', timeout: 5000});
     this.router.navigate(['mainPage']);
     console.log('enter login');
   }).catch((err) => {
-    /*this.flashMensaje.show(err.message,
-    {cssClass: 'alert-danger', timeout: 4000});*/
-   // this.router.navigate(['/login']);
-    console.log('error login');
+    this.flashMensaje.show('عملية تسجيل الدخول غير صحيحة, أرجو التأكد من البيانات.',
+    {cssClass: 'alert-danger', timeout: 5000});
+    this.router.navigate(['']);
   });
 }
 
 onClickLogout() {
-  console.log('enter logout');
-  this.authService.logout();
+  this.authService.logout().then( (res) => {
+    this.flashMensaje.show('تم تسجيل الخروج بنجاح.',
+    {cssClass: 'alert-success', timeout: 4000});
+    this.router.navigate(['mainPage']);
+    console.log('enter login');
+  }).catch((err) => {
+    this.flashMensaje.show('حدثت مشكلة اثناء عملية تسجيل الخروج, أرجوا المحاولة مرة أخرى.',
+    {cssClass: 'alert-danger', timeout: 5000});
+    this.router.navigate(['']);
+  });
 }
 ngAfterViewInit(): void {
   try {

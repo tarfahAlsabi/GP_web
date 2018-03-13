@@ -10,8 +10,6 @@ import { FormsModule} from '@angular/forms';
 
 import { HttpClientModule } from '@angular/common/http';
 
-import {FlashMessagesModule} from 'angular2-flash-messages';
-import {FlashMessagesService} from 'angular2-flash-messages';
 
 import {AngularFireModule} from 'angularfire2';
 
