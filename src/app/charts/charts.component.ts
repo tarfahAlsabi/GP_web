@@ -19,4 +19,7 @@ export class ChartsComponent implements OnInit {
     this.router.navigate(['mainPage/Inventory report']);
   }
  
+
+
+  
 }

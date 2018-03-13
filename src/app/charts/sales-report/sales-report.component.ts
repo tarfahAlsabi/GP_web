@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit ,ElementRef,ViewChild} from '@angular/core';
 import {Sort} from '@angular/material';
 import {MatDatepickerInputEvent} from '@angular/material/datepicker';
 
@@ -8,6 +8,7 @@ import { Receipt, InnerProduct } from '../shared/receipt.model';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { FlashMessagesService } from 'angular2-flash-messages';
 
+import { Chart} from'chart.js'
 
 @Component({
   selector: 'app-sales-report',
@@ -16,7 +17,12 @@ import { FlashMessagesService } from 'angular2-flash-messages';
   providers : [ReportsService]
 })
 export class SalesReportComponent implements OnInit {
-
+  @ViewChild("pie", {read: ElementRef}) pie:ElementRef;
+  chart = []; 
+  hasDate=true;
+  hasSelection=false;
+  reportName='تقرير المبيعات ';
+  tableheader=[ 'التصنيف','الكمية المباعة' ,'الربح'];
   //ngOnInit
   receiptList : Receipt[];
   products: InnerProduct[];
@@ -75,6 +81,7 @@ s(){
   //console.log(this.receiptList[2].products);
   this.products = [];
   if(this.receiptList.length != 0){
+    console.log('s');
     if(this.startDate && this.endDate){
       if(this.startDate <= this.endDate){
 
@@ -153,11 +160,75 @@ s(){
     var x = new Date(event.value);
     this.endDate = new Date(x.getTime() + (1000 * 60 * 60 * 24));
     }
-
+    this.creatChart();
   /*  var mydate = new Date('2018-03-02');
     console.log(mydate.toDateString());*/
 
 }
+
+
+creatChart()
+{
+
+  let label =this.newProducts.map(product => product.category)
+  let values=this.newProducts.map(product => product.price)
+  
+  this.chart = new Chart('pie', {
+      type: 'bar',
+      data: {
+        labels: label,
+        datasets: [{
+          data:values,
+          backgroundColor: [
+            'rgba(255, 99, 132, 0.4)',
+            'rgba(54, 162, 235, 0.4)',
+            'rgba(255, 206, 86, 0.4)',
+            'rgba(75, 192, 192, 0.4)',
+            'rgba(153, 102, 255, 0.4)',
+            'rgba(255, 159, 64, 0.4)',
+            'rgba(102, 153, 255,0.4)',
+            'rgba(255, 51, 153,0.4)',
+            'rgba(255, 102, 0, 0.4)',
+            'rgba(51, 102, 255,0.4)',
+        ],
+        borderColor: [
+            'rgba(255,99,132,1)',
+            'rgba(54, 162, 235, 1)',
+            'rgba(255, 206, 86, 1)',
+            'rgba(75, 192, 192, 1)',
+            'rgba(153, 102, 255, 1)',
+            'rgba(255, 159, 64, 1)',
+            'rgba(102, 153, 255, 1)',
+            'rgba(255, 51, 153, 1)',
+            'rgba(255, 102, 0, 1)',
+            'rgba(51, 102, 255, 1)',
+        ],
+        }]
+      },
+      options: {
+        responsive: true,
+        legend: {
+          display: true,
+          position: 'right',
+        },
+        scales: {
+          xAxes: [{
+            display: false
+          }],
+          yAxes: [{
+            display: false
+          }],
+        },
+        tooltips: {
+          mode: 'point'
+      },
+
+      }
+    });
+
+}
+
+
 
   // sortData(sort: Sort) {
   //   const data = this.products.slice();

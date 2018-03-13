@@ -33,6 +33,12 @@
 {
     margin: 0px;
 }
+
+.reportBar
+{
+    flex: auto;
+    margin-left:7%;
+}
 .Viewimg
 {
     margin-top: 0px !important ; 
