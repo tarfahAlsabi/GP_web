@@ -65,22 +65,25 @@ onSubmit(employeeForm: NgForm) {
     },
     () => { 
       // upload success
-      if(this.employeeService.insert(employeeForm.value,uploadTask.snapshot.downloadURL,file.name))
+      let r = this.employeeService.insert(employeeForm.value,uploadTask.snapshot.downloadURL,file.name);
+      if(r == '1')
        { this.resetForm(employeeForm);
-         this.router.navigate(['mainPage/empolyee']);}
+         this.router.navigate(['mainPage/empolyee']).then( (res) => {
+          this.flashMensaje.show('تم إضافة الموظف بنجاح.',
+          {cssClass: 'alert-success', timeout: 4000});
+        });}
      // this.tostr.success('Submitted Succcessfully', 'Employee Register');
     }
   );
 }else{
-  if(this.employeeService.insert(employeeForm.value, 'none','none'))
+  let x = this.employeeService.insert(employeeForm.value, 'none','none');
+  console.log(x);
+  if(x == '1')
     {this.resetForm(employeeForm);
      this.router.navigate(['mainPage/empolyee']).then( (res) => {
       this.flashMensaje.show('تم إضافة الموظف بنجاح.',
       {cssClass: 'alert-success', timeout: 4000});
     });
-  }else{
-    this.flashMensaje.show('الرجاء التأكد من ادخال الإميل الصحيح.',
-      {cssClass: 'alert-danger', timeout: 6000});
   }
  // this.tostr.success('Submitted Succcessfully', 'Employee Register');
 }

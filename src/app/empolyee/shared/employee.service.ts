@@ -13,6 +13,8 @@ export class EmployeeService {
   employeeList: AngularFireList<any>;
   selectedEmployee: Employee = new Employee(); 
   n:any;
+  temp: string;
+
 
   constructor(private authService: AuthService, private afAuth: AngularFireAuth,
     private firebase: AngularFireDatabase,private router:Router,private db:AngularFireDatabase ) {}
@@ -66,9 +68,10 @@ export class EmployeeService {
  // }
      //let n;
      var fRef = firebase.database().ref('employees');
-     
-     let s =  this.authService.register(employee.email,employee.password).then(
-      v => {
+    this.temp='1';
+      this.authService.register(employee.email,employee.password).then(
+      (v) => {
+        console.log(v)
         if(v != 'fail')
         {fRef.child(v).set({
           username: employee.username,  
@@ -80,7 +83,15 @@ export class EmployeeService {
           salary: employee.salary,
           picPATH: employee.picPATH,
           picName: employee.picName
-          });}
+          });
+          this.temp='1';
+          console.log('rr')
+
+        }else{
+          console.log('s');
+          this.temp='';
+          this.temp = '0';
+          }
         /*this.firebase.list('employees').push({
           username: employee.username,  
           email: employee.email,
@@ -92,12 +103,12 @@ export class EmployeeService {
           picPATH: employee.picPATH,
           picName: employee.picName
           });*/
-          return true;
-      }).catch((err) =>{
-      return false;
+    //  }).catch((err) =>{
+  //    x= false;
 
     });
-     
+    console.log(this.temp);
+    return this.temp;
   }
   
 

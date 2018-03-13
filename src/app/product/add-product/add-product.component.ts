@@ -67,12 +67,18 @@ export class AddProductComponent  {
           if (productForm.value.$key == null){
             this.productService.insertProduct(productForm.value,uploadTask.snapshot.downloadURL,file.name);
             this.resetForm(productForm); 
-            this.router.navigate(['product']);
+            this.router.navigate(['mainPage/product']).then( (res) => {
+              this.flashMensaje.show('تم إضافة تحديث المنتج بنجاح.',
+              {cssClass: 'alert-success', timeout: 4000});
+            });
           //  this.tostr.success('Submitted Succcessfully', 'product is added');
           }else{
             this.productService.updateProduct(productForm.value,uploadTask.snapshot.downloadURL,file.name);
             this.resetForm(productForm); 
-            this.router.navigate(['product']);
+            this.router.navigate(['mainPage/product']).then( (res) => {
+              this.flashMensaje.show('تم إضافة تحديث المنتج بنجاح.',
+              {cssClass: 'alert-success', timeout: 4000});
+            });
           //  this.tostr.success('Submitted Succcessfully', 'product is updated');
           }    
         });
@@ -117,7 +123,7 @@ export class AddProductComponent  {
      
     cancel(){
       this.resetForm();
-      this.router.navigate(['product']);
+      this.router.navigate(['mainPage/product']);
     }
 
   resetForm(productForm?: NgForm) {
