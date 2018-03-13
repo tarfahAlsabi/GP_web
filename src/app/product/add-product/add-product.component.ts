@@ -68,7 +68,7 @@ export class AddProductComponent  {
             this.productService.insertProduct(productForm.value,uploadTask.snapshot.downloadURL,file.name);
             this.resetForm(productForm); 
             this.router.navigate(['mainPage/product']).then( (res) => {
-              this.flashMensaje.show('تم إضافة تحديث المنتج بنجاح.',
+              this.flashMensaje.show('تم تحديث المنتج بنجاح.',
               {cssClass: 'alert-success', timeout: 4000});
             });
           //  this.tostr.success('Submitted Succcessfully', 'product is added');
@@ -76,7 +76,7 @@ export class AddProductComponent  {
             this.productService.updateProduct(productForm.value,uploadTask.snapshot.downloadURL,file.name);
             this.resetForm(productForm); 
             this.router.navigate(['mainPage/product']).then( (res) => {
-              this.flashMensaje.show('تم إضافة تحديث المنتج بنجاح.',
+              this.flashMensaje.show('تم تحديث المنتج بنجاح.',
               {cssClass: 'alert-success', timeout: 4000});
             });
           //  this.tostr.success('Submitted Succcessfully', 'product is updated');
