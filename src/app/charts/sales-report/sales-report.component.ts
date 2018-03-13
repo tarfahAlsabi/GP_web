@@ -171,7 +171,8 @@ creatChart()
 {
 
   let label =this.newProducts.map(product => product.category)
-  let values=this.newProducts.map(product => product.price)
+  let values=this.newProducts.map(product => product.quantity)
+  
   
   this.chart = new Chart('pie', {
       type: 'bar',
@@ -213,10 +214,16 @@ creatChart()
         },
         scales: {
           xAxes: [{
-            display: false
+            display: true,
+            ticks: {
+              beginAtZero:true
+          }
           }],
           yAxes: [{
-            display: false
+            display: true,
+            ticks: {
+              beginAtZero:true
+          }
           }],
         },
         tooltips: {

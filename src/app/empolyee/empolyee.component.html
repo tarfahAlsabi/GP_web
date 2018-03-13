@@ -38,7 +38,7 @@
   <mat-card class="viewProduct"  *ngFor="let employee of employeeList" >
        <button  mat-button (click)="viewEmployee(employee)" class="Viewimg" ><img (click)="viewemployee(employee)" mat-card-image  src={{employee.picPATH}} alt={{employee.firstName}} > </button> 
       <mat-card-content role="group" >
-       <h3>{{employee.firstName }} {{employee.lastName}}</h3> 
+       <h3 class="name">{{employee.firstName }} {{employee.lastName}}</h3> 
       </mat-card-content> 
       <div>
       <button mat-button (click)="viewemployee(employee)" class="OptionBtn"> <mat-icon> description </mat-icon> عرض البيانات</button>

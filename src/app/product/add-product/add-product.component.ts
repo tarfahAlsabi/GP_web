@@ -67,12 +67,12 @@ export class AddProductComponent  {
           if (productForm.value.$key == null){
             this.productService.insertProduct(productForm.value,uploadTask.snapshot.downloadURL,file.name);
             this.resetForm(productForm); 
-            this.router.navigate(['product']);
+            this.router.navigate(['mainPage/product']);
           //  this.tostr.success('Submitted Succcessfully', 'product is added');
           }else{
             this.productService.updateProduct(productForm.value,uploadTask.snapshot.downloadURL,file.name);
             this.resetForm(productForm); 
-            this.router.navigate(['product']);
+            this.router.navigate(['mainPage/product']);
           //  this.tostr.success('Submitted Succcessfully', 'product is updated');
           }    
         });
@@ -117,7 +117,7 @@ export class AddProductComponent  {
      
     cancel(){
       this.resetForm();
-      this.router.navigate(['product']);
+      this.router.navigate(['mainPage/product']);
     }
 
   resetForm(productForm?: NgForm) {
