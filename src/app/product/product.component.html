@@ -27,9 +27,12 @@
     <img (click)="viewProduct(product )" mat-card-image class="Viewimg" src={{product.picPath}}>
     <mat-card-content role="group" >
      <h3>{{product.name }}</h3> 
+     <h4> الكمية المتوفرة </h4>
+     <p> {{product.inventory }}</p>
     </mat-card-content>
     <mat-card-actions role="group" class="OptionBtn">	
     <button mat-button (click)="viewProduct(product )"> <mat-icon> description </mat-icon> عرض البيانات</button>
+    <button mat-button (click)="openDialog(product )"> <mat-icon> add </mat-icon> إضافة كمية  </button>
     </mat-card-actions>	
 </mat-card>
 

@@ -58,7 +58,7 @@ salary:number=5000;*/
 delete(){
 
    // this.employeeService.delete(this.employee);
-   if (confirm('هل أنت متأكد من تسريح هذا المنتج؟') == true){
+   if (confirm('هل أنت متأكد من تسريح هذا الموظف') == true){
    let s= firebase.database().ref('employees');
    s.child(this.key).remove();
    if(this.imgName != 'defaultEmployee.jpg'){

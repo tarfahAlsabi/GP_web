@@ -19,6 +19,7 @@ export class EmpolyeeComponent implements OnInit {
 
   public title="الموظفين";
   public AddBtn="إضافة موظف  ";
+  
     ngOnInit() { 
       
     var x = this.employeeService.getData();

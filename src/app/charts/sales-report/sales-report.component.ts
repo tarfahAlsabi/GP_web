@@ -173,7 +173,7 @@ creatChart()
   let label =this.newProducts.map(product => product.category)
   let values=this.newProducts.map(product => product.quantity)
   
-  
+
   this.chart = new Chart('pie', {
       type: 'bar',
       data: {
@@ -209,7 +209,7 @@ creatChart()
       options: {
         responsive: true,
         legend: {
-          display: true,
+          display: false,
           position: 'right',
         },
         scales: {
@@ -223,7 +223,8 @@ creatChart()
             display: true,
             ticks: {
               beginAtZero:true
-          }
+          },
+          label:"الكمية المباعة"
           }],
         },
         tooltips: {

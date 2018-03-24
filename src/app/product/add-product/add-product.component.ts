@@ -13,6 +13,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Product } from '../shared/product.model';
 import { FlashMessagesService } from 'angular2-flash-messages';
 
+import { AngularFireDatabase } from 'angularfire2/database';
+import { Category } from './category.model';
 @Component({ 
   selector: 'app-add-product',
   templateUrl: './add-product.component.html',
@@ -24,9 +26,10 @@ export class AddProductComponent  {
   selectedFiles: FileList;
   num: number;
   temp: string;
-  
+  category=[];
+  cat;
   constructor(private productService : ProductService, private route: ActivatedRoute,
-  private router:Router,public flashMensaje: FlashMessagesService) {}
+  private router:Router,public flashMensaje: FlashMessagesService ,private db:AngularFireDatabase) {}
   
   
   ngOnInit() {
@@ -38,7 +41,19 @@ export class AddProductComponent  {
       console.log(this.temp);
       console.log('s');
     }
-
+    
+    this.category= [];
+    console.log( this.category);
+    this.db.list('products').snapshotChanges().subscribe(item => {
+    for(var element2 in item) {
+      var y = item[element2].payload.toJSON();
+      y["$key"] = item[element2].key;
+      this.category.unshift(y as Category);
+    }
+    this.cat=Array.from(this.category)
+    console.log( this.cat);
+  });
+ 
   }
 
   detectFiles(event) {

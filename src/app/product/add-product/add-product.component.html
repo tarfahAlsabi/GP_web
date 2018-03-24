@@ -18,7 +18,7 @@
         <tr>
           <td>
             <mat-form-field class="example-full-width">
-          <input matInput class="form-control" name="name" #name="ngModel" 
+          <input matInput    name="name" #name="ngModel" 
           [(ngModel)]="productService.selectedProduct.name" 
           placeholder="اسم المنتج" required>
           <!-- <mat-error *ngIf="ID.invalid">خانة مطلوبة </mat-error> -->
@@ -35,7 +35,7 @@
   <tr>
     <td>
         <mat-form-field class="example-full-width">
-          <input matInput class="form-control" name="description" #description="ngModel" 
+          <input matInput    name="description" #description="ngModel" 
           [(ngModel)]="productService.selectedProduct.description" 
           placeholder="الوصف">
         </mat-form-field>
@@ -45,7 +45,7 @@
     <tr>
       <td>
           <mat-form-field class="example-full-width">
-            <input matInput type="number" class="form-control" name="price" #price="ngModel" 
+            <input matInput type="number"    name="price" #price="ngModel" 
             [(ngModel)]="productService.selectedProduct.price" 
             placeholder="سعر البيع" required>
             <mat-icon matSuffix>money</mat-icon>
@@ -55,7 +55,7 @@
     
         <td>
           <mat-form-field class="example-full-width">
-           <input matInput type="number" class="form-control" name="cost" #cost="ngModel" 
+           <input matInput type="number"    name="cost" #cost="ngModel" 
            [(ngModel)]="productService.selectedProduct.cost" 
            placeholder="سعر الشراء" required>
            <mat-icon matSuffix>money</mat-icon>
@@ -81,7 +81,7 @@
       <tr>
         <td>
             <mat-form-field class="example-full-width">
-             <input matInput type="number" class="form-control" name="inventory" #inventory="ngModel" 
+             <input matInput type="number"    name="inventory" #inventory="ngModel" 
              [(ngModel)]="productService.selectedProduct.inventory" 
              placeholder="الكمية المتوفرة" required>
              <mat-icon matSuffix></mat-icon>
@@ -100,9 +100,13 @@
        <tr>
         <td>
             <mat-form-field class="example-full-width">
-              <input matInput class="form-control" name="category" #category="ngModel" 
+              <mat-select  name="category" #category="ngModel" 
               [(ngModel)]="productService.selectedProduct.category"
                placeholder="التصنيف">
+               <mat-option *ngFor="let category of cat" [value]=" category.$key ">
+                {{category.$key}}
+              </mat-option>
+            </mat-select>
             </mat-form-field>
           </td>
         </tr>
@@ -134,7 +138,7 @@
           <div class="input-group-addon">
             <i class="fa fa-dollar"></i>
           </div>
-          <input class="form-control" name="salary" #salary="ngModel" [(ngModel)]="productService.selectedProduct.salary" placeholder="0">
+          <input    name="salary" #salary="ngModel" [(ngModel)]="productService.selectedProduct.salary" placeholder="0">
       </div>
     </div>
     -->

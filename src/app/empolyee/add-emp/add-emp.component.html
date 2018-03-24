@@ -18,7 +18,7 @@
     <tr> 
         <td>
         <mat-form-field class="example-full-width">
-        <input matInput class="form-control" name="firstName" #firstName="ngModel" 
+        <input matInput   name="firstName" #firstName="ngModel"   
         [(ngModel)]="employeeService.selectedEmployee.firstName" 
         placeholder="الاسم الأول" required>
       </mat-form-field>
@@ -36,7 +36,7 @@
        <tr>
         <td>
       <mat-form-field class="example-full-width">
-          <input matInput class="form-control" name="lastName" #lastName="ngModel" 
+          <input matInput   name="lastName" #lastName="ngModel" 
           [(ngModel)]="employeeService.selectedEmployee.lastName" 
           placeholder="العائلة" required>
         </mat-form-field>
@@ -56,7 +56,7 @@
       <tr>
         <td>
         <mat-form-field class="example-full-width">
-        <input matInput class="form-control" type="email" name="email" #email="ngModel" 
+        <input matInput   type="email" name="email" #email="ngModel" 
         [(ngModel)]="employeeService.selectedEmployee.email" 
         placeholder="البريد الإلكتروني" required>
       </mat-form-field>
@@ -74,7 +74,7 @@
       <tr>
           <td>
       <mat-form-field class="example-full-width">
-        <input matInput type="tel" class="form-control" name="phone" #phone="ngModel" 
+        <input matInput type="tel"   name="phone" #phone="ngModel" 
         [(ngModel)]="employeeService.selectedEmployee.phone" 
         minlength="10" placeholder="الجوال">
         <mat-icon matSuffix>phone</mat-icon>
@@ -93,7 +93,7 @@
   <tr>
       <td>
       <mat-form-field class="example-full-width">
-            <input  matInput type="number" class="form-control" name="salary" #salary="ngModel" 
+            <input  matInput type="number"   name="salary" #salary="ngModel" 
             [(ngModel)]="employeeService.selectedEmployee.salary" 
             placeholder="الراتب">
             <mat-icon matSuffix>money</mat-icon>
@@ -148,11 +148,11 @@
 
             <!-- <div class="formFilled">
                   <mat-form-field class="example-full-width">
-                  <input matInput class="form-control" name="firstName" #firstName="ngModel" [(ngModel)]="employeeService.selectedEmployee.firstName" placeholder="الاسم الأول" required>
+                  <input matInput   name="firstName" #firstName="ngModel" [(ngModel)]="employeeService.selectedEmployee.firstName" placeholder="الاسم الأول" required>
                 </mat-form-field>
                 
                 <mat-form-field class="example-full-width">
-                    <input matInput class="form-control" name="lastName" #lastName="ngModel" [(ngModel)]="employeeService.selectedEmployee.lastName" placeholder="العائلة" required>
+                    <input matInput   name="lastName" #lastName="ngModel" [(ngModel)]="employeeService.selectedEmployee.lastName" placeholder="العائلة" required>
                   </mat-form-field>
                 </div>
 
@@ -160,21 +160,21 @@
            
                 <div class="formFilled" >
                   <mat-form-field class="example-full-width">
-                  <input matInput class="form-control" name="email" #email="ngModel" [(ngModel)]="employeeService.selectedEmployee.email" placeholder="البريد الإلكتروني">
+                  <input matInput   name="email" #email="ngModel" [(ngModel)]="employeeService.selectedEmployee.email" placeholder="البريد الإلكتروني">
                 </mat-form-field>
               </div>
 
 
               <div class="formFilled">            
                 <mat-form-field class="example-full-width">
-                  <input matInput class="form-control" name="phone" #phone="ngModel" [(ngModel)]="employeeService.selectedEmployee.phone" placeholder="الجوال">
+                  <input matInput   name="phone" #phone="ngModel" [(ngModel)]="employeeService.selectedEmployee.phone" placeholder="الجوال">
                   <mat-icon matSuffix>phone</mat-icon>
                 </mat-form-field>
             </div>
             
             <div class="formFilled">
                 <mat-form-field class="example-full-width">
-                      <input  matInput class="form-control" name="salary" #salary="ngModel" [(ngModel)]="employeeService.selectedEmployee.salary" placeholder="الراتب">
+                      <input  matInput   name="salary" #salary="ngModel" [(ngModel)]="employeeService.selectedEmployee.salary" placeholder="الراتب">
                       <mat-icon matSuffix>money</mat-icon>   
                 </mat-form-field>
               </div>

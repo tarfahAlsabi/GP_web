@@ -1,10 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,Inject } from '@angular/core';
 import { print } from 'util';
 import {Router} from '@angular/router';
 
 import { ProductService } from './shared/product.service';
 import { Product } from './shared/product.model';
 import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
+import { FlashMessagesService } from 'angular2-flash-messages';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 
 
 @Component({
@@ -15,7 +17,9 @@ import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
 })
 export class ProductComponent implements OnInit {
   productList: Product[];
-  constructor(private router:Router,private db :AngularFireDatabase,private productService : ProductService)  { }
+  constructor(private router:Router,private db :AngularFireDatabase
+    ,private productService : ProductService ,public dialog: MatDialog
+    ,public flashMensaje: FlashMessagesService)  { }
    public title="المنتجات";
    public AddBtn="إضافة منتج ";
 
@@ -51,5 +55,43 @@ viewProduct(product: Product)
       let id:string ='';
       this.router.navigate(['mainPage/Add_Product/',id]);
   }
+  openDialog(item: Product): void {
+    let dialogRef = this.dialog.open(addQuantity, {
+  
+      data: { name: item.name,inventory:item.inventory } 
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      if(result){
+      let x = this.productService.updateProductInv(item,result);
+        this.flashMensaje.show('تم تحديث كمية المنتج بنجاح.',
+        {cssClass: 'alert-success', timeout: 4000});
+
+    }
+  });
+  }
 
 }
+
+
+@Component({
+  selector: 'add-quantity',
+  templateUrl: './add-Quantity.html',
+  styleUrls: ['./inv.component.css']
+})
+export class addQuantity {
+
+  name:string;
+  newQuantity:number;
+  constructor(
+    public dialogRef: MatDialogRef<addQuantity>,
+    @Inject(MAT_DIALOG_DATA) public data: any) { }
+
+  addquantity(newQuantity:number ,inventory:number)
+  {
+    return newQuantity + inventory;
+  }
+
+}
+ 

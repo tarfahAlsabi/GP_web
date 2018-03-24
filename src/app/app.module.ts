@@ -62,8 +62,8 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { environment } from '../environments/environment';
 
-import { InvComponent } from './product/inv/inv.component';
-import { addQuantity } from './product/inv/inv.component';
+import { ProductComponent } from './product/product.component';
+import { addQuantity } from './product/product.component';
 
 import { AngularFireAuthModule } from 'angularfire2/auth';
 
@@ -143,7 +143,7 @@ import { AuthGuard } from './guards/auth.guard';
     CoreModule,
     FlashMessagesModule
   ],
-  entryComponents: [viewTag, TagComponent, addQuantity,InvComponent ],
+  entryComponents: [viewTag, TagComponent, addQuantity,ProductComponent ],
   providers: [AuthService, AuthGuard, FlashMessagesService],
   bootstrap: [AppComponent]
 })
