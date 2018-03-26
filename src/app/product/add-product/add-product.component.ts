@@ -28,6 +28,7 @@ export class AddProductComponent  {
   temp: string;
   category=[];
   cat;
+  exist=true;
   constructor(private productService : ProductService, private route: ActivatedRoute,
   private router:Router,public flashMensaje: FlashMessagesService ,private db:AngularFireDatabase) {}
   
@@ -44,10 +45,12 @@ export class AddProductComponent  {
     
     this.category= [];
     console.log( this.category);
-    this.db.list('products').snapshotChanges().subscribe(item => {
+    this.db.list('products', query => { let m=query.orderByChild('category'); return m}).snapshotChanges().subscribe(item => {
     for(var element2 in item) {
       var y = item[element2].payload.toJSON();
       y["$key"] = item[element2].key;
+      if(y["$key"]=="غير ذلك")
+      this.exist=false;
       this.category.unshift(y as Category);
     }
     this.cat=Array.from(this.category)

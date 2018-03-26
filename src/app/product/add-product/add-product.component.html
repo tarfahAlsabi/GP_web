@@ -106,6 +106,9 @@
                <mat-option *ngFor="let category of cat" [value]=" category.$key ">
                 {{category.$key}}
               </mat-option>
+              <mat-option  *ngIf="exist" value="غير ذلك">
+                  غير ذلك
+                </mat-option>
             </mat-select>
             </mat-form-field>
           </td>

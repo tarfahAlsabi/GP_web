@@ -1,0 +1,100 @@
+.viewProduct
+{
+    width: 25%;
+    height: 25%;
+    max-height: 250px;
+    max-width: 250px;
+    min-height: 200px;
+    min-width: 200px;
+    text-align: center;
+    border: 25px;
+    margin: 12px 0px 7px 9px;
+    display: inline-table;
+}
+.ViewsContainer
+{
+    margin:15px; 
+    align-content: center;
+    align-self: center;
+    align-items: center;
+}
+
+.PageTitle
+{
+    margin: 15px;
+    height: 40px;
+}
+.PageTitle h2
+{
+    margin: 0px;
+}
+.Viewimg
+{
+    width: 75%;
+    height: 60%;
+    overflow-wrap: normal;
+    overflow: hidden;
+    align-content: center
+}
+.btn-Add
+{
+    float: left;
+}
+
+.toolbar-spacer {
+    flex: 1 1 auto;
+  }
+  .OptionBtn
+  {
+    align-content: center;
+    align-self: center;
+    align-items: center;
+    margin: 0px;
+    direction: rtl;
+    width: auto;
+    height: fit-content;
+  }
+  .PageTitle
+  {
+      width: auto;
+      margin: 15px;
+      height: 40px;
+  }
+  .PageTitle span h2
+  {
+      font-size: 22px;
+      margin: 0px;
+  }
+  mat-toolbar mat-toolbar-row span mat-form-field
+  {
+      text-align: right;
+      font-size: 14px;
+      float: right;
+      line-height: 2;
+  }
+  example-headers-align
+  {
+      margin: 15px;
+      width: auto;
+      
+  }
+.boutonAlign
+{
+    margin-bottom: 8px;
+}
+  mat-form-field
+  {
+  
+    text-align: right;
+    font-size: 18px;
+    line-height: 2;
+  }
+
+  
+  .dialogTitle , .DialogOptionBtn
+  {
+      display: -ms-inline-grid;;
+      direction: rtl;
+      align-content: center;
+  }
+  
