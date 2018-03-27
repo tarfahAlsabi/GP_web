@@ -5,13 +5,6 @@
  </mat-toolbar>  
 
 
- <mat-toolbar  class="PageTitle" style="background-color:transparent">
-    <span color="primary"> <button mat-button (click)="Add()" color="primary"> <mat-icon>person_add</mat-icon>  {{AddBtnn}}</button>   </span>
-  <span class="toolbar-spacer"></span>
-  <span color="primary"> <button mat-button (click)="Add()" color="primary"> <mat-icon>person_add</mat-icon>  {{AddBtn}}</button>   </span>
-  
- </mat-toolbar>  
-
 <mat-toolbar  class="PageTitle">
     <mat-toolbar-row>
           <mat-form-field class="example-full-width">
@@ -47,15 +40,7 @@
 <section class="ViewsContainer"  >
  
 
-               <mat-card class="viewProduct"  *ngFor="let product of tempProducts" >
-                  <img (click)="viewProduct(product)" mat-card-image class="Viewimg" src={{product.picPath}}>
-                  <mat-card-content role="group" >
-                   <h3>{{product.name }}</h3> 
-                  </mat-card-content>
-                  <mat-card-actions role="group" class="OptionBtn">	
-                  <button mat-button (click)="viewProduct(product)"> <mat-icon> description </mat-icon> عرض البيانات</button>
-                  </mat-card-actions>	
-              </mat-card>       
+    
 
     </section>
     

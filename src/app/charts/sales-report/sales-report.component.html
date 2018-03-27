@@ -9,7 +9,7 @@
         <span *ngIf="hasDate" >
     <span class="reportBar" > 
         <mat-form-field>
-            <input matInput [matDatepicker]="picker" placeholder=" من تاريخ " (dateChange)="changeDate('from', $event) " disabled>
+            <input   [value]='startDate' matInput [matDatepicker]="picker" placeholder=" من تاريخ " (dateChange)="changeDate('from', $event) " >
             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
             <mat-datepicker #picker disabled="false" ></mat-datepicker>
         </mat-form-field>
@@ -19,10 +19,10 @@
 
 
         <span class="reportBar">
-         <mat-form-field>
-            <input matInput [matDatepicker]="ToDate" placeholder=" إلى تاريخ " (dateChange)="changeDate('to', $event) " disabled>
+         <mat-form-field >
+            <input matInput  [value]='endDate'  [matDatepicker]="ToDate" placeholder=" إلى تاريخ " (dateChange)="changeDate('to', $event)" >
             <mat-datepicker-toggle matSuffix [for]="ToDate"></mat-datepicker-toggle>
-            <mat-datepicker #ToDate disabled="false"  ></mat-datepicker>
+            <mat-datepicker   #ToDate disabled="false"  ></mat-datepicker>
         </mat-form-field>
         </span> 
 
@@ -49,7 +49,7 @@
   </mat-toolbar-row>
 </mat-toolbar>
 <flash-messages></flash-messages>
-<mat-tab-group class="tab-group">
+<mat-tab-group class="tab-group" (selectedTabChange)='creatChart()' >
     <mat-tab label="التقرير" >
       <div class="tabContent" (click)="s()">
           <table matSort   class="reportContent" >
@@ -74,7 +74,7 @@
       </div>
     </mat-tab>
     <mat-tab label="الرسم البياني">
-        <div class="tabContent" (click)='creatChart()' *ngIf="chart" >
+        <div class="tabContent"  *ngIf="chart" >
             <canvas id="pie"  class="chart-pie" style="height:255px ; width:90% ;    overflow:hidden;" >{{ chart }}</canvas>
            
            </div>    

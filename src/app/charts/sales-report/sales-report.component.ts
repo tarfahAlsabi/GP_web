@@ -30,14 +30,16 @@ export class SalesReportComponent implements OnInit {
   newProducts : InnerProduct[];
   totalSales: number;
   temp : InnerProduct = new InnerProduct;
-  startDate: Date;
-  endDate: Date;
-  
+  startDate: Date=new Date();
+  endDate: Date=new Date();
+
+
   constructor(private reportsService: ReportsService, private firebase: AngularFireDatabase
     ,public flashMensaje: FlashMessagesService
 ) { }
 
   ngOnInit() {
+   this.startDate.setMonth(this.startDate.getMonth() -1 );
    let x = this.reportsService.getData();
 
    this.receiptList = [];
@@ -69,12 +71,14 @@ export class SalesReportComponent implements OnInit {
       this.receiptList.push(y as Receipt);
       //console.log((y as Receipt).date);
     });
+    this.s();
+  this.creatChart();
   });
    
 
   //console.log(this.receiptList);
 
-  
+ 
   }
 
 s(){
@@ -160,6 +164,7 @@ s(){
     var x = new Date(event.value);
     this.endDate = new Date(x.getTime() + (1000 * 60 * 60 * 24));
     }
+    this.s();
     this.creatChart();
   /*  var mydate = new Date('2018-03-02');
     console.log(mydate.toDateString());*/
@@ -169,9 +174,9 @@ s(){
 
 creatChart()
 {
-
-  let label =this.newProducts.map(product => product.category)
-  let values=this.newProducts.map(product => product.quantity)
+  this.chart=[];
+  let label =this.newProducts.map(product => product.category);
+  let values=this.newProducts.map(product => product.quantity);
   
 
   this.chart = new Chart('pie', {
