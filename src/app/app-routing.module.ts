@@ -61,5 +61,5 @@ exports: [RouterModule]
 })
 export class AppRoutingModule { }
 export const routingComponents = [ ViewInv ,HomePageComponent, ViewProductComponent , AddProductComponent , TagComponent ,ChartsComponent,
-    ViewTagComponent , AddTagComponent , ProductComponent , EmpolyeeComponent,NoFoundPageComponent,
+    ViewTagComponent , AddTagComponent , ProductComponent , EmpolyeeComponent,NoFoundPageComponent, ManagerComponent,
     MyFormComponent, HeaderComponent, ViewEmpComponent , AddEmpComponent , TagComponent, SalesReportComponent ,IvcReportComponent];
