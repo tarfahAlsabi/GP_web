@@ -22,13 +22,14 @@
           [(ngModel)]="productService.selectedProduct.name" 
           placeholder="اسم المنتج" required>
           <!-- <mat-error *ngIf="ID.invalid">خانة مطلوبة </mat-error> -->
-      </mat-form-field>
+      </mat-form-field> 
     </td>
+    </tr>
+    <tr>
   <td>
-    <div [hidden]="name.valid || name.pristine"
-    class="alert alert-danger">
-   <label class="red"> *اسم المنتج مطلوب </label>
-   </div>
+    <div *ngIf="name.errors && (name.dirty || name.touched)"  class="alert alert-danger">
+      <div [hidden]="!name.errors.required" class="red">*الأسم الأول مطلوب </div>
+    </div>
       </td>
   </tr>
 
@@ -47,7 +48,7 @@
           <mat-form-field class="example-full-width">
             <input matInput type="number"    name="price" #price="ngModel" 
             [(ngModel)]="productService.selectedProduct.price" 
-            placeholder="سعر البيع" required>
+            placeholder="سعر البيع المنتج" required>
             <mat-icon matSuffix>money</mat-icon>
           </mat-form-field>
         </td>
@@ -57,24 +58,22 @@
           <mat-form-field class="example-full-width">
            <input matInput type="number"    name="cost" #cost="ngModel" 
            [(ngModel)]="productService.selectedProduct.cost" 
-           placeholder="سعر الشراء" required>
+           placeholder="سعر الشراء المنتج" required>
            <mat-icon matSuffix>money</mat-icon>
           </mat-form-field>
         </td>
       </tr>
       <tr>
         <td>
-      <div [hidden]="price.valid || price.pristine"
-      class="alert alert-danger">
-      <label class="red">*سعر البيع مطلوب </label>
-     </div>
+          <div *ngIf="price.errors && (price.dirty || price.touched)"  class="alert alert-danger">
+            <div [hidden]="!price.errors.required" class="red">*سعر البيع مطلوب </div>
+          </div>
      
         </td>
      <td>
-      <div [hidden]="cost.valid || cost.pristine"
-      class="alert alert-danger">
-      <label class="red">*سعر الشراء مطلوبة </label>
-     </div>
+      <div *ngIf="cost.errors && (cost.dirty || cost.touched)"  class="alert alert-danger">
+        <div [hidden]="!cost.errors.required" class="red">*سعر الشراء مطلوب </div>
+      </div>
      </td>
       </tr>
        
@@ -83,17 +82,16 @@
             <mat-form-field class="example-full-width">
              <input matInput type="number"    name="inventory" #inventory="ngModel" 
              [(ngModel)]="productService.selectedProduct.inventory" 
-             placeholder="الكمية المتوفرة" required>
+             placeholder="الكمية المتوفرة من المنتج" required>
              <mat-icon matSuffix></mat-icon>
             </mat-form-field>
           </td>
         </tr>
           <tr>
           <td>
-        <div [hidden]="inventory.valid || inventory.pristine"
-        class="alert alert-danger">
-        <label class="red">*الكمية مطلوبة </label>
-       </div>
+            <div *ngIf="inventory.errors && (inventory.dirty || inventory.touched)"  class="alert alert-danger">
+              <div [hidden]="!inventory.errors.required" class="red">*الكمية مطلوبة </div>
+            </div>
        
           </td>
    </tr>

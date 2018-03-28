@@ -129,9 +129,10 @@ export class ProductComponent implements OnInit {
         
       let x = this.productService.updateProductInv(item,result);
       
+      if(result > item.inventory){
         this.flashMensaje.show('تم تحديث كمية المنتج بنجاح.',
         {cssClass: 'alert-success', timeout: 4000});
-       
+       }
 
     }
   });
