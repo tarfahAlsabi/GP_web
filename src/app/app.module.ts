@@ -62,8 +62,8 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { environment } from '../environments/environment';
 
-import { InvComponent } from './product/inv/inv.component';
-import { addQuantity } from './product/inv/inv.component';
+import { ProductComponent } from './product/product.component';
+import { addQuantity } from './product/product.component';
 
 import { AngularFireAuthModule } from 'angularfire2/auth';
 
@@ -145,7 +145,7 @@ import { updateSalary } from './empolyee/view-emp/view-emp.component';
     CoreModule,
     FlashMessagesModule
   ],
-  entryComponents: [viewTag, TagComponent, addQuantity,InvComponent, updateSalary, ViewEmpComponent ],
+  entryComponents: [viewTag, TagComponent, addQuantity,ProductComponent, updateSalary, ViewEmpComponent ],
   providers: [AuthService, AuthGuard, FlashMessagesService],
   bootstrap: [AppComponent]
 })

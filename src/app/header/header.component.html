@@ -95,20 +95,6 @@ min-height: 25px;'>
               <a mat-list-item routerLink="Add_employee" >  <mat-icon>add </mat-icon> <span>إضافة موظف جديد  </span></a>
             </mat-expansion-panel>
 
-            <mat-expansion-panel 
-            [hideToggle]='true'
-            class="primary" [style.border-right]="TagState ?  '5px solid   #6dc4e2': '' " 
-            (opened)="TagState = true"
-            (closed)="TagState = false"
-            [style.box-shadow]="true ? '0 0 0 ':'0 0 0 ' ">
-              <mat-expansion-panel-header>
-                <mat-panel-title>
-                  <mat-icon> local_offer </mat-icon> <span>التصنيفات  </span>
-                </mat-panel-title>
-              </mat-expansion-panel-header>
-                <a mat-list-item routerLink="tags" >  <mat-icon>local_offer </mat-icon> <span>عرض التصنيفات    </span></a>
-                <a  *ngIf="false" mat-list-item routerLink="Add_Tag" >  <mat-icon>add</mat-icon> <span>إضافة تصنيف جديد   </span></a>
-              </mat-expansion-panel>
         
           <mat-expansion-panel 
           [hideToggle]='true'
@@ -122,10 +108,12 @@ min-height: 25px;'>
                 </mat-panel-title>
               </mat-expansion-panel-header>
                 <a mat-list-item routerLink="product" >  <mat-icon>work </mat-icon> <span>عرض المنتجات    </span></a>
-                <a mat-list-item routerLink="Add_Product/:id" >  <mat-icon>add </mat-icon> <span>إضافة منتج جديد   </span></a>
+                <a mat-list-item routerLink="Add_Product/:id" >  <mat-icon>add </mat-icon> <span>إضافة منتج جديد   </span></a>               
+                <a  *ngIf="false" mat-list-item routerLink="Add_Tag" >  <mat-icon>add</mat-icon> <span>إضافة تصنيف جديد   </span></a>
               </mat-expansion-panel>
           
 
+              
           <mat-expansion-panel 
           [hideToggle]='true'
           class="primary" [style.border-right]="ChartsState ?  '5px solid   #6dc4e2': '' " 
@@ -134,13 +122,12 @@ min-height: 25px;'>
           [style.box-shadow]="true ? '0 0 0 ':'0 0 0 ' ">
               <mat-expansion-panel-header>
                 <mat-panel-title>
-                  <mat-icon> show_chart </mat-icon> <span>التقارير والرسوم البيانية  </span>
+                 <a routerLink="charts"><mat-icon> show_chart </mat-icon> <span>التقارير والرسوم البيانية  </span> </a> 
                 </mat-panel-title>
               </mat-expansion-panel-header>
-                <a mat-list-item routerLink="charts" >  <mat-icon>show_chart </mat-icon> <span>عرض التقارير     </span></a>
               </mat-expansion-panel>
      
-          <mat-expansion-panel 
+          <!-- <mat-expansion-panel 
           [hideToggle]='true'
           class="primary"
           [style.border-right]="InvState ?  '5px solid #6dc4e2': '' " 
@@ -153,7 +140,7 @@ min-height: 25px;'>
                 </mat-panel-title>
               </mat-expansion-panel-header>
                 <a mat-list-item routerLink="inventory" >  <mat-icon>store </mat-icon> <span>عرض المخزون      </span></a>
-             </mat-expansion-panel>
+             </mat-expansion-panel> -->
           </mat-accordion>
       </mat-nav-list>
 

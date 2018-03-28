@@ -18,12 +18,13 @@ export class TagComponent implements OnInit {
   tempProducts: Product[];
 
   constructor(private router:Router , private db :AngularFireDatabase,
-     public dialog: MatDialog, public flashMensaje: FlashMessagesService
-    )  { }
+     public dialog: MatDialog, public flashMensaje: FlashMessagesService )  { }
+     
   public title="التصنيفات";
   public AddBtn="إضافة تصنيف ";
- 
-  
+  public AddBtnn="إضافة منتج";
+  public selected="ALLCAT";
+  selectedValue: string;
   openDialog(category: Category): void {
     let dialogRef = this.dialog.open(viewTag, {
       width:"auto",
@@ -74,16 +75,23 @@ delete(category: Category){
       });
       }
       this.productList = [];
+      this.productToggle(this.selected);
     });
     //this.category.reverse();
     }
     productToggle(category:string){
       this.tempProducts = [];
-      this.productList.forEach(item =>{
-        if(item.category == category)
-          this.tempProducts.unshift(item as Product);
-      });
-
+      if (category=="ALLCAT")
+      this.tempProducts = this.productList;
+      else
+      {
+        this.productList.forEach(item =>{
+          if(item.category == category)
+            this.tempProducts.unshift(item as Product);
+        });
+      }
+      console.log( this.tempProducts);
+      console.log( category);
     }
     viewProduct(product: Product)
 {

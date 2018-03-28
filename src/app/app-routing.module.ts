@@ -13,8 +13,6 @@ import { ViewEmpComponent } from './empolyee/view-emp/view-emp.component';
 
 import { AddProductComponent } from './product/add-product/add-product.component';
 import { ViewProductComponent } from './product/view-product/view-product.component';
-import { InvComponent } from './product/inv/inv.component';
-import { addQuantity } from './product/inv/inv.component';
 
 
 import { TagComponent } from './tag/tag.component';
@@ -39,12 +37,12 @@ const routes: Routes = [
         {path: 'empolyee' , component: EmpolyeeComponent },
         {path: 'product', component: ProductComponent},
         {path: 'tags', component: TagComponent},
-        {path: 'inventory', component: InvComponent},
         {path: 'addQuantity', component: ViewInv},
         {path: 'charts', component: ChartsComponent},
         {path: 'Add_employee', component: AddEmpComponent},
         {path: 'Add_Tag', component: AddTagComponent},
         {path: 'Add_Product/:id', component: AddProductComponent},
+        {path: 'Add_Product/', component: AddProductComponent},
         {path: 'View_employee/:id', component: ViewEmpComponent},
         {path: 'View_Tag/:id', component: ViewTagComponent},
         {path: 'View_Producct/:id', component: ViewProductComponent}, 
@@ -63,6 +61,5 @@ exports: [RouterModule]
 })
 export class AppRoutingModule { }
 export const routingComponents = [ ViewInv ,HomePageComponent, ViewProductComponent , AddProductComponent , TagComponent ,ChartsComponent,
-    ViewTagComponent , AddTagComponent , ProductComponent , EmpolyeeComponent,InvComponent,NoFoundPageComponent,
-    MyFormComponent, HeaderComponent, ViewEmpComponent , AddEmpComponent , TagComponent, SalesReportComponent ,IvcReportComponent,
-    ManagerComponent];
+    ViewTagComponent , AddTagComponent , ProductComponent , EmpolyeeComponent,NoFoundPageComponent,
+    MyFormComponent, HeaderComponent, ViewEmpComponent , AddEmpComponent , TagComponent, SalesReportComponent ,IvcReportComponent];
