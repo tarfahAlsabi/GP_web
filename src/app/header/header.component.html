@@ -50,7 +50,7 @@ min-height: 25px;'>
 
 <mat-menu #menu>
 
-<button mat-menu-item>
+<button mat-menu-item (click)="profile()">
 
   <mat-icon> account_box </mat-icon>
   <span> الحساب الشخصي </span>
@@ -61,7 +61,7 @@ min-height: 25px;'>
     <span> الإعدادات  </span>
   </button>
 
-  <button mat-menu-item>
+  <button mat-menu-item >
       <mat-icon> help </mat-icon>
       <span> المساعدة  </span>
     </button>

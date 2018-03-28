@@ -30,6 +30,8 @@ import { NoFoundPageComponent } from './control/no-found-page/no-found-page.comp
 
 import { IvcReportComponent } from './product/ivc-report/ivc-report.component';
 
+import { ManagerComponent } from './manager/manager.component';
+
 
 const routes: Routes = [
     {path: '', component: HomePageComponent},
@@ -47,7 +49,8 @@ const routes: Routes = [
         {path: 'View_Tag/:id', component: ViewTagComponent},
         {path: 'View_Producct/:id', component: ViewProductComponent}, 
         {path: 'sales-report', component: SalesReportComponent}, 
-        {path: 'Inventory report',component: IvcReportComponent}
+        {path: 'Inventory report',component: IvcReportComponent},
+        {path: 'manager',component: ManagerComponent}
     ]},   
     {path: '**', component: NoFoundPageComponent} //لازم تكون اخر شيء
 ];
@@ -61,4 +64,5 @@ exports: [RouterModule]
 export class AppRoutingModule { }
 export const routingComponents = [ ViewInv ,HomePageComponent, ViewProductComponent , AddProductComponent , TagComponent ,ChartsComponent,
     ViewTagComponent , AddTagComponent , ProductComponent , EmpolyeeComponent,InvComponent,NoFoundPageComponent,
-    MyFormComponent, HeaderComponent, ViewEmpComponent , AddEmpComponent , TagComponent, SalesReportComponent ,IvcReportComponent];
+    MyFormComponent, HeaderComponent, ViewEmpComponent , AddEmpComponent , TagComponent, SalesReportComponent ,IvcReportComponent,
+    ManagerComponent];

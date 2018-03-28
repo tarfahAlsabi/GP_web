@@ -293,7 +293,18 @@
         <input type="password" [(ngModel)]="password" placeholder="الرقم السري" required>
         <input type="text" [(ngModel)]="phone" placeholder="رقم الجوال"  required>
         <input type="text" [(ngModel)]="businessname" placeholder="اسم المشروع"  required>
-        <button id="contact2" class="btn btn-primary" (click)="onSubmitAddUser()"><i class="fa fa-paper-plane" ></i> تأكيد</button>
+        <div class="form-group" >
+            <label>
+              <input  type="file" (change)="detectFiles($event)">
+            </label>        
+        </div>
+        <div *ngIf="num" >
+            <div class="progress">
+              <div class="progress-bar progress-bar-animated" [ngStyle]="{ 'width': num + '%' }"></div>
+            </div>
+            التحميل: | : {{num}}% اكتمل
+        </div>
+        <button id="contact2" class="btn btn-primary"  (click)="onSubmitAddUser()"><i class="fa fa-paper-plane" ></i> تأكيد</button>
       </div>
   </div>
   

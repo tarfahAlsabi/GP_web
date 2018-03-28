@@ -44,6 +44,9 @@ export class EmpolyeeComponent implements OnInit {
     viewemployee(employee : Employee)
     { 
       //this.employeeService.delete(employee);
+     // if (window.something  === 'testing')
+     // console.log(window.something)
+
       
       let id=employee.$key+","+employee.email+","+employee.firstName+","+employee.lastName+","+employee.phone+","+employee.picPATH+","+employee.salary+","+employee.picPATH+","+employee.username+","+employee.password;
       this.router.navigate(['mainPage/View_employee/',id]);

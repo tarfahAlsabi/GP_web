@@ -67,6 +67,10 @@ export class HeaderComponent  {
     this.mobileQuery.removeListener(this._mobileQueryListener);
   }
 
+  profile(){
+    this.router.navigate(['mainPage/manager']);
+  }
+
 
   shouldRun = true;
 }

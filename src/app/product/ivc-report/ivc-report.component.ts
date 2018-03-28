@@ -29,7 +29,7 @@ export class IvcReportComponent implements OnInit {
     x.snapshotChanges().subscribe(item => {
     for(var element2 in item) {
       var y = item[element2].payload.key;
-    this.db.list('products/'+y).snapshotChanges().subscribe(element => {
+    this.db.list(window.name+'/products/'+y).snapshotChanges().subscribe(element => {
       element.forEach(element2 => {
       var y = element2.payload.toJSON();
       y["$key"] = element2.key;

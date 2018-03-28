@@ -13,7 +13,7 @@ products: InnerProduct[];
   constructor(private firebase: AngularFireDatabase) { }
 
   getData(){ 
-    this.allReceipts = this.firebase.list('receipts');
+    this.allReceipts = this.firebase.list(window.name+'/receipts');
     return this.allReceipts;
   }
 

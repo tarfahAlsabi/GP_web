@@ -8,25 +8,48 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/switchMap'
 import 'rxjs/add/operator/map';
 import { Manager } from './manager.model';
+import { AngularFireDatabase } from 'angularfire2/database';
+import { Key } from 'protractor';
+import { environment } from '../../environments/environment.prod';
 
 
 @Injectable()
 export class AuthService {
 
-  constructor(public afAuth: AngularFireAuth) { }
+  constructor(public afAuth: AngularFireAuth, private db:AngularFireDatabase) { }
 
-  async register(email:string,password:string){
+   register(email:string,password:string,username,firstName,lastName,phone,salary,picPATH,picName){
     try{
-  const result = await this.afAuth.auth.createUserWithEmailAndPassword(email,password);
+      var secondaryApp = firebase.initializeApp(environment.firebaseConfig, "Secondary");
+  //const result = this.afAuth.auth.createUserWithEmailAndPassword(email,password);
 
- 
+  secondaryApp.auth().createUserWithEmailAndPassword(email,password).then(function(firebaseUser) {
+    var x = firebaseUser.uid;
+    firebase.database().ref(window.name+'/employees').child(x).set({
+      username: username,  
+      email: email,
+      firstName: firstName,
+      lastName: lastName,
+      password: password,
+      phone: phone,
+      salary: salary,
+      picPATH: picPATH,
+      picName: picName
+      });
+    //I don't know if the next statement is necessary 
+    secondaryApp.auth().signOut();
+    return x;
+});
+ //result.then((r)=>{
+   //console.log(r.uid);
+  // })
 
-   if(result){
-    return result.uid;
+  // if(result){
+  //  return result.uid;
 
 
      // this.navCtrl.push(HomePage);
-    }
+ //   }
     
      }
      catch(e){
@@ -47,16 +70,46 @@ export class AuthService {
     });
   }
   
-  registerManager(manager: Manager){
-    firebase.database().ref('manager').set({
-      email: manager.email,
-      fname: manager.fname,
-      lname: manager.lname,
-      password: manager.password,
-      phone: manager.phone,
-      businessname: manager.businessname
+  
+  registerManager(email,password,fname,lname,phone,businessname,picName,picPath){
+    firebase.database().ref(businessname+'/manager').set({
+      email: email,
+      fname: fname,
+      lname: lname,
+      password: password,
+      phone: phone,
+      businessname: businessname,
+      picPath: picPath,
+      picName: picName
       });
   }
+
+  loginTestFirst(email: string, pass: string){
+    console.log('s')
+
+   var ref= firebase.database().ref();
+   ref.orderByChild("email").equalTo(email).once("value", function(snapshot) {
+    console.log(snapshot.key);
+  });
+
+  /*  firebase.database().ref().child('manager').child('email').isEqual("najla123@gmail.com").snapshotChanges().subscribe(item=>{
+      for(var element2 in item) {
+        var y = item[element2].payload.key;
+      this.db.list(y+'/manager').snapshotChanges().subscribe(element => {
+        element.forEach(element2 => {
+        var y = element2.payload.toJSON();
+        y["$key"] = element2.key;
+       if(y["email"] == 'najla123@gmail.com'){
+         console.log('true')
+         return true;
+        }
+        });
+      });
+      }
+    });*/
+   // return false;
+  }
+ 
 
   loginEmail(email: string, pass: string) {
     return new Promise((resolve, reject) => {
@@ -71,6 +124,7 @@ export class AuthService {
   }
 
   logout() {
+    window.name = '';
     return this.afAuth.auth.signOut();
   }
 

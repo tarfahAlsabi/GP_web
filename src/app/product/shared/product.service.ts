@@ -15,7 +15,7 @@ export class ProductService {
   constructor(private db :AngularFireDatabase,private firebase : AngularFireDatabase) { }
   
   getData(){
-    this.productList = this.db.list('products');
+    this.productList = this.db.list(window.name+'/products');
     return this.productList;
   }
 
@@ -36,7 +36,7 @@ export class ProductService {
         product.category = "أخرى";
       }
 
-    this.firebase.list('products/'+ product.category).push({
+    this.firebase.list(window.name+'/products/'+ product.category).push({
       name: product.name,
       price: product.price,
       cost: product.cost,
@@ -57,7 +57,7 @@ export class ProductService {
         product.picName = fileName;
     }
     
-    this.firebase.list('products/'+ product.category).update(product.$key,
+    this.firebase.list(window.name+'/products/'+ product.category).update(product.$key,
       {
         name: product.name,
         price: product.price,
@@ -71,7 +71,7 @@ export class ProductService {
   } 
  
   deleteProduct(product : Product){
-    this.firebase.list('products/'+ product.category).remove(product.$key);
+    this.firebase.list(window.name+'/products/'+ product.category).remove(product.$key);
     this.deletePicFromStorage(product.picName);
   }
   deletePicFromStorage(picName: string){
@@ -85,7 +85,7 @@ export class ProductService {
 
   updateProductInv(product : Product, newInv: number){
 
-    this.firebase.list('products/'+ product.category).update(product.$key,
+    this.firebase.list(window.name+'/products/'+ product.category).update(product.$key,
       {
         inventory: newInv,
       });

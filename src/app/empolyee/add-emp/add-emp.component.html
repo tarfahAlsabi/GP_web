@@ -18,25 +18,25 @@
     <tr> 
         <td>
         <mat-form-field class="example-full-width">
-        <input matInput class="form-control" name="firstName" #firstName="ngModel" 
+        <input matInput id="fname"class="form-control" name="firstName" #firstName="ngModel" 
         [(ngModel)]="employeeService.selectedEmployee.firstName" 
-        placeholder="الاسم الأول" required>
+        placeholder="الاسم الأول" minlength="2" required>
       </mat-form-field>
         </td>
        </tr>
        <tr>
         <td>
-      <div [hidden]="firstName.valid || firstName.pristine"
-      class="alert alert-danger">
-      <label class="red">*الأسم الأول مطلوب </label>
-     </div>
+      <div *ngIf="firstName.errors && (firstName.dirty || firstName.touched)"  class="alert alert-danger">
+          <div [hidden]="!firstName.errors.minlength" class="red">*يجب ان يكون الأسم الأول على الاقل متكون من حرفين</div>
+          <div [hidden]="!firstName.errors.required" class="red">*الأسم الأول مطلوب </div>
+    </div>
         </td>
       </tr>
 
        <tr>
         <td>
       <mat-form-field class="example-full-width">
-          <input matInput class="form-control" name="lastName" #lastName="ngModel" 
+          <input matInput class="form-control" minlength="3" name="lastName" #lastName="ngModel" 
           [(ngModel)]="employeeService.selectedEmployee.lastName" 
           placeholder="العائلة" required>
         </mat-form-field>
@@ -45,10 +45,10 @@
         <tr>
 
      <td>
-      <div [hidden]="lastName.valid || lastName.pristine"
-      class="alert alert-danger">
-      <label class="red">*العائلة مطلوبة </label>
-     </div>
+        <div *ngIf="lastName.errors && (lastName.dirty || lastName.touched)"  class="alert alert-danger">
+            <div [hidden]="!lastName.errors.minlength" class="red">*يجب ان يكون أسم العائلة على الاقل متكون من  ثلاثة أحرف</div>
+            <div [hidden]="!lastName.errors.required" class="red">*أسم العائلة مطلوب </div>
+      </div>
      </td>
 
       </tr>
@@ -58,16 +58,16 @@
         <mat-form-field class="example-full-width">
         <input matInput class="form-control" type="email" name="email" #email="ngModel" 
         [(ngModel)]="employeeService.selectedEmployee.email" 
-        placeholder="البريد الإلكتروني" required>
+        placeholder="البريد الإلكتروني"  pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" required>
       </mat-form-field>
       </td>
     </tr>
       <tr>
       <td>
-        <div [hidden]="email.valid || email.pristine"
-        class="alert alert-danger">
-       <label class="red"> *البريد الإلكتروني مطلوب </label>
-       </div>
+          <div *ngIf="email.errors && (email.dirty || email.touched)"  class="alert alert-danger">
+              <div [hidden]="!email.errors.required" class="red">*البريد الإلكتروني مطلوب</div>
+              <div [hidden]="!email.errors.pattern" class="red">*فورمات البريد الإلكتروني غير صحيحة </div>
+        </div>
           </td>
       </tr>
       
@@ -76,17 +76,17 @@
       <mat-form-field class="example-full-width">
         <input matInput type="tel" class="form-control" name="phone" #phone="ngModel" 
         [(ngModel)]="employeeService.selectedEmployee.phone" 
-        minlength="10" placeholder="الجوال">
+        minlength="10" pattern="[0-9]*" placeholder="الجوال">
         <mat-icon matSuffix>phone</mat-icon>
       </mat-form-field>
     </td>
   </tr>
     <tr>
     <td>
-      <div [hidden]="phone.valid || phone.pristine"
-      class="alert alert-danger">
-      <label class="red"> *رقم الجوال يجب ان يكون أن لا يقل عن 10 أرقام </label>
-     </div>
+        <div *ngIf="phone.errors && (phone.dirty || phone.touched)"  class="alert alert-danger">
+            <div [hidden]="!phone.errors.pattern" class="red">*الجوال يجب ان يحتوي على أرقام فقط</div>
+            <div [hidden]="!phone.errors.minlength" class="red"> *رقم الجوال يجب ان يكون أن لا يقل عن 10 أرقام </div>
+      </div>
     </td>
   </tr>
       
@@ -103,8 +103,10 @@
 
           <tr>
           <td>
+            
       <div class="form-group" >
         <label>
+           <h4>صورة الموظف:</h4>
           <input  type="file" (change)="detectFiles($event)">
         </label>        
         </div>

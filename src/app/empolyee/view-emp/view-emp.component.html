@@ -1,3 +1,15 @@
+<mat-toolbar  class="PageTitle">
+    <mat-toolbar-row>
+               
+                <span class="toolbar-spacer"></span>
+
+        <span color="primary">   <h2> {{ title }} </h2> </span>
+          
+        <span class="toolbar-spacer"></span>
+
+    </mat-toolbar-row>
+  
+</mat-toolbar>
 <mat-card class="example-card">
     <mat-card-header>
       <div mat-card-avatar class="example-header-image"><img src={{img}}></div>
@@ -37,6 +49,7 @@
       <button mat-button>عرض تقرير أداء الموظف </button>
       <button mat-button>عرض تقرير ساعات عمل الموظف </button>
       <button mat-button (click)="delete()">تسريح الموظف  </button>
+      <button mat-button (click)="openDialog()">زيادة راتب الموظف </button>
     </mat-card-actions>
   </mat-card>
   

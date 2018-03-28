@@ -20,9 +20,8 @@ export class EmployeeService {
     private firebase: AngularFireDatabase,private router:Router,private db:AngularFireDatabase ) {}
   
   getData(){ 
-    this.employeeList = this.firebase.list('employees');
+    this.employeeList = this.firebase.list(window.name+'/employees');
     return this.employeeList;
-
   }
   insert(employee : Employee, path: string,fileName: string){ 
    
@@ -67,9 +66,33 @@ export class EmployeeService {
     //fire alarm
  // }
      //let n;
-     var fRef = firebase.database().ref('employees');
-    this.temp='1';
-      this.authService.register(employee.email,employee.password).then(
+   //  var fRef = firebase.database().ref(window.name+'/employees');
+    //this.temp='1';
+    var x=  this.authService.register(employee.email,employee.password,employee.username,
+      employee.firstName,employee.lastName,employee.phone,employee.salary, employee.picPATH
+      , employee.picName );
+   // console.log('windo: '+window.name);
+
+   /* console.log(x);
+        if(x != 'fail')
+        {fRef.child(x).set({
+          username: employee.username,  
+          email: employee.email,
+          firstName: employee.firstName,
+          lastName: employee.lastName,
+          password: employee.password,
+          phone: employee.phone,
+          salary: employee.salary,
+          picPATH: employee.picPATH,
+          picName: employee.picName
+          });
+          console.log('complited')
+
+        }else{
+          console.log('error');
+        }*/
+
+     /* .then(
       (v) => {
         console.log(v)
         if(v != 'fail')
@@ -91,8 +114,13 @@ export class EmployeeService {
           console.log('s');
           this.temp='';
           this.temp = '0';
-          }
-        /*this.firebase.list('employees').push({
+        }
+       
+
+    });
+    console.log(this.temp);
+    return this.temp;*/
+     /*this.firebase.list('employees').push({
           username: employee.username,  
           email: employee.email,
           firstName: employee.firstName,
@@ -105,10 +133,6 @@ export class EmployeeService {
           });*/
     //  }).catch((err) =>{
   //    x= false;
-
-    });
-    console.log(this.temp);
-    return this.temp;
   }
   
 
@@ -123,7 +147,7 @@ export class EmployeeService {
     }
    // let admin = require('firebase-admin');
  //   firebase.auth().currentUser.(employee.$key)..deleteUser(employee.email);
-    this.router.navigate(['empolyee']);
+    this.router.navigate(['mainPage/empolyee']);
   }
 
   }

@@ -1,0 +1,23 @@
+<div class="ViewsContainer">
+    <div class="dialogTitle">
+    <h1 mat-dialog-title> تعديل بيانتاتك الشخصية</h1>
+    <div mat-dialog-content>
+    <mat-form-field>
+        <input matInput  type="string" #fname="ngModel" [(ngModel)]="data.fname" min="0" >
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput  type="string" #lname="ngModel" [(ngModel)]="data.lname" min="0" >
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput  type="string" #phone="ngModel" [(ngModel)]="data.phone" min="0" >
+    </mat-form-field>
+      
+    </div>
+  </div>
+    <div mat-dialog-actions class="DialogOptionBtn">
+      
+      <button mat-button [mat-dialog-close]="addquantity(fname,lname,phone)" cdkFocusInitial>تعديل </button>
+      <button mat-button [mat-dialog-close]=""  >إلغاء الأمر </button>
+    </div>
+    
+    </div>

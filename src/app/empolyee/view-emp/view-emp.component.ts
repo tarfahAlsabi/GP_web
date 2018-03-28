@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject  } from '@angular/core';
 
 //import { EmployeeService } from '../shared/employee.service';
 import { Employee } from '../shared/employee.model';
@@ -8,6 +8,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 
 import * as firebase from 'firebase'; 
 import { FlashMessagesService } from 'angular2-flash-messages';
+
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 
 
 @Component({
@@ -28,9 +30,10 @@ export class ViewEmpComponent implements OnInit {
   imgName: string;
   employee: Employee;
   //employeeList: Employee[];
+  public title ='بيانات الموظف'
 
-  constructor(private route: ActivatedRoute,private router:Router
-    ,public flashMensaje: FlashMessagesService) { }
+  constructor(private route: ActivatedRoute, private router:Router
+    ,public flashMensaje: FlashMessagesService, public dialog: MatDialog) { }
 /*name:String="أحمد الصالح ";
 Id:String="MyID!";
 Email:string="aa@aa.a";
@@ -58,8 +61,8 @@ salary:number=5000;*/
 delete(){
 
    // this.employeeService.delete(this.employee);
-   if (confirm('هل أنت متأكد من تسريح هذا المنتج؟') == true){
-   let s= firebase.database().ref('employees');
+   if (confirm('هل أنت متأكد من تسريح هذا الموظف؟') == true){
+   let s= firebase.database().ref(window.name+'/employees');
    s.child(this.key).remove();
    if(this.imgName != 'defaultEmployee.jpg'){
     let storageRef = firebase.storage().ref();
@@ -72,5 +75,43 @@ delete(){
 }
 }
 
+openDialog(): void {
+  let dialogRef = this.dialog.open(updateSalary, {
+
+    data: { name: this.name,salary: this.salary } 
+  });
+
+  dialogRef.afterClosed().subscribe(result => {
+    console.log('The dialog was closed');
+    if(result){
+      let s= firebase.database().ref(window.name+'/employees');
+      s.child(this.key).update({salary: result});
+      this.salary=result;
+      console.log(this.salary)
+      this.flashMensaje.show('تم تعديل راتب الموظف بنجاح.',
+      {cssClass: 'alert-success', timeout: 4000});
+  }
+});
+}
+
+
+}
+@Component({
+  selector: 'update-salary',
+  templateUrl: './update-Salary.html',
+  styleUrls: ['./view-emp.component.css']
+})
+export class updateSalary {
+
+  name:string;
+  newSalary:number;
+  constructor(
+    public dialogRef: MatDialogRef<updateSalary>,
+    @Inject(MAT_DIALOG_DATA) public data: any) { }
+
+  addquantity(newSalary:number ,salary:number)
+  {
+    return newSalary + salary;
+  }
 
 }

@@ -38,7 +38,7 @@ export class TagComponent implements OnInit {
   }
 delete(category: Category){
       if(confirm(' عند حذفك للتصنيف سوف تحذف جميع المنتجات هذا التصنيف هل أنت متأكد من الحذف؟ '))
-      {this.db.list('products').remove(category.$key).then( (res) => {
+      {this.db.list(window.name+'/products').remove(category.$key).then( (res) => {
         this.flashMensaje.show('.تم حذ التصنيف وجميع منتجاته بنجاح',
         {cssClass: 'alert-success', timeout: 4000});
         this.router.navigate(['mainPage']);
@@ -59,12 +59,12 @@ delete(category: Category){
       this.productList = [];
       this.category= [];
       console.log( this.category);
-      this.db.list('products').snapshotChanges().subscribe(item => {
+      this.db.list(window.name+'/products').snapshotChanges().subscribe(item => {
       for(var element2 in item) {
         var y = item[element2].payload.toJSON();
         y["$key"] = item[element2].key;
         this.category.unshift(y as Category);
-      this.db.list('products/'+item[element2].key).snapshotChanges().subscribe(element => {
+      this.db.list(window.name+'/products/'+item[element2].key).snapshotChanges().subscribe(element => {
         element.forEach(element2 => {
         var y = element2.payload.toJSON();
         y["$key"] = element2.key;
@@ -120,7 +120,7 @@ delete(category: Category){
     { 
       console.log(this.category)
       if(confirm(' عند حذفك للتصنيف سوف تحذف جميع منتجات هذا التصنيف هل أنت متأكد من الحذف؟ ') == true){
-      this.db.list('products').remove(this.category.$key);
+      this.db.list(window.name+'/products').remove(this.category.$key);
       /*.then( (res) => {
         this.flashMensaje.show('.تم حذ التصنيف وجميع منتجاته بنجاح',
         {cssClass: 'alert-success', timeout: 5000});

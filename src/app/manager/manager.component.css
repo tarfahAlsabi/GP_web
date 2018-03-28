@@ -55,3 +55,19 @@ mat-toolbar mat-toolbar-row span mat-form-field
 .toolbar-spacer {
     flex: 1 1 auto;
   }
+
+.dialogTitle , .DialogOptionBtn
+  {
+    display: -ms-inline-grid;;
+    direction: rtl;
+    align-content: center;
+}
+
+
+.ViewsContainer
+{
+    margin-right:15px; 
+    align-content: center;
+    align-self: center;
+    align-items: center;
+}

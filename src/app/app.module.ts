@@ -74,6 +74,7 @@ import {FlashMessagesModule} from 'angular2-flash-messages';
 import {FlashMessagesService} from 'angular2-flash-messages';
 import { AuthService } from './core/auth.service';
 import { AuthGuard } from './guards/auth.guard';
+import { updateSalary } from './empolyee/view-emp/view-emp.component';
 
 @NgModule({
   declarations: [
@@ -86,6 +87,7 @@ import { AuthGuard } from './guards/auth.guard';
     ViewEmpComponent,
     viewTag,
     addQuantity,
+    updateSalary,
    
   ],
   imports: [
@@ -143,7 +145,7 @@ import { AuthGuard } from './guards/auth.guard';
     CoreModule,
     FlashMessagesModule
   ],
-  entryComponents: [viewTag, TagComponent, addQuantity,InvComponent ],
+  entryComponents: [viewTag, TagComponent, addQuantity,InvComponent, updateSalary, ViewEmpComponent ],
   providers: [AuthService, AuthGuard, FlashMessagesService],
   bootstrap: [AppComponent]
 })

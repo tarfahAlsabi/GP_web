@@ -32,6 +32,7 @@ export class SalesReportComponent implements OnInit {
   temp : InnerProduct = new InnerProduct;
   startDate: Date;
   endDate: Date;
+
   
   constructor(private reportsService: ReportsService, private firebase: AngularFireDatabase
     ,public flashMensaje: FlashMessagesService
@@ -49,7 +50,7 @@ export class SalesReportComponent implements OnInit {
       var y = element.payload.toJSON();
     //  this.products = [];
       y["$key"] = element.key;
-      this.firebase.list('receipts/'+element.key+'/products').snapshotChanges().subscribe( item=> {
+      this.firebase.list(window.name+'/receipts/'+element.key+'/products').snapshotChanges().subscribe( item=> {
         item.forEach(element =>{
           var i = element.payload.toJSON();
           i["$key"] = element.key;
@@ -81,7 +82,6 @@ s(){
   //console.log(this.receiptList[2].products);
   this.products = [];
   if(this.receiptList.length != 0){
-    console.log('s');
     if(this.startDate && this.endDate){
       if(this.startDate <= this.endDate){
 
@@ -91,21 +91,20 @@ s(){
         for(let element in this.receiptList){
           let requireDate = this.receiptList[element].date;
           if( (requireDate >= this.startDate) &&  (requireDate <= this.endDate)){
-            console.log( this.receiptList[element].date );
             this.totalSales += this.receiptList[element].totalPrice;
             for(let element2 in this.receiptList[element].products)
             this.products.push(this.receiptList[element].products[element2] as InnerProduct);
           }
         }
-        console.log(this.products);
       if(this.products.length != 0){
-      this.products.sort;
+      this.products.sort(function(a, b) {
+        return a.category.localeCompare(b.category);
+      });
       let cat = this.products[0].category;
       let priceTemp = 0;
       let quantityTemp = 0;
       let x = 0;
       this.newProducts = [];
-      console.log("out side");
      // console.log(this.products[0]);
       let r = this.products;
 
@@ -117,7 +116,6 @@ s(){
           priceTemp += (this.products[element].price * this.products[element].quantity);
           quantityTemp += this.products[element].quantity;
         }else{
-          console.log("insid else");
           this.temp = {$key:"1",category: cat,price:priceTemp,quantity:quantityTemp}
           this.newProducts.push(this.temp as InnerProduct);
           cat = this.products[element].category;
@@ -149,6 +147,30 @@ s(){
     }
 
 }
+
+  categorysortiong(){
+    console.log('s')
+
+    this.newProducts.sort(function(a, b) {
+      return b.category.localeCompare(a.category);
+    });
+  }
+  priceSortiong(){
+    console.log('s')
+    this.newProducts.sort(function(a, b) {
+      return (b.quantity > a.quantity)? 1:((a.quantity > b.quantity)? -1 : 0);
+    //  return b.price.toString().localeCompare(a.price.toString());
+    });
+  }
+  quantitySortiong(){
+    console.log('s')
+    console.log(this.newProducts)
+
+    this.newProducts.sort(function(a, b) {
+      return (a.quantity > b.quantity)? 1:((b.quantity > a.quantity)? -1 : 0);
+    });
+    console.log(this.newProducts)
+  }
 
   changeDate(type: string, event: MatDatepickerInputEvent<Date>) 
 {

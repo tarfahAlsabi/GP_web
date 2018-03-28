@@ -76,7 +76,7 @@ export class ViewProductComponent implements OnInit {
   delete(){
      
       if (confirm('هل أنت متأكد من حذف هذا المنتج؟') == true) {
-       let s = firebase.database().ref('products/'+this.Tag).child(this.key).remove();
+       let s = firebase.database().ref(window.name+'/products/'+this.Tag).child(this.key).remove();
 
        if(this.imgName != 'defaultproduct.png'){
         let storageRef = firebase.storage().ref();

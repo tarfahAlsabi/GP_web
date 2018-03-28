@@ -49,12 +49,14 @@
   </mat-toolbar-row>
 </mat-toolbar>
 <flash-messages></flash-messages>
+<button (click)="quantitySortiong()" style="float:left" mat-button >عرض التقرير</button>
+
 <mat-tab-group class="tab-group">
     <mat-tab label="التقرير" >
-      <div class="tabContent" (click)="s()">
-          <table matSort   class="reportContent" >
+      <div class="tabContent">
+          <table matSort  class="reportContent" >
               <tr class="head">
-                <th *ngFor="let header of tableheader" [mat-sort-header]="header">{{header}} </th>
+                <th *ngFor="let header of tableheader" [mat-sort-header]="header" (click)="priceSortiong()">{{header}} </th>
 
               </tr>
             

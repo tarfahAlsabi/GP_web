@@ -122,8 +122,10 @@ export class AddProductComponent  {
 
      
     cancel(){
-      this.resetForm();
-      this.router.navigate(['mainPage/product']);
+      if(confirm(' هل أنت متأكد من إلغاء عملية الإضافة؟ ') == true){
+        this.resetForm();
+        this.router.navigate(['mainPage/product']);
+      }
     }
 
   resetForm(productForm?: NgForm) {

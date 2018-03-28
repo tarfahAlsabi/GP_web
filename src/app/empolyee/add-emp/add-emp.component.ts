@@ -66,31 +66,33 @@ onSubmit(employeeForm: NgForm) {
     () => { 
       // upload success
       let r = this.employeeService.insert(employeeForm.value,uploadTask.snapshot.downloadURL,file.name);
-      if(r == '1')
-       { this.resetForm(employeeForm);
+     // if(r == '1'){
+        this.resetForm(employeeForm);
          this.router.navigate(['mainPage/empolyee']).then( (res) => {
           this.flashMensaje.show('تم إضافة الموظف بنجاح.',
           {cssClass: 'alert-success', timeout: 4000});
-        });}
+        });//}
      // this.tostr.success('Submitted Succcessfully', 'Employee Register');
     }
   );
 }else{
   let x = this.employeeService.insert(employeeForm.value, 'none','none');
   console.log(x);
-  if(x == '1')
-    {this.resetForm(employeeForm);
+  //if(x == '1'){
+    this.resetForm(employeeForm);
      this.router.navigate(['mainPage/empolyee']).then( (res) => {
       this.flashMensaje.show('تم إضافة الموظف بنجاح.',
       {cssClass: 'alert-success', timeout: 4000});
     });
-  }
+ // }
  // this.tostr.success('Submitted Succcessfully', 'Employee Register');
 }
 }
 cancel(){
+  if(confirm(' هل أنت متأكد من إلغاء عملية الإضافة؟ ') == true){
   this.resetForm();
   this.router.navigate(['mainPage/empolyee']);
+}
 }
 
 resetForm(employeeForm?: NgForm) {

@@ -8,6 +8,7 @@ import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 import {AuthService } from '../core/auth.service';
 import { FlashMessagesService } from 'angular2-flash-messages';
 import { Manager } from '../core/manager.model'
+import * as firebase from 'firebase';
 
 
 @Component({
@@ -32,7 +33,11 @@ export class HomePageComponent implements OnInit {
   businessname: string;
   email: string;
   password: string;
+  picPath: string;
+  picName: string;
   manager: Manager;
+  selectedFiles: FileList;
+  num: number;
 
   //login
   emailLog: string;
@@ -60,16 +65,70 @@ ngOnInit() {
     }
   });
 }
+detectFiles(event) {
+  this.selectedFiles = event.target.files;
 
+}
+addFileThenRegistuer(){
+  if(this.selectedFiles){
+    const file = this.selectedFiles.item(0);
+    const storageRef = firebase.storage().ref(file.name);
+    const uploadTask = storageRef.put(file); 
+  
+    uploadTask.on(firebase.storage.TaskEvent.STATE_CHANGED,
+      (snapshot) =>  {
+        // upload in progress
+  //     this.num = (uploadTask.snapshot.bytesTransferred / uploadTask.snapshot.totalBytes) * 100
+      },
+      (error) => {
+        // upload failed
+        console.log(error)
+      },
+      () => { 
+        // upload success
+        this.picPath = uploadTask.snapshot.downloadURL;
+        this.picName = file.name;
+        this.onSubmitAddUser();
+      }
+    );
+  }else{
+    this.picPath = 'https://firebasestorage.googleapis.com/v0/b/erad-system.appspot.com/o/defaultEmployee.jpg?alt=media&token=cb0d86a8-cea9-4f19-9177-d12d0a054b62';
+     this.picName = 'defaultEmployee.jpg';
+     this.onSubmitAddUser();
+    }
+}
 onSubmitAddUser() {
   this.authService.registerUser(this.email, this.password)
   .then((res) => {
+    window.name = this.businessname;
     this.flashMensaje.show('عملية التسجيل ناجحة مرحبا بك',
     {cssClass: 'alert-success', timeout: 5000});
-    console.log('enter signup');
-    this.manager = {email:this.email,password:this.password,fname:this.fname,lname:this.lname,phone:this.phone,businessname:this.businessname}
 
-    this.authService.registerManager(this.manager);
+    if(this.selectedFiles){
+      const file = this.selectedFiles.item(0);
+      const storageRef = firebase.storage().ref(file.name);
+      const uploadTask = storageRef.put(file); 
+    
+      uploadTask.then((r)=>{
+        this.picPath = uploadTask.snapshot.downloadURL;
+          this.picName = file.name;
+        
+          this.authService.registerManager(this.email,this.password,this.fname,this.lname,
+          this.phone,this.businessname,this.picName,this.picPath);
+      }).catch((erorr)=>{
+        console.log('pic error');
+      });
+    }else{
+      this.picPath = 'https://firebasestorage.googleapis.com/v0/b/erad-system.appspot.com/o/defaultEmployee.jpg?alt=media&token=cb0d86a8-cea9-4f19-9177-d12d0a054b62';
+       this.picName = 'defaultEmployee.jpg';
+       
+      this.authService.registerManager(this.email,this.password,this.fname,this.lname,
+        this.phone,this.businessname,this.picName,this.picPath);
+   //    this.onSubmitAddUser();
+      }
+   
+
+   
     this.router.navigate(['mainPage']);
    
   }).catch( (err) => {
@@ -79,10 +138,25 @@ onSubmitAddUser() {
   });
 
 }
+loginTestFirst(){
+  let x = this.authService.loginTestFirst(this.emailLog, this.passwordLog);
+  console.log(x);
+
+}
 
 onSubmitLogin() {
   this.authService.loginEmail(this.emailLog, this.passwordLog)
   .then( (res) => {
+
+firebase.database().ref().on('value', (snap) => {
+    let result = snap.val();
+    console.log(result)
+    for(let k in result){
+     if(result[k].manager.email == this.emailLog) 
+      window.name = result[k].manager.businessname;
+
+    }
+});
     this.flashMensaje.show('عملية تسجيل دخول ناجحة مرحبا بك',
     {cssClass: 'alert-success', timeout: 5000});
     this.router.navigate(['mainPage']);
