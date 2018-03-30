@@ -1,5 +1,6 @@
 export class Manager {
   $key:string;
+  ReceiptID: string;
   fname: string;
   lname: string;
   phone: string;

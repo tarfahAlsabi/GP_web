@@ -129,3 +129,13 @@ h1.example-app-name {
      `<body>` to be our scrolling element for mobile layouts. */
   flex: 1 0 auto;
 }
+img.rounded-circle{
+  width: 45px;
+  height: 45px;
+}
+size1 {
+  color: #6dc4e2;
+  font-size: 9px;
+  
+
+}

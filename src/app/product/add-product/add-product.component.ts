@@ -29,6 +29,7 @@ export class AddProductComponent  {
   category=[];
   cat;
   exist=true;
+
   constructor(private productService : ProductService, private route: ActivatedRoute,
   private router:Router,public flashMensaje: FlashMessagesService ,private db:AngularFireDatabase) {}
   

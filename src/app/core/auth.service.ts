@@ -71,8 +71,9 @@ export class AuthService {
   }
   
   
-  registerManager(email,password,fname,lname,phone,businessname,picName,picPath){
+  registerManager(ReceiptID,email,password,fname,lname,phone,businessname,picName,picPath){
     firebase.database().ref(businessname+'/manager').set({
+      ReceiptID:ReceiptID,
       email: email,
       fname: fname,
       lname: lname,

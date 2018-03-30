@@ -24,11 +24,11 @@
           <!-- <mat-error *ngIf="ID.invalid">خانة مطلوبة </mat-error> -->
       </mat-form-field> 
     </td>
-    </tr>
-    <tr>
+  </tr>
+  <tr>
   <td>
-    <div *ngIf="name.errors && (name.dirty || name.touched)"  class="alert alert-danger">
-      <div [hidden]="!name.errors.required" class="red">*الأسم الأول مطلوب </div>
+    <div *ngIf="name.errors && (name.dirty || name.touched)" class="alert alert-danger">
+      <mat-error [hidden]="!name.errors.required" >*ارجوا ادخال اسم المنتج</mat-error>
     </div>
       </td>
   </tr>
@@ -65,14 +65,15 @@
       </tr>
       <tr>
         <td>
-          <div *ngIf="price.errors && (price.dirty || price.touched)"  class="alert alert-danger">
-            <div [hidden]="!price.errors.required" class="red">*سعر البيع مطلوب </div>
+          <div *ngIf="price.errors && (price.dirty || price.touched)" class="alert alert-danger">
+            <mat-error [hidden]="!price.errors.required" >
+              *ارجو إدخال السعر المرغوب به لبيع المنتج</mat-error>
           </div>
      
         </td>
      <td>
-      <div *ngIf="cost.errors && (cost.dirty || cost.touched)"  class="alert alert-danger">
-        <div [hidden]="!cost.errors.required" class="red">*سعر الشراء مطلوب </div>
+      <div *ngIf="cost.errors && (cost.dirty || cost.touched)" class="alert alert-danger">
+        <mat-error [hidden]="!cost.errors.required" >*ارجو إدخال تكلفة شرائك للمنتج</mat-error>
       </div>
      </td>
       </tr>
@@ -87,34 +88,52 @@
             </mat-form-field>
           </td>
         </tr>
-          <tr>
+        <tr>
           <td>
-            <div *ngIf="inventory.errors && (inventory.dirty || inventory.touched)"  class="alert alert-danger">
-              <div [hidden]="!inventory.errors.required" class="red">*الكمية مطلوبة </div>
+            <div *ngIf="inventory.errors && (inventory.dirty || inventory.touched)" 
+            class="alert alert-danger">
+              <mat-error [hidden]="!inventory.errors.required" >
+                *ارجو إدخال الكمية المتوفرة من المنتج</mat-error >
             </div>
        
           </td>
    </tr>
        <tr>
         <td>
+         <!--   <mat-form-field class="example-full-width">
+                <input matInput  name="category" #category="ngModel" 
+                [(ngModel)]="productService.selectedProduct.category"
+                 placeholder="التصنيف">
+              </mat-form-field>-->
             <mat-form-field class="example-full-width">
               <mat-select  name="category" #category="ngModel" 
               [(ngModel)]="productService.selectedProduct.category"
-               placeholder="التصنيف">
+               placeholder="التصنيف"  required>
                <mat-option *ngFor="let category of cat" [value]=" category.$key ">
                 {{category.$key}}
               </mat-option>
               <mat-option  *ngIf="exist" value="غير ذلك">
                   غير ذلك
                 </mat-option>
+
             </mat-select>
             </mat-form-field>
           </td>
+      </tr>
+      <tr>
+          <td>
+            <div *ngIf="category.errors && (category.dirty || category.touched)"
+             class="alert alert-danger">
+            <mat-error >*أرجو أن اختار تصنيف للمنتج</mat-error>
+            </div>
+          </td>
         </tr>
+       
     <tr>
       <td>
        <div class="form-group" >
-         <label> 
+         <label>
+            <h4>صورة المنتج:</h4> 
            <input type="file" (change)="detectFiles($event)">
          </label>
       
@@ -128,7 +147,7 @@
       <div class="progress">
         <div class="progress-bar progress-bar-animated" [ngStyle]="{ 'width': num + '%' }"></div>
       </div>
-      Progress: | {{num}}% Complete
+      التحميل: | {{num}}% اكنمل
     </div>
   </td>
 </tr>

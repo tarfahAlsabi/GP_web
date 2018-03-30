@@ -49,6 +49,7 @@ export class ManagerComponent implements OnInit {
       });
   }
   edite(){
+    console.log(this.manager)
   }
 }
 
