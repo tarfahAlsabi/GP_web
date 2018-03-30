@@ -101,6 +101,7 @@ onSubmitAddUser() {
   this.authService.registerUser(this.email, this.password)
   .then((res) => {
     window.name = this.businessname;
+    var ReceiptID = 0;
     this.flashMensaje.show('عملية التسجيل ناجحة مرحبا بك',
     {cssClass: 'alert-success', timeout: 5000});
 
@@ -113,7 +114,7 @@ onSubmitAddUser() {
         this.picPath = uploadTask.snapshot.downloadURL;
           this.picName = file.name;
         
-          this.authService.registerManager(this.email,this.password,this.fname,this.lname,
+          this.authService.registerManager(ReceiptID,this.email,this.password,this.fname,this.lname,
           this.phone,this.businessname,this.picName,this.picPath);
       }).catch((erorr)=>{
         console.log('pic error');
@@ -122,7 +123,7 @@ onSubmitAddUser() {
       this.picPath = 'https://firebasestorage.googleapis.com/v0/b/erad-system.appspot.com/o/defaultEmployee.jpg?alt=media&token=cb0d86a8-cea9-4f19-9177-d12d0a054b62';
        this.picName = 'defaultEmployee.jpg';
        
-      this.authService.registerManager(this.email,this.password,this.fname,this.lname,
+      this.authService.registerManager(ReceiptID,this.email,this.password,this.fname,this.lname,
         this.phone,this.businessname,this.picName,this.picPath);
    //    this.onSubmitAddUser();
       }
@@ -139,8 +140,22 @@ onSubmitAddUser() {
 
 }
 loginTestFirst(){
-  let x = this.authService.loginTestFirst(this.emailLog, this.passwordLog);
-  console.log(x);
+  var flag;
+  firebase.database().ref().on('value', (snap) => {
+    let result = snap.val();
+    console.log(result)
+    for(let k in result){
+     if(result[k].manager.email == this.emailLog) {
+      window.name = result[k].manager.businessname;
+      flag = true;
+    }
+
+    }
+});
+if(flag == true)
+  this.onSubmitLogin();
+  else
+  console.log('error try again')
 
 }
 
@@ -148,15 +163,7 @@ onSubmitLogin() {
   this.authService.loginEmail(this.emailLog, this.passwordLog)
   .then( (res) => {
 
-firebase.database().ref().on('value', (snap) => {
-    let result = snap.val();
-    console.log(result)
-    for(let k in result){
-     if(result[k].manager.email == this.emailLog) 
-      window.name = result[k].manager.businessname;
 
-    }
-});
     this.flashMensaje.show('عملية تسجيل دخول ناجحة مرحبا بك',
     {cssClass: 'alert-success', timeout: 5000});
     this.router.navigate(['mainPage']);

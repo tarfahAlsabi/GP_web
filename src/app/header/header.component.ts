@@ -4,6 +4,8 @@ import {AuthService } from '../core/auth.service';
 
 import {Router} from '@angular/router';
 import { FlashMessagesService } from 'angular2-flash-messages';
+import { Manager } from '../core/manager.model';
+import { AngularFireDatabase } from 'angularfire2/database';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -23,13 +25,16 @@ export class HeaderComponent  {
   public username: string;
   public emailUser: string;
   //public fotoUsuario: string;
+  manager: Manager[];
+
 
 
   private _mobileQueryListener: () => void;
 
   constructor(changeDetectorRef: ChangeDetectorRef, media: MediaMatcher
     , public authService :AuthService , private router:Router
-    ,public flashMensaje: FlashMessagesService
+    ,public flashMensaje: FlashMessagesService, private firebase: AngularFireDatabase,
+    private db: AngularFireDatabase
 ) {
     this.mobileQuery = media.matchMedia('(max-width: 600px)');
     this._mobileQueryListener = () => changeDetectorRef.detectChanges();
@@ -48,6 +53,25 @@ export class HeaderComponent  {
         this.router.navigate(['']);
       }
     });
+    this.manager = [];
+    this.firebase.list(window.name).snapshotChanges().subscribe(item =>{
+      item.forEach( element =>{
+       for(var element2 in item) {
+         var y = item[element2].payload.key;
+         if(y == 'manager'){
+           
+         this.db.list(window.name+'/'+y).snapshotChanges().subscribe(element => {
+         element.forEach(element2 => {
+         var y = element2.payload.toJSON();
+         
+       //  y["$key"] = element2.key;
+        this.manager.push(y as Manager);
+         });
+       });}
+       }
+       this.manager = [];
+      });
+     });
   }
 
   onClickLogout() {

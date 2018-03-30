@@ -31,9 +31,14 @@ export class AddProductComponent  {
   category=[];
   cat;
   exist=true;
+<<<<<<< HEAD
   selectvalue:string;
   New="إضافة تصنيف جديد";
   constructor(private productService : ProductService, private route: ActivatedRoute,public dialog: MatDialog,
+=======
+
+  constructor(private productService : ProductService, private route: ActivatedRoute,
+>>>>>>> f535e854e163ed4185c382daf6566bb2acb4c5d6
   private router:Router,public flashMensaje: FlashMessagesService ,private db:AngularFireDatabase) {}
   
   

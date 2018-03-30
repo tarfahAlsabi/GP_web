@@ -27,8 +27,10 @@
        <tr>
         <td>
       <div *ngIf="firstName.errors && (firstName.dirty || firstName.touched)"  class="alert alert-danger">
-          <div [hidden]="!firstName.errors.minlength" class="red">*يجب ان يكون الأسم الأول على الاقل متكون من حرفين</div>
-          <div [hidden]="!firstName.errors.required" class="red">*الأسم الأول مطلوب </div>
+          <div [hidden]="!firstName.errors.minlength">
+            *يجب ان يكون الأسم الأول على الاقل متكون من حرفين</div>
+
+          <div [hidden]="!firstName.errors.required">*ارجوإدخال الأسم الأول</div>
     </div>
         </td>
       </tr>
@@ -46,8 +48,10 @@
 
      <td>
         <div *ngIf="lastName.errors && (lastName.dirty || lastName.touched)"  class="alert alert-danger">
-            <div [hidden]="!lastName.errors.minlength" class="red">*يجب ان يكون أسم العائلة على الاقل متكون من  ثلاثة أحرف</div>
-            <div [hidden]="!lastName.errors.required" class="red">*أسم العائلة مطلوب </div>
+            <div [hidden]="!lastName.errors.minlength">
+              *يجب ان يكون أسم العائلة على الاقل متكون من  ثلاثة أحرف</div>
+
+            <div [hidden]="!lastName.errors.required">*ارجو إدخال إسم العائلة</div>
       </div>
      </td>
 
@@ -58,15 +62,16 @@
         <mat-form-field class="example-full-width">
         <input matInput   type="email" name="email" #email="ngModel" 
         [(ngModel)]="employeeService.selectedEmployee.email" 
-        placeholder="البريد الإلكتروني"  pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" required>
+        placeholder="البريد الإلكتروني"  
+        pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" required>
       </mat-form-field>
       </td>
     </tr>
       <tr>
       <td>
           <div *ngIf="email.errors && (email.dirty || email.touched)"  class="alert alert-danger">
-              <div [hidden]="!email.errors.required" class="red">*البريد الإلكتروني مطلوب</div>
-              <div [hidden]="!email.errors.pattern" class="red">*فورمات البريد الإلكتروني غير صحيحة </div>
+              <div [hidden]="!email.errors.required">*ارجو إدخال البريد الإلكتروني</div>
+              <div [hidden]="!email.errors.pattern">*فورمات البريد الإلكتروني غير صحيحة</div>
         </div>
           </td>
       </tr>
@@ -84,8 +89,9 @@
     <tr>
     <td>
         <div *ngIf="phone.errors && (phone.dirty || phone.touched)"  class="alert alert-danger">
-            <div [hidden]="!phone.errors.pattern" class="red">*الجوال يجب ان يحتوي على أرقام فقط</div>
-            <div [hidden]="!phone.errors.minlength" class="red"> *رقم الجوال يجب ان يكون أن لا يقل عن 10 أرقام </div>
+            <div [hidden]="!phone.errors.pattern">*رقم الجوال يجب ان يحتوي على أرقام فقط</div>
+            <div [hidden]="!phone.errors.minlength">
+              *رقم الجوال يجب أن لا يقل عن 10 أرقام </div>
       </div>
     </td>
   </tr>
@@ -145,64 +151,6 @@
            </tr>
 
           </table>
-
-
-
-            <!-- <div class="formFilled">
-                  <mat-form-field class="example-full-width">
-                  <input matInput   name="firstName" #firstName="ngModel" [(ngModel)]="employeeService.selectedEmployee.firstName" placeholder="الاسم الأول" required>
-                </mat-form-field>
-                
-                <mat-form-field class="example-full-width">
-                    <input matInput   name="lastName" #lastName="ngModel" [(ngModel)]="employeeService.selectedEmployee.lastName" placeholder="العائلة" required>
-                  </mat-form-field>
-                </div>
-
-
-           
-                <div class="formFilled" >
-                  <mat-form-field class="example-full-width">
-                  <input matInput   name="email" #email="ngModel" [(ngModel)]="employeeService.selectedEmployee.email" placeholder="البريد الإلكتروني">
-                </mat-form-field>
-              </div>
-
-
-              <div class="formFilled">            
-                <mat-form-field class="example-full-width">
-                  <input matInput   name="phone" #phone="ngModel" [(ngModel)]="employeeService.selectedEmployee.phone" placeholder="الجوال">
-                  <mat-icon matSuffix>phone</mat-icon>
-                </mat-form-field>
-            </div>
-            
-            <div class="formFilled">
-                <mat-form-field class="example-full-width">
-                      <input  matInput   name="salary" #salary="ngModel" [(ngModel)]="employeeService.selectedEmployee.salary" placeholder="الراتب">
-                      <mat-icon matSuffix>money</mat-icon>   
-                </mat-form-field>
-              </div>
-
-              <br>
-                <div class="form-group formFilled" >
-                  <label>
-                    <input  type="file" (change)="detectFiles($event)">
-                  </label>
-                  
-                  </div>
-                
-                <div *ngIf="num" >
-                  <div class="progress">
-                    <div class="progress-bar progress-bar-animated" [ngStyle]="{ 'width': num + '%' }"></div>
-                  </div>
-                  Progress: | {{num}}% Complete
-                </div>
-                <div class="formFilled">
-                  <button  type="submit" color="primary" mat-button [disabled]="!employeeForm.valid">
-                     Submit</button>
-
-                     <button type="button" color="accent" mat-button (click)="resetForm(employeeForm)">
-                    <i class="fa fa-repeat"></i>
-                     Reset</button>
-                    </div>  -->
           </form>
           </mat-card-content>
   </mat-card>
