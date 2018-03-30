@@ -100,7 +100,6 @@
    </tr>
        <tr>
         <td>
-<<<<<<< HEAD
             <!-- [(ngModel)]="productService.selectedProduct.category" -->
             <mat-form-field class="example-full-width">
               <mat-select  name="category" #category="ngModel" 
@@ -108,30 +107,15 @@
                placeholder="التصنيف"
                [(ngModel)]='selectvalue'
                (change)='addNewCategory()'>
-=======
-         <!--   <mat-form-field class="example-full-width">
-                <input matInput  name="category" #category="ngModel" 
-                [(ngModel)]="productService.selectedProduct.category"
-                 placeholder="التصنيف">
-              </mat-form-field>-->
-            <mat-form-field class="example-full-width">
-              <mat-select  name="category" #category="ngModel" 
-              [(ngModel)]="productService.selectedProduct.category"
-               placeholder="التصنيف"  required>
->>>>>>> f535e854e163ed4185c382daf6566bb2acb4c5d6
                <mat-option *ngFor="let category of cat" [value]=" category.$key ">
                 {{category.$key}}
               </mat-option>
               <mat-option  *ngIf="exist" value="غير ذلك">
                   غير ذلك
                 </mat-option>
-<<<<<<< HEAD
                 <mat-option  [value]="New">
                   {{New}}
                 </mat-option>
-=======
-
->>>>>>> f535e854e163ed4185c382daf6566bb2acb4c5d6
             </mat-select>
             </mat-form-field>
           </td>
