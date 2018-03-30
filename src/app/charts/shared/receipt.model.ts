@@ -16,3 +16,19 @@ export class InnerProduct{
     quantity: number;
 
  }
+
+ export class productInfo
+ {
+    $key: string;
+    name: string
+ }
+
+ export class ItemInfo
+ {
+    date:string;
+    time:string;
+    cost:number;
+    price:number;
+    quantity:number;
+    employeename:string;
+ }

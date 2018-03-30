@@ -29,11 +29,13 @@ import { NoFoundPageComponent } from './control/no-found-page/no-found-page.comp
 import { IvcReportComponent } from './product/ivc-report/ivc-report.component';
 
 import { ManagerComponent } from './manager/manager.component';
+import { ProductReportComponent } from './charts/product-report/product-report.component';
 
 
 const routes: Routes = [
     {path: '', component: HomePageComponent},
     {path: 'mainPage', component: HeaderComponent ,children: [
+        {path: 'productReport' , component: ProductReportComponent },        
         {path: 'empolyee' , component: EmpolyeeComponent },
         {path: 'product', component: ProductComponent},
         {path: 'tags', component: TagComponent},
@@ -60,6 +62,6 @@ exports: [RouterModule]
 
 })
 export class AppRoutingModule { }
-export const routingComponents = [ ViewInv ,HomePageComponent, ViewProductComponent , AddProductComponent , TagComponent ,ChartsComponent,
+export const routingComponents = [ ViewInv ,ProductReportComponent,HomePageComponent, ViewProductComponent , AddProductComponent , TagComponent ,ChartsComponent,
     ViewTagComponent , AddTagComponent , ProductComponent , EmpolyeeComponent,NoFoundPageComponent, ManagerComponent,
     MyFormComponent, HeaderComponent, ViewEmpComponent , AddEmpComponent , TagComponent, SalesReportComponent ,IvcReportComponent];

@@ -18,8 +18,10 @@ export class ChartsComponent implements OnInit {
   INVReport(){
     this.router.navigate(['mainPage/Inventory report']);
   }
- 
+  productReport(){
+    this.router.navigate(['mainPage/productReport']);
+  }
 
-
+  
   
 }

@@ -1,0 +1,16 @@
+  <div class="ViewsContainer">
+      <div class="dialogTitle">
+      <h1 mat-dialog-title> إضافة تصنيف جديد</h1>
+      <div mat-dialog-content>
+        <mat-form-field>
+          <input matInput  type="text" [(ngModel)]="data.newCategory" >
+        </mat-form-field>
+      </div>
+    </div>
+      <div mat-dialog-actions class="DialogOptionBtn">
+        
+        <button mat-button [mat-dialog-close]="data.newCategory" cdkFocusInitial>إضافة </button>
+        <button mat-button [mat-dialog-close]="">إلغاء الأمر </button>
+      </div>
+      
+      </div>

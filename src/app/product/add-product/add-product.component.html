@@ -97,15 +97,21 @@
    </tr>
        <tr>
         <td>
+            <!-- [(ngModel)]="productService.selectedProduct.category" -->
             <mat-form-field class="example-full-width">
               <mat-select  name="category" #category="ngModel" 
-              [(ngModel)]="productService.selectedProduct.category"
-               placeholder="التصنيف">
+              
+               placeholder="التصنيف"
+               [(ngModel)]='selectvalue'
+               (change)='addNewCategory()'>
                <mat-option *ngFor="let category of cat" [value]=" category.$key ">
                 {{category.$key}}
               </mat-option>
               <mat-option  *ngIf="exist" value="غير ذلك">
                   غير ذلك
+                </mat-option>
+                <mat-option  [value]="New">
+                  {{New}}
                 </mat-option>
             </mat-select>
             </mat-form-field>

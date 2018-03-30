@@ -75,6 +75,8 @@ import {FlashMessagesService} from 'angular2-flash-messages';
 import { AuthService } from './core/auth.service';
 import { AuthGuard } from './guards/auth.guard';
 import { updateSalary } from './empolyee/view-emp/view-emp.component';
+import { addCategory } from './product/add-product/add-product.component';
+import { AddProductComponent } from './product/add-product/add-product.component';
 
 @NgModule({
   declarations: [
@@ -88,7 +90,8 @@ import { updateSalary } from './empolyee/view-emp/view-emp.component';
     viewTag,
     addQuantity,
     updateSalary,
-   
+    addCategory
+    
   ],
   imports: [
     MatFormFieldModule,
@@ -145,7 +148,7 @@ import { updateSalary } from './empolyee/view-emp/view-emp.component';
     CoreModule,
     FlashMessagesModule
   ],
-  entryComponents: [viewTag, TagComponent, addQuantity,ProductComponent, updateSalary, ViewEmpComponent ],
+  entryComponents: [viewTag, TagComponent, addQuantity,ProductComponent, updateSalary, ViewEmpComponent,addCategory ,AddProductComponent],
   providers: [AuthService, AuthGuard, FlashMessagesService],
   bootstrap: [AppComponent]
 })

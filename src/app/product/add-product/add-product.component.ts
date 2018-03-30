@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,Inject } from '@angular/core';
 //import {FormBuilder, FormGroup,Validators,FormControl} from '@angular/forms';
 import {MatInputModule} from '@angular/material/input';
 import { MatExpansionPanelDescription } from '@angular/material';
@@ -15,6 +15,8 @@ import { FlashMessagesService } from 'angular2-flash-messages';
 
 import { AngularFireDatabase } from 'angularfire2/database';
 import { Category } from './category.model';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
+
 @Component({ 
   selector: 'app-add-product',
   templateUrl: './add-product.component.html',
@@ -29,7 +31,9 @@ export class AddProductComponent  {
   category=[];
   cat;
   exist=true;
-  constructor(private productService : ProductService, private route: ActivatedRoute,
+  selectvalue:string;
+  New="إضافة تصنيف جديد";
+  constructor(private productService : ProductService, private route: ActivatedRoute,public dialog: MatDialog,
   private router:Router,public flashMensaje: FlashMessagesService ,private db:AngularFireDatabase) {}
   
   
@@ -45,7 +49,7 @@ export class AddProductComponent  {
     
     this.category= [];
     console.log( this.category);
-    this.db.list('products', query => { let m=query.orderByChild('category'); return m}).snapshotChanges().subscribe(item => {
+    this.db.list(window.name+'/products', query => { let m=query.orderByChild('category'); return m}).snapshotChanges().subscribe(item => {
     for(var element2 in item) {
       var y = item[element2].payload.toJSON();
       y["$key"] = item[element2].key;
@@ -64,7 +68,7 @@ export class AddProductComponent  {
 }
  
   onSubmit(productForm: NgForm) {
-    
+    this.productService.selectedProduct.category=this.selectvalue;
     if(this.selectedFiles){
 
       const file = this.selectedFiles.item(0);
@@ -165,5 +169,44 @@ export class AddProductComponent  {
 
     }
   }
- 
+  addNewCategory()
+  {
+    console.log("Inside new Category");
+    console.log(this.selectvalue);
+    console.log(this.New);
+   if(this.selectvalue != this.New)
+   return;
+    
+    let dialogRef = this.dialog.open(addCategory, {
+      data: { newCategory:'' }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      console.log(result);
+      if(result)
+      {
+        this.New=result;
+        this.selectvalue=result;
+      }
+    });
+  }
+}
+
+
+@Component({
+  selector: 'add-quantity',
+  templateUrl: './add-Category.component.html',
+  styleUrls: ['../inv.component.css']
+})
+export class addCategory {
+  newCategory:string;
+  constructor(
+    public dialogRef: MatDialogRef<addCategory>,
+    @Inject(MAT_DIALOG_DATA) public data: any) { }
+
+  addCategory(newCategory:string )
+  {
+    return newCategory;
+  }
 }

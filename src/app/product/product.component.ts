@@ -22,7 +22,6 @@ export class ProductComponent implements OnInit {
     ,public flashMensaje: FlashMessagesService)  { }
   productList: Product[];
   public title="المنتجات";
-  public AddCats="إضافة تصنيف ";
   public AddProds="إضافة منتج";
   public selected="ALLCAT";
   selectedValue: string;
