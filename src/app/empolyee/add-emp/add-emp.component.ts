@@ -114,5 +114,8 @@ resetForm(employeeForm?: NgForm) {
     picName:'',
   }
 } 
-
+gobacktoProducts()
+{
+  this.router.navigate(['mainPage/empolyee'])
+}
 }

@@ -90,6 +90,9 @@ export class ViewProductComponent implements OnInit {
         });
       }
   }
-  
+  gobacktoProducts()
+  {
+    this.router.navigate(['mainPage/product'])
+  }
 
 }

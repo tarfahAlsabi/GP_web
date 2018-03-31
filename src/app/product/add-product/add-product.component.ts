@@ -191,6 +191,10 @@ export class AddProductComponent  {
       }
     });
   }
+  gobacktoProducts()
+  {
+    this.router.navigate(['mainPage/product']);
+  }
 }
 
 

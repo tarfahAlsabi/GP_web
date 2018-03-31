@@ -7,7 +7,7 @@ import { ReportsService } from '../shared/reports.service'
 import { Receipt, InnerProduct,productInfo,ItemInfo } from '../shared/receipt.model';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { FlashMessagesService } from 'angular2-flash-messages';
-import {MatTableDataSource,MatPaginator} from '@angular/material';
+import {MatTableDataSource,MatPaginator,MatSort} from '@angular/material';
 
 import { Chart} from'chart.js'
 
@@ -20,6 +20,7 @@ import { Chart} from'chart.js'
 export class ProductReportComponent implements OnInit {
 
   @ViewChild("pie", {read: ElementRef}) pie:ElementRef;
+  @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
   chart = Chart; 
   hasDate=true;
@@ -38,7 +39,7 @@ export class ProductReportComponent implements OnInit {
   startDate: Date=new Date();
   endDate: Date=new Date();
   items:productInfo[]=new Array();
-  dataSource:MatTableDataSource<ItemInfo>;
+  dataSource:MatTableDataSource<ItemInfo>=new MatTableDataSource(new Array());
   selectedValue;
   constructor(private reportsService: ReportsService, private firebase: AngularFireDatabase
     ,public flashMensaje: FlashMessagesService
@@ -58,51 +59,11 @@ export class ProductReportComponent implements OnInit {
   selectChange(evet:any)
   {
     if(evet.index==0)
-    this.s();
+    this.changeProduct();
     else
     this.creatChart();
   }
-s(){
-  //console.log(this.receiptList[2].products);
-  this.products = [];
-  if(this.receiptList.length != 0){
-    if(this.startDate && this.endDate){
-      if(this.startDate <= this.endDate){
 
-        this.totalSales = 0;
-        this.newProducts = [];
-
-        for(let element in this.receiptList){
-          let requireDate = this.receiptList[element].date;
-          if( (requireDate >= this.startDate) &&  (requireDate <= this.endDate)){
-            this.totalSales += this.receiptList[element].totalPrice;
-            for(let element2 in this.receiptList[element].products)
-            this.products.push(this.receiptList[element].products[element2] as InnerProduct);
-          }
-        }
-      if(this.products.length != 0){
-      
-     // console.log(x);
-     // console.log(this.newProducts);
-    }else{
-    this.flashMensaje.show('لا يوجد فواتير في هذه الفترة الزمنية.',
-    {cssClass: 'alert-danger', timeout: 5000});
-    }
-    //if(this.products)
-     }else{
-      this.flashMensaje.show('لا يجب ان يسبق تاريخ  النهاية تاريخ البداية.',
-      {cssClass: 'alert-danger', timeout: 5000});
-      }
-    }else{
-      this.flashMensaje.show('يجب عليك ادخال الفترة الزمنية أولا.',
-      {cssClass: 'alert-danger', timeout: 5000});
-      }
-  }else{
-    this.flashMensaje.show('لا تملك عمليات بيع حاليا.',
-    {cssClass: 'alert-danger', timeout: 5000});
-    }
-
-}
 
   categorysortiong(){
     console.log('s')
@@ -217,21 +178,53 @@ creatChart()
 
 changeProduct()
 {
-  if(this.selectedValue=='')
-  {
-    this.dataSource =new MatTableDataSource(new Array());
+  console.log(this.selectedValue)
+
+  if(this.selectedValue!=undefined)
+  { 
+  if(this.startDate && this.endDate){
+    if(this.startDate <= this.endDate){
+      let x:ItemInfo[];
+      x =this.reportsService.getProductreceipts(this.selectedValue,this.startDate,this.endDate)
+    if(true){
+      this.dataSource.data =x;
+      console.log(this.length(x))
+      this.dataSource.paginator = this.paginator;
+      this.dataSource.sort = this.sort;
+      this.paginator.length=(this.dataSource.data.length)
+  }else{
+  this.flashMensaje.show('لم يتم بيع هذا المنتج في هذه الفترة الزمنية.',
+  {cssClass: 'alert-danger', timeout: 5000});
+      this.dataSource.data=null;
+  }
+  //if(this.products)
+   }else{
+    this.flashMensaje.show('لا يجب ان يسبق تاريخ  النهاية تاريخ البداية.',
+    {cssClass: 'alert-danger', timeout: 5000});
+    }
+  }else{
+    this.flashMensaje.show('يجب عليك ادخال الفترة الزمنية أولا.',
+    {cssClass: 'alert-danger', timeout: 5000});
+    }
   }
   else
   {
-  let x = this.reportsService.getProductreceipts(this.selectedValue,this.startDate,this.endDate)
-  this.dataSource =new MatTableDataSource(x);
-  this.dataSource.paginator = this.paginator;
-  this.paginatorLenth=(x.length)
+    this.flashMensaje.show('الرجاء إختيار منتج',
+    {cssClass: 'alert-danger', timeout: 5000});
   }
 }
-  
+  length(item)
+  {
+    let m=0;
+    item.forEach(element => {
+      
+      console.log(element);
+      m++;
+    });
 
-console.log(this.dataSource);
+    return m;
+  }
+
 }
 
   // sortData(sort: Sort) {
@@ -253,5 +246,5 @@ console.log(this.dataSource);
   //     }
   //   });
   // }
-}
+
 

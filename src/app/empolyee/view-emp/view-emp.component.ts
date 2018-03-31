@@ -93,7 +93,10 @@ openDialog(): void {
   }
 });
 }
-
+gobacktoProducts()
+{
+  this.router.navigate(['mainPage/empolyee'])
+}
 
 }
 @Component({
@@ -113,5 +116,5 @@ export class updateSalary {
   {
     return newSalary + salary;
   }
-
+ 
 }
