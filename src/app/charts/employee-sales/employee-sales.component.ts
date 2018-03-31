@@ -1,10 +1,9 @@
-
 import { Component, OnInit ,ElementRef,ViewChild} from '@angular/core';
 import {Sort,MatTab} from '@angular/material';
 import {MatDatepickerInputEvent} from '@angular/material/datepicker';
 
 import { ReportsService } from '../shared/reports.service'
-import { Receipt, InnerProduct,productInfo,ItemInfo } from '../shared/receipt.model';
+import { productInfo,ItemInfo } from '../shared/receipt.model';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { FlashMessagesService } from 'angular2-flash-messages';
 import {MatTableDataSource,MatPaginator,MatSort} from '@angular/material';
@@ -12,12 +11,13 @@ import {MatTableDataSource,MatPaginator,MatSort} from '@angular/material';
 import { Chart} from'chart.js'
 
 @Component({
-  selector: 'app-product-report',
-  templateUrl: './sales-report.component.html',
-  styleUrls: ['../sales-report/sales-report.component.css'],
+  selector: 'app-employee-sales',
+  templateUrl: './employee-sales.component.html',
+  styleUrls: ['./employee-sales.component.css'],
   providers : [ReportsService]
 })
-export class ProductReportComponent implements OnInit {
+export class EmployeeSalesComponent implements OnInit {
+
   @ViewChild("pie", {read: ElementRef}) pie:ElementRef;
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -190,7 +190,4 @@ changeProduct()
 }
 
 }
-
-
-
 

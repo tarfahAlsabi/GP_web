@@ -90,8 +90,8 @@ import { AddProductComponent } from './product/add-product/add-product.component
     viewTag,
     addQuantity,
     updateSalary,
-    addCategory
-    
+    addCategory,
+   
   ],
   imports: [
     MatFormFieldModule,

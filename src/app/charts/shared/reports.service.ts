@@ -43,7 +43,7 @@ getProductList()
 
 getProductreceipts(key,startDate:Date,EndDate:Date)
 {
-  this.productInfos=[];
+  let total=new Array();
   this.firebase.list(window.name+'/receipts').valueChanges().subscribe(list => {
     for(var receipt in list)
     {
@@ -53,7 +53,6 @@ getProductreceipts(key,startDate:Date,EndDate:Date)
       date[2]<startDate.getDate()||date[2]>EndDate.getDate()
     )
       continue; 
-
       for (var prods in list[receipt].products)
         if(prods == key)
         {
@@ -66,10 +65,13 @@ getProductreceipts(key,startDate:Date,EndDate:Date)
           info.price=list[receipt].products[prods].price * list[receipt].products[prods].quantity;
           info.quantity=list[receipt].products[prods].quantity;
           info.time=list[receipt].time;
-          this.productInfos.push(info);
+          total.push(info);
+           
         }
     }
   });
+  this.productInfos=total;
+  console.log(total.length)
   console.log(this.productInfos)
   return this.productInfos;
 }

@@ -23,6 +23,11 @@ export class InnerProduct{
     name: string
  }
 
+ export class employeeInfo
+ {
+    $key: string;
+    name: string 
+ }
  export class ItemInfo
  {
     date:string;

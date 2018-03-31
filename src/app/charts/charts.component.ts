@@ -21,7 +21,9 @@ export class ChartsComponent implements OnInit {
   productReport(){
     this.router.navigate(['mainPage/productReport']);
   }
-
+  EmpSalesReport(){
+    this.router.navigate(['mainPage/Employee sales']);
+  }
   
   
 }
