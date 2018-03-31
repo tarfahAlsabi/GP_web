@@ -24,6 +24,8 @@ export class ChartsComponent implements OnInit {
   EmpSalesReport(){
     this.router.navigate(['mainPage/Employee sales']);
   }
-  
+  EmpWHs(){
+    this.router.navigate(['mainPage/Employee working report']);
+  }
   
 }

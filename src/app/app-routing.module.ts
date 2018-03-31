@@ -32,6 +32,7 @@ import { ManagerComponent } from './manager/manager.component';
 import { ProductReportComponent } from './charts/product-report/product-report.component';
 
 import { EmployeeSalesComponent } from './charts/employee-sales/employee-sales.component';
+import { EmployeWhsComponent } from './charts/employe-whs/employe-whs.component';
 
 const routes: Routes = [
     {path: '', component: HomePageComponent},
@@ -39,6 +40,7 @@ const routes: Routes = [
         {path: 'productReport' , component: ProductReportComponent },        
         {path: 'empolyee' , component: EmpolyeeComponent },
         {path: 'product', component: ProductComponent},
+        {path: 'Employee working report', component: EmployeWhsComponent},
         {path: 'Employee sales', component: EmployeeSalesComponent},
         {path: 'tags', component: TagComponent},
         {path: 'addQuantity', component: ViewInv},
@@ -64,6 +66,6 @@ exports: [RouterModule]
 
 })
 export class AppRoutingModule { }
-export const routingComponents = [EmployeeSalesComponent, ViewInv ,ProductReportComponent,HomePageComponent, ViewProductComponent , AddProductComponent , TagComponent ,ChartsComponent,
+export const routingComponents = [EmployeWhsComponent,EmployeeSalesComponent, ViewInv ,ProductReportComponent,HomePageComponent, ViewProductComponent , AddProductComponent , TagComponent ,ChartsComponent,
     ViewTagComponent , AddTagComponent , ProductComponent , EmpolyeeComponent,NoFoundPageComponent, ManagerComponent,
     MyFormComponent, HeaderComponent, ViewEmpComponent , AddEmpComponent , TagComponent, SalesReportComponent ,IvcReportComponent];

@@ -11,12 +11,13 @@ import {MatTableDataSource,MatPaginator,MatSort} from '@angular/material';
 import { Chart} from'chart.js'
 
 @Component({
-  selector: 'app-employee-sales',
-  templateUrl: './employee-sales.component.html',
+  selector: 'app-employe-whs',
+  templateUrl: './employe-whs.component.html',
   styleUrls: ['../sales-report/sales-report.component.css'],
   providers : [ReportsService]
 })
-export class EmployeeSalesComponent implements OnInit {
+export class EmployeWhsComponent implements OnInit {
+
 
   @ViewChild("pie", {read: ElementRef}) pie:ElementRef;
   @ViewChild(MatSort) sort: MatSort;
@@ -26,7 +27,7 @@ export class EmployeeSalesComponent implements OnInit {
   hasSelection=true;
   paginatorLenth:number;
   reportName='تقرير مبيعات موظف  ';
-  displayedColumns=['Id','date','time','quantity','price','pay','remains'];
+  displayedColumns=['date','checkIn','checkOut','totalShiftTime'];
  //ngOnInit
   startDate: Date=new Date();
   endDate: Date=new Date();
@@ -160,7 +161,7 @@ changeProduct()
     if(this.startDate <= this.endDate){
       let x=[];
   
-      x=this.reportsService.getEmployeeSales(this.selectedValue,this.startDate,this.endDate)
+      x=this.reportsService.getEmpShifts(this.selectedValue,this.startDate,this.endDate)
     if(true){
       this.dataSource.data =x;
       console.log(x)
