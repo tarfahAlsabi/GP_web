@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 //import * as firebase from 'firebase';
 import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
-import { Receipt, InnerProduct,productInfo ,ItemInfo,empsales,shift} from './receipt.model';
+import { Receipt, InnerProduct,productInfo ,ItemInfo,empsales,shift,FBReceipt,ReceiptProduct} from './receipt.model';
 import { element } from 'protractor';
 import { query } from '@angular/animations';
 

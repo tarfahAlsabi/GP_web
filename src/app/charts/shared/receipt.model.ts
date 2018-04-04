@@ -52,4 +52,22 @@ export class shift
     checkOut;
     totalShiftTime;
 }
+
+export class FBReceipt
+{
+    ReceivedAmount;
+    RemainingAmount;
+    date;
+    employeeID;
+    id;
+    products;
+    time;
+    totalPrice;
+}
+export class ReceiptProduct
+{
+    category;
+    price;
+    quantity;
+}
    
