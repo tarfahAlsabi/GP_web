@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import {FormBuilder, FormGroup,Validators,FormControl} from '@angular/forms';
 import {MatInputModule} from '@angular/material/input';
 import { MatExpansionPanelDescription } from '@angular/material';
@@ -12,6 +12,7 @@ import * as firebase from 'firebase';
 import { Router } from '@angular/router';
 import { FlashMessagesService } from 'angular2-flash-messages';
 
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 
 
 @Component({
@@ -28,7 +29,7 @@ export class AddEmpComponent  {
 
 
 constructor(private fb: FormBuilder,private employeeService: EmployeeService
-,private router: Router,public flashMensaje: FlashMessagesService
+,private router: Router,public flashMensaje: FlashMessagesService, public dialog: MatDialog
 )
 {
   
@@ -82,18 +83,14 @@ onSubmit(employeeForm: NgForm) {
     this.resetForm(employeeForm);
      this.router.navigate(['mainPage/empolyee']).then( (res) => {
       this.flashMensaje.show('تم إضافة الموظف بنجاح.',
-      {cssClass: 'alert-success', timeout: 4000});
+      {cssClass: 'alert-success',
+      closeOnClick: true,showCloseBtn: true});
     });
  // }
  // this.tostr.success('Submitted Succcessfully', 'Employee Register');
 }
 }
-cancel(){
-  if(confirm(' هل أنت متأكد من إلغاء عملية الإضافة؟ ') == true){
-  this.resetForm();
-  this.router.navigate(['mainPage/empolyee']);
-}
-}
+
 
 resetForm(employeeForm?: NgForm) {
   if (employeeForm != null){ 
@@ -118,4 +115,40 @@ gobacktoProducts()
 {
   this.router.navigate(['mainPage/empolyee'])
 }
+
+openDialog(): void {
+  let dialogRef = this.dialog.open(confirmMessageancleEmp, {
+
+    data: { message: ''} 
+  });
+
+  dialogRef.afterClosed().subscribe(result => {
+    console.log('The dialog was closed');
+    if(result == true){
+      
+      this.resetForm();
+      this.router.navigate(['mainPage/empolyee']);
+
+  }
+});
+}
+}
+
+@Component({
+  selector: 'confirm-message-cancle-emp',
+  templateUrl: './confirm-Message-cancle-emp.html',
+  styleUrls: ['./add-emp.component.css']
+})
+export class confirmMessageancleEmp {
+
+  message:string;
+  constructor(
+    public dialogRef: MatDialogRef<confirmMessageancleEmp>,
+    @Inject(MAT_DIALOG_DATA) public data: any) { }
+
+    confirm()
+  {
+    return true;
+  }
+
 }

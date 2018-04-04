@@ -55,8 +55,8 @@ import {
 import { InputFileComponent } from './input-file/input-file.component';
 import { AddQuantityComponent } from './add-quantity/add-quantity.component';
 import { EmpolyeeComponent } from'./empolyee/empolyee.component';
-import { AddEmpComponent } from'./empolyee/add-emp/add-emp.component';
-import { ViewEmpComponent } from'./empolyee/view-emp/view-emp.component';
+import { AddEmpComponent, confirmMessageancleEmp } from'./empolyee/add-emp/add-emp.component';
+import { ViewEmpComponent, confirmMessageEmp } from'./empolyee/view-emp/view-emp.component';
 import {viewTag} from './tag/tag.component';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
@@ -75,8 +75,10 @@ import {FlashMessagesService} from 'angular2-flash-messages';
 import { AuthService } from './core/auth.service';
 import { AuthGuard } from './guards/auth.guard';
 import { updateSalary } from './empolyee/view-emp/view-emp.component';
-import { addCategory } from './product/add-product/add-product.component';
+import { addCategory, confirmMessageanclePro } from './product/add-product/add-product.component';
 import { AddProductComponent } from './product/add-product/add-product.component';
+import { ViewProductComponent } from './product/view-product/view-product.component';
+import { confirmMessage } from './product/view-product/view-product.component'
 
 @NgModule({
   declarations: [
@@ -91,6 +93,10 @@ import { AddProductComponent } from './product/add-product/add-product.component
     addQuantity,
     updateSalary,
     addCategory,
+    confirmMessage,
+    confirmMessageEmp,
+    confirmMessageancleEmp,
+    confirmMessageanclePro,
    
   ],
   imports: [
@@ -148,7 +154,10 @@ import { AddProductComponent } from './product/add-product/add-product.component
     CoreModule,
     FlashMessagesModule
   ],
-  entryComponents: [viewTag, TagComponent, addQuantity,ProductComponent, updateSalary, ViewEmpComponent,addCategory ,AddProductComponent],
+  entryComponents: [viewTag, TagComponent, addQuantity,ProductComponent,
+     updateSalary, ViewEmpComponent,addCategory ,AddProductComponent, ViewProductComponent,
+     confirmMessage, confirmMessageEmp,ViewEmpComponent, confirmMessageancleEmp, AddEmpComponent,
+     confirmMessageanclePro, AddProductComponent],
   providers: [AuthService, AuthGuard, FlashMessagesService],
   bootstrap: [AppComponent]
 })

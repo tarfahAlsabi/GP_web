@@ -45,3 +45,10 @@
   .red{
     color: red;
   }
+
+  .dialogTitle , .DialogOptionBtn
+  {
+    display: -ms-inline-grid;;
+    direction: rtl;
+    align-content: center;
+}

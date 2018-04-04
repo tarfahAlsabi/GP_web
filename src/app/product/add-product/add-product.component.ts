@@ -91,7 +91,8 @@ export class AddProductComponent  {
             this.resetForm(productForm); 
             this.router.navigate(['mainPage/product']).then( (res) => {
               this.flashMensaje.show('تم تحديث المنتج بنجاح.',
-              {cssClass: 'alert-success', timeout: 4000});
+              {cssClass: 'alert-success', timeout: 10000, 
+              closeOnClick: true, showCloseBtn: true});
             });
           //  this.tostr.success('Submitted Succcessfully', 'product is added');
           }else{
@@ -99,7 +100,8 @@ export class AddProductComponent  {
             this.resetForm(productForm); 
             this.router.navigate(['mainPage/product']).then( (res) => {
               this.flashMensaje.show('تم تحديث المنتج بنجاح.',
-              {cssClass: 'alert-success', timeout: 4000});
+              {cssClass: 'alert-success', timeout: 10000, 
+              closeOnClick: true, showCloseBtn: true});
             });
           //  this.tostr.success('Submitted Succcessfully', 'product is updated');
           }    
@@ -110,7 +112,8 @@ export class AddProductComponent  {
         this.resetForm(productForm); 
         this.router.navigate(['mainPage/product']).then( (res) => {
           this.flashMensaje.show('تم إضافة المنتج بنجاح.',
-          {cssClass: 'alert-success', timeout: 4000});
+          {cssClass: 'alert-success',timeout: 10000, 
+          closeOnClick: true, showCloseBtn: true});
         });
      //   this.tostr.success('Submitted Succcessfully', 'product is added');
       }else{
@@ -118,7 +121,8 @@ export class AddProductComponent  {
         this.resetForm(productForm); 
         this.router.navigate(['mainPage/product']).then( (res) => {
           this.flashMensaje.show('تم تحديث بيانات المنتج بنجاح.',
-          {cssClass: 'alert-success', timeout: 4000});
+          {cssClass: 'alert-success', timeout: 10000, 
+          closeOnClick: true, showCloseBtn: true});
         });
      //   this.tostr.success('Submitted Succcessfully', 'product is updated');
       }    
@@ -143,12 +147,7 @@ export class AddProductComponent  {
     }
 
      
-    cancel(){
-      if(confirm(' هل أنت متأكد من إلغاء عملية الإضافة؟ ') == true){
-        this.resetForm();
-        this.router.navigate(['mainPage/product']);
-      }
-    }
+   
 
   resetForm(productForm?: NgForm) {
     if (productForm != null){
@@ -195,6 +194,23 @@ export class AddProductComponent  {
   {
     this.router.navigate(['mainPage/product']);
   }
+
+  openDialog(item: Product): void {
+    let dialogRef = this.dialog.open(confirmMessageanclePro, {
+  
+      data: { message: '' } 
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      if(result == true){
+        
+        this.resetForm();
+        this.router.navigate(['mainPage/product']);
+
+    }
+  });
+  }
 }
 
 
@@ -213,4 +229,23 @@ export class addCategory {
   {
     return newCategory;
   }
+}
+
+@Component({
+  selector: 'confirm-message-cancle-pro',
+  templateUrl: './confirm-Message-cancle-pro.html',
+  styleUrls: ['./add-product.component.css']
+})
+export class confirmMessageanclePro {
+
+  message:string;
+  constructor(
+    public dialogRef: MatDialogRef<confirmMessageanclePro>,
+    @Inject(MAT_DIALOG_DATA) public data: any) { }
+
+    confirm()
+  {
+    return true;
+  }
+
 }

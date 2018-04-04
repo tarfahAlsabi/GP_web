@@ -61,7 +61,6 @@ salary:number=5000;*/
 delete(){
 
    // this.employeeService.delete(this.employee);
-   if (confirm('هل أنت متأكد من تسريح هذا الموظف؟') == true){
    let s= firebase.database().ref(window.name+'/employees');
    s.child(this.key).remove();
    if(this.imgName != 'defaultEmployee.jpg'){
@@ -70,12 +69,14 @@ delete(){
    }
    this.router.navigate(['mainPage/empolyee']).then( (res) => {
     this.flashMensaje.show('تم تسريح الموظف بنجاح.',
-    {cssClass: 'alert-success', timeout: 4000});
+    {cssClass: 'alert-success', timeout: 10000, 
+    closeOnClick: true, showCloseBtn: true});
   });
-}
+
 }
 
-openDialog(): void {
+openDialog(check: boolean): void {
+  if(check){
   let dialogRef = this.dialog.open(updateSalary, {
 
     data: { name: this.name,salary: this.salary } 
@@ -86,12 +87,30 @@ openDialog(): void {
     if(result){
       let s= firebase.database().ref(window.name+'/employees');
       s.child(this.key).update({salary: result});
-      this.salary=result;
-      console.log(this.salary)
+      if(result > this.salary){
+        this.salary=result;
       this.flashMensaje.show('تم تعديل راتب الموظف بنجاح.',
-      {cssClass: 'alert-success', timeout: 4000});
+      {cssClass: 'alert-success', timeout: 10000, 
+      closeOnClick: true, showCloseBtn: true});
+
+      }
   }
 });
+}else{
+  let dialogRef = this.dialog.open(confirmMessageEmp, {
+  
+    data: { message: this.name} 
+  });
+
+  dialogRef.afterClosed().subscribe(result => {
+    console.log('The dialog was closed');
+    if(result == true){
+      
+    this.delete()
+
+  }
+});
+}
 }
 gobacktoProducts()
 {
@@ -118,3 +137,25 @@ export class updateSalary {
   }
  
 }
+
+
+@Component({
+  selector: 'confirm-message-emp',
+  templateUrl: './confirm-Message-emp.html',
+  styleUrls: ['./view-emp.component.css']
+})
+export class confirmMessageEmp {
+
+  message:string;
+  constructor(
+    public dialogRef: MatDialogRef<confirmMessageEmp>,
+    @Inject(MAT_DIALOG_DATA) public data: any) { }
+
+    confirm()
+  {
+    return true;
+  }
+
+}
+ 
+

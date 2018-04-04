@@ -41,11 +41,13 @@ export class ProductComponent implements OnInit {
        if(confirm(' عند حذفك للتصنيف سوف تحذف جميع المنتجات هذا التصنيف هل أنت متأكد من الحذف؟ '))
        {this.db.list('products').remove(category.$key).then( (res) => {
          this.flashMensaje.show('.تم حذ التصنيف وجميع منتجاته بنجاح',
-         {cssClass: 'alert-success', timeout: 4000});
+         {cssClass: 'alert-success', timeout: 10000, 
+         closeOnClick: true, showCloseBtn: true});
          this.router.navigate(['mainPage']);
        }).catch((err) => {
          this.flashMensaje.show('حدثت مشكلة أثناء عملية الحذف أرجو المحاولة مرة أخرى.',
-         {cssClass: 'alert-danger', timeout: 5000});
+         {cssClass: 'alert-danger', timeout: 10000, 
+         closeOnClick: true, showCloseBtn: true});
          this.router.navigate(['']);
        });
         this.category= [];
@@ -116,6 +118,7 @@ export class ProductComponent implements OnInit {
       let id:string ='';
       this.router.navigate(['mainPage/Add_Product/',id]);
   }
+  
   openDialog(item: Product): void {
     let dialogRef = this.dialog.open(addQuantity, {
   
@@ -130,7 +133,8 @@ export class ProductComponent implements OnInit {
       
       if(result > item.inventory){
         this.flashMensaje.show('تم تحديث كمية المنتج بنجاح.',
-        {cssClass: 'alert-success', timeout: 4000});
+        {cssClass: 'alert-success', timeout: 10000, 
+        closeOnClick: true, showCloseBtn: true});
        }
 
     }
