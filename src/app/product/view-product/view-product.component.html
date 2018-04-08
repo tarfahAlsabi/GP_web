@@ -9,56 +9,112 @@
 <mat-card class="example-card">
     <mat-card-header>
       <div mat-card-avatar class="example-header-image"><img src={{img}}></div>
-      <mat-card-title>{{name}} </mat-card-title>
+      <h2>{{name}} </h2>
     </mat-card-header>
     <mat-card-content>
-      <table>
+       
+        <div class=" col-m-12">
+            <div class="con">
+            <h4>
+                     الوصف
+            </h4>
+            <p class="des">
+                    {{description}}
+            </p>
+        </div>
+        </div>
+
+        <div class="  col-m-12">
+                <div class="con">
+                <h4>
+                        التصنيف
+                </h4>
+                <p class="des">
+                        {{Tag}}
+                </p>
+                </div>
+            </div>
+
+            <div class=" col-m-12">
+                <div class="con ">
+                    <h4>
+                            سعر الشراء 
+                    </h4>
+                    <p class="des">
+                            {{cost}}
+                    </p>
+                </div>
+                </div>
+
+                <div class="  col-m-12">
+                        <div class="con ">
+                        <h4>
+                                سعر البيع 
+                        </h4>
+                        <p class="des">
+                                {{price}}
+                        </p>
+                       </div> 
+                    </div>
+
+
+                    <div class="  col-ms-6">
+                            <div class="con ">
+                            <h4>
+                                    الكمية المتوفرة
+                            </h4>
+                            <p class="des">
+                                    {{quantity}}
+                            </p>
+                        </div>    
+                        </div>
+      <!-- <table>
         <tr>      
           <td>
-              <h3> الوصف   </h3>
+              <h4>    </h4>
           </td>
 
           <td>
-              <p> {{description}} </p>
+              <p class="des">  </p>
           </td>
         </tr>
         <tr>
 
             <tr>      
                 <td>
-                    <h3> التصنيف   </h3>
+                    <h4> التصنيف   </h4>
                 </td>
       
                 <td>
-                    <p> {{Tag}} </p>
+                    <p class="des"> {{Tag}} </p>
                 </td>
               </tr>
               <tr>
 
           <td>
-              <h3> سعر الشراء </h3>
+              <h4> سعر الشراء </h4>
           </td>
           <td>
-              <p>  {{cost}}  </p>
+              <p class="des">  {{cost}}  </p>
           </td>
         </tr>
         <tr>
             <td>
-                <h3> سعر البيع </h3>
+                <h4> سعر البيع </h4>
             </td>
             <td>
-                <p>  {{price}}  </p>
+                <p class="des">  {{price}}  </p>
             </td>
           </tr>
         <tr>
           <td>
-              <h3> الكمية المتوفرة  </h3>
+              <h4> الكمية المتوفرة  </h4>
           </td>
           <td>
-              <p> {{quantity}}  </p>
+              <p class="des"> {{quantity}}  </p>
           </td>
         </tr>
-      </table>
+      </table> -->
     </mat-card-content>
    
     <mat-card-actions>

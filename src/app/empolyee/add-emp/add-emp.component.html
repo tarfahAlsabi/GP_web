@@ -11,7 +11,7 @@
     </mat-card-title>
     <flash-messages></flash-messages>
 <mat-card-content>
-    <form #employeeForm="ngForm" (ngSubmit)="onSubmit(employeeForm)">
+    <form #employeeForm="ngForm" (ngSubmit)="onSubmit(employeeForm)" dir="rtl">
         <input type="hidden" name="$key" #$key="ngModel" [(ngModel)]="employeeService.selectedEmployee.$key">
         <input type="hidden" name="picPATH" #picPATH="ngModel" [(ngModel)]="employeeService.selectedEmployee.picPATH">
         <input type="hidden" name="picName" #picName="ngModel" [(ngModel)]="employeeService.selectedEmployee.picName">       
@@ -19,144 +19,112 @@
         <input type="hidden" name="password" #password="ngModel" [(ngModel)]="employeeService.selectedEmployee.password" >
        
         
-  <table>
-    
-    <tr> 
-        <td>
-        <mat-form-field class="example-full-width">
-        <input matInput   name="firstName" #firstName="ngModel"   
-        [(ngModel)]="employeeService.selectedEmployee.firstName" 
-        placeholder="الاسم الأول" minlength="2" required>
-      </mat-form-field>
-        </td>
-       </tr>
-       <tr>
-        <td>
-      <div *ngIf="firstName.errors && (firstName.dirty || firstName.touched)"  class="alert alert-danger">
-          <div [hidden]="!firstName.errors.minlength">
-            *يجب ان يكون الأسم الأول على الاقل متكون من حرفين</div>
+
+      <div class="form-group col-md-6 col-sm-12">
+          <label > <h4>  الاسم الأول </h4> </label>
+           
+   
+          <input matInput   name="firstName" #firstName="ngModel"   
+          [(ngModel)]="employeeService.selectedEmployee.firstName"    minlength="2" required type="email" class="form-control"  aria-describedby="emailHelp" placeholder="مثال: منى">
+      
+        <div *ngIf="firstName.errors && (firstName.dirty || firstName.touched)"  class="alert alert-danger">
+          <div [hidden]="!firstName.errors.minlength">   *يجب ان يكون الأسم الأول على الاقل متكون من حرفين</div>
 
           <div [hidden]="!firstName.errors.required">*ارجوإدخال الأسم الأول</div>
-    </div>
-        </td>
-      </tr>
+        </div>
+      </div>
+        
 
-       <tr>
-        <td>
-      <mat-form-field class="example-full-width">
-          <input matInput  minlength="3" name="lastName" #lastName="ngModel" 
-          [(ngModel)]="employeeService.selectedEmployee.lastName" 
-          placeholder="العائلة" required>
-        </mat-form-field>
-      </td>
-      </tr>
-        <tr>
 
-     <td>
+        <div class="form-group col-md-6 col-sm-12">
+            <label > <h4>   العائلة </h4> </label>
+           
+            <input matInput  minlength="3" name="lastName" #lastName="ngModel" 
+            [(ngModel)]="employeeService.selectedEmployee.lastName"   class="form-control"
+            placeholder="العائلة" required>
+          
         <div *ngIf="lastName.errors && (lastName.dirty || lastName.touched)"  class="alert alert-danger">
             <div [hidden]="!lastName.errors.minlength">
               *يجب ان يكون أسم العائلة على الاقل متكون من  ثلاثة أحرف</div>
 
             <div [hidden]="!lastName.errors.required">*ارجو إدخال إسم العائلة</div>
+        </div>
       </div>
-     </td>
+  
 
-      </tr>
+        <div class="form-group col-md-6 col-sm-12">
+            <label > <h4>   البريد الإلكتروني </h4> </label>
+            <input matInput   type="email" name="email" #email="ngModel" 
+            [(ngModel)]="employeeService.selectedEmployee.email" 
+            placeholder="البريد الإلكتروني"   class="form-control"
+            pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" required>
+          
 
-      <tr>
-        <td>
-        <mat-form-field class="example-full-width">
-        <input matInput   type="email" name="email" #email="ngModel" 
-        [(ngModel)]="employeeService.selectedEmployee.email" 
-        placeholder="البريد الإلكتروني"  
-        pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" required>
-      </mat-form-field>
-      </td>
-    </tr>
-      <tr>
-      <td>
+
           <div *ngIf="email.errors && (email.dirty || email.touched)"  class="alert alert-danger">
               <div [hidden]="!email.errors.required">*ارجو إدخال البريد الإلكتروني</div>
               <div [hidden]="!email.errors.pattern">*فورمات البريد الإلكتروني غير صحيحة</div>
         </div>
-          </td>
-      </tr>
-      
-      <tr>
-          <td>
-      <mat-form-field class="example-full-width">
-        <input matInput type="tel"   name="phone" #phone="ngModel" 
-        [(ngModel)]="employeeService.selectedEmployee.phone" 
-        minlength="10" pattern="[0-9]*" placeholder="الجوال">
-        <mat-icon matSuffix>phone</mat-icon>
-      </mat-form-field>
-    </td>
-  </tr>
-    <tr>
-    <td>
+      </div>
+
+
+        <div class="form-group col-md-6 col-sm-12">
+            <label > <h4>   الجوال </h4> </label>
+
+            <input matInput type="tel"   name="phone" #phone="ngModel" 
+            [(ngModel)]="employeeService.selectedEmployee.phone"  class="form-control"
+            minlength="10" pattern="[0-9]*" placeholder="الجوال">
+    
+
+  
         <div *ngIf="phone.errors && (phone.dirty || phone.touched)"  class="alert alert-danger">
             <div [hidden]="!phone.errors.pattern">*رقم الجوال يجب ان يحتوي على أرقام فقط</div>
             <div [hidden]="!phone.errors.minlength">
               *رقم الجوال يجب أن لا يقل عن 10 أرقام </div>
       </div>
-    </td>
-  </tr>
-      
-  <tr>
-      <td>
-      <mat-form-field class="example-full-width">
+    </div>
+ 
+
+      <div class="form-group col-md-6 col-sm-12">
+          <label > <h4>   الراتب </h4> </label>
             <input  matInput type="number"   name="salary" #salary="ngModel" 
-            [(ngModel)]="employeeService.selectedEmployee.salary" 
+            [(ngModel)]="employeeService.selectedEmployee.salary" class="form-control"
             placeholder="الراتب">
-            <mat-icon matSuffix>money</mat-icon>
-      </mat-form-field>
-          </td>
-          </tr>
+         </div>
 
-          <tr>
-          <td>
+
             
-      <div class="form-group" >
-        <label>
-           <h4>صورة الموظف:</h4>
-          <input  type="file" (change)="detectFiles($event)">
-        </label>        
+      <div class="form-group custom-file col-md-6 col-sm-12 ">
+        <label   >
+           <h4>صورة الموظف:</h4></label> 
+          <input  type="file" (change)="detectFiles($event)"  class="form-control custom-file-input" accept="image/gif, image/jpeg, image/png" >
+        
+        <p>
+        <small > الصيغ المسموح بها gif , jpeg ,png</small> </p>      
         </div>
-      </td>
-      </tr>
+       
 
-      <tr>
-        <td>
       <div *ngIf="num" >
         <div class="progress">
           <div class="progress-bar progress-bar-animated" [ngStyle]="{ 'width': num + '%' }"></div>
         </div>
         التحميل: | : {{num}}% اكتمل
       </div>
-    </td>
-  </tr>
+   
       
-      
-      
-  <tr>
-      <td>
+
        
-        <button class="btn btn-default"  type="submit" color="primary" mat-button [disabled]="!employeeForm.valid">
+        <button class="btn ok "  type="submit"  [disabled]="!employeeForm.valid">
          <i class="fa fa-floppy-o"></i>
          إضافة</button>
-      </td>
-    </tr>
 
 
-      <tr>
-      <td>
-           <button type="button" color="primary" mat-button (click)="openDialog()">
+           <button type="button"  class="btn cancle "  (click)="openDialog()">
           <i class="fa fa-repeat"></i>
            إلغاء</button>
-           </td>
-           </tr>
+  
 
-          </table>
+        
           </form>
           </mat-card-content>
   </mat-card>

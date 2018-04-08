@@ -55,8 +55,8 @@ mat-toolbar mat-toolbar-row span mat-form-field
 }
 .Viewimg
 {
-    width: 75%;
-    height: 60%;
+    width: 100px;
+    height: 100px;
     overflow-wrap: normal;
     overflow: hidden;
     align-content: center

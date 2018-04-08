@@ -100,6 +100,8 @@ import { confirmMessage } from './product/view-product/view-product.component'
    
   ],
   imports: [
+    MatPaginatorModule,
+    MatSortModule,
     MatFormFieldModule,
     MatAutocompleteModule,
     MatButtonModule,

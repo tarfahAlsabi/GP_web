@@ -3,17 +3,14 @@
         <span color="primary">   <h2> {{ title }} </h2> </span>
         <span class="toolbar-spacer"></span>
        </mat-toolbar>  
-      
-      
-       <mat-toolbar  class="PageTitle" style="background-color:transparent">
-         
-        <span color="primary"> <button mat-button (click)="AddProd()" color="primary"> <mat-icon>add</mat-icon>  {{AddProds}}</button>   </span>
-        <span class="toolbar-spacer"></span>
-
-       </mat-toolbar>  
+        
       
       <mat-toolbar  class="PageTitle">
           <mat-toolbar-row>
+                     
+        <span color="primary"> <button mat-button (click)="AddProd()" color="primary"> <mat-icon>add</mat-icon>  {{AddProds}}</button>   </span>
+        <span class="toolbar-spacer"></span>
+
               <span>
                 <mat-form-field class="example-full-width">
               <mat-label>عرض بحسب التصنيف</mat-label>            
@@ -53,12 +50,12 @@
     <img (click)="viewProduct(product )" mat-card-image class="Viewimg" src={{product.picPath}}>
     <mat-card-content (click)="viewProduct(product )" role="group" >
      <h3>{{product.name }}</h3> 
-     <h4> الكمية المتوفرة :
+     <h6> الكمية المتوفرة :
             <span> {{product.inventory }}</span>
-     </h4>
-     <h4> التصنيف :
+     </h6>
+     <h6> التصنيف :
             <span> {{product.category }}</span>
-     </h4>
+     </h6>
     </mat-card-content>
     <mat-card-actions role="group" class="OptionBtn">	
     <button mat-button (click)="viewProduct(product )"> <mat-icon> description </mat-icon> عرض البيانات</button>

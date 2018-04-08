@@ -1,8 +1,8 @@
 .example-card {
     width: min-content;
     max-width: 80%;
-    margin-right: 30%;
-    margin-top: 5%;
+    margin-right: 2%;
+    margin-top: 1%;
     margin-left: 30%;
   }
   
@@ -25,6 +25,14 @@
     display: -ms-inline-grid;;
     direction: rtl;
     align-content: center;
+}
+.con
+{
+    display: flex;
+}
+.des
+{
+    text-indent: 15px;
 }
 
 

@@ -10,7 +10,7 @@
   .formContainer
   {
     font-family: 'Amiri' !important;
-      margin: 5% 10%;
+      margin: 1% 2%;
       align-self: center; 
       
   }
@@ -21,6 +21,14 @@
     font-size: 18px;
     float: right;
     line-height: 2;
+  }
+  .ok
+  {
+    background-color: #6dc4e2;
+  }
+  .cancle
+  {
+    background-color: #a8a8a8;
   }
  table
  {

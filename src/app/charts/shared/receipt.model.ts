@@ -1,3 +1,5 @@
+import { Time } from "@angular/common";
+
 export class Receipt {
     $key: string;
     ReceivedAmount: number;
@@ -47,9 +49,9 @@ export class empsales
 // displayedColumns=['date','checkIn','checkOut','totalShiftTime']
 export class shift
 {
-    date;
-    checkIn;
-    checkOut;
+    date:Date;
+    checkIn:Date;
+    checkOut:Date;
     totalShiftTime;
 }
 
@@ -71,3 +73,15 @@ export class ReceiptProduct
     quantity;
 }
    
+export class empInf
+{
+    email;
+    firstName;
+    lastName;
+    password;
+    phone;
+    picName;
+    picPATH;
+    salary;
+    username;
+}

@@ -1,94 +1,94 @@
-<mat-toolbar  class="PageTitle" style="background-color:transparent">
+    <mat-toolbar  class="PageTitle" style="background-color:transparent">
+        <span class="toolbar-spacer"></span>
+    <span color="primary">   <h2>  {{reportName}} </h2> </span>
     <span class="toolbar-spacer"></span>
-<span color="primary">   <h2>  {{reportName}} </h2> </span>
-<span class="toolbar-spacer"></span>
-   </mat-toolbar>     
-<mat-toolbar  class="PageTitle" dir="rtl" >
+    </mat-toolbar>     
+    <mat-toolbar  class="PageTitle" dir="rtl" >
 
-      <mat-toolbar-row>
-        <span *ngIf="hasDate" >
-    <span class="reportBar" > 
-        <mat-form-field>
-            <input   [value]='startDate' matInput [matDatepicker]="picker" placeholder=" من تاريخ " (dateChange)="changeDate('from', $event) " >
-            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-            <mat-datepicker #picker disabled="false" ></mat-datepicker>
-        </mat-form-field>
+        <mat-toolbar-row>
+            <span *ngIf="hasDate" >
+        <span class="reportBar" > 
+            <mat-form-field>
+                <input   [value]='startDate' matInput [matDatepicker]="picker" placeholder=" من تاريخ " (dateChange)="changeDate('from', $event) " >
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker disabled="false" ></mat-datepicker>
+            </mat-form-field>
+            </span>
+
+            <span class="toolbar-spacer"></span>
+
+
+            <span class="reportBar">
+            <mat-form-field >
+                <input matInput  [value]='endDate'  [matDatepicker]="ToDate" placeholder=" إلى تاريخ " (dateChange)="changeDate('to', $event)" >
+                <mat-datepicker-toggle matSuffix [for]="ToDate"></mat-datepicker-toggle>
+                <mat-datepicker   #ToDate disabled="false"  ></mat-datepicker>
+            </mat-form-field>
+            </span> 
+
+
         </span>
 
         <span class="toolbar-spacer"></span>
+                <span class="reportBar" *ngIf="hasSelection" >
+                <mat-form-field >
+                <mat-select placeholder="" [(ngModel)]="selectedValue" name="item" (change)='changeProduct()' >
+                    <mat-option *ngFor="let item of items" [value]=" item.$key ">
+                        {{item.name}}
+                    </mat-option>        
+                </mat-select>
+                </mat-form-field>
+            </span>
+    
 
 
-        <span class="reportBar">
-         <mat-form-field >
-            <input matInput  [value]='endDate'  [matDatepicker]="ToDate" placeholder=" إلى تاريخ " (dateChange)="changeDate('to', $event)" >
-            <mat-datepicker-toggle matSuffix [for]="ToDate"></mat-datepicker-toggle>
-            <mat-datepicker   #ToDate disabled="false"  ></mat-datepicker>
-        </mat-form-field>
-        </span> 
+            <span class="toolbar-spacer"></span>
+
+    </mat-toolbar-row>
+    </mat-toolbar>
+    <flash-messages></flash-messages>
 
 
-      </span>
+    <div>
+    <mat-tab-group class="tab-group" (selectedTabChange)='selectChange($event)' >
+        <mat-tab label="التقرير" >
+        <div class="tabContent">
 
-      <span class="toolbar-spacer"></span>
-            <span class="reportBar" *ngIf="hasSelection" >
-            <mat-form-field >
-              <mat-select placeholder="" [(ngModel)]="selectedValue" name="item" (change)='changeProduct()' >
-                  <mat-option *ngFor="let item of items" [value]=" item.$key ">
-                      {{item.name}}
-                  </mat-option>
-              </mat-select>
-            </mat-form-field>
-          </span>
-  
+            <mat-table #table   [dataSource]="dataSource" matSort>
 
-
-          <span class="toolbar-spacer"></span>
-
-  </mat-toolbar-row>
-</mat-toolbar>
-<flash-messages></flash-messages>
-
-
-<div>
-<mat-tab-group class="tab-group" (selectedTabChange)='selectChange($event)' >
-    <mat-tab label="التقرير" >
-      <div class="tabContent">
-
-          <mat-table #table [dataSource]="dataSource" *ngIf="dataSource"  matSort>
-
-              
-<!--  displayedColumns=['date','checkIn','checkOut','totalShiftTime']; -->
-              
-              <ng-container matColumnDef="date">
-                  <mat-header-cell *matHeaderCellDef mat-sort-header > التاريخ </mat-header-cell>
-                  <mat-cell *matCellDef="let row"> {{row.date}} </mat-cell>
-                </ng-container>
-                <ng-container matColumnDef="checkIn">
-                    <mat-header-cell *matHeaderCellDef mat-sort-header> بداية الفترة </mat-header-cell>
-                    <mat-cell *matCellDef="let row"> {{row.checkIn}} </mat-cell>
-                  </ng-container>
-                    <ng-container matColumnDef="checkOut">
-                        <mat-header-cell *matHeaderCellDef mat-sort-header> نهاية الفترة  </mat-header-cell>
-                        <mat-cell *matCellDef="let row"> {{row.checkOut}} </mat-cell>
-                      </ng-container>
-                    <ng-container matColumnDef="totalShiftTime">
-                        <mat-header-cell *matHeaderCellDef mat-sort-header> مدة الفترة </mat-header-cell>
-                        <mat-cell *matCellDef="let row"> {{row.totalShiftTime}} </mat-cell>
-                      </ng-container>
-                     
-              <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-              <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-            </mat-table>
-            <mat-paginator dir="rtl" [pageSizeOptions]="[5, 10, 15, 100]" [length]='dataSource.data.length'></mat-paginator>          
-      </div>
-    </mat-tab>
-    <mat-tab label="الرسم البياني">
-        <div class="tabContent"  *ngIf="chart" >
-            <canvas id="pie"  class="chart-pie" style="height:255px ; width:90% ;    overflow:hidden;" ></canvas>
-           
-           </div>    
-    </mat-tab>
-</mat-tab-group>
-</div>
-<!-- (matSortChange)="sortData($event)" -->
- 
+                
+    <!--  displayedColumns=['date','checkIn','checkOut','totalShiftTime']; -->
+                
+                <ng-container matColumnDef="date">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header > التاريخ </mat-header-cell>
+                    <mat-cell *matCellDef="let row"> {{row.date.toISOString().substring(0,10)}} </mat-cell>
+                    </ng-container>
+                    <ng-container matColumnDef="checkIn">
+                        <mat-header-cell *matHeaderCellDef mat-sort-header> بداية الفترة </mat-header-cell>
+                        <mat-cell *matCellDef="let row"> {{row.checkIn.toString().substring(11)}} </mat-cell>
+                    </ng-container>
+                        <ng-container matColumnDef="checkOut">
+                            <mat-header-cell *matHeaderCellDef mat-sort-header> نهاية الفترة  </mat-header-cell>
+                            <mat-cell *matCellDef="let row"> {{row.checkOut.toString().substring(11)}} </mat-cell>
+                        </ng-container>
+                        <ng-container matColumnDef="totalShiftTime">
+                            <mat-header-cell *matHeaderCellDef mat-sort-header> مدة الفترة </mat-header-cell>
+                            <mat-cell *matCellDef="let row"> {{row.totalShiftTime}} </mat-cell>
+                        </ng-container>
+                        
+                <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+                </mat-table>
+                <mat-paginator dir="rtl" [pageSizeOptions]="[5, 10, 15, 100]" ></mat-paginator>          
+        </div>
+        </mat-tab>
+        <mat-tab label="الرسم البياني">
+            <div class="tabContent"  *ngIf="chart" >
+                <canvas id="pie"  class="chart-pie" style="height:255px ; width:90% ;    overflow:hidden;" ></canvas>
+            
+            </div>    
+        </mat-tab>
+    </mat-tab-group>
+    </div>
+    <!-- (matSortChange)="sortData($event)" -->
+    

@@ -18,11 +18,17 @@ button:hover,a.btn:hover{
    }
 
 h2 , h1 , h3 , h4 ,h5  {
-    color: lightblue;
+    color: #4989A5;
     
 }
 .alert.flash-message{
     margin-top:10px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+    align-items: right;
+    float: right;
 }
 
 // >>>>>>> 4feecb742d80aaf22e8129c717d12b2c17be0e25

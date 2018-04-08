@@ -14,9 +14,9 @@
 .ViewsContainer
 {
     margin-right:15px; 
-    align-content: center;
-    align-self: center;
-    align-items: center;
+    align-content: right;
+    align-self: right;
+    align-items: right;
 }
 .OptionBtn
 {
@@ -34,6 +34,7 @@
 }
 .Viewimg
 {
+    margin-top: 5px;
     width: 150px;
     height: 150px;
     overflow-wrap: normal;
