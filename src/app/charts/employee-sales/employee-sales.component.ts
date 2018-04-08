@@ -3,7 +3,7 @@ import {Sort,MatTab} from '@angular/material';
 import {MatDatepickerInputEvent} from '@angular/material/datepicker';
 
 import { ReportsService } from '../shared/reports.service'
-import { productInfo,ItemInfo } from '../shared/receipt.model';
+import { productInfo,ItemInfo,empsales } from '../shared/receipt.model';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { FlashMessagesService } from 'angular2-flash-messages';
 import {MatTableDataSource,MatPaginator,MatSort} from '@angular/material';
@@ -28,10 +28,12 @@ export class EmployeeSalesComponent implements OnInit {
   reportName='تقرير مبيعات موظف  ';
   displayedColumns=['Id','date','time','quantity','price','pay','remains'];
  //ngOnInit
+ x=[];
+ y=[];
   startDate: Date=new Date();
   endDate: Date=new Date();
   items:productInfo[]=new Array();
-  dataSource:MatTableDataSource<ItemInfo>=new MatTableDataSource(new Array());
+  dataSource:MatTableDataSource<empsales>=new MatTableDataSource(new Array());
   selectedValue;
   constructor(private reportsService: ReportsService, private firebase: AngularFireDatabase
     ,public flashMensaje: FlashMessagesService
@@ -41,7 +43,7 @@ export class EmployeeSalesComponent implements OnInit {
    this.startDate.setDate(this.startDate.getDate() -7 );
    this.items=(this.reportsService.getEmployeeList());
    this.dataSource.paginator = this.paginator;
-  
+   this.dataSource.sort = this.sort;
   //console.log(this.receiptList);
   }
 
@@ -75,25 +77,17 @@ export class EmployeeSalesComponent implements OnInit {
 
 creatChart()
 {
-  if(true)
-  {
-    return;
-  }
+ 
   if(this.chart.data)
   this.chart.destroy();
-
-  let label
-  let values
-  this.dataSource.data.forEach(row=> {
-  row.price
-  }
-  )
+  // this.changeProduct()
+  this.getValues()
   this.chart = new Chart('pie', {
-      type: 'bar',
+      type: 'line',
       data: {
-        labels: label,
+        labels: this.y,
         datasets: [{
-          data:values,
+          data:this.x,
           backgroundColor: [
             'rgba(255, 99, 132, 0.4)',
             'rgba(54, 162, 235, 0.4)',
@@ -121,6 +115,10 @@ creatChart()
         }]
       },
       options: {
+        title: {
+          display: true,
+          text: 'مجموع مبيعات الموظف في الفترة المحددة'
+      },
         responsive: true,
         legend: {
           display: false,
@@ -128,7 +126,11 @@ creatChart()
         },
         scales: {
           xAxes: [{
+            scaleLabel :
+            {
+            labelString:"التاريخ  ",
             display: true,
+            },
             ticks: {
               beginAtZero:true
           }
@@ -138,7 +140,11 @@ creatChart()
             ticks: {
               beginAtZero:true
           },
-          label:"الكمية المباعة"
+          scaleLabel :
+            {
+            labelString:"مجموع المبيعات في اليوم  ",
+            display: true,
+            },
           }],
         },
         tooltips: {
@@ -158,20 +164,20 @@ changeProduct()
   { 
   if(this.startDate && this.endDate){
     if(this.startDate <= this.endDate){
-      let x=[];
-  
-      x=this.reportsService.getEmployeeSales(this.selectedValue,this.startDate,this.endDate)
-    if(true){
-      this.dataSource.data =x;
-      console.log(x)
-
-      this.dataSource.sort = this.sort;
       
-  }else{
-  this.flashMensaje.show('لم يتم بيع هذا المنتج في هذه الفترة الزمنية.',
-  {cssClass: 'alert-danger', timeout: 5000});
-      this.dataSource.data=[];
-  }
+  
+     this.getEmployeeSales()
+  //   if(true){
+  //     this.dataSource.data =x;
+  //     console.log(x)
+
+  //     this.dataSource.sort = this.sort;
+      
+  // }else{
+  // this.flashMensaje.show('لم يتم بيع هذا المنتج في هذه الفترة الزمنية.',
+  // {cssClass: 'alert-danger', timeout: 5000});
+  //     this.dataSource.data=[];
+  // }
   //if(this.products)
    }else{
     this.flashMensaje.show('لا يجب ان يسبق تاريخ  النهاية تاريخ البداية.',
@@ -189,5 +195,91 @@ changeProduct()
   }
 }
 
+// this.selectedValue,this.this.startDate,this.endDate
+
+getEmployeeSales()
+{
+  this.dataSource.data=[]
+  var emplSales=[];
+  let total=new Array();
+  this.firebase.list(window.name+'/receipts',query => {let m ;
+    m=query.orderByChild('employeeID').equalTo(this.selectedValue) ;return m}).snapshotChanges().subscribe(list => {
+    
+        for(let temp of list)
+        {
+        let receipt:any;
+        receipt= temp.payload.toJSON()
+        if(receipt.employeeID != this.selectedValue)
+        continue;
+        console.log("inside" )
+        console.log(receipt)
+        let date =receipt.date.split('-')
+         //date[0] year , date[1] month , date[2] day
+        if(date[0]<this.startDate.getFullYear()||date[0]>this.endDate.getFullYear()||
+        date[1]<this.startDate.getUTCMonth()+1||date[1]>this.endDate.getUTCMonth()+1||
+        date[2]<this.startDate.getDate()||date[2]>this.endDate.getDate())
+      {
+        console.log('indside date if')
+        continue; 
+      }
+    
+        console.log('indside date else')
+        let q=0;
+        console.log(typeof receipt.products)
+        for (var prods in receipt.products)
+        {
+          console.log( receipt.products[prods])
+          q+=receipt.products[prods].quantity;
+        }
+        var info = new empsales()
+        info.date=receipt.date;
+        info.pay=receipt.ReceivedAmount;
+        info.price=receipt.totalPrice;
+        info.quantity=q;
+        info.remains=receipt.RemainingAmount;
+        info.time=receipt.time;
+        info.Id=receipt.id;
+        this.dataSource.data.push(info)   
+        this.dataSource._updateChangeSubscription()    
+      }
+  
+  })
+  console.log(this.dataSource.data);
+    // displayedColumns=['date','time','quantity','price','pay','remains'];      
+}
+
+
+
+
+getValues()
+{
+  this.x=[]
+  this.y=[]
+  let label=this.dataSource.data.map(p=>p.date)
+  let values=this.dataSource.data.map(p=>p.price)
+  label.forEach(i =>{
+    var sum =0
+    for(let n in label)
+    {
+      if(label[n].localeCompare(i)==0)
+      {
+        console.log(label[n])
+        
+      sum = sum + values[n]
+      console.log(sum)
+      values[n]=0
+      label[n]=''
+      }
+  
+    }
+    if(i!='')
+    {
+   this. x.push(sum)
+   this.y.push(i)
+    i=''
+    }
+  })
+
+}
 }
 

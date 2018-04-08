@@ -29,6 +29,8 @@ export class EmployeWhsComponent implements OnInit {
   reportName='تقرير مبيعات موظف  ';
   displayedColumns=['date','checkIn','checkOut','totalShiftTime'];
   hasInfo=false;
+  x=[]
+  y=[]
  //ngOnInit
   startDate: Date=new Date();
   endDate: Date=new Date();
@@ -42,9 +44,7 @@ export class EmployeWhsComponent implements OnInit {
   ngOnInit() {
    this.startDate.setDate(this.startDate.getDate() -7 );
    this.items=(this.reportsService.getEmployeeList());
-   for(let i in this.items)
-   this.selectedValue=this.items[i].$key
-   this.getEmpShifts()
+
    this.dataSource.paginator = this.paginator;
    this.dataSource.sort = this.sort;
   //console.log(this.receiptList);
@@ -71,6 +71,7 @@ export class EmployeWhsComponent implements OnInit {
     this.endDate = new Date(x.getTime() + (1000 * 60 * 60 * 24));
     }
     this.changeProduct();
+    this.creatChart()
     // this.creatChart();
   /*  var mydate = new Date('2018-03-02');
     console.log(mydate.toDateString());*/
@@ -80,25 +81,19 @@ export class EmployeWhsComponent implements OnInit {
 
 creatChart()
 {
-  if(true)
-  {
-    return;
-  }
+ 
   if(this.chart.data)
   this.chart.destroy();
+  // this.changeProduct()
+  this.getValues()
 
-  let label
-  let values
-  this.dataSource.data.forEach(row=> {
-  row.totalShiftTime
-  }
-  )
+
   this.chart = new Chart('pie', {
-      type: 'bar',
+      type: 'line',
       data: {
-        labels: label,
+        labels:this. y,
         datasets: [{
-          data:values,
+          data:this.x,
           backgroundColor: [
             'rgba(255, 99, 132, 0.4)',
             'rgba(54, 162, 235, 0.4)',
@@ -153,7 +148,36 @@ creatChart()
       }
     });
 }
+getValues()
+{
+  this.x=[]
+  this.y=[]
+  let label=this.dataSource.data.map(p=>p.date.toISOString().substring(0,10))
+  let values=this.dataSource.data.map(p=>p.totalShiftTime)
+  label.forEach(i =>{
+    var sum =0
+    for(let n in label)
+    {
+      if(label[n].localeCompare(i)==0)
+      {
+        console.log(label[n])
+        
+      sum = sum + values[n]
+      console.log(sum)
+      values[n]=0
+      label[n]=''
+      }
+  
+    }
+    if(i!='')
+    {
+   this. x.push(sum)
+   this.y.push(i)
+    i=''
+    }
+  })
 
+}
 
 changeProduct()
 {
@@ -163,7 +187,8 @@ changeProduct()
   { 
   if(this.startDate && this.endDate){
     if(this.startDate <= this.endDate){
-      let s= this.getEmpShifts()
+      let s= this.getEmpShifts();
+      this.getValues();
       console.log(s)
 
     if(s){
@@ -207,7 +232,7 @@ getEmpShifts()
         let day=mon[i]
         for(let n in day)
         {
-          var ymd =  new Date(year,month-1,parseInt(n, 10)+1)
+          var ymd =  new Date(year,month-1,parseInt(n, 10))
           if(ymd <= this.startDate && ymd >= this.endDate )
           continue;
           // console.log("the date from new Date ")
@@ -224,7 +249,8 @@ getEmpShifts()
           temp.date=ymd
           temp.checkIn=shifts[s].checkIn;
           temp.checkOut=shifts[s].checkOut;
-          temp.totalShiftTime=shifts[s].totalShiftTime;
+          let p = shifts[s].totalShiftTime.split(':')
+          temp.totalShiftTime=parseFloat(p[0]+(p[1]/100)+(p[2]/10000));
           hasInfo=true;
           this.dataSource.data.push(temp)
           this.dataSource._updateChangeSubscription()

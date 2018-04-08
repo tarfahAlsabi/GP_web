@@ -54,13 +54,14 @@
     <mat-tab label="التقرير" >
       <div class="tabContent">
 
-          <mat-table #table [dataSource]="dataSource" *ngIf="dataSource"  matSort>
+          <mat-table #table [dataSource]="dataSource"  matSort>
 
               
 <!--  displayedColumns=['date','time','quantity','price','pay','remains']; -->
               
               <ng-container matColumnDef="date">
-                  <mat-header-cell *matHeaderCellDef mat-sort-header > التاريخ </mat-header-cell>
+                  <mat-header-cell *matHeaderCellDef mat-sort-header style="
+                  padding-right: 10%; " > التاريخ </mat-header-cell>
                   <mat-cell *matCellDef="let row"> {{row.date}} </mat-cell>
                 </ng-container>
                 <ng-container matColumnDef="time">
@@ -73,11 +74,11 @@
                       </ng-container>
                     <ng-container matColumnDef="price">
                         <mat-header-cell *matHeaderCellDef mat-sort-header> مجموع السعر </mat-header-cell>
-                        <mat-cell *matCellDef="let row"> {{row.price}} </mat-cell>
+                        <mat-cell *matCellDef="let row"> {{row.price}}  ريال </mat-cell>
                       </ng-container>
                       <ng-container matColumnDef="pay">
                           <mat-header-cell *matHeaderCellDef mat-sort-header>المدفوع </mat-header-cell>
-                          <mat-cell *matCellDef="let row"> {{row.pay}} </mat-cell>
+                          <mat-cell *matCellDef="let row"> {{row.pay}} ريال </mat-cell>
                         </ng-container>
                         <ng-container matColumnDef="remains">
                             <mat-header-cell *matHeaderCellDef mat-sort-header> الباقي  </mat-header-cell>
@@ -90,7 +91,7 @@
               <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
               <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
             </mat-table>
-            <mat-paginator dir="rtl" [pageSizeOptions]="[5, 10, 15, 100]" [length]='dataSource.data.length'></mat-paginator>          
+            <mat-paginator dir="rtl" [pageSizeOptions]="[5, 10, 15, 100]" ></mat-paginator>          
       </div>
     </mat-tab>
     <mat-tab label="الرسم البياني">

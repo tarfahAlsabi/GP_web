@@ -24,6 +24,8 @@ export class ProductReportComponent implements OnInit {
   chart = Chart; 
   hasDate=true;
   hasSelection=true;
+  x=[];
+  y=[];
   paginatorLenth:number;
   reportName='تقرير مبيعات منتج  ';
   displayedColumns=['date','time','cost','quantity','price','employeename'];
@@ -41,7 +43,7 @@ export class ProductReportComponent implements OnInit {
    this.startDate.setDate(this.startDate.getDate() -7 );
    this.items=(this.reportsService.getProductList());
    this.dataSource.paginator = this.paginator;
-  
+   this.dataSource.sort = this.sort;
   //console.log(this.receiptList);
   }
 
@@ -75,25 +77,17 @@ export class ProductReportComponent implements OnInit {
 
 creatChart()
 {
-  if(true)
-  {
-    return;
-  }
   if(this.chart.data)
-  this.chart.destroy();
 
-  let label
-  let values
-  this.dataSource.data.forEach(row=> {
-  row.price
-  }
-  )
+  this.chart.destroy();
+  // this.changeProduct()
+  this.getValues()
   this.chart = new Chart('pie', {
-      type: 'bar',
+      type: 'line',
       data: {
-        labels: label,
+        labels: this.y,
         datasets: [{
-          data:values,
+          data:this.x,
           backgroundColor: [
             'rgba(255, 99, 132, 0.4)',
             'rgba(54, 162, 235, 0.4)',
@@ -121,6 +115,10 @@ creatChart()
         }]
       },
       options: {
+        title: {
+          display: true,
+          text: 'مجموع مبيعات المنتج في الفترة المحددة'
+      },
         responsive: true,
         legend: {
           display: false,
@@ -128,7 +126,11 @@ creatChart()
         },
         scales: {
           xAxes: [{
+            scaleLabel :
+            {
+            labelString:"التاريخ  ",
             display: true,
+            },
             ticks: {
               beginAtZero:true
           }
@@ -138,7 +140,11 @@ creatChart()
             ticks: {
               beginAtZero:true
           },
-          label:"الكمية المباعة"
+          scaleLabel :
+            {
+            labelString:"مجموع المبيعات في اليوم  ",
+            display: true,
+            },
           }],
         },
         tooltips: {
@@ -158,20 +164,17 @@ changeProduct()
   { 
   if(this.startDate && this.endDate){
     if(this.startDate <= this.endDate){
-      let x=[];
-  
-      x=this.reportsService.getProductreceipts(this.selectedValue,this.startDate,this.endDate)
-    if(true){
-      this.dataSource.data =x;
-      console.log(x)
 
-      this.dataSource.sort = this.sort;
-      
-  }else{
-  this.flashMensaje.show('لم يتم بيع هذا المنتج في هذه الفترة الزمنية.',
-  {cssClass: 'alert-danger', timeout: 5000});
-      this.dataSource.data=null;
-  }
+  
+      this.getProductreceipts()
+  //   if(true){
+    
+  
+  // }else{
+  // this.flashMensaje.show('لم يتم بيع هذا المنتج في هذه الفترة الزمنية.',
+  // {cssClass: 'alert-danger', timeout: 5000});
+  //     this.dataSource.data=null;
+  // }
   //if(this.products)
    }else{
     this.flashMensaje.show('لا يجب ان يسبق تاريخ  النهاية تاريخ البداية.',
@@ -189,6 +192,81 @@ changeProduct()
   }
 }
 
+
+getProductreceipts()
+{
+  
+  this.dataSource.data=[]
+  this.firebase.list(window.name+'/receipts').snapshotChanges().subscribe(list => {
+    for(var m in list)
+    {
+      let receipt :any
+      receipt =list[m].payload.toJSON()
+      let date =receipt.date.split('-') //date[0] year , date[1] month , date[2] day
+      if(date[0]<this.startDate.getFullYear()||date[0]>this.endDate.getFullYear()||
+      date[1]<this.startDate.getUTCMonth()+1||date[1]>this.endDate.getUTCMonth()+1||
+      date[2]<this.startDate.getDate()||date[2]>this.endDate.getDate()
+    )
+      continue; 
+      for (var prods in receipt.products)
+        if(prods == this.selectedValue)
+        {
+          let info = new ItemInfo();
+          this.firebase.list(window.name+'/employees/'+receipt.employeeID).valueChanges().subscribe(emps => {  
+            if( emps[1] == 'undefined') 
+            info.employeename='موظف محذوف ';
+            else 
+            info.employeename=   emps[1]+' ' +emps[2]
+            
+          
+          });
+          info.cost=receipt.products[prods].price;
+          info.date=receipt.date;
+          info.price=receipt.products[prods].price * receipt.products[prods].quantity;
+          info.quantity=receipt.products[prods].quantity;
+          info.time=receipt.time;
+          this.dataSource.data.push(info);
+           this.dataSource._updateChangeSubscription();
+        }
+    }
+  });
+
+  console.log(this.dataSource.data)
+
+}
+
+
+
+getValues()
+{
+  this.x=[]
+  this.y=[]
+  let label=this.dataSource.data.map(p=>p.date)
+  let values=this.dataSource.data.map(p=>p.price)
+  label.forEach(i =>{
+    var sum =0
+    for(let n in label)
+    {
+      if(label[n].localeCompare(i)==0)
+      {
+        console.log(label[n])
+        
+      sum = sum + values[n]
+      console.log(sum)
+      values[n]=0
+      label[n]=''
+      }
+  
+    }
+    if(i!='')
+    {
+   this. x.push(sum)
+   this.y.push(i)
+    i=''
+    }
+  })
+
+}
 }
 
 
