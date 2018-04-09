@@ -5,26 +5,39 @@ import {MatDatepickerInputEvent} from '@angular/material/datepicker';
 import { ProductService } from '../shared/product.service';
 import { Product } from '../shared/product.model';
 import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
+import {MatTableDataSource,MatPaginator,MatSort} from '@angular/material';
 
 import { Chart} from'chart.js'
 @Component({
   selector: 'app-ivc-report',
   templateUrl: './ivc-report.component.html',
-  styleUrls: ['./ivc-report.component.css'],
+  styleUrls: ['../../charts/sales-report/sales-report.component.css'],
   providers: [ProductService]
 })
 export class IvcReportComponent implements OnInit {
   @ViewChild("pie", {read: ElementRef}) pie:ElementRef;
+  @ViewChild(MatSort) sort: MatSort;
+  @ViewChild(MatPaginator) paginator: MatPaginator;
   chart = []; 
   productList: Product[];
   totalS =0;
   charts:any;
   bb:any;
+
+  reportName='تقرير مبيعات موظف  ';
+  displayedColumns=['category','name','inventory','cost','price'];
+ //ngOnInit
+ x=[];
+ y=[];
+  startDate: Date=new Date();
+  endDate: Date=new Date();
+  dataSource:MatTableDataSource<Product>=new MatTableDataSource(new Array());
   constructor(private db :AngularFireDatabase,private productService : ProductService)  { }
   
   ngOnInit() {
-   
-    this.productList = [];
+   this.dataSource.paginator=this.paginator
+   this.dataSource.sort=this.sort
+    this.dataSource.data = [];
     let x = this.productService.getData();
     x.snapshotChanges().subscribe(item => {
     for(var element2 in item) {
@@ -33,11 +46,11 @@ export class IvcReportComponent implements OnInit {
       element.forEach(element2 => {
       var y = element2.payload.toJSON();
       y["$key"] = element2.key;
-     this.productList.push(y as Product);
+     this.dataSource.data.push(y as Product);
+     this.dataSource._updateChangeSubscription();
       });
     });
     }
-    this.productList = [];
   });
 
 
@@ -55,12 +68,16 @@ export class IvcReportComponent implements OnInit {
     }) 
     return this.totalS;
   }
-
+  selectChange(evet:any)
+  {
+    if(evet.index!=0)
+    this.creatChart();
+  }
 creatChart()
 {
 
-  let label =this.productList.map(product => product.name)
-  let values=this.productList.map(product => product.inventory)
+  let label =this.dataSource.data.map(product => product.name)
+  let values=this.dataSource.data.map(product => product.inventory)
   
   this.chart = new Chart('pie', {
       type: 'pie',
@@ -77,8 +94,11 @@ creatChart()
             'rgba(255, 159, 64, 0.4)',
             'rgba(102, 153, 255,0.4)',
             'rgba(255, 51, 153,0.4)',
-            'rgba(255, 102, 0, 0.4)',
+            'rgba(255, 102, 15, 0.4)',
             'rgba(51, 102, 255,0.4)',
+            'rgba(51, 51, 204,0.4)',
+            'rgba(204, 0, 204,0.4)',
+            'rgba(255, 0, 102,0.4)'
         ],
         borderColor: [
             'rgba(255,99,132,1)',
@@ -89,8 +109,11 @@ creatChart()
             'rgba(255, 159, 64, 1)',
             'rgba(102, 153, 255, 1)',
             'rgba(255, 51, 153, 1)',
-            'rgba(255, 102, 0, 1)',
+            'rgba(255, 102, 15, 1)',
             'rgba(51, 102, 255, 1)',
+            'rgba(51, 51, 204,1)',
+            'rgba(204, 0, 204,1)',
+            'rgba(255, 0, 102,1)',
         ],
         }]
       },

@@ -22,6 +22,14 @@
     float: right;
     line-height: 2;
   }
+  input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+input[type="number"] {
+    -moz-appearance: textfield;
+}
   .ok
   {
     background-color: #6dc4e2;

@@ -8,157 +8,107 @@
 
 <mat-card class="formContainer" >
 
-    <mat-card-title>	
-      <h2> إضافة منتج </h2>
-    </mat-card-title>
-    <form #productForm="ngForm" (ngSubmit)="onSubmit(productForm)">
+    <mat-card-title>	  <h2> إضافة منتج </h2>  </mat-card-title>
 
-      <input type="hidden" name="$key" #$key="ngModel" 
-      [(ngModel)]="productService.selectedProduct.$key">
+    <mat-card-content>
+    <form #productForm="ngForm" (ngSubmit)="onSubmit(productForm)" dir="rtl">
+      <input type="hidden" name="$key" #$key="ngModel"  [(ngModel)]="productService.selectedProduct.$key">
+      <input type="hidden" name="picPath" #picPath="ngModel"   [(ngModel)]="productService.selectedProduct.picPath">
+      <input type="hidden" name="picName" #picName="ngModel"  [(ngModel)]="productService.selectedProduct.picName">
 
-      <input type="hidden" name="picPath" #picPath="ngModel" 
-      [(ngModel)]="productService.selectedProduct.picPath">
-
-      <input type="hidden" name="picName" #picName="ngModel" 
-      [(ngModel)]="productService.selectedProduct.picName">
-
-      <table>
-        <tr>
-          <td>
-            <mat-form-field class="example-full-width">
+    <div class="form-group col-md-6 col-sm-12">
+          <label > <h4> اسم المنتج  <span class="red">* </span> </h4> </label>
           <input matInput    name="name" #name="ngModel" 
-          [(ngModel)]="productService.selectedProduct.name" 
-          placeholder="اسم المنتج" required>
+          [(ngModel)]="productService.selectedProduct.name" class="form-control"
+          placeholder="مثال: قلم أحمر " required>
           <!-- <mat-error *ngIf="ID.invalid">خانة مطلوبة </mat-error> -->
-      </mat-form-field> 
-    </td>
-  </tr>
-  <tr>
-  <td>
-    <div *ngIf="name.errors && (name.dirty || name.touched)" class="alert alert-danger">
-      <mat-error [hidden]="!name.errors.required" >*ارجوا ادخال اسم المنتج</mat-error>
+         <div *ngIf="name.errors && (name.dirty || name.touched)" class="alert alert-danger">
+             <mat-error [hidden]="!name.errors.required" >*ارجوا ادخال اسم المنتج</mat-error>
+         </div>
     </div>
-      </td>
-  </tr>
 
-  <tr>
-    <td>
-        <mat-form-field class="example-full-width">
+
+    <div class="form-group col-md-6 col-sm-12">
+          <label > <h4> وصف المنتج </h4> </label>
           <input matInput    name="description" #description="ngModel" 
-          [(ngModel)]="productService.selectedProduct.description" 
-          placeholder="الوصف">
-        </mat-form-field>
-      </td>
-    </tr>
-    
-    <tr>
-      <td>
-          <mat-form-field class="example-full-width">
-            <input matInput type="number"    name="price" #price="ngModel" 
-            [(ngModel)]="productService.selectedProduct.price" 
-            placeholder="سعر البيع المنتج" required>
-            <mat-icon matSuffix>money</mat-icon>
-          </mat-form-field>
-        </td>
-      
-    
-        <td>
-          <mat-form-field class="example-full-width">
-           <input matInput type="number"    name="cost" #cost="ngModel" 
+          [(ngModel)]="productService.selectedProduct.description" class="form-control"
+          placeholder="مثال: قلم أحمر للكتابة ">       
+    </div>
+    <div class="form-group col-md-6 col-sm-12">
+           <label > <h4> سعر البيع المنتج  <span class="red">* </span> </h4> </label>
+            <input matInput type="number"  name="price" #price="ngModel" 
+            [(ngModel)]="productService.selectedProduct.price" class="form-control"
+            placeholder="مثال: 2.5" required>
+          
+            <div *ngIf="price.errors && (price.dirty || price.touched)" class="alert alert-danger">
+                <mat-error [hidden]="!price.errors.required" >   *ارجو إدخال السعر المرغوب به لبيع المنتج</mat-error>
+            </div>
+    </div>
+
+    <div class="form-group col-md-6 col-sm-12">
+          <label > <h4> سعر تكلفة المنتج  <span class="red">* </span> </h4> </label>
+           <input matInput type="number"    name="cost" #cost="ngModel" class="form-control"
            [(ngModel)]="productService.selectedProduct.cost" 
-           placeholder="سعر الشراء المنتج" required>
-           <mat-icon matSuffix>money</mat-icon>
-          </mat-form-field>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <div *ngIf="price.errors && (price.dirty || price.touched)" class="alert alert-danger">
-            <mat-error [hidden]="!price.errors.required" >
-              *ارجو إدخال السعر المرغوب به لبيع المنتج</mat-error>
+           placeholder="مثال: 1" required>
+          
+           <div *ngIf="cost.errors && (cost.dirty || cost.touched)" class="alert alert-danger">
+              <mat-error [hidden]="!cost.errors.required" >*ارجو إدخال تكلفة شرائك للمنتج</mat-error>
+           </div>
+    </div>
+ 
+
+    <div class="form-group col-md-6 col-sm-12">
+          <label > <h4> الكمية المتوفرة من المنتج  <span class="red">* </span> </h4> </label>
+          <input matInput type="number"    name="inventory" #inventory="ngModel" 
+          [(ngModel)]="productService.selectedProduct.inventory"   class="form-control"
+          placeholder="مثال: 6" required>
+          
+          <div *ngIf="inventory.errors && (inventory.dirty || inventory.touched)" class="alert alert-danger">
+              <mat-error [hidden]="!inventory.errors.required" >   *ارجو إدخال الكمية المتوفرة من المنتج</mat-error >
           </div>
-     
-        </td>
-     <td>
-      <div *ngIf="cost.errors && (cost.dirty || cost.touched)" class="alert alert-danger">
-        <mat-error [hidden]="!cost.errors.required" >*ارجو إدخال تكلفة شرائك للمنتج</mat-error>
-      </div>
-     </td>
-      </tr>
-       
-      <tr>
-        <td>
-            <mat-form-field class="example-full-width">
-             <input matInput type="number"    name="inventory" #inventory="ngModel" 
-             [(ngModel)]="productService.selectedProduct.inventory" 
-             placeholder="الكمية المتوفرة من المنتج" required>
-             <mat-icon matSuffix></mat-icon>
-            </mat-form-field>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <div *ngIf="inventory.errors && (inventory.dirty || inventory.touched)" 
-            class="alert alert-danger">
-              <mat-error [hidden]="!inventory.errors.required" >
-                *ارجو إدخال الكمية المتوفرة من المنتج</mat-error >
-            </div>
-       
-          </td>
-   </tr>
-       <tr>
-        <td>
-            <!-- [(ngModel)]="productService.selectedProduct.category" -->
-            <mat-form-field class="example-full-width">
-              <mat-select  name="category" #category="ngModel" 
-              
-               placeholder="التصنيف"
-               [(ngModel)]='selectvalue'
-               (change)='addNewCategory()'>
-               <mat-option *ngFor="let category of cat" [value]=" category.$key ">
-                {{category.$key}}
+    </div>
+ <!-- [(ngModel)]="productService.selectedProduct.category" -->
+            
+    <div class="form-group col-md-6 col-sm-12">
+        <mat-form-field>
+          <mat-select  name="category" #category="ngModel"         
+            placeholder="التصنيف"
+            [(ngModel)]='selectvalue'
+            >
+            <mat-option *ngFor="let category of cat" [value]=" category.$key ">
+              {{category.$key}}
+            </mat-option>
+            <mat-option  *ngIf="exist" value="غير ذلك">
+                غير ذلك
               </mat-option>
-              <mat-option  *ngIf="exist" value="غير ذلك">
-                  غير ذلك
-                </mat-option>
-                <mat-option  [value]="New">
-                  {{New}}
-                </mat-option>
+              <mat-option  [value]="New" (click)='addNewCategory()'>
+                {{New}}
+              </mat-option>
             </mat-select>
-            </mat-form-field>
-          </td>
-      </tr>
-      <tr>
-          <td>
-            <div *ngIf="category.errors && (category.dirty || category.touched)"
-             class="alert alert-danger">
-            <mat-error >*أرجو أن اختار تصنيف للمنتج</mat-error>
-            </div>
-          </td>
-        </tr>
-       
-    <tr>
-      <td>
-       <div class="form-group" >
-         <label>
-            <h4>صورة المنتج:</h4> 
-           <input type="file" (change)="detectFiles($event)">
-         </label>
-      
+    </mat-form-field>
+        <div *ngIf="category.errors && (category.dirty || category.touched)" class="alert alert-danger">
+            <mat-error >*أرجو أن تختار تصنيف للمنتج</mat-error>
         </div>
-      </td>
-    </tr>
-    
-<tr>
-  <td>
+    </div>
+
+
+    <div class="form-group custom-file col-md-6 col-sm-12">
+         <label> <h4>صورة المنتج:</h4>  </label>
+           <input type="file" (change)="detectFiles($event)" class="form-control custom-file-input" accept="image/gif, image/jpeg, image/png" >
+                
+           <p>
+              <small > الصيغ المسموح بها gif , jpeg ,png</small> </p>  
+      </div>
+ 
+    <div class="col-md-6 col-sm-12">
     <div *ngIf="num" >
       <div class="progress">
         <div class="progress-bar progress-bar-animated" [ngStyle]="{ 'width': num + '%' }"></div>
       </div>
       التحميل: | {{num}}% اكنمل
     </div>
-  </td>
-</tr>
+    </div>
+
     <!--
     <div class="form-group">
       <label>Salary</label>
@@ -170,20 +120,16 @@
       </div>
     </div>
     -->
-    
-    <tr>
-        <td>     
-      <button class="btn btn-default" color="primary" mat-button type="submit" [disabled]="!productForm.valid">
+
+   
+      <button class="btn ok" color="primary"  type="submit" [disabled]="!productForm.valid">
         <i class="fa fa-floppy-o"></i>
          إضافة</button>
-        </td>
-        <td>
-         <button class="btn btn-default" color="accent" type="button" mat-button (click)="openDialog()">
+       
+         <button class="btn cancle" color="accent" type="button" (click)="openDialog()">
         <i class="fa fa-repeat"></i>
          إالغاء</button>
-        </td>
-      </tr>
-
-     </table>
+      
     </form>
+  </mat-card-content>
   </mat-card>
