@@ -1,6 +1,6 @@
 <mat-toolbar   style="background-color:transparent">
     <span class="primary">
-        <a  (click)="gobacktoProducts()" > <span>العودة إلى عرض الموظفين </span></a> 
+        <a  (click)="gobacktoProducts()" > <h6>العودة إلى عرض الموظفين </h6></a> 
     </span>
     <span class="toolbar-spacer"></span>
 </mat-toolbar>
@@ -21,7 +21,7 @@
         
 
       <div class="form-group col-md-6 col-sm-12">
-          <label > <h4>  الاسم الأول </h4> </label>
+          <label > <h4> الاسم الأول  <span class="red">* </span> </h4> </label>
            
    
           <input matInput   name="firstName" #firstName="ngModel"   
@@ -37,11 +37,11 @@
 
 
         <div class="form-group col-md-6 col-sm-12">
-            <label > <h4>   العائلة </h4> </label>
+            <label > <h4>    العائلة  <span class="red">* </span> </h4> </label>
            
             <input matInput  minlength="3" name="lastName" #lastName="ngModel" 
             [(ngModel)]="employeeService.selectedEmployee.lastName"   class="form-control"
-            placeholder="العائلة" required>
+            placeholder="مثال: السحيم" required>
           
         <div *ngIf="lastName.errors && (lastName.dirty || lastName.touched)"  class="alert alert-danger">
             <div [hidden]="!lastName.errors.minlength">
@@ -53,10 +53,10 @@
   
 
         <div class="form-group col-md-6 col-sm-12">
-            <label > <h4>   البريد الإلكتروني </h4> </label>
+            <label > <h4>   البريد الإلكتروني <span class="red">* </span></h4> </label>
             <input matInput   type="email" name="email" #email="ngModel" 
             [(ngModel)]="employeeService.selectedEmployee.email" 
-            placeholder="البريد الإلكتروني"   class="form-control"
+            placeholder="مثال: me@gmail.com"   class="form-control"
             pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" required>
           
 
@@ -73,7 +73,7 @@
 
             <input matInput type="tel"   name="phone" #phone="ngModel" 
             [(ngModel)]="employeeService.selectedEmployee.phone"  class="form-control"
-            minlength="10" pattern="[0-9]*" placeholder="الجوال">
+            minlength="10" pattern="[0-9]*" placeholder="مثال: 0512345678">
     
 
   
@@ -89,7 +89,7 @@
           <label > <h4>   الراتب </h4> </label>
             <input  matInput type="number"   name="salary" #salary="ngModel" 
             [(ngModel)]="employeeService.selectedEmployee.salary" class="form-control"
-            placeholder="الراتب">
+            placeholder="مثال: 2500">
          </div>
 
 

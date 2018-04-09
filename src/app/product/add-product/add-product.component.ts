@@ -183,10 +183,15 @@ export class AddProductComponent  {
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
       console.log(result);
-      if(result)
+      if(result!=null)
       {
         this.New=result;
         this.selectvalue=result;
+      }
+      else
+      {
+        this.selectvalue='';
+        this.New='إضافة تصنيف جديد';
       }
     });
   }
