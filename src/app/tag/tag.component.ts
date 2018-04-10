@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject ,ViewChild} from '@angular/core';
 import { print } from 'util';
 import {Router} from '@angular/router';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
@@ -6,6 +6,7 @@ import { Product } from '../product/shared/product.model';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { Category } from './category.model';
 import { FlashMessagesService } from 'angular2-flash-messages';
+import {MatTableDataSource,MatPaginator,MatSort} from '@angular/material';
 
 @Component({
   selector: 'app-tag',
@@ -13,32 +14,42 @@ import { FlashMessagesService } from 'angular2-flash-messages';
   styleUrls: ['./tag.component.css']
 })
 export class TagComponent implements OnInit {
+  @ViewChild(MatSort) sort: MatSort;
+  @ViewChild(MatPaginator) paginator: MatPaginator;
   productList: Product[];
   category: Category[];
   tempProducts: Product[];
-
+  public title="إدارة التصنيفات";
+  displayedColumns=['name','edit','delete'];
+  dataSource:MatTableDataSource<Category>=new MatTableDataSource(new Array());
   constructor(private router:Router , private db :AngularFireDatabase,
      public dialog: MatDialog, public flashMensaje: FlashMessagesService )  { }
      
-  public title="التصنيفات";
-  public AddBtn="إضافة تصنيف ";
-  public AddBtnn="إضافة منتج";
-  public selected="ALLCAT";
-  selectedValue: string;
-  openDialog(category: Category): void {
-    let dialogRef = this.dialog.open(viewTag, {
-      width:"auto",
-      data: { category: category } 
-    });
 
-  /*  dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-      if(result)
-      item.name = result;
-    }); */
+  ngOnInit() {
+      
+    this.dataSource.data= [];
+    console.log( this.category);
+    this.db.list(window.name+'/products').snapshotChanges().subscribe(item => {
+    for(var element2 in item) {
+      var y = item[element2].payload.toJSON();
+      y["$key"] = item[element2].key;
+      this.dataSource.data.unshift(y as Category);
+      this.dataSource._updateChangeSubscription()
+    }    
+  });
+  //this.category.reverse();
   }
 delete(category: Category){
-      if(confirm(' عند حذفك للتصنيف سوف تحذف جميع المنتجات هذا التصنيف هل أنت متأكد من الحذف؟ '))
+  let dialogRef = this.dialog.open(confirmDialog, {
+    data: { name:category.$key }
+  });
+
+  dialogRef.afterClosed().subscribe(result => {
+    console.log('The dialog was closed');
+    console.log(result);
+    if(result!=null)
+    {
       {this.db.list(window.name+'/products').remove(category.$key).then( (res) => {
         this.flashMensaje.show('.تم حذ التصنيف وجميع منتجاته بنجاح',
         {cssClass: 'alert-success', timeout: 4000});
@@ -50,63 +61,51 @@ delete(category: Category){
       });
        this.category= [];
     
-      } else 
-        console.log('not deleted');
-        
+      }
+    }
+    else
+    {
+      console.log('not deleted');
+    }
+  });   
         //console.log(this.category.splice(this.category.indexOf(category)));
-
 }
-    ngOnInit() {
-      this.productList = [];
-      this.category= [];
-      console.log( this.category);
-      this.db.list(window.name+'/products').snapshotChanges().subscribe(item => {
-      for(var element2 in item) {
-        var y = item[element2].payload.toJSON();
-        y["$key"] = item[element2].key;
-        this.category.unshift(y as Category);
-      this.db.list(window.name+'/products/'+item[element2].key).snapshotChanges().subscribe(element => {
-        element.forEach(element2 => {
-        var y = element2.payload.toJSON();
-        y["$key"] = element2.key;
-       // y["picPath"] = this.getImg(y["picPath"]);
-       this.productList.push(y as Product);
+ 
+edit(category:Category)
+{
+
+  let dialogRef = this.dialog.open(viewTag, { data: { name:category.$key } });
+
+  dialogRef.afterClosed().subscribe(result => {
+    console.log('The dialog was closed');
+    console.log(result);
+    if(result!=null)
+    {
+      this.db.list(window.name+'/products/'+category.$key).snapshotChanges().subscribe(prods=>
+      {
+        prods.forEach(prod => {
+          var product =(prod.payload.toJSON());
+          console.log(product)
+          // this.db.list(window.name+'/products/'+ product.category).update(product.$key,
+          //   {
+          //     name: product.name,
+          //     price: product.price,
+          //     cost: product.cost,
+          //     inventory: product.inventory,
+          //     description: product.description,
+          //     category: product.category,
+          //     picPath: product.picPath,
+          //     picName: product.picName
+          //   });
         });
       });
-      }
-      this.productList = [];
-      this.productToggle(this.selected);
-    });
-    //this.category.reverse();
+
+      
     }
-    productToggle(category:string){
-      this.tempProducts = [];
-      if (category=="ALLCAT")
-      this.tempProducts = this.productList;
-      else
-      {
-        this.productList.forEach(item =>{
-          if(item.category == category)
-            this.tempProducts.unshift(item as Product);
-        });
-      }
-      console.log( this.tempProducts);
-      console.log( category);
-    }
-    viewProduct(product: Product)
-{
-  let id=product.$key+","+product.name+","+product.category+","+product.cost+","+product.description+","+product.inventory+","+product.picName+","+product.picPath+","+product.price;
-  this.router.navigate(['mainPage/View_Producct',id]);
+  });
+
 }
-    
-      Add()
-      {
-        
-          this.router.navigate(['mainPage/Add_Tag']);
-      }
-
-
-  }
+}
   
 //what is this ?????????????????????????
   @Component({
@@ -121,26 +120,20 @@ delete(category: Category){
 
     constructor(
       public dialogRef: MatDialogRef<viewTag>,
-      @Inject(MAT_DIALOG_DATA) public data: any,public db: AngularFireDatabase ) { }
+      @Inject(MAT_DIALOG_DATA) public data: any,public db: AngularFireDatabase ) { } 
+  }
   
-    
-   delete()
-    { 
-      console.log(this.category)
-      if(confirm(' عند حذفك للتصنيف سوف تحذف جميع منتجات هذا التصنيف هل أنت متأكد من الحذف؟ ') == true){
-      this.db.list(window.name+'/products').remove(this.category.$key);
-      /*.then( (res) => {
-        this.flashMensaje.show('.تم حذ التصنيف وجميع منتجاته بنجاح',
-        {cssClass: 'alert-success', timeout: 5000});
-        this.router.navigate(['mainPage']);
-      }).catch((err) => {
-        this.flashMensaje.show('حدثت مشكلة أثناء عملية الحذف أرجو المحاولة مرة أخرى.',
-        {cssClass: 'alert-danger', timeout: 6000});
-        this.router.navigate(['']);
-      });*/
-        }else 
-        console.log('not deleted');
-    }
-  
+
+  @Component({
+    selector: ' confirmDialog',
+    templateUrl: 'confirmDialog.component.html',
+    styleUrls: ['./tag.component.css']
+
+  })
+  export class confirmDialog
+  {
+    constructor(
+      public dialogRef: MatDialogRef<viewTag>,
+      @Inject(MAT_DIALOG_DATA) public data: any,public db: AngularFireDatabase ) { } 
   }
   

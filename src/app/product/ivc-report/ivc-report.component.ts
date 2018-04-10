@@ -18,6 +18,7 @@ export class IvcReportComponent implements OnInit {
   @ViewChild("pie", {read: ElementRef}) pie:ElementRef;
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
+  dataSource:MatTableDataSource<Product>=new MatTableDataSource(new Array());
   chart = []; 
   productList: Product[];
   totalS =0;
@@ -31,7 +32,7 @@ export class IvcReportComponent implements OnInit {
  y=[];
   startDate: Date=new Date();
   endDate: Date=new Date();
-  dataSource:MatTableDataSource<Product>=new MatTableDataSource(new Array());
+
   constructor(private db :AngularFireDatabase,private productService : ProductService)  { }
   
   ngOnInit() {
