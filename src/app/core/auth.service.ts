@@ -62,16 +62,41 @@ export class AuthService {
      }
 
 
-  registerUser(email: string, pass: string) {
+  registerUser(email,password) {
     return new Promise((resolve, reject) => {
-      this.afAuth.auth.createUserWithEmailAndPassword(email, pass)
-      .then( userData =>  resolve(userData),
+      this.afAuth.auth.createUserWithEmailAndPassword(email, password)
+      .then( userData => { 
+        resolve(userData);
+      /*  firebase.database().ref(businessname+'/manager').set({
+          ReceiptID:ReceiptID,
+          email: email,
+          fname: fname,
+          lname: lname,
+          password: password,
+          phone: phone,
+          businessname: businessname,
+          picPath: picPath,
+          picName: picName
+          });
+          firebase.database().ref(window.name+'/employees').child(userData.uid).set({
+            username: '',  
+            email: email,
+            firstName: fname,
+            lastName: lname,
+            password: password,
+            phone: phone,
+            salary: 0,
+            picPATH: picPath,
+            picName: picName
+            });*/
+
+      },
       err => reject (err));
     });
   }
   
   
-  registerManager(ReceiptID,email,password,fname,lname,phone,businessname,picName,picPath){
+  registerManager(ReceiptID,email,password,fname,lname,phone,businessname,picName,picPath,uid){
     firebase.database().ref(businessname+'/manager').set({
       ReceiptID:ReceiptID,
       email: email,
@@ -83,6 +108,18 @@ export class AuthService {
       picPath: picPath,
       picName: picName
       });
+      firebase.database().ref(window.name+'/employees').child(uid).set({
+        username: '',  
+        email: email,
+        firstName: fname,
+        lastName: lname,
+        password: password,
+        phone: phone,
+        salary: 0,
+        picPATH: picPath,
+        picName: picName
+        });
+      
   }
 
   loginTestFirst(email: string, pass: string){

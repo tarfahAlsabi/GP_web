@@ -98,13 +98,10 @@ addFileThenRegistuer(){
     }
 }
 onSubmitAddUser() {
-  this.authService.registerUser(this.email, this.password)
+ this.authService.registerUser(this.email,this.password)
   .then((res) => {
     window.name = this.businessname;
     var ReceiptID = 0;
-    this.flashMensaje.show('عملية التسجيل ناجحة مرحبا بك',
-    {cssClass: 'alert-success', timeout: 5000});
-
     if(this.selectedFiles){
       const file = this.selectedFiles.item(0);
       const storageRef = firebase.storage().ref(file.name);
@@ -113,9 +110,8 @@ onSubmitAddUser() {
       uploadTask.then((r)=>{
         this.picPath = uploadTask.snapshot.downloadURL;
           this.picName = file.name;
-        
           this.authService.registerManager(ReceiptID,this.email,this.password,this.fname,this.lname,
-          this.phone,this.businessname,this.picName,this.picPath);
+          this.phone,this.businessname,this.picName,this.picPath,res.uid);
       }).catch((erorr)=>{
         console.log('pic error');
       });
@@ -124,7 +120,7 @@ onSubmitAddUser() {
        this.picName = 'defaultEmployee.jpg';
        
       this.authService.registerManager(ReceiptID,this.email,this.password,this.fname,this.lname,
-        this.phone,this.businessname,this.picName,this.picPath);
+        this.phone,this.businessname,this.picName,this.picPath,res.uid);
    //    this.onSubmitAddUser();
       }
    

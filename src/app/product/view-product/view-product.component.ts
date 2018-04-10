@@ -66,7 +66,7 @@ export class ViewProductComponent implements OnInit {
   });
   }
   this.productList = [];
-});*/
+});*/ 
   }
 
   onEdit() {

@@ -48,8 +48,9 @@ export class ManagerComponent implements OnInit {
        });
       });
   }
-  edite(){
-    console.log(this.manager)
+  onEdite(){
+    let id = this.manager[3]+','+this.manager[4]+','+this.manager[6];
+    this.router.navigate(['mainPage/edit-manager/',id]);
   }
 }
 

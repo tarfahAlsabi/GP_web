@@ -33,8 +33,9 @@ export class AddProductComponent  {
   exist=true;
   selectvalue:string;
   New="إضافة تصنيف جديد";
-  constructor(private productService : ProductService, private route: ActivatedRoute,public dialog: MatDialog,
-  private router:Router,public flashMensaje: FlashMessagesService ,private db:AngularFireDatabase) {}
+  constructor(private productService : ProductService, private route: ActivatedRoute,
+    public dialog: MatDialog, private router:Router,public flashMensaje: FlashMessagesService,
+    private db:AngularFireDatabase) {}
   
   
   ngOnInit() {
@@ -43,12 +44,9 @@ export class AddProductComponent  {
     this.temp = this.route.snapshot.params.id;
     if((this.temp != '') && (this.temp != ':id')){
       this.onEdit();
-      console.log(this.temp);
-      console.log('s');
     }
     
     this.category= [];
-    console.log( this.category);
     this.db.list(window.name+'/products', query => { let m=query.orderByChild('category'); return m}).snapshotChanges().subscribe(item => {
     for(var element2 in item) {
       var y = item[element2].payload.toJSON();
@@ -168,6 +166,7 @@ export class AddProductComponent  {
 
     }
   }
+  
   addNewCategory()
   {
     console.log("Inside new Category");

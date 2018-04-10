@@ -79,7 +79,8 @@ import { updateSalary } from './empolyee/view-emp/view-emp.component';
 import { addCategory, confirmMessageanclePro } from './product/add-product/add-product.component';
 import { AddProductComponent } from './product/add-product/add-product.component';
 import { ViewProductComponent } from './product/view-product/view-product.component';
-import { confirmMessage } from './product/view-product/view-product.component'
+import { confirmMessage } from './product/view-product/view-product.component';
+import { EditManagerComponent, confirmMessageCancleManag } from './manager/edit-manager/edit-manager.component'
 
 @NgModule({
   declarations: [
@@ -99,6 +100,8 @@ import { confirmMessage } from './product/view-product/view-product.component'
     confirmMessageEmp,
     confirmMessageancleEmp,
     confirmMessageanclePro,
+    confirmMessageCancleManag,
+    EditManagerComponent,
    
   ],
   imports: [
@@ -161,7 +164,7 @@ import { confirmMessage } from './product/view-product/view-product.component'
   entryComponents: [confirmDialog,viewTag, TagComponent, addQuantity,ProductComponent,
      updateSalary, ViewEmpComponent,addCategory ,AddProductComponent, ViewProductComponent,
      confirmMessage, confirmMessageEmp,ViewEmpComponent, confirmMessageancleEmp, AddEmpComponent,
-     confirmMessageanclePro, AddProductComponent],
+     confirmMessageanclePro, AddProductComponent, confirmMessageCancleManag, EditManagerComponent],
   providers: [AuthService, AuthGuard, FlashMessagesService],
   bootstrap: [AppComponent]
 })
