@@ -10,13 +10,6 @@ import { FlashMessagesService } from 'angular2-flash-messages';
 import { Manager } from '../core/manager.model'
 import * as firebase from 'firebase';
 
-import {FormBuilder, FormGroup,Validators,FormControl} from '@angular/forms';
-import {FormGroupDirective, NgForm} from '@angular/forms';
-import {ErrorStateMatcher} from '@angular/material/core';
-import { StateKey } from '@angular/platform-browser/src/browser/transfer_state';
-import {MatInputModule} from '@angular/material/input';
-import { MatExpansionPanelDescription } from '@angular/material';
-
 
 
 @Component({
