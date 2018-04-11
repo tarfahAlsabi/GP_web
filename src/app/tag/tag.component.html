@@ -5,40 +5,34 @@
  </mat-toolbar>  
 
 
-<mat-toolbar  class="PageTitle">
-    <mat-toolbar-row>
-          <mat-form-field class="example-full-width">
-        <mat-label>عرض بحسب التصنيف</mat-label>            
-            <mat-select  name="category"  
-             [(value)]="selected"
-             (change)="productToggle(selected)">
-              <mat-option  value="ALLCAT"  >
-                عرض الجميع 
-              </mat-option>
-
-              <mat-option *ngFor="let category of category" [value]=" category.$key ">
-                {{category.$key}}
-              </mat-option>
-
-            </mat-select>
-          </mat-form-field>
-
-
-        <span class="toolbar-spacer"></span>
-      <span> 
-            <mat-form-field >
-          <input  matInput  type="search" class="search" color="primary" placeholder=" ابحث"> 
-        </mat-form-field>
-    </span>
-
-
-    </mat-toolbar-row>
-  
-</mat-toolbar>
-
-
 <section class="ViewsContainer"  >
- 
+  <mat-table #table [dataSource]="dataSource"  matSort>
+
+    <!-- Position Column -->
+<!--               
+    <ng-container [matColumnDef]="header"  *ngFor='let header of displayedColumns' >
+      <mat-header-cell *matHeaderCellDef> {{info[header]}} </mat-header-cell>
+      <mat-cell *matCellDef="let element; ">  {{element.date}}    </mat-cell>
+    </ng-container>
+      displayedColumns=['name','edit','delete'];; -->
+    
+    <ng-container matColumnDef="name" >
+        <mat-header-cell *matHeaderCellDef mat-sort-header  > التصنيف  </mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{row.$key}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="edit"  >
+          <mat-header-cell *matHeaderCellDef mat-sort-header > تعديل التصنيف  </mat-header-cell>
+          <mat-cell *matCellDef="let row"> <button mat-icon-button (click)=edit(row)><mat-icon>mode_edit </mat-icon></button></mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="delete" >
+            <mat-header-cell *matHeaderCellDef mat-sort-header> حذف التصنيف </mat-header-cell>
+            <mat-cell *matCellDef="let row"> <button mat-icon-button  (click)=delete(row)> <mat-icon>delete </mat-icon></button></mat-cell>
+          </ng-container>
+
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
 
     
 

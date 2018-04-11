@@ -69,6 +69,7 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 
 import { CoreModule } from './core/core.module';
 import { TagComponent } from './tag/tag.component';
+import {confirmDialog}  from './tag/tag.component';
 
 import {FlashMessagesModule} from 'angular2-flash-messages';
 import {FlashMessagesService} from 'angular2-flash-messages';
@@ -90,6 +91,7 @@ import { EditManagerComponent, confirmMessageCancleManag } from './manager/edit-
     EmpolyeeComponent,
     AddEmpComponent,
     ViewEmpComponent,
+    confirmDialog,
     viewTag,
     addQuantity,
     updateSalary,
@@ -159,7 +161,7 @@ import { EditManagerComponent, confirmMessageCancleManag } from './manager/edit-
     CoreModule,
     FlashMessagesModule
   ],
-  entryComponents: [viewTag, TagComponent, addQuantity,ProductComponent,
+  entryComponents: [confirmDialog,viewTag, TagComponent, addQuantity,ProductComponent,
      updateSalary, ViewEmpComponent,addCategory ,AddProductComponent, ViewProductComponent,
      confirmMessage, confirmMessageEmp,ViewEmpComponent, confirmMessageancleEmp, AddEmpComponent,
      confirmMessageanclePro, AddProductComponent, confirmMessageCancleManag, EditManagerComponent],
