@@ -21,3 +21,68 @@
   .alert.flash-message{
     margin-top:8px;
 }
+.example-form {
+    min-width: 150px;
+    width: 100%;
+  }
+  
+  .example-full-width {
+    width: 100%;
+  }
+  
+  .formContainer
+  {
+    font-family: 'Amiri' !important;
+      margin: 1% 2%;
+      align-self: center; 
+      
+  }
+  td mat-form-field
+  {
+  
+    text-align: right;
+    font-size: 18px;
+    float: right;
+    line-height: 2;
+  }
+  input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+input[type="number"] {
+    -moz-appearance: textfield;
+}
+  .ok
+  {
+    background-color: #6dc4e2;
+  }
+  .cancle
+  {
+    background-color: #a8a8a8;
+  }
+ table
+ {
+
+     width: 100%;
+ }
+ td button
+ {
+   width: 100%;
+   height: 100%;
+ }
+  td mat-form-field app-input-file
+  {
+    float: right;
+    text-indent: 1.5px;
+    text-align: right;
+    font-size: 18px;
+  }
+
+  div {
+    text-align: right;
+  }
+  .red{
+    color: red;
+  }
+  

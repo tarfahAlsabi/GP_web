@@ -11,6 +11,7 @@ import { Manager } from '../core/manager.model'
 import * as firebase from 'firebase';
 
 
+
 @Component({
   selector: 'app-home-page',
   templateUrl: './home-page.component.html',

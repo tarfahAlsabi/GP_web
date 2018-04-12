@@ -61,3 +61,20 @@
     direction: rtl;
     align-content: center;
 }
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+input[type="number"] {
+    -moz-appearance: textfield;
+}
+  .ok
+  {
+    background-color: #6dc4e2;
+  }
+  .cancle
+  {
+    background-color: #a8a8a8;
+  }
