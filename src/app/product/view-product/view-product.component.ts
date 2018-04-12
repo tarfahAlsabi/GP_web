@@ -30,7 +30,7 @@ export class ViewProductComponent implements OnInit {
   Tag:string;
   product: Product;
   //productList: Product[];
-  
+  title='عرض بيانات '
   constructor(private router: Router, private route: ActivatedRoute
     ,public flashMensaje: FlashMessagesService,public dialog: MatDialog) { }
 

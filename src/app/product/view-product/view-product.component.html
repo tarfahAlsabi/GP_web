@@ -1,130 +1,64 @@
-
 <mat-toolbar   style="background-color:transparent">
-        <span class="primary">
-            <a  (click)="gobacktoProducts()" > <span>العودة إلى عرض المنتجات </span></a> 
-        </span>
-        <span class="toolbar-spacer"></span>
+        <mat-toolbar-row>
+    <span class="primary">
+        <a  (click)="gobacktoProducts()">  <p class='goBack' >الذهاب إلى عرض  المنتجات  </p></a> 
+    </span>
+    </mat-toolbar-row>
+    <mat-toolbar-row>
+    <span class="toolbar-spacer"></span>
+     <h2 class="title"> {{ title }} {{name}} </h2> 
+    <span class="toolbar-spacer"></span>
+    </mat-toolbar-row>
 </mat-toolbar>
 
+    
 <mat-card class="example-card">
-    <mat-card-header>
-      <div mat-card-avatar class="example-header-image"><img src={{img}}></div>
-      <h2>{{name}} </h2>
-    </mat-card-header>
-    <mat-card-content>
+<mat-card-content>
+        <div class="col-md-12" dir="rtl" >
+        <div class='col-md-9   col-sm-8 '>
+                
        
-        <div class=" col-m-12">
-            <div class="con">
-            <h4>
-                     الوصف
-            </h4>
-            <p class="des">
-                    {{description}}
-            </p>
+        <div class='col-md-12 '> 
+              <h5 class='header'> الوصف:   <span class='info'> {{description}} </span>  </h5> 
+        </div> 
+        
+        <div class='col-md-12'> 
+                <h5 class='header'>  التصنيف:    <span class='info'>   {{Tag}}  </span> </h5>
+         </div>
+       
+         <div class='col-md-12'> 
+                <h5 class='header'>  سعر التكلفة : <span class='info' >  {{cost}} ر.س   </span>  </h5>
+         </div>
+
+         <div class='col-md-12'> 
+                <h5 class='header'>  سعر البيع  : <span class='info' >  {{price}} ر.س   </span>  </h5>
+         </div>
+
+         <div class='col-md-12 '> 
+                <h5 class='header'>  الكمية المتوفرة :   <span class='info'> {{quantity}} </span>  </h5> 
+          </div>
+
+
+
         </div>
-        </div>
-
-        <div class="  col-m-12">
-                <div class="con">
-                <h4>
-                        التصنيف
-                </h4>
-                <p class="des">
-                        {{Tag}}
-                </p>
-                </div>
-            </div>
-
-            <div class=" col-m-12">
-                <div class="con ">
-                    <h4>
-                            سعر الشراء 
-                    </h4>
-                    <p class="des">
-                            {{cost}}
-                    </p>
-                </div>
-                </div>
-
-                <div class="  col-m-12">
-                        <div class="con ">
-                        <h4>
-                                سعر البيع 
-                        </h4>
-                        <p class="des">
-                                {{price}}
-                        </p>
-                       </div> 
-                    </div>
-
-
-                    <div class="  col-ms-6">
-                            <div class="con ">
-                            <h4>
-                                    الكمية المتوفرة
-                            </h4>
-                            <p class="des">
-                                    {{quantity}}
-                            </p>
-                        </div>    
-                        </div>
-      <!-- <table>
-        <tr>      
-          <td>
-              <h4>    </h4>
-          </td>
-
-          <td>
-              <p class="des">  </p>
-          </td>
-        </tr>
-        <tr>
-
-            <tr>      
-                <td>
-                    <h4> التصنيف   </h4>
-                </td>
-      
-                <td>
-                    <p class="des"> {{Tag}} </p>
-                </td>
-              </tr>
-              <tr>
-
-          <td>
-              <h4> سعر الشراء </h4>
-          </td>
-          <td>
-              <p class="des">  {{cost}}  </p>
-          </td>
-        </tr>
-        <tr>
-            <td>
-                <h4> سعر البيع </h4>
-            </td>
-            <td>
-                <p class="des">  {{price}}  </p>
-            </td>
-          </tr>
-        <tr>
-          <td>
-              <h4> الكمية المتوفرة  </h4>
-          </td>
-          <td>
-              <p class="des"> {{quantity}}  </p>
-          </td>
-        </tr>
-      </table> -->
-    </mat-card-content>
+        <div class='col-md-3  col-sm-4' >
+            
+                <div  class="example-header-image"><img src={{img}}></div>
+                <br>
+                <h5 class="Imgheader">{{name}} </h5>
+                <br>
+                          
+              </div>
+    </div>
+                
+        </mat-card-content>
    
-    <mat-card-actions>
-        <table>
-          <tr>
-     <td> <button mat-button>عرض مبيعات المنتج   </button> </td>
-     <td> <button mat-button (click)="onEdit()" > تعديل بيانات المنتج  </button> </td> 
-     <td> <button mat-button (click)="openDialog()" >حذف المنتج  </button> </td>
-    </tr>
-    </table>
-    </mat-card-actions>
+        <div>
+     <button mat-raised-button class= " Btns blueBtn" >عرض مبيعات المنتج   </button> 
+      <button mat-raised-button  class='Btns greenBtn' (click)="onEdit()" > تعديل بيانات المنتج  </button>  
+      <button mat-raised-button  class='Btns greyBtn' (click)="openDialog()" >حذف المنتج  </button> 
+    
+    </div>
+
   </mat-card>
   

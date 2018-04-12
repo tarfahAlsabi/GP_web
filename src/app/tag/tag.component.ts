@@ -31,12 +31,14 @@ export class TagComponent implements OnInit {
     this.dataSource.data= [];
     console.log( this.category);
     this.db.list(window.name+'/products').snapshotChanges().subscribe(item => {
+      this.dataSource.data= [];  
     for(var element2 in item) {
       var y = item[element2].payload.toJSON();
       y["$key"] = item[element2].key;
       this.dataSource.data.unshift(y as Category);
       this.dataSource._updateChangeSubscription()
-    }    
+    }  
+
   });
   //this.category.reverse();
   }
@@ -53,11 +55,11 @@ delete(category: Category){
       {this.db.list(window.name+'/products').remove(category.$key).then( (res) => {
         this.flashMensaje.show('.تم حذ التصنيف وجميع منتجاته بنجاح',
         {cssClass: 'alert-success', timeout: 4000});
-        this.router.navigate(['mainPage']);
+        
       }).catch((err) => {
         this.flashMensaje.show('حدثت مشكلة أثناء عملية الحذف أرجو المحاولة مرة أخرى.',
         {cssClass: 'alert-danger', timeout: 5000});
-        this.router.navigate(['']);
+        
       });
        this.category= [];
     
@@ -86,21 +88,32 @@ edit(category:Category)
         prods.forEach(prod => {
           var product =(prod.payload.toJSON());
           console.log(product)
-          // this.db.list(window.name+'/products/'+ product.category).update(product.$key,
-          //   {
-          //     name: product.name,
-          //     price: product.price,
-          //     cost: product.cost,
-          //     inventory: product.inventory,
-          //     description: product.description,
-          //     category: product.category,
-          //     picPath: product.picPath,
-          //     picName: product.picName
-          //   });
+          this.db.list(window.name+'/products/'+ result).push({
+            name: product.name,
+            price: product.price,
+            cost: product.cost,
+            inventory: product.inventory,
+            description: product.description,
+            category: result,
+            picPath: product.picPath,
+            picName: product.picName
+            
+          });
         });
       });
 
+      {this.db.list(window.name+'/products').remove(category.$key).then( (res) => {
+        this.flashMensaje.show('.تم حذ التصنيف وجميع منتجاته بنجاح',
+        {cssClass: 'alert-success', timeout: 4000});
+        
+      }).catch((err) => {
+        this.flashMensaje.show('حدثت مشكلة أثناء عملية الحذف أرجو المحاولة مرة أخرى.',
+        {cssClass: 'alert-danger', timeout: 5000});
       
+      });
+       this.category= [];
+    
+      }
     }
   });
 

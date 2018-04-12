@@ -20,6 +20,7 @@ export class HeaderComponent  {
     EmpState: boolean = false;
     ChartsState: boolean = false;
     InvState:boolean = false;
+    CatsState:boolean = false;
 
   public isLogin: boolean;
   public username: string;

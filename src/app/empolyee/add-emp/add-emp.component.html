@@ -113,16 +113,13 @@
    
       
 
-       
-        <button class="btn ok "  type="submit"  [disabled]="!employeeForm.valid">
-         <i class="fa fa-floppy-o"></i>
-         إضافة</button>
+      
+        <button  mat-raised-button class="Btns  blueBtn"  type="submit"  [disabled]="!employeeForm.valid">
+            إضافة</button>
 
+           <button mat-raised-button  type="button"  class="Btns greyBtn "  (click)="openDialog()">
+          إلغاء</button>
 
-           <button type="button"  class="btn cancle "  (click)="openDialog()">
-          <i class="fa fa-repeat"></i>
-           إلغاء</button>
-  
 
         
           </form>

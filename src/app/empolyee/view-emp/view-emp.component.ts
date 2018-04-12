@@ -30,7 +30,7 @@ export class ViewEmpComponent implements OnInit {
   imgName: string;
   employee: Employee;
   //employeeList: Employee[];
-  public title ='بيانات الموظف'
+  public title ='بيانات '
 
   constructor(private route: ActivatedRoute, private router:Router
     ,public flashMensaje: FlashMessagesService, public dialog: MatDialog) { }

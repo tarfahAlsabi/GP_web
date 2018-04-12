@@ -10,9 +10,67 @@
   .example-header-image {
     /* background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg'); */
     background-size: cover;
-    width: 25% !important;
-    height: 25% !important;
+
   }
+
+  .greenBtn
+  { 
+      
+      background-color: #4989A5;
+    
+  }
+  
+  .blueBtn
+  {
+  
+      background-color: #6Dc4e2; 
+  
+  }
+ 
+  .greyBtn
+  {
+      background-color:#A8A8A8;
+  
+  }
+  .lightBlueBtn
+  {
+    background-color:#9DE4F4
+  }
+  .goBack
+  {
+    color: #4989A5;
+    font-size: 0.8em;
+    margin: 0;
+  }
+  .title
+  {
+    font-size: 2.4em;
+    margin: 0;
+  }
+  .Btns
+  {
+      color:white;
+      height: 3em;
+     
+      width: 12em;
+      margin: 1em !important;
+  }
+
+  .info
+  {
+     
+    color: #6Dc4e2;
+    font-size: 1em;
+  }
+  .header{
+      float: right;
+      font-size: 1.5em;
+ }
+.Imgheader
+    {
+
+    font-size: 1.5em;  
+    }
    img
   {
       width: 100% !important;
@@ -21,7 +79,7 @@
   table
   {
       text-align: right;
-      width: 70%;
+      width: 100%;
   }
 
   .dialogTitle , .DialogOptionBtn

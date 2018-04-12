@@ -47,7 +47,7 @@
 <section class="ViewsContainer"  > 
 
 <mat-card class="viewProduct"  *ngFor="let product of tempProducts" >
-    <img (click)="viewProduct(product )" mat-card-image class="Viewimg" src={{product.picPath}}>
+   <a> <img (click)="viewProduct(product )" mat-card-image class="Viewimg" src={{product.picPath}}> </a>
     <mat-card-content (click)="viewProduct(product )" role="group" >
      <h3>{{product.name }}</h3> 
      <h6> الكمية المتوفرة :

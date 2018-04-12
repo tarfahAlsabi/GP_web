@@ -36,7 +36,10 @@ import { EmployeWhsComponent } from './charts/employe-whs/employe-whs.component'
 import { EditManagerComponent } from './manager/edit-manager/edit-manager.component'
 
 const routes: Routes = [
-    {path: '', component: HomePageComponent},
+    {path: '', component: HomePageComponent,children:
+        [
+            
+        ]},
     {path: 'mainPage', component: HeaderComponent ,children: [
         {path: 'productReport' , component: ProductReportComponent },        
         {path: 'empolyee' , component: EmpolyeeComponent },

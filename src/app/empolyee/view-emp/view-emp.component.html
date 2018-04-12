@@ -1,55 +1,53 @@
 <mat-toolbar   style="background-color:transparent">
+        <mat-toolbar-row>
     <span class="primary">
-        <a  (click)="gobacktoProducts()" > <span>العودة إلى عرض المنتجات </span></a> 
+        <a  (click)="gobacktoProducts()">  <p class='goBack' >الذهاب إلى عرض الموظفين </p></a> 
     </span>
-    <span class="toolbar-spacer"></span>
-</mat-toolbar>
-
-<mat-toolbar  class="PageTitle">
-    <mat-toolbar-row>
-               
-                <span class="toolbar-spacer"></span>
-
-        <span color="primary">   <h2> {{ title }} </h2> </span>
-          
-        <span class="toolbar-spacer"></span>
-
     </mat-toolbar-row>
-  
+    <mat-toolbar-row>
+    <span class="toolbar-spacer"></span>
+     <h2 class="title"> {{ title }} {{name}} </h2> 
+    <span class="toolbar-spacer"></span>
+    </mat-toolbar-row>
 </mat-toolbar>
 
-<mat-card class="example-card">
-   
-      <div  class="example-header-image"><img src={{img}}></div>
-    
-                <b>{{name}} </b>
-                <br>
-       
-        <span> 
-              <h5> البريد الألكتروني:       </h5>
 
-              <p> {{Email}} </p>
-          </span> 
-        
-         <span> 
-              <h5> الجوال: </h5>
-          
-              <p>  {{phone}}  </p>
-          </span>
+
+<mat-card class="example-card" >
+    <mat-card-content>
+        <div class="col-md-12" dir="rtl" >
+        <div class='col-md-9   col-sm-8 '>
+                
        
-         <span> 
-              <h5> الراتب:  </h5>
-         
-              <p> {{salary}}ر.س   </p>
-          </span>
+        <div class='col-md-12 '> 
+              <h5 class='header'> البريد الألكتروني:   <span class='info'> {{Email}} </span>  </h5> 
+        </div> 
         
-    <mat-card-actions>
-      <button mat-button (click)="openDialog(true)">زيادة راتب الموظف </button>
-      <button mat-button (click)="openDialog(false)">تسريح الموظف  </button>
-      <br>
-      <button mat-button>عرض تقرير أداء الموظف </button>
-      <button mat-button>عرض تقرير ساعات عمل الموظف </button>
-     
-    </mat-card-actions> 
+        <div class='col-md-12'> 
+                <h5 class='header'> الجوال:    <span class='info'>  {{phone}}  </span> </h5>
+         </div>
+       
+         <div class='col-md-12'> 
+                <h5 class='header'> الراتب: <span class='info' > {{salary}}ر.س   </span>  </h5>
+         </div>
+        </div>
+        <div class='col-md-3  col-sm-4' >
+            
+                <div  class="example-header-image"><img src={{img}}></div>
+                <br>
+                <h5 class="Imgheader">{{name}} </h5>
+                <br>
+                          
+              </div>
+    </div>
+                
+        </mat-card-content>
+<div>
+        <button mat-raised-button class= "Btns blueBtn" > تقرير مبيعات الموظف  </button> 
+        <button mat-raised-button class= "Btns lightBlueBtn" >   تقرير ساعات العمل  </button> 
+        <button mat-raised-button  class='Btns greenBtn' (click)="openDialog(true)" > زيادة راتب الموظف </button>  
+        <button mat-raised-button  class='Btns greyBtn' (click)="openDialog(false)" >تسريح الموظف  </button> 
+    </div>
+
   </mat-card>
   

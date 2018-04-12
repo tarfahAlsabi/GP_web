@@ -110,8 +110,8 @@ onSubmitAddUser() {
       uploadTask.then((r)=>{
         this.picPath = uploadTask.snapshot.downloadURL;
           this.picName = file.name;
-          this.authService.registerManager(ReceiptID,this.email,this.password,this.fname,this.lname,
-          this.phone,this.businessname,this.picName,this.picPath,res.uid);
+          // this.authService.registerManager(ReceiptID,this.email,this.password,this.fname,this.lname,
+          // this.phone,this.businessname,this.picName,this.picPath,res.uid);
       }).catch((erorr)=>{
         console.log('pic error');
       });
@@ -119,8 +119,8 @@ onSubmitAddUser() {
       this.picPath = 'https://firebasestorage.googleapis.com/v0/b/erad-system.appspot.com/o/defaultEmployee.jpg?alt=media&token=cb0d86a8-cea9-4f19-9177-d12d0a054b62';
        this.picName = 'defaultEmployee.jpg';
        
-      this.authService.registerManager(ReceiptID,this.email,this.password,this.fname,this.lname,
-        this.phone,this.businessname,this.picName,this.picPath,res.uid);
+      // this.authService.registerManager(ReceiptID,this.email,this.password,this.fname,this.lname,
+      //   this.phone,this.businessname,this.picName,this.picPath,res.uid);
    //    this.onSubmitAddUser();
       }
    

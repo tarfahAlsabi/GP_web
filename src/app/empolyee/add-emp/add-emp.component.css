@@ -30,14 +30,26 @@ input[type="number"]::-webkit-inner-spin-button {
 input[type="number"] {
     -moz-appearance: textfield;
 }
-  .ok
-  {
-    background-color: #6dc4e2;
-  }
-  .cancle
-  {
-    background-color: #a8a8a8;
-  }
+.blueBtn
+{
+
+    background-color: #6Dc4e2; 
+
+}
+
+.greyBtn
+{
+    background-color:#A8A8A8;
+
+}
+.Btns
+{
+    color:white;
+    height: 3em;
+   
+    width: 12em;
+    margin: 1em !important;
+}
  table
  {
 

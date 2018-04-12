@@ -8,7 +8,19 @@
         <span>
             <div class="example-header-image">
               <img src='assets/imgs/EradLogo++2.png'> 
-              <img src='assets/imgs/EradLogo++1.png'></div> </span>
+              <img src='assets/imgs/EradLogo++1.png'></div> 
+        </span>
+
+
+
+        <div class="img-logo">
+            <div >
+              <img src="{{manager[8]}}" class="rounded-circle logoImg">
+            </div> 
+            <div>
+            <a (click)="profile()" ><p class="hello"> مرحبا بك {{manager[3]}} {{manager[4]}}</p> </a>
+            </div>
+        </div>
 
         <!-- <div class="example-header-image"><img src='assets/imgs/EradLogo++1.png'></div> -->
       <mat-accordion color="accent" >
@@ -38,40 +50,36 @@
               </mat-panel-title>
             </mat-expansion-panel-header>
               <a mat-list-item routerLink="product" >  <mat-icon>work </mat-icon> <span>عرض المنتجات    </span></a>
-              <a mat-list-item routerLink="tags" >  <mat-icon>work </mat-icon> <span>إدارة التصنيفات     </span></a>
               <a mat-list-item routerLink="Add_Product/:id" >  <mat-icon>add </mat-icon> <span>إضافة منتج جديد   </span></a>               
               <a  *ngIf="false" mat-list-item routerLink="Add_Tag" >  <mat-icon>add</mat-icon> <span>إضافة تصنيف جديد   </span></a>
             </mat-expansion-panel>
-        
+            <mat-expansion-panel 
+            [hideToggle]='true'
+            [disabled]='true'
+            class="primary" [style.border-right]="CatsState ?  '5px solid   #6Dc4e2': '' " 
+            (mouseenter)="CatsState = true"
+            (mouseleave)="CatsState = false"
+            [style.box-shadow]="true ? '0 0 0 ':'0 0 0 ' ">
+                <mat-expansion-panel-header>
+                  <mat-panel-title>
+                      <a  routerLink="tags" >  <mat-icon>work </mat-icon> <span>إدارة التصنيفات     </span></a>
+                  </mat-panel-title>
+                </mat-expansion-panel-header>
+                </mat-expansion-panel>
 
-            
         <mat-expansion-panel 
         [hideToggle]='true'
-        class="primary" [style.border-right]="ChartsState ?  '5px solid   #6dc4e2': '' " 
-        (opened)="ChartsState = true"
-        (closed)="ChartsState = false"
+        [disabled]='true'
+        class="primary" [style.border-right]="ChartsState ?  '5px solid   #6Dc4e2': '' " 
+        (mouseenter)="ChartsState = true"
+        (mouseleave)="ChartsState = false"
         [style.box-shadow]="true ? '0 0 0 ':'0 0 0 ' ">
             <mat-expansion-panel-header>
               <mat-panel-title>
                <a routerLink="charts"><mat-icon> show_chart </mat-icon> <span>التقارير والرسوم البيانية  </span> </a> 
               </mat-panel-title>
             </mat-expansion-panel-header>
-            </mat-expansion-panel>
-   
-        <!-- <mat-expansion-panel 
-        [hideToggle]='true'
-        class="primary"
-        [style.border-right]="InvState ?  '5px solid #6dc4e2': '' " 
-        (opened)="InvState = true"
-        (closed)="InvState = false" 
-        [style.box-shadow]="true ? '0 0 0 ':'0 0 0 ' ">
-            <mat-expansion-panel-header>
-              <mat-panel-title>
-                <mat-icon> store </mat-icon> <span>المخزون   </span>
-              </mat-panel-title>
-            </mat-expansion-panel-header>
-              <a mat-list-item routerLink="inventory" >  <mat-icon>store </mat-icon> <span>عرض المخزون      </span></a>
-           </mat-expansion-panel> -->
+            </mat-expansion-panel>  
         </mat-accordion>
     </mat-nav-list>
 
@@ -104,10 +112,7 @@ min-height: 25px;'>
       <!--  <li class="nav-item">
           <a class="nav-link">{{nombreUsuario}}</a>
         </li>-->
-        <div class="nav-item" *ngIf="isLogin">
-          <img src="{{manager[8]}}" class="rounded-circle">
-          <span class="badge pill badge-secondary"> مرحبا بك {{manager[3]}} {{manager[4]}}</span>
-        </div>
+
       </ul>
 
       <span class="toolbar-spacer"></span>
