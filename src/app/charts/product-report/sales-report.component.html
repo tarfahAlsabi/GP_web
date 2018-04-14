@@ -67,8 +67,7 @@
               ['date','time','cost','price','quantity','employeename'] -->
               
               <ng-container matColumnDef="date" >
-                  <mat-header-cell *matHeaderCellDef mat-sort-header style="
-                  padding-right: 10%; " > التاريخ </mat-header-cell>
+                  <mat-header-cell *matHeaderCellDef mat-sort-header > التاريخ </mat-header-cell>
                   <mat-cell *matCellDef="let row"> {{row.date}} </mat-cell>
                 </ng-container>
                 <ng-container matColumnDef="time"  >

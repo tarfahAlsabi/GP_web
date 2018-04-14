@@ -5,7 +5,7 @@ import {MatDatepickerInputEvent} from '@angular/material/datepicker';
 import { ProductService } from '../shared/product.service';
 import { Product } from '../shared/product.model';
 import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
-import {MatTableDataSource,MatPaginator,MatSort} from '@angular/material';
+import {MatTableDataSource,MatPaginator,MatSort,MatPaginatorIntl} from '@angular/material';
 
 import { Chart} from'chart.js'
 @Component({
@@ -18,6 +18,7 @@ export class IvcReportComponent implements OnInit {
   @ViewChild("pie", {read: ElementRef}) pie:ElementRef;
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
+  
   dataSource:MatTableDataSource<Product>=new MatTableDataSource(new Array());
   chart = []; 
   productList: Product[];
@@ -36,6 +37,14 @@ export class IvcReportComponent implements OnInit {
   constructor(private db :AngularFireDatabase,private productService : ProductService)  { }
   
   ngOnInit() {
+    let nn :MatPaginatorIntl=new MatPaginatorIntl();
+    nn.itemsPerPageLabel="عدد الصفوف في الصفحة " ;
+    nn.firstPageLabel="الصفحة الأولى ";
+    nn.lastPageLabel="الصفحة الأخيرة " ;
+    nn.nextPageLabel="الصفحة التالية";
+    nn.previousPageLabel="الصفحة السابقة" ;
+    nn.getRangeLabel=(page: number, pageSize: number, length: number) => { if (length == 0 || pageSize == 0) { return `0 من ${length}`; } length = Math.max(length, 0); const startIndex = page * pageSize; const endIndex = startIndex < length ? Math.min(startIndex + pageSize, length) : startIndex + pageSize; return `${startIndex + 1} - ${endIndex} من ${length}`; }
+    this.paginator._intl=nn
    this.dataSource.paginator=this.paginator
    this.dataSource.sort=this.sort
     this.dataSource.data = [];

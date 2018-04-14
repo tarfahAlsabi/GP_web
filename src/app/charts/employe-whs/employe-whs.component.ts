@@ -6,9 +6,10 @@ import { ReportsService } from '../shared/reports.service'
 import { productInfo,ItemInfo, shift } from '../shared/receipt.model';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { FlashMessagesService } from 'angular2-flash-messages';
-import {MatTableDataSource,MatPaginator,MatSort} from '@angular/material';
+import {MatTableDataSource,MatPaginator,MatSort,MatPaginatorIntl} from '@angular/material';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Chart} from'chart.js'
+import { promise } from 'protractor';
 
 @Component({
   selector: 'app-employe-whs',
@@ -41,6 +42,14 @@ export class EmployeWhsComponent implements OnInit {
     ,public flashMensaje: FlashMessagesService ,private route: ActivatedRoute,
   ) { }
   ngOnInit() {
+    let nn :MatPaginatorIntl=new MatPaginatorIntl();
+    nn.itemsPerPageLabel="عدد الصفوف في الصفحة " ;
+    nn.firstPageLabel="الصفحة الأولى ";
+    nn.lastPageLabel="الصفحة الأخيرة " ;
+    nn.nextPageLabel="الصفحة التالية";
+    nn.previousPageLabel="الصفحة السابقة" ;
+    nn.getRangeLabel=(page: number, pageSize: number, length: number) => { if (length == 0 || pageSize == 0) { return `0 من ${length}`; } length = Math.max(length, 0); const startIndex = page * pageSize; const endIndex = startIndex < length ? Math.min(startIndex + pageSize, length) : startIndex + pageSize; return `${startIndex + 1} - ${endIndex} من ${length}`; }
+    this.paginator._intl=nn
    this.startDate.setDate(this.startDate.getDate() -7 );
    this.items=(this.reportsService.getEmployeeList());
 
@@ -195,16 +204,18 @@ changeProduct()
   { 
   if(this.startDate && this.endDate){
     if(this.startDate <= this.endDate){
-      let s= this.getEmpShifts();
+      this.dataSource.data=[];
+      let s= this.getEmpShifts()
+        console.log(s)
       this.getValues();
-      console.log(s)
+      
 
     if(s){
      
   }else{
   this.flashMensaje.show('لم يتم بيع هذا المنتج في هذه الفترة الزمنية.',
   {cssClass: 'alert-danger', timeout: 5000});
-      this.dataSource.data=[];
+     
   }
 
    }else{
@@ -224,7 +235,7 @@ changeProduct()
 }
 getEmpShifts()
 {
-  let hasInfo=false
+  let hasInfo;
   this.dataSource.data=[]
   this.firebase.list(window.name+'/employees/'+this.selectedValue+'/workingTime').snapshotChanges().subscribe(list => {
     for(let temp of list)

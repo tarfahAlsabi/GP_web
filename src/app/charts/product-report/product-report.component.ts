@@ -7,7 +7,7 @@ import { ReportsService } from '../shared/reports.service'
 import { Receipt, InnerProduct,productInfo,ItemInfo } from '../shared/receipt.model';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { FlashMessagesService } from 'angular2-flash-messages';
-import {MatTableDataSource,MatPaginator,MatSort} from '@angular/material';
+import {MatTableDataSource,MatPaginator,MatSort,MatPaginatorIntl} from '@angular/material';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Chart} from'chart.js'
 
@@ -41,6 +41,14 @@ export class ProductReportComponent implements OnInit {
   
 
   ngOnInit() {
+    let nn :MatPaginatorIntl=new MatPaginatorIntl();
+    nn.itemsPerPageLabel="عدد الصفوف في الصفحة " ;
+    nn.firstPageLabel="الصفحة الأولى ";
+    nn.lastPageLabel="الصفحة الأخيرة " ;
+    nn.nextPageLabel="الصفحة التالية";
+    nn.previousPageLabel="الصفحة السابقة" ;
+    nn.getRangeLabel=(page: number, pageSize: number, length: number) => { if (length == 0 || pageSize == 0) { return `0 من ${length}`; } length = Math.max(length, 0); const startIndex = page * pageSize; const endIndex = startIndex < length ? Math.min(startIndex + pageSize, length) : startIndex + pageSize; return `${startIndex + 1} - ${endIndex} من ${length}`; }
+    this.paginator._intl=nn
    this.startDate.setDate(this.startDate.getDate() -7 );
    this.items=(this.reportsService.getProductList());
    this.dataSource.paginator = this.paginator;

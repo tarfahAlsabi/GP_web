@@ -112,7 +112,18 @@ tr:nth-child(even) {
     width: 90%;
     margin: 0 5%;
 }
-
+ mat-cell  , mat-header-cell , mat-paginator
+{
+font-size: 110%;
+text-align: right;
+text-indent: 1.5px;
+line-height: 2;
+font-weight: 500;
+}
+mat-paginator , mat-paginator-container
+{
+    display: -webkit-box;
+}
 td,th
 {
     align-content: right;
