@@ -41,11 +41,14 @@ const routes: Routes = [
             
         ]},
     {path: 'mainPage', component: HeaderComponent ,children: [
-        {path: 'productReport' , component: ProductReportComponent },        
+        {path: 'productReport' , component: ProductReportComponent },       
+        {path: 'productReport/:id' , component: ProductReportComponent },         
         {path: 'empolyee' , component: EmpolyeeComponent },
         {path: 'product', component: ProductComponent},
         {path: 'Employee working report', component: EmployeWhsComponent},
+        {path: 'Employee working report/:id', component: EmployeWhsComponent},
         {path: 'Employee sales', component: EmployeeSalesComponent},
+        {path: 'Employee sales/:id', component: EmployeeSalesComponent},
         {path: 'tags', component: TagComponent},
         {path: 'addQuantity', component: ViewInv},
         {path: 'charts', component: ChartsComponent},

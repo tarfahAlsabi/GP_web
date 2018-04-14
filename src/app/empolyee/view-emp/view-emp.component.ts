@@ -116,6 +116,18 @@ gobacktoProducts()
 {
   this.router.navigate(['mainPage/empolyee'])
 }
+empSales()
+{
+  let id=this.key
+  console.log
+  this.router.navigate(['mainPage/Employee sales/',id]) 
+}
+empHours()
+{
+  let id=this.key
+  console.log
+  this.router.navigate(['mainPage/Employee working report/',id]) 
+}
 
 }
 @Component({

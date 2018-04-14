@@ -55,16 +55,14 @@ export class IvcReportComponent implements OnInit {
   });
 
 
-  
-
-
+  this.totalInv()
   }
 
   totalInv()
   {
     this.totalS=0;
     var product:any
-    this.productList.forEach(product =>{
+    this.dataSource.data.forEach(product =>{
      this.totalS += product.inventory;
     }) 
     return this.totalS;

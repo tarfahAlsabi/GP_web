@@ -7,7 +7,7 @@ import { productInfo,ItemInfo,empsales } from '../shared/receipt.model';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { FlashMessagesService } from 'angular2-flash-messages';
 import {MatTableDataSource,MatPaginator,MatSort} from '@angular/material';
-
+import { ActivatedRoute, Router } from '@angular/router';
 import { Chart} from'chart.js'
 
 @Component({
@@ -36,14 +36,24 @@ export class EmployeeSalesComponent implements OnInit {
   dataSource:MatTableDataSource<empsales>=new MatTableDataSource(new Array());
   selectedValue;
   constructor(private reportsService: ReportsService, private firebase: AngularFireDatabase
-    ,public flashMensaje: FlashMessagesService
+    ,public flashMensaje: FlashMessagesService ,  private route: ActivatedRoute,
 ) { }
 
   ngOnInit() {
    this.startDate.setDate(this.startDate.getDate() -7 );
    this.items=(this.reportsService.getEmployeeList());
+     
    this.dataSource.paginator = this.paginator;
    this.dataSource.sort = this.sort;
+   let emp;
+   emp = this.route.snapshot.params.id;
+
+  if(emp != null){
+    console.log(emp)
+    this.selectedValue=emp;
+    this.changeProduct();
+   }
+
   //console.log(this.receiptList);
   }
 

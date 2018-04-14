@@ -43,8 +43,8 @@
                 
         </mat-card-content>
 <div>
-        <button mat-raised-button class= "Btns blueBtn" > تقرير مبيعات الموظف  </button> 
-        <button mat-raised-button class= "Btns lightBlueBtn" >   تقرير ساعات العمل  </button> 
+        <button mat-raised-button class= "Btns blueBtn" (click)= "empSales()"> تقرير مبيعات الموظف  </button> 
+        <button mat-raised-button class= "Btns lightBlueBtn" (click)= "empHours()">   تقرير ساعات العمل  </button> 
         <button mat-raised-button  class='Btns greenBtn' (click)="openDialog(true)" > زيادة راتب الموظف </button>  
         <button mat-raised-button  class='Btns greyBtn' (click)="openDialog(false)" >تسريح الموظف  </button> 
     </div>

@@ -8,7 +8,7 @@ import { Receipt, InnerProduct,productInfo,ItemInfo } from '../shared/receipt.mo
 import { AngularFireDatabase } from 'angularfire2/database';
 import { FlashMessagesService } from 'angular2-flash-messages';
 import {MatTableDataSource,MatPaginator,MatSort} from '@angular/material';
-
+import { ActivatedRoute, Router } from '@angular/router';
 import { Chart} from'chart.js'
 
 @Component({
@@ -36,15 +36,23 @@ export class ProductReportComponent implements OnInit {
   dataSource:MatTableDataSource<ItemInfo>=new MatTableDataSource(new Array());
   selectedValue;
   constructor(private reportsService: ReportsService, private firebase: AngularFireDatabase
-    ,public flashMensaje: FlashMessagesService
-) { }
+    ,public flashMensaje: FlashMessagesService,  private route: ActivatedRoute,
+  ) { }
+  
 
   ngOnInit() {
    this.startDate.setDate(this.startDate.getDate() -7 );
    this.items=(this.reportsService.getProductList());
    this.dataSource.paginator = this.paginator;
    this.dataSource.sort = this.sort;
-  //console.log(this.receiptList);
+   let emp;
+   emp = this.route.snapshot.params.id;
+  if(emp != null){
+    console.log(emp)
+    this.selectedValue=emp;
+    this.changeProduct();
+   }
+
   }
 
   selectChange(evet:any)
@@ -212,14 +220,8 @@ getProductreceipts()
         if(prods == this.selectedValue)
         {
           let info = new ItemInfo();
-          this.firebase.list(window.name+'/employees/'+receipt.employeeID).valueChanges().subscribe(emps => {  
-            if( emps[1] == 'undefined') 
-            info.employeename='موظف محذوف ';
-            else 
-            info.employeename=   emps[1]+' ' +emps[2]
-            
           
-          });
+          info.employeename=receipt.employeeName;
           info.cost=receipt.products[prods].price;
           info.date=receipt.date;
           info.price=receipt.products[prods].price * receipt.products[prods].quantity;
