@@ -9,6 +9,7 @@
 
 .formContainer
 {
+  display: inline-table;
   font-family: 'Amiri' !important;
     margin: 1% 2%;
     align-self: center; 

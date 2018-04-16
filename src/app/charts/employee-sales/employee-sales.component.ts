@@ -25,7 +25,8 @@ export class EmployeeSalesComponent implements OnInit {
   hasDate=true;
   hasSelection=true;
   paginatorLenth:number;
-  reportName='تقرير ساعات عمل موظف  ';
+  error=false;
+  reportName='تقرير مبيعات موظف  ';
   displayedColumns=['Id','date','time','quantity','price','pay','remains'];
  //ngOnInit
  x=[];
@@ -67,10 +68,9 @@ export class EmployeeSalesComponent implements OnInit {
 
   selectChange(evet:any)
   {
-    if(evet.index==0)
+ 
     this.changeProduct();
-    else
-    this.creatChart();
+ 
   }
 
 
@@ -176,8 +176,7 @@ creatChart()
 
 changeProduct()
 {
-  console.log(this.selectedValue)
-
+  
   if(this.selectedValue!=undefined)
   { 
   if(this.startDate && this.endDate){
@@ -217,6 +216,7 @@ changeProduct()
 
 getEmployeeSales()
 {
+  this.error=true;
   this.dataSource.data=[]
   var emplSales=[];
   let total=new Array();
@@ -229,24 +229,21 @@ getEmployeeSales()
         receipt= temp.payload.toJSON()
         if(receipt.employeeID != this.selectedValue)
         continue;
-        console.log("inside" )
-        console.log(receipt)
+
         let date =receipt.date.split('-')
          //date[0] year , date[1] month , date[2] day
         if(date[0]<this.startDate.getFullYear()||date[0]>this.endDate.getFullYear()||
         date[1]<this.startDate.getUTCMonth()+1||date[1]>this.endDate.getUTCMonth()+1||
         date[2]<this.startDate.getDate()||date[2]>this.endDate.getDate())
       {
-        console.log('indside date if')
         continue; 
       }
-    
-        console.log('indside date else')
+
         let q=0;
-        console.log(typeof receipt.products)
+        // console.log(typeof receipt.products)
         for (var prods in receipt.products)
         {
-          console.log( receipt.products[prods])
+          // console.log( receipt.products[prods])
           q+=receipt.products[prods].quantity;
         }
         var info = new empsales()
@@ -258,11 +255,16 @@ getEmployeeSales()
         info.time=receipt.time;
         info.Id=receipt.id;
         this.dataSource.data.push(info)   
+        this.error=false;
         this.dataSource._updateChangeSubscription()    
       }
+
+      if(this.error)
+      this.flashMensaje.show('لا يوجد للموظف مبيعات في الفترة المحدةة.', {cssClass: 'alert-danger', timeout: 5000});
+      this.creatChart(); 
   
   })
-  console.log(this.dataSource.data);
+  // console.log(this.dataSource.data);
     // displayedColumns=['date','time','quantity','price','pay','remains'];      
 }
 
@@ -281,10 +283,10 @@ getValues()
     {
       if(label[n].localeCompare(i)==0)
       {
-        console.log(label[n])
+        // console.log(label[n])
         
       sum = sum + values[n]
-      console.log(sum)
+      // console.log(sum)
       values[n]=0
       label[n]=''
       }

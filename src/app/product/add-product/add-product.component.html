@@ -5,7 +5,26 @@
     <span class="toolbar-spacer"></span>
    </mat-toolbar>
 
+             
+   <div *ngIf="inventory.errors && (inventory.dirty || inventory.touched)" class="alert alert-danger">
+    <mat-error [hidden]="!inventory.errors.required" >   *ارجو إدخال الكمية المتوفرة من المنتج</mat-error >
+</div>
+<div *ngIf="name.errors && (name.dirty || name.touched)" class="alert alert-danger">
+  <mat-error [hidden]="!name.errors.required" >*ارجوا ادخال اسم المنتج</mat-error>
+</div>
+          
+<div *ngIf="price.errors && (price.dirty || price.touched)" class="alert alert-danger">
+  <mat-error [hidden]="!price.errors.required" >   *ارجو إدخال السعر المرغوب به لبيع المنتج</mat-error>
+</div>
 
+<div *ngIf="cost.errors && (cost.dirty || cost.touched)" class="alert alert-danger">
+  <mat-error [hidden]="!cost.errors.required" >*ارجو إدخال تكلفة شرائك للمنتج</mat-error>
+</div>
+
+
+<div *ngIf="category.errors && (category.dirty || category.touched)" class="alert alert-danger">
+  <mat-error >*أرجو أن تختار تصنيف للمنتج</mat-error>
+</div>
 <mat-card class="formContainer" >
 
     <mat-card-title>	  <h2> إضافة منتج </h2>  </mat-card-title>
@@ -22,9 +41,7 @@
           [(ngModel)]="productService.selectedProduct.name" class="form-control"
           placeholder="مثال: قلم أحمر " required>
           <!-- <mat-error *ngIf="ID.invalid">خانة مطلوبة </mat-error> -->
-         <div *ngIf="name.errors && (name.dirty || name.touched)" class="alert alert-danger">
-             <mat-error [hidden]="!name.errors.required" >*ارجوا ادخال اسم المنتج</mat-error>
-         </div>
+
     </div>
 
 
@@ -39,10 +56,7 @@
             <input matInput type="number"  name="price" #price="ngModel" 
             [(ngModel)]="productService.selectedProduct.price" class="form-control"
             placeholder="مثال: 2.5" required>
-          
-            <div *ngIf="price.errors && (price.dirty || price.touched)" class="alert alert-danger">
-                <mat-error [hidden]="!price.errors.required" >   *ارجو إدخال السعر المرغوب به لبيع المنتج</mat-error>
-            </div>
+
     </div>
 
     <div class="form-group col-md-6 col-sm-12">
@@ -51,9 +65,7 @@
            [(ngModel)]="productService.selectedProduct.cost" 
            placeholder="مثال: 1" required>
           
-           <div *ngIf="cost.errors && (cost.dirty || cost.touched)" class="alert alert-danger">
-              <mat-error [hidden]="!cost.errors.required" >*ارجو إدخال تكلفة شرائك للمنتج</mat-error>
-           </div>
+    
     </div>
  
 
@@ -62,10 +74,7 @@
           <input matInput type="number"    name="inventory" #inventory="ngModel" 
           [(ngModel)]="productService.selectedProduct.inventory"   class="form-control"
           placeholder="مثال: 6" required>
-          
-          <div *ngIf="inventory.errors && (inventory.dirty || inventory.touched)" class="alert alert-danger">
-              <mat-error [hidden]="!inventory.errors.required" >   *ارجو إدخال الكمية المتوفرة من المنتج</mat-error >
-          </div>
+
     </div>
  <!-- [(ngModel)]="productService.selectedProduct.category" -->
             
@@ -86,9 +95,7 @@
               </mat-option>
             </mat-select>
     </mat-form-field>
-        <div *ngIf="category.errors && (category.dirty || category.touched)" class="alert alert-danger">
-            <mat-error >*أرجو أن تختار تصنيف للمنتج</mat-error>
-        </div>
+
     </div>
 
 

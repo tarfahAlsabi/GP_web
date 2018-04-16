@@ -26,6 +26,7 @@ export class ProductReportComponent implements OnInit {
   hasSelection=true;
   x=[];
   y=[];
+  error=false
   paginatorLenth:number;
   reportName='تقرير مبيعات منتج  ';
   displayedColumns=['date','time','cost','quantity','price','employeename'];
@@ -65,10 +66,9 @@ export class ProductReportComponent implements OnInit {
 
   selectChange(evet:any)
   {
-    if(evet.index==0)
+
     this.changeProduct();
-    else
-    this.creatChart();
+
   }
 
 
@@ -211,7 +211,7 @@ changeProduct()
 
 getProductreceipts()
 {
-  
+  this.error=true;
   this.dataSource.data=[]
   this.firebase.list(window.name+'/receipts').snapshotChanges().subscribe(list => {
     for(var m in list)
@@ -236,12 +236,17 @@ getProductreceipts()
           info.quantity=receipt.products[prods].quantity;
           info.time=receipt.time;
           this.dataSource.data.push(info);
+          this.error=false;
            this.dataSource._updateChangeSubscription();
         }
     }
+
+    if(this.error)
+    this.flashMensaje.show('لم يتم بيع هذا المنتج في هذه الفترة الزمنية.',{cssClass: 'alert-danger', timeout: 5000});
+    this.creatChart(); 
   });
 
-  console.log(this.dataSource.data)
+  
 
 }
 
@@ -259,10 +264,10 @@ getValues()
     {
       if(label[n].localeCompare(i)==0)
       {
-        console.log(label[n])
+        // console.log(label[n])
         
       sum = sum + values[n]
-      console.log(sum)
+      // console.log(sum)
       values[n]=0
       label[n]=''
       }

@@ -37,7 +37,7 @@
 .reportBar
 {
     flex: auto;
-    margin-left:7%;
+    /* margin-left:7%; */
 }
 .Viewimg
 {
@@ -105,6 +105,16 @@ tr:nth-child(even) {
     font-size: 18px;
     font-weight: 600;
     background-color: #73bfe2;
+
+}
+.contaner
+{
+    background-color: whitesmoke;
+    border-radius: 5%;
+}
+.headerText
+{
+font-size: 1.5em;
 
 }
 .reportContent
