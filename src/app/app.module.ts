@@ -80,7 +80,7 @@ import { addCategory, confirmMessageanclePro } from './product/add-product/add-p
 import { AddProductComponent } from './product/add-product/add-product.component';
 import { ViewProductComponent } from './product/view-product/view-product.component';
 import { confirmMessage } from './product/view-product/view-product.component';
-import { EditManagerComponent, confirmMessageCancleManag } from './manager/edit-manager/edit-manager.component'
+import { EditManagerComponent, confirmMessageCancleManag } from './manager/edit-manager/edit-manager.component';
 
 @NgModule({
   declarations: [
@@ -102,6 +102,7 @@ import { EditManagerComponent, confirmMessageCancleManag } from './manager/edit-
     confirmMessageanclePro,
     confirmMessageCancleManag,
     EditManagerComponent,
+
    
   ],
   imports: [

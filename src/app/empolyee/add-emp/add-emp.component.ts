@@ -11,9 +11,10 @@ import { EmployeeService } from '../shared/employee.service';
 import * as firebase from 'firebase';
 import { Router } from '@angular/router';
 import { FlashMessagesService } from 'angular2-flash-messages';
+import {Http, Request, RequestMethod , RequestOptionsArgs, Headers} from '@angular/http';
 
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
-
+import { HttpHeaders } from '@angular/common/http';
 
 @Component({
   selector: 'app-add-emp',
@@ -29,16 +30,38 @@ export class AddEmpComponent  {
 
 
 constructor(private fb: FormBuilder,private employeeService: EmployeeService
-,private router: Router,public flashMensaje: FlashMessagesService, public dialog: MatDialog
+,private router: Router,public flashMensaje: FlashMessagesService, public dialog: MatDialog,private HttpHeader: Http
 )
 {
-  
  }
 
  
 ngOnInit() {
   this.employeeService.getData();
   this.resetForm();
+  var request = require("request");
+
+  // var config = {headers: {'api-key':'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'}};
+  // var options:Request=new Request('');
+  // options.method=RequestMethod.Get;
+  // options.url='https://api.sendinblue.com/v3/smtp/statistics/reports';  
+  // options.headers.append('api-key','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')
+var q=  { 
+ method: 'POST',
+  url: 'https://api.sendinblue.com/v3/smtp/templates/1/send',
+  body:{
+      sender: { email: 'eradsystem2018@gmail.com' },
+      htmlContent: '<h1> HI </h1> <h4> welcome in Erad </h4>',
+      subject: 'Test',
+      replyTo: { email: 'fo-fo-1417@hotmail.com', name: 'Erad' } },
+  json: true ,
+headers:{'api-key':'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'} };
+  
+  request(q, function (error, response, body) {
+    if (error) throw new Error(error);
+  
+    console.log(body);
+  });
 }
 
 detectFiles(event) {
@@ -69,10 +92,11 @@ onSubmit(employeeForm: NgForm) {
       let r = this.employeeService.insert(employeeForm.value,uploadTask.snapshot.downloadURL,file.name);
      // if(r == '1'){
         this.resetForm(employeeForm);
-         this.router.navigate(['mainPage/empolyee']).then( (res) => {
-          this.flashMensaje.show('تم إضافة الموظف بنجاح.',
-          {cssClass: 'alert-success', timeout: 4000});
-        });//}
+
+        //  this.router.navigate(['mainPage/empolyee']).then( (res) => {
+        //   this.flashMensaje.show('تم إضافة الموظف بنجاح.',
+        //   {cssClass: 'alert-success', timeout: 4000});
+        // });//}
      // this.tostr.success('Submitted Succcessfully', 'Employee Register');
     }
   );

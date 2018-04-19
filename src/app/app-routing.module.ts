@@ -35,10 +35,20 @@ import { EmployeeSalesComponent } from './charts/employee-sales/employee-sales.c
 import { EmployeWhsComponent } from './charts/employe-whs/employe-whs.component';
 import { EditManagerComponent } from './manager/edit-manager/edit-manager.component'
 
+import { MainHomeComponent } from './home-page/main-home/main-home.component';
+import { FeatursComponent } from './home-page/featurs/featurs.component';
+import { CostumersComponent } from './home-page/costumers/costumers.component';
+import { RegisterComponent } from './home-page/register/register.component';
+import { LogInComponent } from './home-page/log-in/log-in.component'
+
 const routes: Routes = [
     {path: '', component: HomePageComponent,children:
         [
-            
+            {path: '' , component: MainHomeComponent },
+            {path: 'features' , component: FeatursComponent },
+            {path: 'LogIn' , component: LogInComponent },
+            {path: 'register' , component: RegisterComponent },
+            {path: 'customer' , component: CostumersComponent },
         ]},
     {path: 'mainPage', component: HeaderComponent ,children: [
         {path: 'productReport' , component: ProductReportComponent },       
@@ -74,7 +84,7 @@ exports: [RouterModule]
 
 })
 export class AppRoutingModule { }
-export const routingComponents = [EmployeWhsComponent,EmployeeSalesComponent, ViewInv,
+export const routingComponents = [MainHomeComponent,FeatursComponent,CostumersComponent,RegisterComponent,LogInComponent,EmployeWhsComponent,EmployeeSalesComponent, ViewInv,
     ProductReportComponent,HomePageComponent, ViewProductComponent , AddProductComponent, 
     TagComponent ,ChartsComponent, ViewTagComponent , AddTagComponent , ProductComponent , 
     EmpolyeeComponent,NoFoundPageComponent, ManagerComponent, MyFormComponent, HeaderComponent, 

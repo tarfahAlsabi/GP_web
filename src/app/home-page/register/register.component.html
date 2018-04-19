@@ -1,0 +1,31 @@
+
+<div id="contact" class="spacer">
+
+  <div class="container contactform center">
+  <h2 class="text-center  wowload fadeInUp">انشأ حسابك الآن</h2>
+    <div class="row wowload fadeInLeftBig">      
+        <div class="col-sm-6 col-sm-offset-3 col-xs-12">      
+          <input type="text" [(ngModel)]="fname" placeholder="الإسم الاول" required>
+          <input type="text" [(ngModel)]="lname" placeholder="العائلة"  required>
+          <input type="text" [(ngModel)]="email" placeholder="البريد الإلكتروني" required>
+          <input type="password" [(ngModel)]="password" placeholder="الرقم السري" required>
+          <input type="text" [(ngModel)]="phone" placeholder="رقم الجوال"  required>
+          <input type="text" [(ngModel)]="businessname" placeholder="اسم المشروع"  required>
+          <div class="form-group" >
+              <label>
+                <input  type="file" (change)="detectFiles($event)">
+              </label>        
+          </div>
+          <div *ngIf="num" >
+              <div class="progress">
+                <div class="progress-bar progress-bar-animated" [ngStyle]="{ 'width': num + '%' }"></div>
+              </div>
+              التحميل: | : {{num}}% اكتمل
+          </div>
+          <button id="contact2" class="btn btn-primary"  (click)="onSubmitAddUser()"> تأكيد</button>
+        </div>
+    </div>
+    
+  
+  </div>
+  </div>
