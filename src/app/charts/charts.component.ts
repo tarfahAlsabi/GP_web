@@ -12,20 +12,7 @@ export class ChartsComponent implements OnInit {
 
   ngOnInit() {
   }
-  salesReport(){
-    this.router.navigate(['mainPage/sales-report']);
-  }
-  INVReport(){
-    this.router.navigate(['mainPage/Inventory report']);
-  }
-  productReport(){
-    this.router.navigate(['mainPage/productReport']);
-  }
-  EmpSalesReport(){
-    this.router.navigate(['mainPage/Employee sales']);
-  }
-  EmpWHs(){
-    this.router.navigate(['mainPage/Employee working report']);
-  }
+
+
   
 }

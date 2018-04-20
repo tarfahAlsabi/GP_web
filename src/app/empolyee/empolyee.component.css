@@ -13,12 +13,15 @@
 }
 .ViewsContainer
 {
-    display: inline-flex;
-    /* height: -webkit-fill-available; */
-    margin-right:15px; 
-    align-content: center;
-    align-self: center;
-    align-items: center;
+    margin-right: 15px;
+    -ms-flex-line-pack: right;
+    align-content: right;
+    -ms-flex-item-align: right;
+    -ms-grid-row-align: right;
+    align-self: right;
+    -webkit-box-align: right;
+    -ms-flex-align: right;
+    align-items: right;
 }
 .toolbar-spacer {
   flex: 1 1 auto;

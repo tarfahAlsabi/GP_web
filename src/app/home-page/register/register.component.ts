@@ -14,7 +14,7 @@ import * as firebase from 'firebase';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css']
+  styleUrls: ['../home-page.component.css']
 })
 export class RegisterComponent implements OnInit {
 

@@ -39,29 +39,13 @@ constructor(private fb: FormBuilder,private employeeService: EmployeeService
 ngOnInit() {
   this.employeeService.getData();
   this.resetForm();
-  var request = require("request");
-
+ 
   // var config = {headers: {'api-key':'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'}};
   // var options:Request=new Request('');
   // options.method=RequestMethod.Get;
   // options.url='https://api.sendinblue.com/v3/smtp/statistics/reports';  
   // options.headers.append('api-key','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')
-var q=  { 
- method: 'POST',
-  url: 'https://api.sendinblue.com/v3/smtp/templates/1/send',
-  body:{
-      sender: { email: 'eradsystem2018@gmail.com' },
-      htmlContent: '<h1> HI </h1> <h4> welcome in Erad </h4>',
-      subject: 'Test',
-      replyTo: { email: 'fo-fo-1417@hotmail.com', name: 'Erad' } },
-  json: true ,
-headers:{'api-key':'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'} };
-  
-  request(q, function (error, response, body) {
-    if (error) throw new Error(error);
-  
-    console.log(body);
-  });
+
 }
 
 detectFiles(event) {
@@ -105,6 +89,7 @@ onSubmit(employeeForm: NgForm) {
   console.log(x);
   //if(x == '1'){
     this.resetForm(employeeForm);
+    
      this.router.navigate(['mainPage/empolyee']).then( (res) => {
       this.flashMensaje.show('تم إضافة الموظف بنجاح.',
       {cssClass: 'alert-success',

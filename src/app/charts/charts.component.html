@@ -9,56 +9,69 @@
 
 
     </mat-toolbar-row>
-  
+   
 </mat-toolbar>
 
     <mat-grid-list cols="4" rowHeight="1:1" dir="rtl ">
         <mat-grid-tile  [colspan]="1"   [rowspan]="1">
-            <figure class="mat-figure effect-oscar reportImgsContainer fadeInUp " (click)="salesReport()" >
+                <a routerLink="../sales-report" >
+            <figure class="mat-figure effect-oscar reportImgsContainer fadeInUp " >
                 <img src="assets/imgs/Icons/PNG/تقرير المبيعات-01.png" class="reportImgs" alt=""/>
             </figure>
+            </a>
         </mat-grid-tile>
 
         <mat-grid-tile  [colspan]="1" [rowspan]="1">
-            <figure class="mat-figure effect-oscar reportImgsContainer fadeInUp" (click)="salesReport()" >
+                <a >
+            <figure class="mat-figure effect-oscar reportImgsContainer fadeInUp" >
                 <img src="assets/imgs/Icons/PNG/تقرير الإيرادات -01.png" class="reportImgs" alt=""/>
             </figure>
+            </a>
         </mat-grid-tile>
 
 
         <mat-grid-tile  [colspan]="1"  [rowspan]="1">
-  
-    <figure class="mat-figure effect-oscar reportImgsContainer fadeInUp" (click)="INVReport()" >
+                <a routerLink="../Inventory report" >
+    <figure class="mat-figure effect-oscar reportImgsContainer fadeInUp" >
                 <img src="assets/imgs/Icons/PNG/تقرير المخزون-01.png" class="reportImgs" alt=""/>
             </figure>
+            </a>
         </mat-grid-tile>
 
         <mat-grid-tile  [colspan]="1"  [rowspan]="1">
-            <figure class="mat-figure effect-oscar reportImgsContainer fadeInUp" (click)="salesReport()" >
-                <img src="assets/imgs/Icons/PNG/تقرير المركز المالي-01.png" class="reportImgs" alt=""/>
+            <a >
+            <figure class="mat-figure effect-oscar reportImgsContainer fadeInUp" >
+                <img src="assets/imgs/Icons/PNG/تقرير المركز المالي-01.png" class="reportImgs" alt=""/> 
             </figure>
+        </a>
         </mat-grid-tile>
 
 
         <mat-grid-tile  [colspan]="1"  [rowspan]="1">
-            <figure class="mat-figure effect-oscar reportImgsContainer fadeInUp" (click)="EmpWHs()" >
+                <a routerLink="../Employee sales" >
+            <figure class="mat-figure effect-oscar reportImgsContainer fadeInUp"  >
                 <img src="assets/imgs/Icons/PNG/تقرير ساعات الموظف-01.png" class="reportImgs" alt=""/>
             </figure>
+            </a>
         </mat-grid-tile>
 
 
         
         <mat-grid-tile  [colspan]="1"  [rowspan]="1">
-                <figure class="mat-figure effect-oscar reportImgsContainer fadeInUp" (click)="productReport()">
+                <a routerLink="../productReport" >
+                <figure class="mat-figure effect-oscar reportImgsContainer fadeInUp" >
                     <img src="assets/imgs/Icons/PNG/تقرير مبيعات المنتج-01.png" class="reportImgs" alt=""/>
                 </figure>
+                </a>
             </mat-grid-tile>
 
             
         <mat-grid-tile  [colspan]="1"  [rowspan]="1">
-                <figure class="mat-figure effect-oscar reportImgsContainer fadeInUp" (click)="EmpSalesReport()" >
+                <a routerLink="../Employee working report" >
+                <figure class="mat-figure effect-oscar reportImgsContainer fadeInUp"  >
                     <img src="assets/imgs/Icons/PNG/تقرير مبيعات الموظف-01.png" class="reportImgs" alt=""/>
                 </figure>
+                </a>
             </mat-grid-tile>
 
              
