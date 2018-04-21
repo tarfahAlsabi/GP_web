@@ -83,8 +83,8 @@ onSubmit(employeeForm: NgForm) {
     this.resetForm(employeeForm);
      this.router.navigate(['mainPage/empolyee']).then( (res) => {
       this.flashMensaje.show('تم إضافة الموظف بنجاح.',
-      {cssClass: 'alert-success',
-      closeOnClick: true,showCloseBtn: true});
+      {cssClass: 'alert-success',timeout: 100000, 
+      closeOnClick: true, showCloseBtn: true});
     });
  // }
  // this.tostr.success('Submitted Succcessfully', 'Employee Register');

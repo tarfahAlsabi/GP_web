@@ -89,14 +89,14 @@ edit(category:Category)
           var product =(prod.payload.toJSON());
           console.log(product)
           this.db.list(window.name+'/products/'+ result).push({
-            name: product.name,
-            price: product.price,
-            cost: product.cost,
-            inventory: product.inventory,
-            description: product.description,
-            category: result,
-            picPath: product.picPath,
-            picName: product.picName
+           // name: product.name,
+           // price: product.price,
+           // cost: product.cost,
+           // inventory: product.inventory,
+           // description: product.description,
+            //category: result,
+           // picPath: product.picPath,
+            //picName: product.picName
             
           });
         });

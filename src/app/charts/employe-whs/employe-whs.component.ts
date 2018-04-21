@@ -26,7 +26,7 @@ export class EmployeWhsComponent implements OnInit {
   hasDate=true;
   hasSelection=true;
   paginatorLenth:number;
-  reportName='تقرير مبيعات موظف  ';
+  reportName='تقرير ساعات عمل الموظف  ';
   displayedColumns=['date','checkIn','checkOut','totalShiftTime'];
   hasInfo=false;
   x=[]
@@ -195,23 +195,27 @@ changeProduct()
      
   }else{
   this.flashMensaje.show('لم يتم بيع هذا المنتج في هذه الفترة الزمنية.',
-  {cssClass: 'alert-danger', timeout: 5000});
+  {cssClass: 'alert-danger', timeout: 100000, 
+  closeOnClick: true, showCloseBtn: true});
       this.dataSource.data=[];
   }
 
    }else{
     this.flashMensaje.show('لا يجب ان يسبق تاريخ  النهاية تاريخ البداية.',
-    {cssClass: 'alert-danger', timeout: 5000});
+    {cssClass: 'alert-danger', timeout: 100000, 
+    closeOnClick: true, showCloseBtn: true});
     }
   }else{
     this.flashMensaje.show('يجب عليك ادخال الفترة الزمنية أولا.',
-    {cssClass: 'alert-danger', timeout: 5000});
+    {cssClass: 'alert-danger', timeout: 100000, 
+    closeOnClick: true, showCloseBtn: true});
     }
   }
   else
   {
     this.flashMensaje.show('الرجاء إختيار منتج',
-    {cssClass: 'alert-danger', timeout: 5000});
+    {cssClass: 'alert-danger', timeout: 100000, 
+    closeOnClick: true, showCloseBtn: true});
   }
 }
 getEmpShifts()

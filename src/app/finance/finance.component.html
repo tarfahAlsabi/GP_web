@@ -1,0 +1,177 @@
+<mat-toolbar  class="PageTitle">
+
+<mat-toolbar-row>
+  
+      <span class="toolbar-spacer"></span>
+
+<span color="primary">   <h2>  {{title}}  </h2> </span>
+
+<span class="toolbar-spacer"></span>
+
+
+</mat-toolbar-row>
+</mat-toolbar>
+
+  
+  <mat-card class="formContainer" >
+    <flash-messages></flash-messages>
+  <mat-card-content>
+  
+    <form  #financeForm="ngForm" (ngSubmit)="onSubmit(financeForm)" dir="rtl">
+  
+     <input type="hidden" name="$key" #$key="ngModel" [(ngModel)]="finance.$key">
+
+     <div class="row">
+        <h3>الأصول</h3>
+      </div>
+    <br>
+     <div class="row">
+       <h4><b>الأصول المتداولة:</b> <span class="red">* (أرجو تعبأت أحد الأصول المتداول على الأقل (الصندوق,البنك))</span> </h4> 
+     </div>
+     <br>
+  <div class="row">
+      <div class="form-group col-md-6 col-sm-12">
+        <label > <h4> الصندوق 
+          <span>(الأموال المتوفرة في اليد إن وجدت)</span> </h4> </label>
+           
+   
+          <input matInput type="number" name="box" #box="ngModel" placeholder="مثال: 2000"
+          [(ngModel)]="finance.box" class="form-control" pattern="[0-9]*" >
+    
+  
+  
+        <div *ngIf="box.errors && (box.dirty || box.touched)"  class="alert alert-danger">
+            <!--  <div [hidden]="!box.errors.required">*أرجو إدخال المصروفات الشهرية</div>  -->
+            <div [hidden]="!box.errors.pattern">*أرجو ادخال أرقام صحيحة فقط</div>
+      </div>
+      </div>    
+      </div>
+
+      <div class="row">
+          <div class="form-group col-md-6 col-sm-12">
+            <label > <h4> البنك 
+              <span>(الأموال المتوفرة في البنك إن وجدت)</span> </h4> </label>
+               
+       
+              <input matInput type="number" name="bank" #bank="ngModel" placeholder="مثال: 2000"
+              [(ngModel)]="finance.bank" class="form-control" pattern="[0-9]*" >
+        
+      
+      
+            <div *ngIf="bank.errors && (bank.dirty || bank.touched)"  class="alert alert-danger">
+            <!--  <div [hidden]="!bank.errors.required">*أرجو إدخال المصروفات الشهرية</div>  -->
+              <div [hidden]="!bank.errors.pattern">*أرجو ادخال أرقام صحيحة فقط</div>
+          </div>
+          </div>    
+          </div>
+
+          <div class="row">
+              <div class="form-group col-md-6 col-sm-12">
+                <label > <h4> مدينون 
+                  <span>(الذمم المستحقة على الغير نتيجة عمليات البيع الآجل (على الحساب) إن وجد)</span> </h4> </label>
+                   
+           
+                  <input matInput type="number" name="Debtors" #Debtors="ngModel" placeholder="مثال: 2000"
+                  [(ngModel)]="finance.Debtors" class="form-control" pattern="[0-9]*" >
+            
+          
+          
+                <div *ngIf="Debtors.errors && (Debtors.dirty || Debtors.touched)"  class="alert alert-danger">
+                <!--  <div [hidden]="!Debtors.errors.required">*أرجو إدخال المصروفات الشهرية</div>  -->
+                  <div [hidden]="!Debtors.errors.pattern">*أرجو ادخال أرقام صحيحة فقط</div>
+              </div>
+              </div>    
+              </div>
+
+              <div class="row">
+                  <h4><b>الأصول الثابتة:</b></h4>
+                </div> 
+                <br>
+              <div class="row">
+                  <div class="form-group col-md-6 col-sm-12">
+                    <label > <h4> الأصول الثابتة 
+                      <span>(السيارات,الأثاث والمعدات...)</span> </h4> </label>
+                       
+               
+                      <input matInput type="number" name="fixedAssets" #fixedAssets="ngModel" placeholder="مثال: 2000"
+                      [(ngModel)]="finance.fixedAssets" class="form-control" pattern="[0-9]*" >
+                
+              
+              
+                    <div *ngIf="fixedAssets.errors && (fixedAssets.dirty || fixedAssets.touched)"  class="alert alert-danger">
+                    <!--  <div [hidden]="!fixedAssets.errors.required">*أرجو إدخال المصروفات الشهرية</div>  -->
+                      <div [hidden]="!fixedAssets.errors.pattern">*أرجو ادخال أرقام صحيحة فقط</div>
+                  </div>
+                  </div>    
+                  </div>
+
+                  <div class="row">
+                      <h3>الخصوم</h3>
+                    </div>
+                    <br>
+
+                  <div class="row">
+                      <div class="form-group col-md-6 col-sm-12">
+                        <label > <h4> رأس المال <span class="red">* </span></h4> </label>
+                           
+                   
+                          <input matInput type="number" name="capital" #capital="ngModel" placeholder="مثال: 2000"
+                          [(ngModel)]="finance.capital" class="form-control" pattern="[0-9]*" required>
+                    
+                  
+                  
+                        <div *ngIf="capital.errors && (capital.dirty || capital.touched)"  class="alert alert-danger">
+                          <div [hidden]="!fixedAssets.errors.required">*أرجو إدخال المصروفات الشهرية</div> 
+                          <div [hidden]="!capital.errors.pattern">*أرجو ادخال أرقام صحيحة فقط</div>
+                      </div>
+                      </div>    
+                      </div>
+
+                    
+                      <div class="row">
+                          <div class="form-group col-md-6 col-sm-12">
+                            <label > <h4>القروض طويلة الأجل </h4> </label>
+                               
+                       
+                              <input matInput type="number" name="Loans" #Loans="ngModel" placeholder="مثال: 2000"
+                              [(ngModel)]="finance.Loans" class="form-control" pattern="[0-9]*" >
+                        
+                      
+                      
+                            <div *ngIf="Loans.errors && (Loans.dirty || Loans.touched)"  class="alert alert-danger">
+                            <!--  <div [hidden]="!Loans.errors.required">*أرجو إدخال المصروفات الشهرية</div>  -->
+                              <div [hidden]="!Loans.errors.pattern">*أرجو ادخال أرقام صحيحة فقط</div>
+                          </div>
+                          </div>    
+                          </div>
+
+                          <div class="row">
+                              <div class="form-group col-md-6 col-sm-12">
+                                <label > <h4> مدينون 
+                                  <span>(الذمم المستحقة على الغير نتيجة عمليات اخرى غير البيع الآجل وتقديم الخدمات, كمنح السلف للموظفين, والذمم المستحقة على الدولة من ضرائب مرتجعة... إن وجد)</span> </h4> </label>
+                                   
+                           
+                                  <input matInput type="number" name="creditors" #creditors="ngModel" placeholder="مثال: 2000"
+                                  [(ngModel)]="finance.creditors" class="form-control" pattern="[0-9]*" >
+                            
+                          
+                          
+                                <div *ngIf="creditors.errors && (creditors.dirty || creditors.touched)"  class="alert alert-danger">
+                                <!--  <div [hidden]="!creditors.errors.required">*أرجو إدخال المصروفات الشهرية</div>  -->
+                                  <div [hidden]="!creditors.errors.pattern">*أرجو ادخال أرقام صحيحة فقط</div>
+                              </div>
+                              </div>    
+                              </div>
+
+                          
+      
+      <div class="row">
+        <button  mat-raised-button class="Btns  blueBtn"  type="submit"
+        [disabled]="!financeForm.valid">
+            إضافة</button>
+          </div>
+          </form>
+  
+        
+          </mat-card-content>
+  </mat-card>

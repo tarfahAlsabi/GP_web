@@ -1,4 +1,5 @@
 import { Time } from "@angular/common";
+import { Employee } from "../../empolyee/shared/employee.model";
 
 export class Receipt {
     $key: string;
@@ -13,11 +14,29 @@ export class Receipt {
 }
 export class InnerProduct{
     $key: string;
-    category: string;
+    name: string;
+    totalIncome: number;
     price: number;
+    cost: number;
     quantity: number;
 
  }
+
+ export class NetIncome{
+    totalIncome: number;
+    employeeSal: number;
+    expences: number;
+    netIncome: number;
+    result: string;
+ }
+
+ export class Income{
+    revenue: string;
+    price: number;
+    cost: number;
+    totalIncome: number;
+ }
+ 
 
  export class productInfo
  {
@@ -85,3 +104,17 @@ export class empInf
     salary;
     username;
 }
+
+export class Assets{
+    box;
+    bank;
+    Debtors;
+    fixedAssets;
+}
+
+export class Liabilities{
+    capital;
+    loans;
+    creditors;
+}
+

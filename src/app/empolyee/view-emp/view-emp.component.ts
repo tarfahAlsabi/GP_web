@@ -69,7 +69,7 @@ delete(){
    }
    this.router.navigate(['mainPage/empolyee']).then( (res) => {
     this.flashMensaje.show('تم تسريح الموظف بنجاح.',
-    {cssClass: 'alert-success', timeout: 10000, 
+    {cssClass: 'alert-success', timeout: 100000, 
     closeOnClick: true, showCloseBtn: true});
   });
 
@@ -90,7 +90,7 @@ openDialog(check: boolean): void {
       if(result > this.salary){
         this.salary=result;
       this.flashMensaje.show('تم تعديل راتب الموظف بنجاح.',
-      {cssClass: 'alert-success', timeout: 10000, 
+      {cssClass: 'alert-success', timeout: 100000, 
       closeOnClick: true, showCloseBtn: true});
 
       }

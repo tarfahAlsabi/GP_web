@@ -9,7 +9,7 @@ import { AngularFireDatabase } from 'angularfire2/database';
 import { FlashMessagesService } from 'angular2-flash-messages';
 import {MatTableDataSource,MatPaginator,MatSort} from '@angular/material';
 
-import { Chart} from'chart.js'
+import { Chart} from'chart.js';
 
 @Component({
   selector: 'app-product-report',
@@ -178,17 +178,20 @@ changeProduct()
   //if(this.products)
    }else{
     this.flashMensaje.show('لا يجب ان يسبق تاريخ  النهاية تاريخ البداية.',
-    {cssClass: 'alert-danger', timeout: 5000});
+    {cssClass: 'alert-danger', timeout: 100000, 
+    closeOnClick: true, showCloseBtn: true});
     }
   }else{
     this.flashMensaje.show('يجب عليك ادخال الفترة الزمنية أولا.',
-    {cssClass: 'alert-danger', timeout: 5000});
+    {cssClass: 'alert-danger', timeout: 100000, 
+    closeOnClick: true, showCloseBtn: true});
     }
   }
   else
   {
     this.flashMensaje.show('الرجاء إختيار منتج',
-    {cssClass: 'alert-danger', timeout: 5000});
+    {cssClass: 'alert-danger', timeout: 100000, 
+    closeOnClick: true, showCloseBtn: true});
   }
 }
 

@@ -27,5 +27,12 @@ export class ChartsComponent implements OnInit {
   EmpWHs(){
     this.router.navigate(['mainPage/Employee working report']);
   }
+  IncomeStatmentReport(){
+    this.router.navigate(['mainPage/income_statment']);
+  }
+  FinanceReport(){
+    this.router.navigate(['mainPage/finance_report']);
+  }
+  
   
 }

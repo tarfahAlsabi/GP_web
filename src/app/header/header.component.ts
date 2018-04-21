@@ -21,6 +21,8 @@ export class HeaderComponent  {
     ChartsState: boolean = false;
     InvState:boolean = false;
     CatsState:boolean = false;
+    expenState:boolean = false;
+    finanState:boolean = false;
 
   public isLogin: boolean;
   public username: string;

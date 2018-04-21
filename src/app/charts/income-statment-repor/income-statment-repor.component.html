@@ -1,0 +1,109 @@
+<mat-toolbar  class="PageTitle" style="background-color:transparent">
+    <span class="toolbar-spacer"></span>
+<span color="primary">   <h2>  {{reportName}} </h2> </span>
+<span class="toolbar-spacer"></span>
+   </mat-toolbar>  
+      
+<mat-toolbar  class="PageTitle" dir="rtl" >
+
+      <mat-toolbar-row>
+        <span *ngIf="hasDate" >
+    <span class="reportBar" > 
+        <mat-form-field>
+            <input   [value]='startDate' matInput [matDatepicker]="picker" placeholder=" من تاريخ " (dateChange)="changeDate('from', $event) " >
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker disabled="false" ></mat-datepicker>
+        </mat-form-field>
+        </span>
+
+        <span class="toolbar-spacer"></span>
+
+
+        <span class="reportBar">
+         <mat-form-field >
+            <input matInput  [value]='endDate'  [matDatepicker]="ToDate" placeholder=" إلى تاريخ " (dateChange)="changeDate('to', $event)" >
+            <mat-datepicker-toggle matSuffix [for]="ToDate"></mat-datepicker-toggle>
+            <mat-datepicker   #ToDate disabled="false"  ></mat-datepicker>
+        </mat-form-field>
+        </span> 
+
+
+      </span>
+    
+
+
+
+          <span class="toolbar-spacer"></span>
+
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<div class="col-md-4 col-sm-12"></div>
+<div class="col-md-4 col-sm-12">
+<flash-messages></flash-messages>
+</div>
+
+<div class="col-md-12 col-sm-12">
+<mat-tab-group class="tab-group" (selectedTabChange)='selectChange($event)' >
+    <mat-tab label="التقرير" >
+      <div class="tabContent">
+
+          <mat-table #table [dataSource]="dataSourceIncome"  matSort>
+
+              <ng-container matColumnDef="revenue" >
+                  <mat-header-cell *matHeaderCellDef mat-sort-header style="
+                  padding-right: 10%; " > الاملاك </mat-header-cell>
+                  <mat-cell *matCellDef="let row"> {{row.revenue}} </mat-cell>
+                </ng-container>
+                <ng-container matColumnDef="price"  >
+                    <mat-header-cell *matHeaderCellDef mat-sort-header > الإرادات </mat-header-cell>
+                    <mat-cell *matCellDef="let row"> {{row.price}} </mat-cell>
+                  </ng-container>
+                  <ng-container matColumnDef="cost" >
+                      <mat-header-cell *matHeaderCellDef mat-sort-header> المصاريف </mat-header-cell>
+                      <mat-cell *matCellDef="let row"> {{row.cost}} </mat-cell>
+                    </ng-container>
+                    <ng-container matColumnDef="totalIncome"  >
+                        <mat-header-cell *matHeaderCellDef mat-sort-header> إجمالي الربح </mat-header-cell>
+                        <mat-cell *matCellDef="let row"> {{row.totalIncome}} </mat-cell>
+                      </ng-container>
+                   
+              <mat-header-row *matHeaderRowDef="columnsIncome"></mat-header-row>
+              <mat-row *matRowDef="let row; columns: columnsIncome;"></mat-row>
+            </mat-table>
+          <!--  <mat-paginator dir="rtl" [pageSizeOptions]="[5, 10, 15, 100]" ></mat-paginator>-->
+<br>
+          <mat-table #table [dataSource]="dataSourceNetIncome"  matSort>
+
+            <ng-container matColumnDef="totalIncome" >
+                <mat-header-cell *matHeaderCellDef mat-sort-header style="
+                padding-right: 10%; " > إجمالي الربح </mat-header-cell>
+                <mat-cell *matCellDef="let row"> {{row.totalIncome}} </mat-cell>
+              </ng-container>
+              <ng-container matColumnDef="employeeSal"  >
+                  <mat-header-cell *matHeaderCellDef mat-sort-header > رواتب الموظفين </mat-header-cell>
+                  <mat-cell *matCellDef="let row"> {{row.employeeSal}} </mat-cell>
+                </ng-container>
+                <ng-container matColumnDef="expences" >
+                    <mat-header-cell *matHeaderCellDef mat-sort-header> مصاريف أخرى </mat-header-cell>
+                    <mat-cell *matCellDef="let row"> {{row.expences}} </mat-cell>
+                  </ng-container>
+                  <ng-container matColumnDef="netIncome"  >
+                      <mat-header-cell *matHeaderCellDef mat-sort-header> صافي الربح </mat-header-cell>
+                      <mat-cell *matCellDef="let row"> {{row.netIncome}} </mat-cell>
+                    </ng-container>
+                    <ng-container matColumnDef="result"  >
+                      <mat-header-cell *matHeaderCellDef mat-sort-header> النتيجة </mat-header-cell>
+                      <mat-cell *matCellDef="let row"> {{row.result}} </mat-cell>
+                    </ng-container>
+            <mat-header-row *matHeaderRowDef="columnsNetIncome"></mat-header-row>
+            <mat-row *matRowDef="let row; columns: columnsNetIncome;"></mat-row>
+          </mat-table>
+          
+      </div>
+    </mat-tab>
+   
+</mat-tab-group>
+</div>
+<!-- (matSortChange)="sortData($event)" -->
+ 
