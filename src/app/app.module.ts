@@ -102,6 +102,7 @@ import { EditManagerComponent, confirmMessageCancleManag } from './manager/edit-
     confirmMessageanclePro,
     confirmMessageCancleManag,
     EditManagerComponent,
+
    
   ],
   imports: [

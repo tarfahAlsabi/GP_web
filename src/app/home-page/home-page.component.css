@@ -9,8 +9,70 @@
     font-size: 18px;
     line-height: 2;
   }
-
+  .featuresImg 
+  {
+    width: 17%;
+    height: 17%;
+  }
+  .Mycontainer
+  {
+    padding: 0px;
+    margin: 0px;
+    width: 100%;
+    display: inline-block;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    align-self: center;
+    align-content: center;
+  }
+  .figureSize img
+  {
+    width: 100%;
+    height: 250px;
+}
   
+  .imgcontainer
+  {
+    text-align: center;
+  }
+  .figureSize
+  {   
+     width: 25%;
+    height: 25%;
+  }
+footer 
+{
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+    background-color: #111;
+    color: #6Dc4e2;
+    font-size: 1em;
+    width: 100%;
+    height: 13%;
+}
+.RouterContainer
+{
+  height: 80%;
+
+  bottom: 7em;
+    top: 7.5em;
+}
+.footerContainer
+{
+  text-align: center !important;
+  padding-top: 1%;
+}
+  .Mainlogo
+  {
+    float: right;
+    width: 50px;
+    height: 50px;
+    margin: 20px 20px 0px 20px;
+  }
   .dialogTitle , .DialogOptionBtn
   {
       display: -ms-inline-grid;;

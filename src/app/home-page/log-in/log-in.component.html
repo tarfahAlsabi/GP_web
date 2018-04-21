@@ -1,0 +1,29 @@
+<flash-messages></flash-messages>
+<div class="Mycontainer">
+<div class="spacer">
+  
+  <div class="container contactform center">
+  <h2 class="text-center  wowload fadeInUp"> تسجيل الدخول</h2>
+    <div class="row wowload fadeInLeftBig">      
+        <div class="col-sm-6 col-sm-offset-3 col-xs-12">      
+          <input type="text" [(ngModel)]="emailLog" name="emailLog" placeholder="البريد الإلكتروني"
+           pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" required>
+
+           <div *ngIf="emailLog.errors && (emailLog.dirty || emailLog.touched)"  class="alert alert-danger">
+            <div [hidden]="!emailLog.errors.required">*ارجو إدخال البريد الإلكتروني</div>
+            <div [hidden]="!emailLog.errors.pattern">*فورمات البريد الإلكتروني غير صحيحة</div>
+           </div>
+
+          <input type="password" [(ngModel)]="passwordLog" name="passwordLog" placeholder="الرقم السري" 
+          minlength="8" required>
+
+          <div *ngIf="passwordLog.errors && (passwordLog.dirty || passwordLog.touched)"  class="alert alert-danger">
+            <div [hidden]="!passwordLog.errors.required">*ارجو إدخال كلمة السر</div>
+            <div [hidden]="!passwordLog.errors.minlength">*كلمة السر يجب أن لا تقل عن 8 خانات</div>
+           </div>
+
+          <button class="btn btn-primary" (click)="loginTestFirst()"> تأكيد</button>
+        </div>
+    </div></div></div>
+
+  </div>

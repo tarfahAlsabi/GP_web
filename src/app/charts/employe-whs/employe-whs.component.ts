@@ -6,9 +6,10 @@ import { ReportsService } from '../shared/reports.service'
 import { productInfo,ItemInfo, shift } from '../shared/receipt.model';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { FlashMessagesService } from 'angular2-flash-messages';
-import {MatTableDataSource,MatPaginator,MatSort} from '@angular/material';
-
+import {MatTableDataSource,MatPaginator,MatSort,MatPaginatorIntl} from '@angular/material';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Chart} from'chart.js'
+import { promise } from 'protractor';
 
 @Component({
   selector: 'app-employe-whs',
@@ -26,9 +27,10 @@ export class EmployeWhsComponent implements OnInit {
   hasDate=true;
   hasSelection=true;
   paginatorLenth:number;
-  reportName='تقرير ساعات عمل الموظف  ';
+  reportName='تقرير ساعات عمل موظف  ';
+ 
   displayedColumns=['date','checkIn','checkOut','totalShiftTime'];
-  hasInfo=false;
+  error=false;
   x=[]
   y=[]
  //ngOnInit
@@ -38,15 +40,31 @@ export class EmployeWhsComponent implements OnInit {
   dataSource:MatTableDataSource<shift>=new MatTableDataSource(new Array());
   selectedValue;
   constructor(private reportsService: ReportsService, private firebase: AngularFireDatabase
-    ,public flashMensaje: FlashMessagesService
-) { }
-
+    ,public flashMensaje: FlashMessagesService ,private route: ActivatedRoute,
+  ) { }
   ngOnInit() {
+    let nn :MatPaginatorIntl=new MatPaginatorIntl();
+    nn.itemsPerPageLabel="عدد الصفوف في الصفحة " ;
+    nn.firstPageLabel="الصفحة الأولى ";
+    nn.lastPageLabel="الصفحة الأخيرة " ;
+    nn.nextPageLabel="الصفحة التالية";
+    nn.previousPageLabel="الصفحة السابقة" ;
+    nn.getRangeLabel=(page: number, pageSize: number, length: number) => { if (length == 0 || pageSize == 0) { return `0 من ${length}`; } length = Math.max(length, 0); const startIndex = page * pageSize; const endIndex = startIndex < length ? Math.min(startIndex + pageSize, length) : startIndex + pageSize; return `${startIndex + 1} - ${endIndex} من ${length}`; }
+    this.paginator._intl=nn
    this.startDate.setDate(this.startDate.getDate() -7 );
    this.items=(this.reportsService.getEmployeeList());
 
    this.dataSource.paginator = this.paginator;
    this.dataSource.sort = this.sort;
+
+   let emp;
+   emp = this.route.snapshot.params.id;
+
+  if(emp != null){
+
+    this.selectedValue=emp;
+    this.changeProduct();
+   }
   //console.log(this.receiptList);
   }
 
@@ -55,7 +73,11 @@ export class EmployeWhsComponent implements OnInit {
     if(evet.index==0)
     this.changeProduct();
     else
-    this.creatChart();
+    {
+      this.changeProduct();
+     
+    }
+   
   }
 
 
@@ -160,10 +182,10 @@ getValues()
     {
       if(label[n].localeCompare(i)==0)
       {
-        console.log(label[n])
+        // console.log(label[n])
         
       sum = sum + values[n]
-      console.log(sum)
+      // console.log(sum)
       values[n]=0
       label[n]=''
       }
@@ -181,31 +203,25 @@ getValues()
 
 changeProduct()
 {
-  console.log(this.selectedValue)
+  this.dataSource.data=[]
+  // console.log(this.selectedValue)
 
   if(this.selectedValue!=undefined)
   { 
   if(this.startDate && this.endDate){
     if(this.startDate <= this.endDate){
-      let s= this.getEmpShifts();
-      this.getValues();
-      console.log(s)
-
-    if(s){
-     
-  }else{
-  this.flashMensaje.show('لم يتم بيع هذا المنتج في هذه الفترة الزمنية.',
-  {cssClass: 'alert-danger', timeout: 100000, 
-  closeOnClick: true, showCloseBtn: true});
       this.dataSource.data=[];
-  }
-
+      this.getEmpShifts()
+      this.getValues();
+    
    }else{
+
     this.flashMensaje.show('لا يجب ان يسبق تاريخ  النهاية تاريخ البداية.',
     {cssClass: 'alert-danger', timeout: 100000, 
     closeOnClick: true, showCloseBtn: true});
     }
   }else{
+
     this.flashMensaje.show('يجب عليك ادخال الفترة الزمنية أولا.',
     {cssClass: 'alert-danger', timeout: 100000, 
     closeOnClick: true, showCloseBtn: true});
@@ -213,19 +229,19 @@ changeProduct()
   }
   else
   {
-    this.flashMensaje.show('الرجاء إختيار منتج',
-    {cssClass: 'alert-danger', timeout: 100000, 
-    closeOnClick: true, showCloseBtn: true});
+
+    this.flashMensaje.show('الرجاء إختيار موظف',
+    {cssClass: 'alert-danger', timeout: 5000});
   }
 }
 getEmpShifts()
 {
-  let hasInfo=false
+  this.error=true;
   this.dataSource.data=[]
   this.firebase.list(window.name+'/employees/'+this.selectedValue+'/workingTime').snapshotChanges().subscribe(list => {
     for(let temp of list)
     {
-      console.log(typeof temp.key )
+      // console.log(typeof temp.key )
       let year = parseInt(temp.key, 10);
       let mon= temp.payload.toJSON();
       // console.log(mon)
@@ -254,8 +270,8 @@ getEmpShifts()
           temp.checkIn=shifts[s].checkIn;
           temp.checkOut=shifts[s].checkOut;
           let p = shifts[s].totalShiftTime.split(':')
-          temp.totalShiftTime=parseFloat(p[0]+(p[1]/100)+(p[2]/10000));
-          hasInfo=true;
+          temp.totalShiftTime=parseFloat(p[0]+(p[1]/100)+(p[2]/10000))
+          this.error=false
           this.dataSource.data.push(temp)
           this.dataSource._updateChangeSubscription()
           }
@@ -265,8 +281,11 @@ getEmpShifts()
 
       
     }
+    if(this.error)
+    this.flashMensaje.show('لا يوجد ساعات عمل لهذا الموظف.', {cssClass: 'alert-danger', timeout: 5000});
+    this.creatChart(); 
   })
-return hasInfo;
+    
 }
 
 }

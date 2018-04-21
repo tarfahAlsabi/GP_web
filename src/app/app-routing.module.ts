@@ -41,17 +41,30 @@ import { FinanceReportComponent } from './charts/finance-report/finance-report.c
 
 
 
+import { MainHomeComponent } from './home-page/main-home/main-home.component';
+import { FeatursComponent } from './home-page/featurs/featurs.component';
+import { CostumersComponent } from './home-page/costumers/costumers.component';
+import { RegisterComponent } from './home-page/register/register.component';
+import { LogInComponent } from './home-page/log-in/log-in.component'
+
 const routes: Routes = [
     {path: '', component: HomePageComponent,children:
         [
-            
+            {path: '' , component: MainHomeComponent },
+            {path: 'features' , component: FeatursComponent },
+            {path: 'LogIn' , component: LogInComponent },
+            {path: 'register' , component: RegisterComponent },
+            {path: 'customer' , component: CostumersComponent },
         ]},
     {path: 'mainPage', component: HeaderComponent ,children: [
-        {path: 'productReport' , component: ProductReportComponent },        
+        {path: 'productReport' , component: ProductReportComponent },       
+        {path: 'productReport/:id' , component: ProductReportComponent },         
         {path: 'empolyee' , component: EmpolyeeComponent },
         {path: 'product', component: ProductComponent},
         {path: 'Employee working report', component: EmployeWhsComponent},
+        {path: 'Employee working report/:id', component: EmployeWhsComponent},
         {path: 'Employee sales', component: EmployeeSalesComponent},
+        {path: 'Employee sales/:id', component: EmployeeSalesComponent},
         {path: 'tags', component: TagComponent},
         {path: 'addQuantity', component: ViewInv},
         {path: 'charts', component: ChartsComponent},
@@ -81,7 +94,7 @@ exports: [RouterModule]
 
 })
 export class AppRoutingModule { }
-export const routingComponents = [EmployeWhsComponent,EmployeeSalesComponent, ViewInv,
+export const routingComponents = [MainHomeComponent,FeatursComponent,CostumersComponent,RegisterComponent,LogInComponent,EmployeWhsComponent,EmployeeSalesComponent, ViewInv,
     ProductReportComponent,HomePageComponent, ViewProductComponent , AddProductComponent, 
     TagComponent ,ChartsComponent, ViewTagComponent , AddTagComponent , ProductComponent , 
     EmpolyeeComponent,NoFoundPageComponent, ManagerComponent, MyFormComponent, HeaderComponent, 

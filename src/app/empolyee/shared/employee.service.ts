@@ -71,6 +71,8 @@ export class EmployeeService {
     var x=  this.authService.register(employee.email,employee.password,employee.username,
       employee.firstName,employee.lastName,employee.phone,employee.salary, employee.picPATH
       , employee.picName );
+
+      this.sendMail(employee);
    // console.log('windo: '+window.name);
 
    /* console.log(x);
@@ -135,6 +137,26 @@ export class EmployeeService {
   //    x= false;
   }
   
+  sendMail(employee:Employee)
+  { 
+   var request = require("request");
+   var q=  { 
+     method: 'POST',
+      url: 'https://api.sendinblue.com/v3/smtp/templates/4/send',
+      body:{
+          sender: { email: 'eradsystem2018@gmail.com' },
+          emailTo: [employee.email ] ,
+          attributes:{'NAME':employee.firstName+" " +employee.lastName,'COMPANY': window.name ,'USERNAME':employee.username,'PASSWORD': employee.password},
+          },
+      json: true ,
+    headers:{'api-key':'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'} };
+      
+      request(q, function (error, response, body) {
+        if (error) throw new Error(error);
+      
+        console.log(body);
+      });
+  }
 
   delete(employee : Employee){
     if(confirm("هل انت متأكد من تسريح الموظف")){

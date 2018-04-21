@@ -2,7 +2,8 @@
   <mat-sidenav-container color="accent" class="example-sidenav-container" [style.marginTop.px]="mobileQuery.matches ? 0 : 0">
      
     <mat-sidenav  color="accent" class="mat-sidenav primary"  #snav [mode]="mobileQuery.matches ? 'push' : 'side'" [opened]="mobileQuery.matches ? 'false':'true'"
-  [fixedInViewport]="mobileQuery.matches" fixedTopGap="56">
+  [fixedInViewport]="mobileQuery.matches" >
+  <!-- fixedTopGap="56"> -->
     <mat-nav-list  >
 
         <span>
@@ -18,7 +19,7 @@
               <img src="{{manager[8]}}" class="rounded-circle logoImg">
             </div> 
             <div>
-            <a (click)="profile()" ><p class="hello"> مرحبا بك {{manager[3]}} {{manager[4]}}</p> </a>
+            <a routerLink="manager" ><p class="hello"> مرحبا بك {{manager[3]}} {{manager[4]}}</p> </a>
             </div>
         </div>
 

@@ -7,9 +7,9 @@ import { ReportsService } from '../shared/reports.service'
 import { Receipt, InnerProduct,productInfo,ItemInfo } from '../shared/receipt.model';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { FlashMessagesService } from 'angular2-flash-messages';
-import {MatTableDataSource,MatPaginator,MatSort} from '@angular/material';
-
-import { Chart} from'chart.js';
+import {MatTableDataSource,MatPaginator,MatSort,MatPaginatorIntl} from '@angular/material';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Chart} from'chart.js'
 
 @Component({
   selector: 'app-product-report',
@@ -26,6 +26,7 @@ export class ProductReportComponent implements OnInit {
   hasSelection=true;
   x=[];
   y=[];
+  error=false
   paginatorLenth:number;
   reportName='تقرير مبيعات منتج  ';
   displayedColumns=['date','time','cost','quantity','price','employeename'];
@@ -36,23 +37,38 @@ export class ProductReportComponent implements OnInit {
   dataSource:MatTableDataSource<ItemInfo>=new MatTableDataSource(new Array());
   selectedValue;
   constructor(private reportsService: ReportsService, private firebase: AngularFireDatabase
-    ,public flashMensaje: FlashMessagesService
-) { }
+    ,public flashMensaje: FlashMessagesService,  private route: ActivatedRoute,
+  ) { }
+  
 
   ngOnInit() {
+    let nn :MatPaginatorIntl=new MatPaginatorIntl();
+    nn.itemsPerPageLabel="عدد الصفوف في الصفحة " ;
+    nn.firstPageLabel="الصفحة الأولى ";
+    nn.lastPageLabel="الصفحة الأخيرة " ;
+    nn.nextPageLabel="الصفحة التالية";
+    nn.previousPageLabel="الصفحة السابقة" ;
+    nn.getRangeLabel=(page: number, pageSize: number, length: number) => { if (length == 0 || pageSize == 0) { return `0 من ${length}`; } length = Math.max(length, 0); const startIndex = page * pageSize; const endIndex = startIndex < length ? Math.min(startIndex + pageSize, length) : startIndex + pageSize; return `${startIndex + 1} - ${endIndex} من ${length}`; }
+    this.paginator._intl=nn
    this.startDate.setDate(this.startDate.getDate() -7 );
    this.items=(this.reportsService.getProductList());
    this.dataSource.paginator = this.paginator;
    this.dataSource.sort = this.sort;
-  //console.log(this.receiptList);
+   let emp;
+   emp = this.route.snapshot.params.id;
+  if(emp != null){
+    console.log(emp)
+    this.selectedValue=emp;
+    this.changeProduct();
+   }
+
   }
 
   selectChange(evet:any)
   {
-    if(evet.index==0)
+
     this.changeProduct();
-    else
-    this.creatChart();
+
   }
 
 
@@ -198,7 +214,7 @@ changeProduct()
 
 getProductreceipts()
 {
-  
+  this.error=true;
   this.dataSource.data=[]
   this.firebase.list(window.name+'/receipts').snapshotChanges().subscribe(list => {
     for(var m in list)
@@ -215,26 +231,25 @@ getProductreceipts()
         if(prods == this.selectedValue)
         {
           let info = new ItemInfo();
-          this.firebase.list(window.name+'/employees/'+receipt.employeeID).valueChanges().subscribe(emps => {  
-            if( emps[1] == 'undefined') 
-            info.employeename='موظف محذوف ';
-            else 
-            info.employeename=   emps[1]+' ' +emps[2]
-            
           
-          });
+          info.employeename=receipt.employeeName;
           info.cost=receipt.products[prods].price;
           info.date=receipt.date;
           info.price=receipt.products[prods].price * receipt.products[prods].quantity;
           info.quantity=receipt.products[prods].quantity;
           info.time=receipt.time;
           this.dataSource.data.push(info);
+          this.error=false;
            this.dataSource._updateChangeSubscription();
         }
     }
+
+    if(this.error)
+    this.flashMensaje.show('لم يتم بيع هذا المنتج في هذه الفترة الزمنية.',{cssClass: 'alert-danger', timeout: 5000});
+    this.creatChart(); 
   });
 
-  console.log(this.dataSource.data)
+  
 
 }
 
@@ -252,10 +267,10 @@ getValues()
     {
       if(label[n].localeCompare(i)==0)
       {
-        console.log(label[n])
+        // console.log(label[n])
         
       sum = sum + values[n]
-      console.log(sum)
+      // console.log(sum)
       values[n]=0
       label[n]=''
       }

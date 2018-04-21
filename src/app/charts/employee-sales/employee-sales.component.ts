@@ -6,8 +6,8 @@ import { ReportsService } from '../shared/reports.service'
 import { productInfo,ItemInfo,empsales } from '../shared/receipt.model';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { FlashMessagesService } from 'angular2-flash-messages';
-import {MatTableDataSource,MatPaginator,MatSort} from '@angular/material';
-
+import {MatTableDataSource,MatPaginator,MatSort,MatPaginatorIntl} from '@angular/material';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Chart} from'chart.js'
 
 @Component({
@@ -25,6 +25,7 @@ export class EmployeeSalesComponent implements OnInit {
   hasDate=true;
   hasSelection=true;
   paginatorLenth:number;
+  error=false;
   reportName='تقرير مبيعات موظف  ';
   displayedColumns=['Id','date','time','quantity','price','pay','remains'];
  //ngOnInit
@@ -36,23 +37,40 @@ export class EmployeeSalesComponent implements OnInit {
   dataSource:MatTableDataSource<empsales>=new MatTableDataSource(new Array());
   selectedValue;
   constructor(private reportsService: ReportsService, private firebase: AngularFireDatabase
-    ,public flashMensaje: FlashMessagesService
+    ,public flashMensaje: FlashMessagesService ,  private route: ActivatedRoute,
 ) { }
 
   ngOnInit() {
+    let nn :MatPaginatorIntl=new MatPaginatorIntl();
+    nn.itemsPerPageLabel="عدد الصفوف في الصفحة " ;
+    nn.firstPageLabel="الصفحة الأولى ";
+    nn.lastPageLabel="الصفحة الأخيرة " ;
+    nn.nextPageLabel="الصفحة التالية";
+    nn.previousPageLabel="الصفحة السابقة" ;
+    nn.getRangeLabel=(page: number, pageSize: number, length: number) => { if (length == 0 || pageSize == 0) { return `0 من ${length}`; } length = Math.max(length, 0); const startIndex = page * pageSize; const endIndex = startIndex < length ? Math.min(startIndex + pageSize, length) : startIndex + pageSize; return `${startIndex + 1} - ${endIndex} من ${length}`; }
+    this.paginator._intl=nn
    this.startDate.setDate(this.startDate.getDate() -7 );
    this.items=(this.reportsService.getEmployeeList());
+     
    this.dataSource.paginator = this.paginator;
    this.dataSource.sort = this.sort;
+   let emp;
+   emp = this.route.snapshot.params.id;
+
+  if(emp != null){
+    console.log(emp)
+    this.selectedValue=emp;
+    this.changeProduct();
+   }
+
   //console.log(this.receiptList);
   }
 
   selectChange(evet:any)
   {
-    if(evet.index==0)
+ 
     this.changeProduct();
-    else
-    this.creatChart();
+ 
   }
 
 
@@ -158,8 +176,7 @@ creatChart()
 
 changeProduct()
 {
-  console.log(this.selectedValue)
-
+  
   if(this.selectedValue!=undefined)
   { 
   if(this.startDate && this.endDate){
@@ -202,6 +219,7 @@ changeProduct()
 
 getEmployeeSales()
 {
+  this.error=true;
   this.dataSource.data=[]
   var emplSales=[];
   let total=new Array();
@@ -214,24 +232,21 @@ getEmployeeSales()
         receipt= temp.payload.toJSON()
         if(receipt.employeeID != this.selectedValue)
         continue;
-        console.log("inside" )
-        console.log(receipt)
+
         let date =receipt.date.split('-')
          //date[0] year , date[1] month , date[2] day
         if(date[0]<this.startDate.getFullYear()||date[0]>this.endDate.getFullYear()||
         date[1]<this.startDate.getUTCMonth()+1||date[1]>this.endDate.getUTCMonth()+1||
         date[2]<this.startDate.getDate()||date[2]>this.endDate.getDate())
       {
-        console.log('indside date if')
         continue; 
       }
-    
-        console.log('indside date else')
+
         let q=0;
-        console.log(typeof receipt.products)
+        // console.log(typeof receipt.products)
         for (var prods in receipt.products)
         {
-          console.log( receipt.products[prods])
+          // console.log( receipt.products[prods])
           q+=receipt.products[prods].quantity;
         }
         var info = new empsales()
@@ -243,11 +258,16 @@ getEmployeeSales()
         info.time=receipt.time;
         info.Id=receipt.id;
         this.dataSource.data.push(info)   
+        this.error=false;
         this.dataSource._updateChangeSubscription()    
       }
+
+      if(this.error)
+      this.flashMensaje.show('لا يوجد للموظف مبيعات في الفترة المحدةة.', {cssClass: 'alert-danger', timeout: 5000});
+      this.creatChart(); 
   
   })
-  console.log(this.dataSource.data);
+  // console.log(this.dataSource.data);
     // displayedColumns=['date','time','quantity','price','pay','remains'];      
 }
 
@@ -266,10 +286,10 @@ getValues()
     {
       if(label[n].localeCompare(i)==0)
       {
-        console.log(label[n])
+        // console.log(label[n])
         
       sum = sum + values[n]
-      console.log(sum)
+      // console.log(sum)
       values[n]=0
       label[n]=''
       }

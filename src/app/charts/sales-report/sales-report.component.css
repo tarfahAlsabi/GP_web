@@ -37,7 +37,7 @@
 .reportBar
 {
     flex: auto;
-    margin-left:7%;
+    /* margin-left:7%; */
 }
 .Viewimg
 {
@@ -107,12 +107,33 @@ tr:nth-child(even) {
     background-color: #73bfe2;
 
 }
+.contaner
+{
+    background-color: whitesmoke;
+    border-radius: 5%;
+}
+.headerText
+{
+font-size: 1.5em;
+
+}
 .reportContent
 {
     width: 90%;
     margin: 0 5%;
 }
-
+ mat-cell  , mat-header-cell , mat-paginator
+{
+font-size: 110%;
+text-align: right;
+text-indent: 1.5px;
+line-height: 2;
+font-weight: 500;
+}
+mat-paginator , mat-paginator-container
+{
+    display: -webkit-box;
+}
 td,th
 {
     align-content: right;

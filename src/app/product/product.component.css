@@ -26,7 +26,7 @@
 .PageTitle
 {
     margin: 15px;
-    height: 60px;
+    height: auto;
 }
 .PageTitle h2
 {

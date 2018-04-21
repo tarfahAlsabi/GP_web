@@ -35,14 +35,17 @@
                         <mat-cell *matCellDef="let row"> {{row.price}} </mat-cell>
                       </ng-container>
                       <ng-container matColumnDef="category"  >
-                          <mat-header-cell *matHeaderCellDef mat-sort-header style="
-                          padding-right: 5%; "> تصنيف المنتج </mat-header-cell>
+                          <mat-header-cell *matHeaderCellDef mat-sort-header > تصنيف المنتج </mat-header-cell>
                           <mat-cell *matCellDef="let row"> {{row.category}} </mat-cell>
                         </ng-container>
 
               <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
               <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+
             </mat-table>
+
+            
+
             <mat-paginator dir="rtl" [pageSizeOptions]="[5, 10, 15, 100]" ></mat-paginator>
 
           

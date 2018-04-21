@@ -11,7 +11,7 @@ import {MatTableDataSource,MatPaginator,MatSort} from '@angular/material';
 @Component({
   selector: 'app-tag',
   templateUrl: './tag.component.html',
-  styleUrls: ['./tag.component.css']
+  styleUrls: ['../charts/sales-report/sales-report.component.css']
 })
 export class TagComponent implements OnInit {
   @ViewChild(MatSort) sort: MatSort;
@@ -54,11 +54,11 @@ delete(category: Category){
     {
       {this.db.list(window.name+'/products').remove(category.$key).then( (res) => {
         this.flashMensaje.show('.تم حذ التصنيف وجميع منتجاته بنجاح',
-        {cssClass: 'alert-success', timeout: 4000});
+        {cssClass: 'alert-success', timeout: 40000});
         
       }).catch((err) => {
         this.flashMensaje.show('حدثت مشكلة أثناء عملية الحذف أرجو المحاولة مرة أخرى.',
-        {cssClass: 'alert-danger', timeout: 5000});
+        {cssClass: 'alert-danger', timeout: 40000});
         
       });
        this.category= [];
@@ -86,7 +86,7 @@ edit(category:Category)
       this.db.list(window.name+'/products/'+category.$key).snapshotChanges().subscribe(prods=>
       {
         prods.forEach(prod => {
-          var product =(prod.payload.toJSON());
+          var product:any =(prod.payload.toJSON());
           console.log(product)
           this.db.list(window.name+'/products/'+ result).push({
            // name: product.name,
@@ -103,12 +103,12 @@ edit(category:Category)
       });
 
       {this.db.list(window.name+'/products').remove(category.$key).then( (res) => {
-        this.flashMensaje.show('.تم حذ التصنيف وجميع منتجاته بنجاح',
-        {cssClass: 'alert-success', timeout: 4000});
+        this.flashMensaje.show('تم تحديث التصنيف بنجاح',
+        {cssClass: 'alert-success', timeout: 40000});
         
       }).catch((err) => {
         this.flashMensaje.show('حدثت مشكلة أثناء عملية الحذف أرجو المحاولة مرة أخرى.',
-        {cssClass: 'alert-danger', timeout: 5000});
+        {cssClass: 'alert-danger', timeout: 40000});
       
       });
        this.category= [];

@@ -1,9 +1,37 @@
 <mat-toolbar   style="background-color:transparent">
     <span class="primary">
-        <a  (click)="gobacktoProducts()" > <h6>العودة إلى عرض الموظفين </h6></a> 
+         <a  (click)="gobacktoProducts()" > <h6>العودة إلى عرض الموظفين </h6></a> 
+        <a  (click)=" sendMsil()" > <h6> إرسال إيميل </h6></a> 
     </span>
     <span class="toolbar-spacer"></span>
 </mat-toolbar>
+
+
+<div *ngIf="firstName.errors && (firstName.dirty || firstName.touched)"  class="alert alert-danger">
+  <div [hidden]="!firstName.errors.minlength">   *يجب ان يكون الأسم الأول على الاقل متكون من حرفين</div>
+
+  <div [hidden]="!firstName.errors.required">*ارجوإدخال الأسم الأول</div>
+</div>
+
+
+<div *ngIf="phone.errors && (phone.dirty || phone.touched)"  class="alert alert-danger">
+  <div [hidden]="!phone.errors.pattern">*رقم الجوال يجب ان يحتوي على أرقام فقط</div>
+  <div [hidden]="!phone.errors.minlength">   *رقم الجوال يجب أن لا يقل عن 10 أرقام </div>
+</div>
+
+          
+<div *ngIf="lastName.errors && (lastName.dirty || lastName.touched)"  class="alert alert-danger">
+  <div [hidden]="!lastName.errors.minlength">
+    *يجب ان يكون أسم العائلة على الاقل متكون من  ثلاثة أحرف</div>
+
+  <div [hidden]="!lastName.errors.required">*ارجو إدخال إسم العائلة</div>
+</div>
+
+
+<div *ngIf="email.errors && (email.dirty || email.touched)"  class="alert alert-danger">
+  <div [hidden]="!email.errors.required">*ارجو إدخال البريد الإلكتروني</div>
+  <div [hidden]="!email.errors.pattern">*فورمات البريد الإلكتروني غير صحيحة</div>
+</div>
 
 <mat-card class="formContainer" >
     <mat-card-title>	
@@ -27,11 +55,7 @@
           <input matInput   name="firstName" #firstName="ngModel"   
           [(ngModel)]="employeeService.selectedEmployee.firstName"    minlength="2" required type="email" class="form-control"  aria-describedby="emailHelp" placeholder="مثال: منى">
       
-        <div *ngIf="firstName.errors && (firstName.dirty || firstName.touched)"  class="alert alert-danger">
-          <div [hidden]="!firstName.errors.minlength">   *يجب ان يكون الأسم الأول على الاقل متكون من حرفين</div>
-
-          <div [hidden]="!firstName.errors.required">*ارجوإدخال الأسم الأول</div>
-        </div>
+   
       </div>
         
 
@@ -42,13 +66,7 @@
             <input matInput  minlength="3" name="lastName" #lastName="ngModel" 
             [(ngModel)]="employeeService.selectedEmployee.lastName"   class="form-control"
             placeholder="مثال: السحيم" required>
-          
-        <div *ngIf="lastName.errors && (lastName.dirty || lastName.touched)"  class="alert alert-danger">
-            <div [hidden]="!lastName.errors.minlength">
-              *يجب ان يكون أسم العائلة على الاقل متكون من  ثلاثة أحرف</div>
 
-            <div [hidden]="!lastName.errors.required">*ارجو إدخال إسم العائلة</div>
-        </div>
       </div>
   
 
@@ -61,10 +79,7 @@
           
 
 
-          <div *ngIf="email.errors && (email.dirty || email.touched)"  class="alert alert-danger">
-              <div [hidden]="!email.errors.required">*ارجو إدخال البريد الإلكتروني</div>
-              <div [hidden]="!email.errors.pattern">*فورمات البريد الإلكتروني غير صحيحة</div>
-        </div>
+ 
       </div>
 
 
@@ -77,11 +92,7 @@
     
 
   
-        <div *ngIf="phone.errors && (phone.dirty || phone.touched)"  class="alert alert-danger">
-            <div [hidden]="!phone.errors.pattern">*رقم الجوال يجب ان يحتوي على أرقام فقط</div>
-            <div [hidden]="!phone.errors.minlength">
-              *رقم الجوال يجب أن لا يقل عن 10 أرقام </div>
-      </div>
+   
     </div>
  
 

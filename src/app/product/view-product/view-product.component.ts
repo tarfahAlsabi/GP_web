@@ -113,6 +113,13 @@ export class ViewProductComponent implements OnInit {
   });
   }
 
+
+  prodSales()
+{
+  let id=this.key
+  console.log
+  this.router.navigate(['mainPage/productReport/',id]) 
+}
 }
 
 @Component({
