@@ -74,6 +74,29 @@ export class ManagerComponent implements OnInit {
       console.log(result);
       if(result!=null)
       {
+        this.db.list(window.name+'/products/').snapshotChanges().subscribe(categories=>{
+          if(categories!=null)
+          categories.forEach(cat =>
+          {
+            this.db.list(window.name+'/products/'+cat.key).snapshotChanges().subscribe(prods=>{ 
+              prods.forEach(prod=>{
+               let product:any= prod.payload.toJSON();
+               this.deletephoto(product.picName)
+              //  console.log(product)
+                                   })                                                         })    
+          })
+        });
+              
+ 
+        this.db.list(window.name+'/employees/').snapshotChanges().subscribe(emps=>{
+          if(emps !=null)
+        emps.forEach(emp=>{
+        let employee:any= emp.payload.toJSON();
+        this.deletephoto(employee.picName)
+                          })
+        })
+
+        
         this.db.list(window.name).remove().then( 
           (res) => {
           this.router.navigate(['']).then(n =>{
@@ -86,12 +109,21 @@ export class ManagerComponent implements OnInit {
           {cssClass: 'alert-danger', timeout: 40000});
           
         });
-       
+
+
+
       }
  
     });
   }
-  
+  deletephoto(picName)
+  {
+    if(picName != 'defaultproduct.png' || picName != 'defaultEmployee.jpg'  ){
+      console.log(picName)
+      let storageRef = firebase.storage().ref();
+      storageRef.child(picName).delete();
+     }
+  }
 }
 
 

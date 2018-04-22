@@ -72,7 +72,7 @@ export class RegisterComponent implements OnInit {
   }
   onSubmitAddUser() {
    this.authService.registerUser(this.email,this.password)
-    .then((res) => {
+    .then((res:any) => {
       window.name = this.businessname;
       var ReceiptID = 0;
       if(this.selectedFiles){

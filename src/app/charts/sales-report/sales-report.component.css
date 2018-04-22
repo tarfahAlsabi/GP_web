@@ -118,7 +118,7 @@ font-size: 1.5em;
 
 }
 
-.mat-header-cell, .mat-cell {
+.Theader {
 padding: 20px;
     text-align: center !important;
   }
