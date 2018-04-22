@@ -51,8 +51,7 @@
           <mat-table #table [dataSource]="dataSourceIncome"  matSort>
 
               <ng-container matColumnDef="revenue" >
-                  <mat-header-cell *matHeaderCellDef mat-sort-header style="
-                  padding-right: 10%; " > الاملاك </mat-header-cell>
+                  <mat-header-cell *matHeaderCellDef mat-sort-header > الاملاك </mat-header-cell>
                   <mat-cell *matCellDef="let row"> {{row.revenue}} </mat-cell>
                 </ng-container>
                 <ng-container matColumnDef="price"  >
@@ -76,8 +75,7 @@
           <mat-table #table [dataSource]="dataSourceNetIncome"  matSort>
 
             <ng-container matColumnDef="totalIncome" >
-                <mat-header-cell *matHeaderCellDef mat-sort-header style="
-                padding-right: 10%; " > إجمالي الربح </mat-header-cell>
+                <mat-header-cell *matHeaderCellDef mat-sort-header  > إجمالي الربح </mat-header-cell>
                 <mat-cell *matCellDef="let row"> {{row.totalIncome}} </mat-cell>
               </ng-container>
               <ng-container matColumnDef="employeeSal"  >

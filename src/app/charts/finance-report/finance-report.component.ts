@@ -11,7 +11,7 @@ import {MatTableDataSource,MatPaginator,MatSort} from '@angular/material';
 @Component({
   selector: 'app-finance-report',
   templateUrl: './finance-report.component.html',
-  styleUrls: ['./finance-report.component.css']
+  styleUrls: ['../sales-report/sales-report.component.css'],
 })
 export class FinanceReportComponent implements OnInit {
 
@@ -25,7 +25,8 @@ export class FinanceReportComponent implements OnInit {
   endDate: Date=new Date();
 
   //table
-  columnsIncome=['box','bank','Debtors','fixedAssets','capital','loans','creditors'];
+ 
+  allcolumns=['box','bank','Debtors','fixedAssets','capital','loans','creditors']
   dataSourceIncome:MatTableDataSource<Assets>=new MatTableDataSource(new Array());
 
   constructor(private firebase: AngularFireDatabase,public flashMensaje: FlashMessagesService) { }

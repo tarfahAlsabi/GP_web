@@ -94,7 +94,7 @@
             <mat-tab label="التقرير" >
               <div class="tabContent">
         
-                  <mat-table #table [dataSource]="dataSource"  matSort>
+                  <mat-table #table [dataSource]="dataSource" class="reportTable" matSort>
         
                       <!-- Position Column -->
         <!--               
@@ -105,8 +105,7 @@
                       ['date','time','cost','price','quantity','employeename'] -->
                       
                       <ng-container matColumnDef="name" >
-                          <mat-header-cell *matHeaderCellDef mat-sort-header style="
-                          padding-right: 10%; " > المنتج </mat-header-cell>
+                          <mat-header-cell *matHeaderCellDef mat-sort-header > المنتج </mat-header-cell>
                           <mat-cell *matCellDef="let row"> {{row.name}} </mat-cell>
                         </ng-container>
                         
