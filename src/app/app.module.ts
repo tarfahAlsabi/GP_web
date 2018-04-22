@@ -81,7 +81,8 @@ import { AddProductComponent } from './product/add-product/add-product.component
 import { ViewProductComponent } from './product/view-product/view-product.component';
 import { confirmMessage } from './product/view-product/view-product.component';
 import { EditManagerComponent, confirmMessageCancleManag } from './manager/edit-manager/edit-manager.component';
-
+import {confirmDelete} from './manager/manager.component';
+import { ManagerComponent } from './manager/manager.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -102,7 +103,7 @@ import { EditManagerComponent, confirmMessageCancleManag } from './manager/edit-
     confirmMessageanclePro,
     confirmMessageCancleManag,
     EditManagerComponent,
-
+    confirmDelete
    
   ],
   imports: [
@@ -165,7 +166,7 @@ import { EditManagerComponent, confirmMessageCancleManag } from './manager/edit-
   entryComponents: [confirmDialog,viewTag, TagComponent, addQuantity,ProductComponent,
      updateSalary, ViewEmpComponent,addCategory ,AddProductComponent, ViewProductComponent,
      confirmMessage, confirmMessageEmp,ViewEmpComponent, confirmMessageancleEmp, AddEmpComponent,
-     confirmMessageanclePro, AddProductComponent, confirmMessageCancleManag, EditManagerComponent],
+     confirmMessageanclePro, AddProductComponent, confirmMessageCancleManag, EditManagerComponent,confirmDelete ,ManagerComponent],
   providers: [AuthService, AuthGuard, FlashMessagesService],
   bootstrap: [AppComponent]
 })

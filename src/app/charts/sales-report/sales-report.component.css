@@ -117,12 +117,32 @@ tr:nth-child(even) {
 font-size: 1.5em;
 
 }
+
+.mat-header-cell, .mat-cell {
+padding: 20px;
+    text-align: center !important;
+  }
+  
+  .header-group-row {
+    border: none;
+    align-items: stretch;
+  }
+  .header-group {
+    flex: 1.38;
+     align-items: center;
+      /* border-right: 1px solid rgba(0, 0, 0, 0.12); */
+      border-left: 1px solid rgba(0, 0, 0, 0.12);
+  }
+.righborder
+{
+    border-right: 1px solid rgba(0, 0, 0, 0.12);
+}
 .reportContent
 {
     width: 90%;
     margin: 0 5%;
 }
- mat-cell  , mat-header-cell , mat-paginator
+ mat-cell  , mat-header-cell , mat-paginator , .mat-header-cell
 {
 font-size: 110%;
 text-align: right;

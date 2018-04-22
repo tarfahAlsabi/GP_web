@@ -89,31 +89,31 @@ edit(category:Category)
           var product:any =(prod.payload.toJSON());
           console.log(product)
           this.db.list(window.name+'/products/'+ result).push({
-           // name: product.name,
-           // price: product.price,
-           // cost: product.cost,
-           // inventory: product.inventory,
-           // description: product.description,
-            //category: result,
-           // picPath: product.picPath,
-            //picName: product.picName
+            name: product.name,
+            price: product.price,
+            cost: product.cost,
+            inventory: product.inventory,
+            description: product.description,
+            category: result,
+            picPath: product.picPath,
+            picName: product.picName
             
           });
         });
+        {this.db.list(window.name+'/products').remove(category.$key).then( (res) => {
+          this.flashMensaje.show('تم تحديث التصنيف بنجاح',
+          {cssClass: 'alert-success', timeout: 40000});
+          
+        }).catch((err) => {
+          this.flashMensaje.show('حدثت مشكلة أثناء عملية الحذف أرجو المحاولة مرة أخرى.',
+          {cssClass: 'alert-danger', timeout: 40000});
+        
+        });
+         this.category= [];
+      
+        }
       });
 
-      {this.db.list(window.name+'/products').remove(category.$key).then( (res) => {
-        this.flashMensaje.show('تم تحديث التصنيف بنجاح',
-        {cssClass: 'alert-success', timeout: 40000});
-        
-      }).catch((err) => {
-        this.flashMensaje.show('حدثت مشكلة أثناء عملية الحذف أرجو المحاولة مرة أخرى.',
-        {cssClass: 'alert-danger', timeout: 40000});
-      
-      });
-       this.category= [];
-    
-      }
     }
   });
 
@@ -149,4 +149,3 @@ edit(category:Category)
       public dialogRef: MatDialogRef<viewTag>,
       @Inject(MAT_DIALOG_DATA) public data: any,public db: AngularFireDatabase ) { } 
   }
-  
