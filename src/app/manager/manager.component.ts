@@ -52,5 +52,51 @@ export class ManagerComponent implements OnInit {
     let id = this.manager[3]+','+this.manager[4]+','+this.manager[6];
     this.router.navigate(['mainPage/edit-manager/',id]);
   }
+
+
+
+  deleteProject()
+  {
+    let dialogRef = this.dialog.open(confirmDelete);
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      console.log(result);
+      if(result!=null)
+      {
+        this.db.list(window.name).remove().then( 
+          (res) => {
+          this.router.navigate(['']).then(n =>{
+            this.flashMensaje.show('تم حذف المشروع بنجاح ',
+            {cssClass: 'alert-success', timeout: 40000});
+          })
+
+        }).catch((err) => {
+          this.flashMensaje.show('حدثت مشكلة أثناء عملية الحذف أرجو المحاولة مرة أخرى.',
+          {cssClass: 'alert-danger', timeout: 40000});
+          
+        });
+       
+      }
+ 
+    });
+  }
+  
+}
+
+
+@Component({
+  selector: 'confirm-delete',
+  templateUrl: './confirm-Message-emp.html',
+  styleUrls: ['./manager.component.css']
+})
+export class confirmDelete {
+  yes:string='yes';
+  message:string;
+  constructor(
+    public dialogRef: MatDialogRef<confirmDelete>,
+    @Inject(MAT_DIALOG_DATA) public data: any) { }
+
+
 }
 
