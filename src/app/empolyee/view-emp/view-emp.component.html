@@ -6,7 +6,7 @@
     </mat-toolbar-row>
     <mat-toolbar-row>
     <span class="toolbar-spacer"></span>
-     <h2 class="title"> {{ title }} {{name}} </h2> 
+     <h2 class="title"> {{ title }} {{employee.firstName}} {{employee.lastName}}</h2> 
     <span class="toolbar-spacer"></span>
     </mat-toolbar-row>
 </mat-toolbar>
@@ -20,22 +20,22 @@
                 
        
         <div class='col-md-12 '> 
-              <h5 class='header'> البريد الألكتروني:   <span class='info'> {{Email}} </span>  </h5> 
+              <h5 class='header'> البريد الألكتروني:   <span class='info'> {{employee.email}} </span>  </h5> 
         </div> 
         
         <div class='col-md-12'> 
-                <h5 class='header'> الجوال:    <span class='info'>  {{phone}}  </span> </h5>
+                <h5 class='header'> الجوال:    <span class='info'>  {{employee.phone}}  </span> </h5>
          </div>
        
          <div class='col-md-12'> 
-                <h5 class='header'> الراتب: <span class='info' > {{salary}}ر.س   </span>  </h5>
+                <h5 class='header'> الراتب: <span class='info' > {{employee.salary}}ر.س   </span>  </h5>
          </div>
         </div>
         <div class='col-md-3  col-sm-4' >
             
-                <div  class="example-header-image"><img src={{img}}></div>
+                <div  class="example-header-image"><img src={{employee.picPATH}}></div>
                 <br>
-                <h5 class="Imgheader">{{name}} </h5>
+                <h5 class="Imgheader">{{employee.firstName}} {{employee.lastName}}</h5>
                 <br>
                           
               </div>
@@ -45,7 +45,7 @@
 <div>
         <button mat-raised-button class= "Btns blueBtn" (click)= "empSales()"> تقرير مبيعات الموظف  </button> 
         <button mat-raised-button class= "Btns lightBlueBtn" (click)= "empHours()">   تقرير ساعات العمل  </button> 
-        <button mat-raised-button  class='Btns greenBtn' (click)="openDialog(true)" > زيادة راتب الموظف </button>  
+        <button mat-raised-button  class='Btns greenBtn' (click)="openDialog(true)" > تعديل راتب الموظف </button>  
         <button mat-raised-button  class='Btns greyBtn' (click)="openDialog(false)" >تسريح الموظف  </button> 
     </div>
 

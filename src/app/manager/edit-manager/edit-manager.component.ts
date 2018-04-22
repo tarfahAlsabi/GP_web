@@ -7,6 +7,7 @@ import { NgForm } from '@angular/forms';
 import { FlashMessagesService } from 'angular2-flash-messages';
 
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
+import { AngularFireDatabase } from 'angularfire2/database';
 
 
 
@@ -17,7 +18,7 @@ import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 })
 export class EditManagerComponent implements OnInit {
 
-  temp: string;
+  uid: string;
   manager: Manager;
   selectedFiles: FileList;
   num: number;
@@ -25,37 +26,25 @@ export class EditManagerComponent implements OnInit {
 
 
   constructor(private route: ActivatedRoute, private router: Router,
-  public flashMensaje: FlashMessagesService,public dialog: MatDialog) { }
+  public flashMensaje: FlashMessagesService,public dialog: MatDialog,
+  private firebase: AngularFireDatabase) { }
 
   ngOnInit() {
-    this.temp = this.route.snapshot.params.id;
+    this.uid = this.route.snapshot.params.id;
     this.resetForm();
-    if((this.temp != '') && (this.temp != ':id')){
-      this.onEdit();
-      console.log('entered')
+    if((this.uid != '') && (this.uid != ':id')){
     }
+    this.firebase.object(window.name+'/manager').snapshotChanges().subscribe(ob =>{
+      let x = ob.payload.toJSON();
+      x["$key"] = ob.key;
+      this.manager = x as Manager;
+      
+    });
   }
 
   detectFiles(event) {
     this.selectedFiles = event.target.files;
 }
-
-  onEdit(){
-    let array = this.temp.split(",");
-    let fname = array[0];
-    let lname = array[1];
-    let phone = array[2];
-    let picName ='';
-    let password ='';
-    let email = '';
-    let picPath='';
-    let businessname ='';
-    let ReceiptID =''
-    let $key = '1';
-    let mm:Manager = {$key,fname,lname,phone,picName,password,email,picPath,ReceiptID,businessname};
-    this.manager = Object.assign({},mm);
-
-  }
 
   onSubmit(managerForm: NgForm){
     if(this.selectedFiles){
@@ -82,6 +71,13 @@ export class EditManagerComponent implements OnInit {
             picPath: uploadTask.snapshot.downloadURL,
             picName: file.name
           });
+          firebase.database().ref(window.name+'/employees').child(this.uid).update({
+            firstName: managerForm.value.fname,
+            lastName: managerForm.value.lname,
+            phone: managerForm.value.phone,
+            picPath: uploadTask.snapshot.downloadURL,
+            picName: file.name
+          });
             this.resetForm(managerForm); 
             this.router.navigate(['mainPage/manager']).then( (res) => {
               this.flashMensaje.show('تم تحديث بياناتك بنجاح.',
@@ -95,7 +91,12 @@ export class EditManagerComponent implements OnInit {
       firebase.database().ref(window.name+'/manager').update({
         fname: managerForm.value.fname,
         lname: managerForm.value.lname,
-        phone: managerForm.value.phone,
+        phone: managerForm.value.phone
+      });
+      firebase.database().ref(window.name+'/employees').child(this.uid).update({
+        firstName: managerForm.value.fname,
+        lastName: managerForm.value.lname,
+        phone: managerForm.value.phone    
       });
         this.resetForm(managerForm); 
         this.router.navigate(['mainPage/manager']).then( (res) => {
@@ -123,7 +124,8 @@ export class EditManagerComponent implements OnInit {
       ReceiptID : '',
       picPath : '', 
       picName : '',
-      phone: ''
+      phone: '',
+      uid:''
 
     }
   }

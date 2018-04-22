@@ -106,7 +106,8 @@ export class AuthService {
       phone: phone,
       businessname: businessname,
       picPath: picPath,
-      picName: picName
+      picName: picName,
+      uid: uid
       });
       firebase.database().ref(window.name+'/employees').child(uid).set({
         username: '',  

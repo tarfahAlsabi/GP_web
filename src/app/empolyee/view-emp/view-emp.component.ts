@@ -10,6 +10,7 @@ import * as firebase from 'firebase';
 import { FlashMessagesService } from 'angular2-flash-messages';
 
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
+import { AngularFireDatabase } from 'angularfire2/database';
 
 
 @Component({
@@ -33,7 +34,8 @@ export class ViewEmpComponent implements OnInit {
   public title ='بيانات '
 
   constructor(private route: ActivatedRoute, private router:Router
-    ,public flashMensaje: FlashMessagesService, public dialog: MatDialog) { }
+    ,public flashMensaje: FlashMessagesService, public dialog: MatDialog,
+    private firebase: AngularFireDatabase) { }
 /*name:String="أحمد الصالح ";
 Id:String="MyID!";
 Email:string="aa@aa.a";
@@ -44,15 +46,21 @@ salary:number=5000;*/
   ngOnInit() {
     this.temp = this.route.snapshot.params.id;
 
-    this.tempArray = this.temp.split(",");
+  /*  this.tempArray = this.temp.split(",");
     this.key = this.tempArray[0];
     this.name = this.tempArray[2]+" "+this.tempArray[3];
     this.Email = this.tempArray[1];
     this.phone = this.tempArray[4];
     this.img = this.tempArray[5];
     this.salary = Number(this.tempArray[6]);
-    this.imgName = this.tempArray[7];
+    this.imgName = this.tempArray[7];*/
 
+    this.firebase.object(window.name+'/employees/'+this.temp).snapshotChanges().subscribe(ob =>{
+      let x = ob.payload.toJSON();
+      x["$key"] = ob.key;
+      this.employee = x as Employee;
+      
+    });
       
       // let employeesNumber=(this.employeeList.length/3);
     
@@ -62,31 +70,31 @@ delete(){
 
    // this.employeeService.delete(this.employee);
    let s= firebase.database().ref(window.name+'/employees');
-   s.child(this.key).remove();
-   if(this.imgName != 'defaultEmployee.jpg'){
+   s.child(this.temp).remove().then((res)=>{
+   if(this.employee.picName != 'defaultEmployee.jpg'){
     let storageRef = firebase.storage().ref();
-    storageRef.child(this.imgName).delete();
+    storageRef.child(this.employee.picName).delete();
    }
    this.router.navigate(['mainPage/empolyee']).then( (res) => {
     this.flashMensaje.show('تم تسريح الموظف بنجاح.',
     {cssClass: 'alert-success', timeout: 100000, 
     closeOnClick: true, showCloseBtn: true});
   });
-
+});
 }
 
 openDialog(check: boolean): void {
   if(check){
   let dialogRef = this.dialog.open(updateSalary, {
 
-    data: { name: this.name,salary: this.salary } 
+    data: { name: this.employee.firstName,salary: this.employee.salary } 
   });
 
   dialogRef.afterClosed().subscribe(result => {
     console.log('The dialog was closed');
     if(result){
       let s= firebase.database().ref(window.name+'/employees');
-      s.child(this.key).update({salary: result});
+      s.child(this.temp).update({salary: result});
       if(result > this.salary){
         this.salary=result;
       this.flashMensaje.show('تم تعديل راتب الموظف بنجاح.',
@@ -99,7 +107,7 @@ openDialog(check: boolean): void {
 }else{
   let dialogRef = this.dialog.open(confirmMessageEmp, {
   
-    data: { message: this.name} 
+    data: { message: this.employee.firstName} 
   });
 
   dialogRef.afterClosed().subscribe(result => {
@@ -118,14 +126,12 @@ gobacktoProducts()
 }
 empSales()
 {
-  let id=this.key
-  console.log
+  let id=this.temp
   this.router.navigate(['mainPage/Employee sales/',id]) 
 }
 empHours()
 {
-  let id=this.key
-  console.log
+  let id=this.temp
   this.router.navigate(['mainPage/Employee working report/',id]) 
 }
 
@@ -145,7 +151,7 @@ export class updateSalary {
 
   addquantity(newSalary:number ,salary:number)
   {
-    return newSalary + salary;
+    return newSalary;
   }
  
 }

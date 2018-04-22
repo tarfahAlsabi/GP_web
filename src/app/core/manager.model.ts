@@ -9,4 +9,5 @@ export class Manager {
   password: string;
   picName: string;
   picPath: string;
+  uid: string;
 }

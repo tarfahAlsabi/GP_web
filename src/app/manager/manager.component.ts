@@ -19,7 +19,8 @@ import { FlashMessagesService } from 'angular2-flash-messages';
 export class ManagerComponent implements OnInit {
 
   public title="حسابك الشخصي";
-  manager: Manager[];
+  manager1: Manager[];
+  manager:Manager;
   
   constructor(private firebase: AngularFireDatabase,private db: AngularFireDatabase,
      private router:Router,public flashMensaje: FlashMessagesService, public dialog: MatDialog) { }
@@ -28,7 +29,14 @@ export class ManagerComponent implements OnInit {
 
   //  this.coursesObservable = this.db.object(window.name+'/manager').valueChanges();
   //  this.manager= null;
-  this.manager = [];
+
+  this.firebase.object(window.name+'/manager').snapshotChanges().subscribe(ob =>{
+    let x = ob.payload.toJSON();
+    x["$key"] = ob.key;
+    this.manager = x as Manager;
+    
+  });
+  /*this.manager = [];
      this.firebase.list(window.name).snapshotChanges().subscribe(item =>{
        item.forEach( element =>{
         for(var element2 in item) {
@@ -46,10 +54,12 @@ export class ManagerComponent implements OnInit {
         }
         this.manager = [];
        });
-      });
+      });*/
   }
   onEdite(){
-    let id = this.manager[3]+','+this.manager[4]+','+this.manager[6];
+  //  let id = this.manager[3]+','+this.manager[4]+','+this.manager[6];
+  let id = this.manager.uid;
+  console.log(this.manager.uid)
     this.router.navigate(['mainPage/edit-manager/',id]);
   }
 }

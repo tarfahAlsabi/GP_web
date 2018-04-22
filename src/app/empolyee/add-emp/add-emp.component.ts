@@ -30,8 +30,8 @@ export class AddEmpComponent  {
 
 
 constructor(private fb: FormBuilder,private employeeService: EmployeeService
-,private router: Router,public flashMensaje: FlashMessagesService, public dialog: MatDialog,private HttpHeader: Http
-)
+,private router: Router,public flashMensaje: FlashMessagesService, 
+public dialog: MatDialog,private HttpHeader: Http)
 {
  }
 

@@ -267,6 +267,7 @@ this.firebase.list(window.name+'/manager/xExpenses').snapshotChanges().subscribe
   }
 netIncome.expences = parseInt(Math.round(this.expens).toFixed(2));
 netIncome.netIncome = netIncome.totalIncome -netIncome.employeeSal-netIncome.expences;
+//netIncome.netIncome = parseInt(netIncome.netIncome.toPrecision(2));
 
 if(netIncome.netIncome > 0)
 netIncome.result='ربح';
