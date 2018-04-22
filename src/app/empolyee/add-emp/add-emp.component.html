@@ -1,7 +1,7 @@
 <mat-toolbar   style="background-color:transparent">
     <span class="primary">
          <a  (click)="gobacktoProducts()" > <h6>العودة إلى عرض الموظفين </h6></a> 
-        <a  (click)=" sendMsil()" > <h6> إرسال إيميل </h6></a> 
+
     </span>
     <span class="toolbar-spacer"></span>
 </mat-toolbar>
@@ -97,7 +97,7 @@
  
 
       <div class="form-group col-md-6 col-sm-12">
-          <label > <h4>   الراتب </h4> </label>
+          <label > <h4>    الراتب  بالساعة</h4> </label>
             <input  matInput type="number"   name="salary" #salary="ngModel" 
             [(ngModel)]="employeeService.selectedEmployee.salary" class="form-control"
             placeholder="مثال: 2500">

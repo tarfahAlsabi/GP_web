@@ -100,20 +100,21 @@ edit(category:Category)
             
           });
         });
+        {this.db.list(window.name+'/products').remove(category.$key).then( (res) => {
+          this.flashMensaje.show('تم تحديث التصنيف بنجاح',
+          {cssClass: 'alert-success', timeout: 40000});
+          
+        }).catch((err) => {
+          this.flashMensaje.show('حدثت مشكلة أثناء عملية الحذف أرجو المحاولة مرة أخرى.',
+          {cssClass: 'alert-danger', timeout: 40000});
+        
+        });
+         this.category= [];
+      
+        }
       });
 
-      {this.db.list(window.name+'/products').remove(category.$key).then( (res) => {
-        this.flashMensaje.show('تم تحديث التصنيف بنجاح',
-        {cssClass: 'alert-success', timeout: 40000});
-        
-      }).catch((err) => {
-        this.flashMensaje.show('حدثت مشكلة أثناء عملية الحذف أرجو المحاولة مرة أخرى.',
-        {cssClass: 'alert-danger', timeout: 40000});
-      
-      });
-       this.category= [];
-    
-      }
+
     }
   });
 
