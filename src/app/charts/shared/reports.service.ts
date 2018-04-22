@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 //import * as firebase from 'firebase';
 import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
-import { Receipt, InnerProduct,productInfo ,ItemInfo,empsales,shift,FBReceipt,ReceiptProduct,empInf} from './receipt.model';
+import { Receipt, InnerProduct,productInfo ,ItemInfo,empsales,shift,FBReceipt,ReceiptProduct,empInf, Income, NetIncome} from './receipt.model';
 import { element } from 'protractor';
 import { query } from '@angular/animations';
 import {MatTableDataSource} from '@angular/material';
@@ -15,6 +15,10 @@ ProductList:productInfo[];
 productInfos:ItemInfo[];
 emplSales:empsales[]=new Array();
 empShifts:shift[];
+
+checkStartD_EndD = true;
+x:number[];
+
   constructor(private firebase: AngularFireDatabase) { }
 
   getData(){ 
@@ -166,10 +170,8 @@ getEmpShifts(key,startDate:Date,EndDate:Date,source:MatTableDataSource<shift>)
           var ymd =  new Date(year,month-1,parseInt(n, 10)+1)
           if(ymd <= startDate && ymd >= EndDate )
           continue;
-          // console.log("the date from new Date ")
-          // console.log(ymd)
-          // console.log(n)
-          // console.log(day[n])
+          
+          
           let date=parseInt(n,10)
           if(ymd < startDate || ymd > EndDate )//compare date with satr ang End date
           continue;
@@ -193,4 +195,6 @@ getEmpShifts(key,startDate:Date,EndDate:Date,source:MatTableDataSource<shift>)
  console.log(source);
  console.log(source.data.length)
 }
+
+
 }

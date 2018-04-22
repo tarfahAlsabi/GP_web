@@ -87,7 +87,7 @@ export class ViewProductComponent implements OnInit {
         //this.productService.deleteProduct(s as Product);
         this.router.navigate(['mainPage/product']).then( (res) => {
           this.flashMensaje.show('تم حذف المنتج بنجاح.',
-          {cssClass: 'alert-success', timeout: 10000, 
+          {cssClass: 'alert-success', timeout: 100000, 
           closeOnClick: true, showCloseBtn: true});
         });
       

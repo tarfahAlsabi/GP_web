@@ -48,7 +48,7 @@
 </mat-toolbar>
 <flash-messages></flash-messages>
 
-
+<!--
 <div>
 <mat-tab-group class="tab-group" (selectedTabChange)='selectChange($event)' >
     <mat-tab label="التقرير" >
@@ -57,7 +57,8 @@
 
           <table matSort  class="reportContent" >
               <tr class="head">
-                <th *ngFor="let header of tableheader" [mat-sort-header]="header" [id]="header"  (click)="priceSortiong()">{{header}} </th>
+                <th *ngFor="let header of tableheader" [mat-sort-header]="header" [id]="header"  
+                (click)="priceSortiong()">{{header}} </th>
 
               </tr>
             
@@ -85,6 +86,87 @@
            </div>    
     </mat-tab>
 </mat-tab-group>
-</div>
+</div>-->
+
+
+<div>
+        <mat-tab-group class="tab-group" (selectedTabChange)='selectChange($event)' >
+            <mat-tab label="التقرير" >
+              <div class="tabContent">
+        
+                  <mat-table #table [dataSource]="dataSource"  matSort>
+        
+                      <!-- Position Column -->
+        <!--               
+                      <ng-container [matColumnDef]="header"  *ngFor='let header of displayedColumns' >
+                        <mat-header-cell *matHeaderCellDef> {{info[header]}} </mat-header-cell>
+                        <mat-cell *matCellDef="let element; ">  {{element.date}}    </mat-cell>
+                      </ng-container>
+                      ['date','time','cost','price','quantity','employeename'] -->
+                      
+                      <ng-container matColumnDef="name" >
+                          <mat-header-cell *matHeaderCellDef mat-sort-header style="
+                          padding-right: 10%; " > المنتج </mat-header-cell>
+                          <mat-cell *matCellDef="let row"> {{row.name}} </mat-cell>
+                        </ng-container>
+                        
+                        <ng-container matColumnDef="quantity"  >
+                            <mat-header-cell *matHeaderCellDef mat-sort-header > الكمية المباعة </mat-header-cell>
+                            <mat-cell *matCellDef="let row"> {{row.quantity}} </mat-cell>
+                          </ng-container>
+
+                          <ng-container matColumnDef="price" >
+                                <mat-header-cell *matHeaderCellDef mat-sort-header> الربح </mat-header-cell>
+                                <mat-cell *matCellDef="let row"> {{row.price}} </mat-cell>
+                              </ng-container>
+
+                          <ng-container matColumnDef="cost" >
+                              <mat-header-cell *matHeaderCellDef mat-sort-header> التكلفة </mat-header-cell>
+                              <mat-cell *matCellDef="let row"> {{row.cost}} </mat-cell>
+                            </ng-container>
+                                  
+                                <ng-container matColumnDef="totalIncome" >
+                                    <mat-header-cell *matHeaderCellDef mat-sort-header> إجمالي الربح </mat-header-cell>
+                                    <mat-cell *matCellDef="let row"> {{row.totalIncome}} </mat-cell>
+                                  </ng-container>
+
+                      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+                    </mat-table>
+                    <mat-paginator dir="rtl" [pageSizeOptions]="[5, 10, 15, 100]" ></mat-paginator>
+        
+                  <!-- <table matSort  class="reportContent" >
+                      <tr class="head">
+                        <th *ngFor="let header of tableheader" [mat-sort-header]="header" [id]="header"  (click)="priceSortiong()">{{header}} </th>
+        
+                      </tr>
+                    
+                      <tr *ngFor="let product of newProducts">
+                        <td color="primary" >{{product.category}}</td>
+                        <td color="primary" >{{product.quantity}}</td>
+                        <td>{{product.price}}</td>
+                      </tr>
+                  
+                      <tr>
+                          <td class="head " *ngIf="totalSales"> مجموع الأرباح </td>
+                          <td>{{totalSales}}</td>
+                      </tr>
+                  
+                    </table>
+        
+                     -->
+                  
+              </div>
+            </mat-tab>
+            <mat-tab label="الرسم البياني">
+                <div class="tabContent"  *ngIf="chart" >
+                    <canvas id="pie"  class="chart-pie" style="height:255px ; width:90% ;    overflow:hidden;" ></canvas>
+                   
+                   </div>    
+            </mat-tab>
+        </mat-tab-group>
+        </div>
+        <!-- (matSortChange)="sortData($event)" -->
+         
 <!-- (matSortChange)="sortData($event)" -->
  

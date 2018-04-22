@@ -1,7 +1,6 @@
 import { Component, OnInit ,ElementRef,ViewChild} from '@angular/core';
 import {Sort,MatTab} from '@angular/material';
 import {MatDatepickerInputEvent} from '@angular/material/datepicker';
-import {MatTableDataSource} from '@angular/material';
 
 
 import { ReportsService } from '../shared/reports.service'
@@ -9,7 +8,10 @@ import { Receipt, InnerProduct } from '../shared/receipt.model';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { FlashMessagesService } from 'angular2-flash-messages';
 
-import { Chart} from'chart.js'
+import { Chart} from'chart.js';
+
+import {MatTableDataSource,MatPaginator,MatSort} from '@angular/material';
+
 
 @Component({
   selector: 'app-sales-report',
@@ -19,6 +21,9 @@ import { Chart} from'chart.js'
 })
 export class SalesReportComponent implements OnInit {
   @ViewChild("pie", {read: ElementRef}) pie:ElementRef;
+  @ViewChild(MatSort) sort: MatSort;
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+
   chart = Chart; 
   hasDate=true;
   hasSelection=false;
@@ -34,6 +39,12 @@ export class SalesReportComponent implements OnInit {
   startDate: Date=new Date();
   endDate: Date=new Date();
 
+  //table
+  paginatorLenth:number;
+  displayedColumns=['name', 'quantity', 'price', 'cost', 'totalIncome'];
+  dataSource:MatTableDataSource<InnerProduct>=new MatTableDataSource(new Array());
+
+
 
   constructor(private reportsService: ReportsService, private firebase: AngularFireDatabase
     ,public flashMensaje: FlashMessagesService
@@ -42,6 +53,11 @@ export class SalesReportComponent implements OnInit {
   ngOnInit() {
    this.startDate.setMonth(this.startDate.getMonth() -1 );
    let x = this.reportsService.getData();
+
+   //table
+   this.dataSource.paginator = this.paginator;
+   this.dataSource.sort = this.sort;
+   //end
 
    this.receiptList = [];
    this.products = [];
@@ -72,25 +88,22 @@ export class SalesReportComponent implements OnInit {
       this.receiptList.push(y as Receipt);
       //console.log((y as Receipt).date);
     });
-  this.s();
+  this.sales();
   
   });
-   
-
-  //console.log(this.receiptList);
-
  
   }
 
   selectChange(evet:any)
   {
     if(evet.index==0)
-    this.s();
+    this.sales();
     else
     this.creatChart();
   }
-s(){
+sales(){
   //console.log(this.receiptList[2].products);
+  this.dataSource.data=[]
   this.products = [];
   if(this.receiptList.length != 0){
     if(this.startDate && this.endDate){
@@ -98,7 +111,9 @@ s(){
 
         this.totalSales = 0;
         this.newProducts = [];
-
+        //table
+        this.dataSource.data=[];
+      //end
         for(let element in this.receiptList){
           let requireDate = this.receiptList[element].date;
           if( (requireDate >= this.startDate) &&  (requireDate <= this.endDate)){
@@ -109,13 +124,17 @@ s(){
         }
       if(this.products.length != 0){
       this.products.sort(function(a, b) {
-        return a.category.localeCompare(b.category);
+        return a.name.localeCompare(b.name);
       });
-      let cat = this.products[0].category;
+      let name = this.products[0].name;
       let priceTemp = 0;
       let quantityTemp = 0;
+      let costTemp = 0;
       let x = 0;
       this.newProducts = [];
+      //table
+      this.dataSource.data=[];
+      //end
      // console.log(this.products[0]);
       let r = this.products;
 
@@ -123,65 +142,64 @@ s(){
         if(!this.products.hasOwnProperty(element)){
           continue;
         }
-        if(this.products[element].category == cat){
+        if(this.products[element].name == name){
           priceTemp += (this.products[element].price * this.products[element].quantity);
+          costTemp += (this.products[element].cost * this.products[element].quantity);
           quantityTemp += this.products[element].quantity;
         }else{
-          this.temp = {$key:"1",category: cat,price:priceTemp,quantity:quantityTemp}
+          this.temp = {$key:"1",name: name,price:priceTemp,cost:costTemp,quantity:quantityTemp,
+          totalIncome: priceTemp - costTemp}
           this.newProducts.push(this.temp as InnerProduct);
-          cat = this.products[element].category;
+
+          //table
+          this.dataSource.data.push(this.temp as InnerProduct);
+          this.dataSource._updateChangeSubscription();
+          //end
+
+          name = this.products[element].name;
           priceTemp = this.products[element].price;
+          costTemp = this.products[element].cost;
           quantityTemp = this.products[element].quantity;
         }
       }
-      this.temp = {$key:"1",category: cat,price:priceTemp,quantity:quantityTemp};
+      this.temp = {$key:"1",name: name,price:priceTemp,cost:costTemp,quantity:quantityTemp,
+      totalIncome: priceTemp - costTemp};
       this.newProducts.push(this.temp as InnerProduct);
+
+      //table
+      this.dataSource.data.push(this.temp as InnerProduct);
+      this.dataSource._updateChangeSubscription();
+      //end
   
      // console.log(x);
      // console.log(this.newProducts);
     }else{
     this.flashMensaje.show('لا يوجد فواتير في هذه الفترة الزمنية.',
-    {cssClass: 'alert-danger', timeout: 5000});
+    {cssClass: 'alert-danger', timeout: 100000, 
+    closeOnClick: true, showCloseBtn: true});
     }
     //if(this.products)
      }else{
       this.flashMensaje.show('لا يجب ان يسبق تاريخ  النهاية تاريخ البداية.',
-      {cssClass: 'alert-danger', timeout: 5000});
+      {cssClass: 'alert-danger', timeout: 100000, 
+      closeOnClick: true, showCloseBtn: true});
       }
     }else{
       this.flashMensaje.show('يجب عليك ادخال الفترة الزمنية أولا.',
-      {cssClass: 'alert-danger', timeout: 5000});
+      {cssClass: 'alert-danger', timeout: 100000, 
+      closeOnClick: true, showCloseBtn: true});
       }
   }else{
     this.flashMensaje.show('لا تملك عمليات بيع حاليا.',
-    {cssClass: 'alert-danger', timeout: 5000});
+    {cssClass: 'alert-danger', timeout: 100000, 
+    closeOnClick: true, showCloseBtn: true});
     }
+
+    console.log(this.dataSource.data)
 
 }
 
-  categorysortiong(){
-    console.log('s')
 
-    this.newProducts.sort(function(a, b) {
-      return b.category.localeCompare(a.category);
-    });
-  }
-  priceSortiong(){
-    console.log('s')
-    this.newProducts.sort(function(a, b) {
-      return (b.quantity > a.quantity)? 1:((a.quantity > b.quantity)? -1 : 0);
-    //  return b.price.toString().localeCompare(a.price.toString());
-    });
-  }
-  quantitySortiong(){
-    console.log('s')
-    console.log(this.newProducts)
-
-    this.newProducts.sort(function(a, b) {
-      return (a.quantity > b.quantity)? 1:((b.quantity > a.quantity)? -1 : 0);
-    });
-    console.log(this.newProducts)
-  }
 
   changeDate(type: string, event: MatDatepickerInputEvent<Date>) 
 {
@@ -193,7 +211,7 @@ s(){
     var x = new Date(event.value);
     this.endDate = new Date(x.getTime() + (1000 * 60 * 60 * 24));
     }
-    this.s();
+    this.sales();
     this.creatChart();
   /*  var mydate = new Date('2018-03-02');
     console.log(mydate.toDateString());*/
@@ -206,7 +224,7 @@ creatChart()
   if(this.chart.data)
   this.chart.destroy();
 
-  let label =this.newProducts.map(product => product.category);
+  let label =this.newProducts.map(product => product.name);
   let values=this.newProducts.map(product => product.quantity);
   this.chart = new Chart('pie', {
       type: 'bar',

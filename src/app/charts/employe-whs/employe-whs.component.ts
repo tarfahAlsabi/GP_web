@@ -217,12 +217,14 @@ changeProduct()
    }else{
 
     this.flashMensaje.show('لا يجب ان يسبق تاريخ  النهاية تاريخ البداية.',
-    {cssClass: 'alert-danger', timeout: 5000});
+    {cssClass: 'alert-danger', timeout: 100000, 
+    closeOnClick: true, showCloseBtn: true});
     }
   }else{
 
     this.flashMensaje.show('يجب عليك ادخال الفترة الزمنية أولا.',
-    {cssClass: 'alert-danger', timeout: 5000});
+    {cssClass: 'alert-danger', timeout: 100000, 
+    closeOnClick: true, showCloseBtn: true});
     }
   }
   else

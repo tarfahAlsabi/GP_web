@@ -89,7 +89,7 @@ export class AddProductComponent  {
             this.resetForm(productForm); 
             this.router.navigate(['mainPage/product']).then( (res) => {
               this.flashMensaje.show('تم تحديث المنتج بنجاح.',
-              {cssClass: 'alert-success', timeout: 10000, 
+              {cssClass: 'alert-success', timeout: 100000, 
               closeOnClick: true, showCloseBtn: true});
             });
           //  this.tostr.success('Submitted Succcessfully', 'product is added');
@@ -98,7 +98,7 @@ export class AddProductComponent  {
             this.resetForm(productForm); 
             this.router.navigate(['mainPage/product']).then( (res) => {
               this.flashMensaje.show('تم تحديث المنتج بنجاح.',
-              {cssClass: 'alert-success', timeout: 10000, 
+              {cssClass: 'alert-success', timeout: 100000, 
               closeOnClick: true, showCloseBtn: true});
             });
           //  this.tostr.success('Submitted Succcessfully', 'product is updated');
@@ -110,7 +110,7 @@ export class AddProductComponent  {
         this.resetForm(productForm); 
         this.router.navigate(['mainPage/product']).then( (res) => {
           this.flashMensaje.show('تم إضافة المنتج بنجاح.',
-          {cssClass: 'alert-success',timeout: 10000, 
+          {cssClass: 'alert-success',timeout: 100000, 
           closeOnClick: true, showCloseBtn: true});
         });
      //   this.tostr.success('Submitted Succcessfully', 'product is added');
@@ -119,7 +119,7 @@ export class AddProductComponent  {
         this.resetForm(productForm); 
         this.router.navigate(['mainPage/product']).then( (res) => {
           this.flashMensaje.show('تم تحديث بيانات المنتج بنجاح.',
-          {cssClass: 'alert-success', timeout: 10000, 
+          {cssClass: 'alert-success', timeout: 100000, 
           closeOnClick: true, showCloseBtn: true});
         });
      //   this.tostr.success('Submitted Succcessfully', 'product is updated');

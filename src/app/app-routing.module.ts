@@ -33,7 +33,13 @@ import { ProductReportComponent } from './charts/product-report/product-report.c
 
 import { EmployeeSalesComponent } from './charts/employee-sales/employee-sales.component';
 import { EmployeWhsComponent } from './charts/employe-whs/employe-whs.component';
-import { EditManagerComponent } from './manager/edit-manager/edit-manager.component'
+import { EditManagerComponent } from './manager/edit-manager/edit-manager.component';
+import { ExpensesComponent } from './expenses/expenses.component';
+import { IncomeStatmentReporComponent } from './charts/income-statment-repor/income-statment-repor.component';
+import { FinanceComponent } from './finance/finance.component';
+import { FinanceReportComponent } from './charts/finance-report/finance-report.component';
+
+
 
 import { MainHomeComponent } from './home-page/main-home/main-home.component';
 import { FeatursComponent } from './home-page/featurs/featurs.component';
@@ -72,7 +78,11 @@ const routes: Routes = [
         {path: 'sales-report', component: SalesReportComponent}, 
         {path: 'Inventory report',component: IvcReportComponent},
         {path: 'manager',component: ManagerComponent},
-        {path: 'edit-manager/:id',component:EditManagerComponent}
+        {path: 'edit-manager/:id',component:EditManagerComponent},
+        {path: 'expenses',component:ExpensesComponent},
+        {path: 'finance',component:FinanceComponent},
+        {path: 'income_statment',component:IncomeStatmentReporComponent},
+        {path: 'finance_report',component:FinanceReportComponent}
     ]},   
     {path: '**', component: NoFoundPageComponent} //لازم تكون اخر شيء
 ];
@@ -89,4 +99,5 @@ export const routingComponents = [MainHomeComponent,FeatursComponent,CostumersCo
     TagComponent ,ChartsComponent, ViewTagComponent , AddTagComponent , ProductComponent , 
     EmpolyeeComponent,NoFoundPageComponent, ManagerComponent, MyFormComponent, HeaderComponent, 
     ViewEmpComponent , AddEmpComponent , TagComponent, SalesReportComponent ,IvcReportComponent, 
-    EditManagerComponent];
+    EditManagerComponent,ExpensesComponent, IncomeStatmentReporComponent,FinanceComponent,
+    FinanceReportComponent];
