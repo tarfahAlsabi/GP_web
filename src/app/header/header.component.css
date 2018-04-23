@@ -28,6 +28,11 @@ font-family:'Amiri', serif;
 {
 margin-right: 3
 }
+.sideNItemav
+{
+  
+line-height: 2;
+}
 .example-header-image
 {
 display: block;

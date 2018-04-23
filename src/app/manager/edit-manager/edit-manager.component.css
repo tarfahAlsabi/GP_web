@@ -22,6 +22,26 @@
     float: right;
     line-height: 2;
   }
+  .blueBtn
+{
+
+    background-color: #6Dc4e2; 
+
+}
+
+.greyBtn
+{
+    background-color:#A8A8A8;
+
+}
+.Btns
+{
+    color:white;
+    height: 3em;
+   
+    width: 12em;
+    margin: 1em !important;
+}
   .ok
   {
     background-color: #6dc4e2;

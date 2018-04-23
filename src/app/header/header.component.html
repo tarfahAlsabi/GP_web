@@ -64,7 +64,7 @@
             [style.box-shadow]="true ? '0 0 0 ':'0 0 0 ' ">
                 <mat-expansion-panel-header>
                   <mat-panel-title>
-                      <a  routerLink="tags" >  <mat-icon>work </mat-icon> <span>إدارة التصنيفات     </span></a>
+                      <a  class="sideNItemav" routerLink="tags" >  <mat-icon>work </mat-icon> <span>إدارة التصنيفات     </span></a>
                   </mat-panel-title>
                 </mat-expansion-panel-header>
                 </mat-expansion-panel>
@@ -78,7 +78,7 @@
                 [style.box-shadow]="true ? '0 0 0 ':'0 0 0 ' ">
                     <mat-expansion-panel-header>
                       <mat-panel-title>
-                          <a  routerLink="expenses" >  <mat-icon>work </mat-icon> <span>مصروفات أخرى     </span></a>
+                          <a class="sideNItemav" routerLink="expenses" >  <mat-icon>work </mat-icon> <span>مصروفات أخرى     </span></a>
                       </mat-panel-title>
                     </mat-expansion-panel-header>
                     </mat-expansion-panel>
@@ -92,7 +92,7 @@
                 [style.box-shadow]="true ? '0 0 0 ':'0 0 0 ' ">
                     <mat-expansion-panel-header>
                       <mat-panel-title>
-                          <a  routerLink="finance" >  <mat-icon>work </mat-icon> <span>الأصول والخصوم     </span></a>
+                          <a  class="sideNItemav" routerLink="finance" >  <mat-icon>work </mat-icon> <span>الأصول والخصوم     </span></a>
                       </mat-panel-title>
                     </mat-expansion-panel-header>
                     </mat-expansion-panel>
@@ -106,7 +106,7 @@
         [style.box-shadow]="true ? '0 0 0 ':'0 0 0 ' ">
             <mat-expansion-panel-header>
               <mat-panel-title>
-               <a routerLink="charts"><mat-icon> show_chart </mat-icon> <span>التقارير والرسوم البيانية  </span> </a> 
+               <a class="sideNItemav" routerLink="charts"><mat-icon> show_chart </mat-icon> <span>التقارير والرسوم البيانية  </span> </a> 
               </mat-panel-title>
             </mat-expansion-panel-header>
             </mat-expansion-panel>  
@@ -172,7 +172,7 @@ min-height: 25px;'>
   <span> الحساب الشخصي </span>
 </button>
 
-<button mat-menu-item>
+<!-- <button mat-menu-item>
     <mat-icon> build </mat-icon>
     <span> الإعدادات  </span>
   </button>
@@ -180,7 +180,7 @@ min-height: 25px;'>
   <button mat-menu-item >
       <mat-icon> help </mat-icon>
       <span> المساعدة  </span>
-    </button>
+    </button> -->
 
     <button mat-menu-item (click)='onClickLogout()'>
         <mat-icon> exit_to_app </mat-icon>
