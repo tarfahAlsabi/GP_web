@@ -118,7 +118,7 @@ export class ManagerComponent implements OnInit {
   }
   deletephoto(picName)
   {
-    if(picName != 'defaultproduct.png' || picName != 'defaultEmployee.jpg'  ){
+    if(picName != 'defaultproduct.png' &&  picName != 'defaultEmployee.jpg'  ){
       console.log(picName)
       let storageRef = firebase.storage().ref();
       storageRef.child(picName).delete();
