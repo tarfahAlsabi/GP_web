@@ -18,8 +18,8 @@ import * as firebase from 'firebase';
 })
 export class LogInComponent implements OnInit {
 
-  emailLog: string;
-  passwordLog: string;
+  emailLog: any;
+  passwordLog: any;
 
   constructor(private route: ActivatedRoute,private router:Router,
     public dialog: MatDialog, public authService: AuthService
