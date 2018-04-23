@@ -11,8 +11,17 @@
   }
   .featuresImg 
   {
-    width: 17%;
-    height: 17%;
+    width: 100%;
+    height: 100%;
+  }
+  figcaption h2
+  {
+    color: white;
+  }
+  .footertext
+  {
+    padding: 0px;
+    margin: 0px;
   }
   .Mycontainer
   {
@@ -28,7 +37,7 @@
   }
   .figureSize img
   {
-    width: 100%;
+    width: inherit;
     height: 250px;
 }
 .title
@@ -43,8 +52,8 @@
   }
   .figureSize
   {   
-     width: 25%;
-    height: 25%;
+     width: 100%;
+    height: 100%;
   }
 footer 
 {
@@ -62,7 +71,8 @@ footer
 .RouterContainer
 {
   height: 80%;
-
+  position: fixed;
+  overflow: scroll;
   bottom: 7em;
     top: 7.5em;
 }

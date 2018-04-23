@@ -38,7 +38,11 @@ constructor(private route: ActivatedRoute,private router:Router,
  { }
 
  
+ show:boolean = false;
 
+ toggleCollapse() {
+   this.show = !this.show
+ }
 ngOnInit() {
   this.route.fragment.subscribe(fragment => { this.fragment = fragment; });
   this.authService.getAuth().subscribe( auth => {

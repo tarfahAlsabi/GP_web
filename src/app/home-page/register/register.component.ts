@@ -47,39 +47,11 @@ export class RegisterComponent implements OnInit {
     this.selectedFiles = event.target.files;
   
   }
-  addFileThenRegistuer(){
-    if(this.selectedFiles){
-      const file = this.selectedFiles.item(0);
-      const storageRef = firebase.storage().ref(file.name);
-      const uploadTask = storageRef.put(file); 
-    
-      uploadTask.on(firebase.storage.TaskEvent.STATE_CHANGED,
-        (snapshot) =>  {
-          // upload in progress
-    //     this.num = (uploadTask.snapshot.bytesTransferred / uploadTask.snapshot.totalBytes) * 100
-        },
-        (error) => {
-          // upload failed
-          console.log(error)
-        },
-        () => { 
-          // upload success
-          this.manager.picPath = uploadTask.snapshot.downloadURL;
-          this.manager.picName = file.name;
-         // this.onSubmitAddUser();
-        }
-      );
-    }else{
-      this.manager.picPath = 'https://firebasestorage.googleapis.com/v0/b/erad-system.appspot.com/o/defaultEmployee.jpg?alt=media&token=cb0d86a8-cea9-4f19-9177-d12d0a054b62';
-       this.manager.picName = 'defaultEmployee.jpg';
-    //   this.onSubmitAddUser();
-      }
-  }
+
   onSubmitAddUser() {
-    console.log(this.manager)
-   this.authService.registerUser(this.manager.email,this.manager.password)
-    .then((res) => {
-      window.name = this.manager.businessname;
+   this.authService.registerUser(this.email,this.password)
+    .then((res:any) => {
+      window.name = this.businessname;
       var ReceiptID = 0;
       if(this.selectedFiles){
 

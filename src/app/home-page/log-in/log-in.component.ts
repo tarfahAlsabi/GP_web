@@ -1,4 +1,4 @@
-import { Component, OnInit , Inject} from '@angular/core';
+import { Component, OnInit , Inject, Input} from '@angular/core';
 import {ActivatedRoute} from '@angular/router'; // <-- do not forget to import
 
 import { print } from 'util';
@@ -19,9 +19,11 @@ import { Login } from './login.model';
 })
 export class LogInComponent implements OnInit {
 
-  emailLog: string;
-  passwordLog: string;
+  emailLog: any=[];
+  passwordLog: any=[];
   login: Login= new Login;
+ 
+
 
   constructor(private route: ActivatedRoute,private router:Router,
     public dialog: MatDialog, public authService: AuthService
@@ -30,6 +32,8 @@ export class LogInComponent implements OnInit {
    { }
 
   ngOnInit() {
+    this.emailLog.errors=false;
+    this.passwordLog.errors=false;
   }
   loginTestFirst(){
     var flag;
@@ -46,10 +50,9 @@ export class LogInComponent implements OnInit {
   });
   if(flag == true)
     this.onSubmitLogin();
-    else{
-      this.flashMensaje.show('عملية تسجيل الدخول غير صحيحة, أرجو التأكد من البيانات.',
-      {cssClass: 'alert-danger', timeout: 5000});
-  }
+    else
+    this.flashMensaje.show('حصل خطأ الرجاء المحاولة مره اخرى',
+    {cssClass: 'alert-danger', timeout: 5000});
   }
   
   onSubmitLogin() {
