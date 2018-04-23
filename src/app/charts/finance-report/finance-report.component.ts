@@ -93,7 +93,7 @@ incom()
   let price = 0;
   let totalShiftTime =0;
   let expens =0;
-
+  this.dataSourceIncome.data
   let shift:number[]=new Array();
   let cost = 0;
 
@@ -167,6 +167,7 @@ if(this.startDate.getMonth() != this.endDate.getMonth())
   else 
   this.checkStartD_EndD =true;
 
+  this.dataSourceIncome.data=[]
 
 this.firebase.list(window.name+'/manager/xExpenses').snapshotChanges().subscribe(res =>{
   for(let temp of res){
@@ -229,12 +230,16 @@ this.finance.capital += netIncome.netIncome;
 
 if(netIncome.netIncome < 0){
 netIncome.result='خسارة';
-this.finance.capital -= netIncome.netIncome;
+this.finance.capital = netIncome.netIncome - this.finance.capital;
 }
 
 if(netIncome.netIncome == 0)
 netIncome.result='تعادل';
 
+console.log(netIncome.result)
+console.log(this.finance)
+this.dataSourceIncome.data.push(this.finance as Assets);
+this.dataSourceIncome._updateChangeSubscription();
 
 });
 

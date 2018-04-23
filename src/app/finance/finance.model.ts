@@ -5,6 +5,6 @@ export class Finance {
     Debtors:number;
     fixedAssets:number;
     capital: number;
-    Loans: number;
+    loans: number;
     creditors:number;
 }

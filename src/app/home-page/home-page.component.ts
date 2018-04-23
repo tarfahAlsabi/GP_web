@@ -51,6 +51,7 @@ ngOnInit() {
       this.isLogin = false;
     }
   });
+  console.log(window.name)
 }
 
 

@@ -46,29 +46,15 @@ salary:number=5000;*/
   ngOnInit() {
     this.temp = this.route.snapshot.params.id;
 
-  /*  this.tempArray = this.temp.split(",");
-    this.key = this.tempArray[0];
-    this.name = this.tempArray[2]+" "+this.tempArray[3];
-    this.Email = this.tempArray[1];
-    this.phone = this.tempArray[4];
-    this.img = this.tempArray[5];
-    this.salary = Number(this.tempArray[6]);
-    this.imgName = this.tempArray[7];*/
-
     this.firebase.object(window.name+'/employees/'+this.temp).snapshotChanges().subscribe(ob =>{
       let x = ob.payload.toJSON();
       x["$key"] = ob.key;
       this.employee = x as Employee;
       
-    });
-      
-      // let employeesNumber=(this.employeeList.length/3);
-    
+    });    
 }
 
 delete(){
-
-   // this.employeeService.delete(this.employee);
    let s= firebase.database().ref(window.name+'/employees');
    s.child(this.temp).remove().then((res)=>{
    if(this.employee.picName != 'defaultEmployee.jpg'){

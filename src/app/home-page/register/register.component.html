@@ -4,7 +4,8 @@
   <div class="container contactform center">
   <h2 class="text-center  wowload fadeInUp">انشأ حسابك الآن</h2>
     <div class="row wowload fadeInLeftBig">      
-        <div class="col-sm-6 col-sm-offset-3 col-xs-12">      
+        <div class="col-sm-6 col-sm-offset-3 col-xs-12">   
+          <!--   
           <input type="text" [(ngModel)]="fname" placeholder="الإسم الاول" required>
           <input type="text" [(ngModel)]="lname" placeholder="العائلة"  required>
           <input type="text" [(ngModel)]="email" placeholder="البريد الإلكتروني" required>
@@ -23,6 +24,139 @@
               التحميل: | : {{num}}% اكتمل
           </div>
           <button id="contact2" class="btn btn-primary"  (click)="onSubmitAddUser()"> تأكيد</button>
+        -->
+       
+
+
+
+            <form #employeeForm="ngForm" (ngSubmit)="onSubmitAddUser()" dir="rtl">
+
+                <input type="hidden" name="$key" #$key="ngModel" [(ngModel)]="manager.$key">
+                <input type="hidden" name="picPath" #picPath="ngModel" [(ngModel)]="manager.picPath">
+                <input type="hidden" name="picName" #picName="ngModel" [(ngModel)]="manager.picName">       
+                <input type="hidden" name="ReceiptID" #ReceiptID="ngModel" [(ngModel)]="manager.ReceiptID">
+                <input type="hidden" name="uid" #uid="ngModel" [(ngModel)]="manager.uid">       
+        
+                <div *ngIf="fname.errors && (fname.dirty || fname.touched)"  
+                class="alert alert-danger">
+                  <div [hidden]="!fname.errors.minlength">   
+                    *يجب ان يكون الأسم الأول على الاقل متكون من حرفين
+                  </div>
+                  <div [hidden]="!fname.errors.required">*ارجوإدخال الأسم الأول</div>
+                </div> 
+        
+                  <div *ngIf="lname.errors && (lname.dirty || lname.touched)"  class="alert alert-danger">
+                      <div [hidden]="!lname.errors.minlength">
+                        *يجب ان يكون أسم العائلة على الاقل متكون من  ثلاثة أحرف</div>
+              
+                      <div [hidden]="!lname.errors.required">*ارجو إدخال إسم العائلة</div>
+                  </div>
+                                        
+                    
+                <div *ngIf="email.errors && (email.dirty || email.touched)"  class="alert alert-danger">
+                    <div [hidden]="!email.errors.required">*ارجو إدخال البريد الإلكتروني</div>
+                    <div [hidden]="!email.errors.pattern">*فورمات البريد الإلكتروني غير صحيحة</div>
+              </div>                    
+                       
+              <div *ngIf="password.errors && (password.dirty || password.touched)"  class="alert alert-danger">
+                  <div [hidden]="!password.errors.required">*أرجو إدخال الرقم السري</div>
+                  <div [hidden]="!password.errors.minlength">*يجب أن لا يقل الرقم السري عن 8 خانات</div>
+            </div>  
+                               
+              <div *ngIf="businessname.errors && (businessname.dirty || businessname.touched)"  class="alert alert-danger">
+                  <div [hidden]="!phone.errors.required">
+                    *أرجو إدخال اسم المشروع </div>
+              </div>                       
+                    
+              <div *ngIf="phone.errors && (phone.dirty || phone.touched)"  class="alert alert-danger">
+                  <div [hidden]="!phone.errors.pattern">*رقم الجوال يجب ان يحتوي على أرقام فقط</div>
+                  <div [hidden]="!phone.errors.minlength">
+                    *رقم الجوال يجب أن لا يقل عن 10 أرقام </div>
+                    <div [hidden]="!phone.errors.maxlength">
+                      *ورقم الجوال يجب أن لا يقل عن 10 أرقام </div>
+            </div>
+        
+        
+              <div class="form-group col-md-6 col-sm-12">
+                  <label > <h4> الاسم الأول  <span class="red">* </span> </h4> </label>
+                  
+                  <input matInput   name="fname" #fname="ngModel" [(ngModel)]="manager.fname"        
+                  minlength="2" class="form-control"  
+                  aria-describedby="emailHelp" placeholder="مثال: منى" required>
+                     
+              </div>
+                
+            
+            
+                <div class="form-group col-md-6 col-sm-12">
+                    <label > <h4>    العائلة  <span class="red">* </span> </h4> </label>
+                   
+                    <input matInput  minlength="3" name="lname" #lname="ngModel" [(ngModel)]="manager.lname"
+                     class="form-control" placeholder="مثال: السحيم" required>
+                  
+                
+              </div>
+            
+            
+                <div class="form-group col-md-6 col-sm-12">
+                    <label > <h4>   البريد الإلكتروني <span class="red">* </span></h4> </label>
+                    <input matInput   type="email" name="email" #email="ngModel"
+                    [(ngModel)]="manager.email" placeholder="مثال: me@gmail.com" class="form-control"
+                    pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" required>
+      
+              </div>
+            
+              <div class="form-group col-md-6 col-sm-12">
+                  <label > <h4>   الرقم السري <span class="red">* </span></h4> </label>
+                  <input matInput   type="password" name="password" #password="ngModel"
+                  [(ngModel)]="manager.password"  class="form-control"
+                  minlength="8" required>
+ 
+            </div>
+            
+            <div class="form-group col-md-6 col-sm-12">
+                <label > <h4>   أسم المشروع <span class="red">* </span> </h4> </label>
+            
+                <input matInput   name="businessname" #businessname="ngModel"
+                [(ngModel)]="manager.businessname"  class="form-control"
+                required >
+     
+            </div>  
+            
+                <div class="form-group col-md-6 col-sm-12">
+                    <label > <h4>   الجوال </h4> </label>
+            
+                    <input matInput type="tel"   name="phone" #phone="ngModel"
+                    [(ngModel)]="manager.phone"  class="form-control"
+                    minlength="10" maxlength="10" pattern="[0-9]*" placeholder="مثال: 05********">
+ 
+            </div>  
+            
+              <div class="form-group custom-file col-md-6 col-sm-12 ">
+                <label   >
+                   <h4>صورة الموظف:</h4></label> 
+                  <input  type="file" (change)="detectFiles($event)"  class="form-control custom-file-input" accept="image/gif, image/jpeg, image/png" >
+                
+                <p>
+                <small > الصيغ المسموح بها gif , jpeg ,png</small> </p>      
+                </div>
+               
+            
+              <div *ngIf="num" >
+                <div class="progress">
+                  <div class="progress-bar progress-bar-animated" [ngStyle]="{ 'width': num + '%' }"></div>
+                </div>
+                التحميل: | : {{num}}% اكتمل
+              </div>
+            
+              
+            
+               
+                <button  class="btn ok "  type="submit" (click)="onSubmitAddUser()" 
+                [disabled]="!employeeForm.valid">انشأ حساب</button>
+             
+                  </form>
+            
         </div>
     </div>
     

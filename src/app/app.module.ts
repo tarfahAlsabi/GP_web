@@ -83,6 +83,7 @@ import { confirmMessage } from './product/view-product/view-product.component';
 import { EditManagerComponent, confirmMessageCancleManag } from './manager/edit-manager/edit-manager.component';
 import {confirmDelete} from './manager/manager.component';
 import { ManagerComponent } from './manager/manager.component';
+import { ShowFinanceComponent } from './finance/show-finance/show-finance.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -103,7 +104,8 @@ import { ManagerComponent } from './manager/manager.component';
     confirmMessageanclePro,
     confirmMessageCancleManag,
     EditManagerComponent,
-    confirmDelete
+    confirmDelete,
+    ShowFinanceComponent,
    
   ],
   imports: [
@@ -166,7 +168,8 @@ import { ManagerComponent } from './manager/manager.component';
   entryComponents: [confirmDialog,viewTag, TagComponent, addQuantity,ProductComponent,
      updateSalary, ViewEmpComponent,addCategory ,AddProductComponent, ViewProductComponent,
      confirmMessage, confirmMessageEmp,ViewEmpComponent, confirmMessageancleEmp, AddEmpComponent,
-     confirmMessageanclePro, AddProductComponent, confirmMessageCancleManag, EditManagerComponent,confirmDelete ,ManagerComponent],
+     confirmMessageanclePro, AddProductComponent, confirmMessageCancleManag, EditManagerComponent,
+     confirmDelete ,ManagerComponent],
   providers: [AuthService, AuthGuard, FlashMessagesService],
   bootstrap: [AppComponent]
 })

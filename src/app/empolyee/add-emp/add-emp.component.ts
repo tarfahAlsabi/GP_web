@@ -114,7 +114,6 @@ resetForm(employeeForm?: NgForm) {
     email: '',
     phone: '',
     salary: null,
-    username:'',  
     password: '',
     picPATH: '',
     picName:'',

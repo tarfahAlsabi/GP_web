@@ -43,7 +43,6 @@
         <input type="hidden" name="$key" #$key="ngModel" [(ngModel)]="employeeService.selectedEmployee.$key">
         <input type="hidden" name="picPATH" #picPATH="ngModel" [(ngModel)]="employeeService.selectedEmployee.picPATH">
         <input type="hidden" name="picName" #picName="ngModel" [(ngModel)]="employeeService.selectedEmployee.picName">       
-        <input type="hidden" name="username" #username="ngModel" [(ngModel)]="employeeService.selectedEmployee.username">
         <input type="hidden" name="password" #password="ngModel" [(ngModel)]="employeeService.selectedEmployee.password" >
        
         
@@ -100,7 +99,7 @@
           <label > <h4>    الراتب  بالساعة</h4> </label>
             <input  matInput type="number"   name="salary" #salary="ngModel" 
             [(ngModel)]="employeeService.selectedEmployee.salary" class="form-control"
-            placeholder="مثال: 2500">
+            placeholder="مثال: 10">
          </div>
 
 

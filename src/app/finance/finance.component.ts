@@ -9,6 +9,7 @@ import { StateKey } from '@angular/platform-browser/src/browser/transfer_state';
 import * as firebase from 'firebase/app';
 import { FlashMessagesService } from 'angular2-flash-messages';
 import { Finance } from './finance.model';
+import { AngularFireDatabase } from 'angularfire2/database';
 
 @Component({
   selector: 'app-finance',
@@ -19,11 +20,16 @@ export class FinanceComponent implements OnInit {
 title:string = 'الأصول والخصوم';
 finance: Finance =new Finance;
 
-  constructor(private fb: FormBuilder,public flashMensaje: FlashMessagesService) { }
+  constructor(private fb: FormBuilder,public flashMensaje: FlashMessagesService,
+    private firebase: AngularFireDatabase) { }
 
   ngOnInit() {
-    console.log(firebase.database().ref(window.name+'manager').child('xFinance'))
-    //console.log('pass')
+    //firebase.database().ref(window.name+'manager').child('xFinance');
+    this.firebase.object(window.name+'/manager/xFinance').snapshotChanges().subscribe(ob =>{
+      let x = ob.payload.toJSON();
+      x["$key"] = ob.key;
+      this.finance = x as Finance; 
+    });
   }
 
   onSubmit(financeForm: NgForm) {
@@ -42,8 +48,8 @@ finance: Finance =new Finance;
         this.finance.fixedAssets=0;
       }
   
-      if(!this.finance.Loans){
-        this.finance.Loans=0;
+      if(!this.finance.loans){
+        this.finance.loans=0;
       }
   
       if(!this.finance.creditors){
@@ -64,7 +70,7 @@ finance: Finance =new Finance;
       Debtors: this.finance.Debtors,
       fixedAssets: this.finance.fixedAssets,
       capital: this.finance.capital,
-      Loans: this.finance.Loans,
+      Loans: this.finance.loans,
       creditors: this.finance.creditors
     });
   
@@ -74,8 +80,7 @@ finance: Finance =new Finance;
     resetForm(financeForm?: NgForm){
       if (financeForm != null){ 
         financeForm.reset();
-      //  this.startDate =new Date();  
-       // this.endDate =new Date();  
+      
       }
       this.finance = {
         $key: null,
@@ -84,7 +89,7 @@ finance: Finance =new Finance;
         Debtors: 0,
         fixedAssets: 0,
         capital: 0,
-        Loans: 0,
+        loans: 0,
         creditors: 0
       }
     }

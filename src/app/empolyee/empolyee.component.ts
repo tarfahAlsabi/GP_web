@@ -28,24 +28,15 @@ export class EmpolyeeComponent implements OnInit {
       item.forEach(element => {
         var y = element.payload.toJSON();
         y["$key"] = element.key;
-      //  y["picPATH"] = this.getImg(y["picPATH"]);
         this.employeeList.push(y as Employee);
         this.num++;
       });
     });
-    // let employeesNumber=(this.employeeList.length/3);
   }
-  
-
- /* getImg(url: String){
-    return url.substring(0,url.indexOf(','));
-  }*/
-  
   
     viewemployee(employee : Employee)
     { 
       let id=employee.$key;
-      //+","+employee.email+","+employee.firstName+","+employee.lastName+","+employee.phone+","+employee.picPATH+","+employee.salary+","+employee.picPATH+","+employee.username+","+employee.password;
       this.router.navigate(['mainPage/View_employee/',id]);
     }   
     add(){

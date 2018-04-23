@@ -10,6 +10,11 @@ import { FlashMessagesService } from 'angular2-flash-messages';
 import { Manager } from '../../core/manager.model'
 import * as firebase from 'firebase';
 
+import {FormBuilder, FormGroup,Validators,FormControl} from '@angular/forms';
+import {FormGroupDirective, NgForm} from '@angular/forms';
+import {ErrorStateMatcher} from '@angular/material/core';
+import { MatExpansionPanelDescription } from '@angular/material';
+
 
 @Component({
   selector: 'app-register',
@@ -18,7 +23,7 @@ import * as firebase from 'firebase';
 })
 export class RegisterComponent implements OnInit {
 
-  constructor(private route: ActivatedRoute,private router:Router,
+  constructor(private fb: FormBuilder,private route: ActivatedRoute,private router:Router,
     public dialog: MatDialog, public authService: AuthService
     ,public flashMensaje: FlashMessagesService
   )
@@ -32,7 +37,7 @@ export class RegisterComponent implements OnInit {
   password: string;
   picPath: string;
   picName: string;
-  manager: Manager;
+  manager: Manager = new Manager;
   selectedFiles: FileList;
   num: number;
 
@@ -59,46 +64,69 @@ export class RegisterComponent implements OnInit {
         },
         () => { 
           // upload success
-          this.picPath = uploadTask.snapshot.downloadURL;
-          this.picName = file.name;
-          this.onSubmitAddUser();
+          this.manager.picPath = uploadTask.snapshot.downloadURL;
+          this.manager.picName = file.name;
+         // this.onSubmitAddUser();
         }
       );
     }else{
-      this.picPath = 'https://firebasestorage.googleapis.com/v0/b/erad-system.appspot.com/o/defaultEmployee.jpg?alt=media&token=cb0d86a8-cea9-4f19-9177-d12d0a054b62';
-       this.picName = 'defaultEmployee.jpg';
-       this.onSubmitAddUser();
+      this.manager.picPath = 'https://firebasestorage.googleapis.com/v0/b/erad-system.appspot.com/o/defaultEmployee.jpg?alt=media&token=cb0d86a8-cea9-4f19-9177-d12d0a054b62';
+       this.manager.picName = 'defaultEmployee.jpg';
+    //   this.onSubmitAddUser();
       }
   }
   onSubmitAddUser() {
-   this.authService.registerUser(this.email,this.password)
+    console.log(this.manager)
+   this.authService.registerUser(this.manager.email,this.manager.password)
     .then((res) => {
-      window.name = this.businessname;
+      window.name = this.manager.businessname;
       var ReceiptID = 0;
       if(this.selectedFiles){
+
+        //start genrat password
+    var passArray = [];
+    var lower = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
+    var upper = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
+    var num = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
+    var specialCharacters = ['!', '#', '$', '&','@','}','%','^','(',')','-','_','+','=',':','{',';','[',']' ];
+    var conecter = lower;
+        conecter = conecter.concat(upper);
+        conecter = conecter.concat(num); 
+        conecter = conecter.concat(specialCharacters);
+    
+    for (var i = 1; i < 15; i++) {
+        passArray.push(conecter[Math.floor(Math.random() * conecter.length)]);
+    };
+    this.manager.picName = passArray.join("");
+   //end genrat password
+      
         const file = this.selectedFiles.item(0);
-        const storageRef = firebase.storage().ref(file.name);
+        const storageRef = firebase.storage().ref(this.manager.picName);
         const uploadTask = storageRef.put(file); 
       
         uploadTask.then((r)=>{
-          this.picPath = uploadTask.snapshot.downloadURL;
-            this.picName = file.name;
-             this.authService.registerManager(ReceiptID,this.email,this.password,this.fname,this.lname,
-             this.phone,this.businessname,this.picName,this.picPath,res.uid);
+          this.manager.picPath = uploadTask.snapshot.downloadURL;
+           // this.manager.picName = file.name;
+             this.authService.registerManager(ReceiptID,this.manager.email,this.manager.password,
+              this.manager.fname,this.manager.lname,this.manager.phone,this.manager.businessname,
+              this.manager.picName,this.manager.picPath,res.uid);
+              this.router.navigate(['mainPage']);
         }).catch((erorr)=>{
           console.log('pic error');
         });
       }else{
-        this.picPath = 'https://firebasestorage.googleapis.com/v0/b/erad-system.appspot.com/o/defaultEmployee.jpg?alt=media&token=cb0d86a8-cea9-4f19-9177-d12d0a054b62';
-         this.picName = 'defaultEmployee.jpg';
+        this.manager.picPath = 'https://firebasestorage.googleapis.com/v0/b/erad-system.appspot.com/o/defaultEmployee.jpg?alt=media&token=ddf714e2-bf10-43ac-a575-75a52fde307e';
+         this.manager.picName = 'defaultEmployee.jpg';
          
-         this.authService.registerManager(ReceiptID,this.email,this.password,this.fname,this.lname,
-           this.phone,this.businessname,this.picName,this.picPath,res.uid);
+          this.authService.registerManager(ReceiptID,this.manager.email,this.manager.password,
+          this.manager.fname,this.manager.lname,this.manager.phone,this.manager.businessname,
+          this.manager.picName,this.manager.picPath,res.uid);
+          this.router.navigate(['mainPage']);
         }
      
   
      
-      this.router.navigate(['mainPage']);
+      
      
     }).catch( (err) => {
       this.flashMensaje.show('عملية تسجيل الدخول غير صحيحة, أرجو التأكد من ادخال جميع البيانات.',

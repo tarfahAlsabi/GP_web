@@ -58,9 +58,9 @@
                          </ng-container> -->
                          <ng-container matColumnDef="box">
                                  <mat-header-cell *matHeaderCellDef mat-sort-header > الصندوق </mat-header-cell>
-                                 <mat-cell >
+                                 <mat-cell *matCellDef="let row">
      
-       
+                                     {{row.box}} 
      
                                  </mat-cell>
                                  </ng-container>
@@ -91,7 +91,7 @@
                                         
                                 <ng-container matColumnDef="fixedAssets">
                                         <mat-header-cell *matHeaderCellDef mat-sort-header>الاصول الثابته   </mat-header-cell>
-                                        <mat-cell *matCellDef="let row"> {{row.creditors }} </mat-cell>
+                                        <mat-cell *matCellDef="let row"> {{row.fixedAssets }} </mat-cell>
                             </ng-container>
                  <ng-container *matHeaderRowDef="allcolumns">
                         <div class="mat-header-row header-group-row">

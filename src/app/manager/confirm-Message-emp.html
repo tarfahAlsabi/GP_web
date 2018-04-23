@@ -1,13 +1,12 @@
 <div class="ViewsContainer">
-        <div class="dialogTitle">
-        <h1 mat-dialog-title> حذف المشروع </h1>
-        <h4> هل أنت متأكد من حذف المشروع ؟ </h4>
-        <h5>  عند حذف للمشروع سيتم حذف جميع البيانات المتعلقة به و لن يمكنك استعادتها مجدداً</h5>
-      </div>
-        <div mat-dialog-actions class="DialogOptionBtn">
-          
-          <button mat-button [mat-dialog-close]="yes" cdkFocusInitial>تسريح </button>
-          <button mat-button [mat-dialog-close]=""  >إلغاء الأمر </button>
-        </div>
-        
-        </div>
+    <div class="dialogTitle">
+    <h1 mat-dialog-title> حذف الحساب</h1>
+    <h4> هل أنت متأكد من حذف حسابك سيتم حذف جميع بياناتك؟ </h4>
+  </div>
+    <div mat-dialog-actions class="DialogOptionBtn">
+      
+      <button mat-button [mat-dialog-close]="confirm()" cdkFocusInitial>حذف </button>
+      <button mat-button [mat-dialog-close]=""  >إلغاء الأمر </button>
+    </div>
+    
+    </div>

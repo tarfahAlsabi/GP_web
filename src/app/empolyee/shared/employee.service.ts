@@ -44,9 +44,9 @@ export class EmployeeService {
    //end genrat password
 
 //if(result){
-   employee.username = employee.firstName; 
+  // employee.username = employee.firstName; 
    if(path == 'none'){
-     employee.picPATH = 'https://firebasestorage.googleapis.com/v0/b/erad-system.appspot.com/o/defaultEmployee.jpg?alt=media&token=cb0d86a8-cea9-4f19-9177-d12d0a054b62';
+     employee.picPATH = 'https://firebasestorage.googleapis.com/v0/b/erad-system.appspot.com/o/defaultEmployee.jpg?alt=media&token=ddf714e2-bf10-43ac-a575-75a52fde307e';
      employee.picName = 'defaultEmployee.jpg';
     }else{
      employee.picPATH = path;
@@ -68,7 +68,7 @@ export class EmployeeService {
      //let n;
    //  var fRef = firebase.database().ref(window.name+'/employees');
     //this.temp='1';
-    var x=  this.authService.register(employee.email,employee.password,employee.username,
+    var x=  this.authService.register(employee.email,employee.password,
       employee.firstName,employee.lastName,employee.phone,employee.salary, employee.picPATH
       , employee.picName );
 
@@ -140,13 +140,14 @@ export class EmployeeService {
   sendMail(employee:Employee)
   { 
    var request = require("request");
+   var name = employee.firstName+" " +employee.lastName;
    var q=  { 
      method: 'POST',
       url: 'https://api.sendinblue.com/v3/smtp/templates/4/send',
       body:{
           sender: { email: 'eradsystem2018@gmail.com' },
           emailTo: [employee.email ] ,
-          attributes:{'NAME':employee.firstName+" " +employee.lastName,'COMPANY': window.name ,'USERNAME':employee.username,'PASSWORD': employee.password},
+          attributes:{'NAME': name,'COMPANY': window.name ,'USERNAME':employee.email,'PASSWORD': employee.password},
           },
       json: true ,
     headers:{'api-key':'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'} };

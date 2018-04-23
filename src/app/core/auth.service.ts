@@ -18,7 +18,7 @@ export class AuthService {
 
   constructor(public afAuth: AngularFireAuth, private db:AngularFireDatabase) { }
 
-   register(email:string,password:string,username,firstName,lastName,phone,salary,picPATH,picName){
+   register(email:string,password:string,firstName,lastName,phone,salary,picPATH,picName){
     try{
       var secondaryApp = firebase.initializeApp(environment.firebaseConfig, "Secondary");
   //const result = this.afAuth.auth.createUserWithEmailAndPassword(email,password);
@@ -26,7 +26,6 @@ export class AuthService {
   secondaryApp.auth().createUserWithEmailAndPassword(email,password).then(function(firebaseUser) {
     var x = firebaseUser.uid;
     firebase.database().ref(window.name+'/employees').child(x).set({
-      username: username,  
       email: email,
       firstName: firstName,
       lastName: lastName,
@@ -97,6 +96,7 @@ export class AuthService {
   
   
   registerManager(ReceiptID,email,password,fname,lname,phone,businessname,picName,picPath,uid){
+    
     firebase.database().ref(businessname+'/manager').set({
       ReceiptID:ReceiptID,
       email: email,
@@ -110,7 +110,6 @@ export class AuthService {
       uid: uid
       });
       firebase.database().ref(window.name+'/employees').child(uid).set({
-        username: '',  
         email: email,
         firstName: fname,
         lastName: lname,
@@ -155,6 +154,15 @@ export class AuthService {
       this.afAuth.auth.signInWithEmailAndPassword(email, pass)
       .then( userData =>  resolve(userData),
       err => reject (err));
+    });
+  }
+
+  resetPass(password: string){
+
+    firebase.auth().currentUser.updatePassword(password).then(function(){
+      console.log('s')
+    }).catch(function(){
+      console.log('fail')
     });
   }
 
