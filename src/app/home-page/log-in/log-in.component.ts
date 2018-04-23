@@ -1,4 +1,4 @@
-import { Component, OnInit , Inject} from '@angular/core';
+import { Component, OnInit , Inject, Input} from '@angular/core';
 import {ActivatedRoute} from '@angular/router'; // <-- do not forget to import
 
 import { print } from 'util';
@@ -18,8 +18,8 @@ import * as firebase from 'firebase';
 })
 export class LogInComponent implements OnInit {
 
-  emailLog: any;
-  passwordLog: any;
+  emailLog: any=[];
+  passwordLog: any=[];
 
   constructor(private route: ActivatedRoute,private router:Router,
     public dialog: MatDialog, public authService: AuthService
@@ -28,12 +28,14 @@ export class LogInComponent implements OnInit {
    { }
 
   ngOnInit() {
+    this.emailLog.errors=false;
+    this.passwordLog.errors=false;
   }
   loginTestFirst(){
     var flag;
     firebase.database().ref().on('value', (snap) => {
       let result = snap.val();
-      console.log(result)
+     // console.log(result)
       for(let k in result){
        if(result[k].manager.email == this.emailLog) {
         window.name = result[k].manager.businessname;
@@ -45,8 +47,8 @@ export class LogInComponent implements OnInit {
   if(flag == true)
     this.onSubmitLogin();
     else
-    console.log('error try again')
-  
+    this.flashMensaje.show('حصل خطأ الرجاء المحاولة مره اخرى',
+    {cssClass: 'alert-danger', timeout: 5000});
   }
   
   onSubmitLogin() {
