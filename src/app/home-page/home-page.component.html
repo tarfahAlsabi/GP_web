@@ -26,11 +26,11 @@
             <!-- Nav Starts -->
             <div class="navbar-collapse  collapse" [class.show]="show">
               <ul class="nav navbar-nav navbar-left scroll">
-              <li ><a routerLink='/LogIn' > تسجيل الدخول</a></li> 
-              <li ><a routerLink='/register'>اشترك الآن</a></li> 
-               <li ><a routerLink='/customer'>المستفيدون</a></li>
-               <li ><a routerLink='/features' >المميزات</a></li>
-              <li ><a routerLink='' >الصفحة الرئيسة</a></li>
+              <li [routerLinkActive]="['active']"><a routerLink='/LogIn' > تسجيل الدخول</a></li> 
+              <li [routerLinkActive]="['active']"><a routerLink='/register'>اشترك الآن</a></li> 
+               <li [routerLinkActive]="['active']"><a routerLink='/customer'>المستفيدون</a></li>
+               <li [routerLinkActive]="['active']"><a routerLink='/features' >المميزات</a></li>
+              <li [routerLinkActive]="['active']"><a routerLink='' >الصفحة الرئيسة</a></li>
               </ul>
             </div>
 
@@ -54,8 +54,10 @@
 <footer class="col-md-12 col-sm-12">
 <!-- Footer Starts -->
 <div class="footerContainer">
-<p class="wowload flipInX"><a href="https://twitter.com/Erad_System"><i class="fa fa-twitter fa-2x"></i></a> <a href="https://www.youtube.com/channel/UC_ZZTu0-NN5nQzjdgzJ3wcg"><i class="fa fa-youtube fa-2x"></i></a> </p>
-جميع الحقوق محفوظة لإيراد @2018 
+<p class="wowload flipInX footertext">
+<a href="https://twitter.com/Erad_System"> <i class="fa fa-twitter fa-2x"></i></a>
+<a href="https://www.youtube.com/channel/UC_ZZTu0-NN5nQzjdgzJ3wcg"><i class="fa fa-youtube fa-2x"></i></a> </p> <p class="footertext">
+جميع الحقوق محفوظة لإيراد @2018  </p>
 </div>
 <!-- # Footer Ends -->
 

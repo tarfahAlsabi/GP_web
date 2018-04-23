@@ -14,6 +14,11 @@
     width: 17%;
     height: 17%;
   }
+  .footertext
+  {
+    padding: 0px;
+    margin: 0px;
+  }
   .Mycontainer
   {
     padding: 0px;
