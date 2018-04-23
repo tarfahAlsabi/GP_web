@@ -13,7 +13,7 @@
               <!-- #Logo Ends -->
 
              
-              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+              <button type="button" class="navbar-toggle collapsed" (click)="toggleCollapse()">
                 <span class="sr-only">Toggle navigation</span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
@@ -24,7 +24,7 @@
 
 
             <!-- Nav Starts -->
-            <div class="navbar-collapse  collapse">
+            <div class="navbar-collapse  collapse" [class.show]="show">
               <ul class="nav navbar-nav navbar-left scroll">
               <li ><a routerLink='/LogIn' > تسجيل الدخول</a></li> 
               <li ><a routerLink='/register'>اشترك الآن</a></li> 
@@ -54,7 +54,7 @@
 <footer class="col-md-12 col-sm-12">
 <!-- Footer Starts -->
 <div class="footerContainer">
-<p class="wowload flipInX"><a href="https://twitter.com/Erad_System"><i class="fa fa-twitter fa-2x"></i></a> <a href="#"><i class="fa fa-youtube fa-2x"></i></a> </p>
+<p class="wowload flipInX"><a href="https://twitter.com/Erad_System"><i class="fa fa-twitter fa-2x"></i></a> <a href="https://www.youtube.com/channel/UC_ZZTu0-NN5nQzjdgzJ3wcg"><i class="fa fa-youtube fa-2x"></i></a> </p>
 جميع الحقوق محفوظة لإيراد @2018 
 </div>
 <!-- # Footer Ends -->
