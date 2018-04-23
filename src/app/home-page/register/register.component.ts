@@ -49,10 +49,14 @@ export class RegisterComponent implements OnInit {
   }
 
   onSubmitAddUser() {
-   this.authService.registerUser(this.email,this.password)
+    console.log()
+   this.authService.registerUser(this.manager.email,this.manager.password)
     .then((res:any) => {
-      window.name = this.businessname;
+      window.name = this.manager.businessname;
       var ReceiptID = 0;
+      if(!this.manager.phone)
+      this.manager.phone = 'لا يوجد رقم هاتف';
+
       if(this.selectedFiles){
 
         //start genrat password
