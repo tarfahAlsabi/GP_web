@@ -49,23 +49,23 @@
                       <div [hidden]="!lname.errors.minlength">
                         *يجب ان يكون أسم العائلة على الاقل متكون من  ثلاثة أحرف</div>
               
-                      <div [hidden]="!lname.errors.required">*ارجو إدخال إسم العائلة</div>
+                      <div [hidden]="!lname.errors.required">*يرجى إدخال إسم العائلة</div>
                   </div>
                                         
                     
                 <div *ngIf="email.errors && (email.dirty || email.touched)"  class="alert alert-danger">
-                    <div [hidden]="!email.errors.required">*ارجو إدخال البريد الإلكتروني</div>
-                    <div [hidden]="!email.errors.pattern">*فورمات البريد الإلكتروني غير صحيحة</div>
+                    <div [hidden]="!email.errors.required">*يرجى إدخال البريد الإلكتروني</div>
+                    <div [hidden]="!email.errors.pattern">*يرجى كتابة البريد الإلكتروني بشكل صحيح</div>
               </div>                    
                        
               <div *ngIf="password.errors && (password.dirty || password.touched)"  class="alert alert-danger">
-                  <div [hidden]="!password.errors.required">*أرجو إدخال الرقم السري</div>
+                  <div [hidden]="!password.errors.required">*يرجى إدخال الرقم السري</div>
                   <div [hidden]="!password.errors.minlength">*يجب أن لا يقل الرقم السري عن 8 خانات</div>
             </div>  
                                
               <div *ngIf="businessname.errors && (businessname.dirty || businessname.touched)"  class="alert alert-danger">
                   <div [hidden]="!phone.errors.required">
-                    *أرجو إدخال اسم المشروع </div>
+                    *يرجى إدخال اسم المشروع </div>
               </div>                       
                     
               <div *ngIf="phone.errors && (phone.dirty || phone.touched)"  class="alert alert-danger">

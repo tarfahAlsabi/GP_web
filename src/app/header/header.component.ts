@@ -84,7 +84,7 @@ export class HeaderComponent  {
       this.router.navigate(['']);
       console.log('enter login');
     }).catch((err) => {
-      this.flashMensaje.show('حدثت مشكلة اثناء عملية تسجيل الخروج, أرجوا المحاولة مرة أخرى.',
+      this.flashMensaje.show('حدثت مشكلة اثناء عملية تسجيل الخروج, يرجى المحاولة مرة أخرى.',
       {cssClass: 'alert-danger', timeout: 5000});
       this.router.navigate(['']);
     });

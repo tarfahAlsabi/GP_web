@@ -7,23 +7,23 @@
 
              
    <div *ngIf="inventory.errors && (inventory.dirty || inventory.touched)" class="alert alert-danger">
-    <mat-error [hidden]="!inventory.errors.required" >   *ارجو إدخال الكمية المتوفرة من المنتج</mat-error >
+    <mat-error [hidden]="!inventory.errors.required" >   *يرجى إدخال الكمية المتوفرة من المنتج</mat-error >
 </div>
 <div *ngIf="name.errors && (name.dirty || name.touched)" class="alert alert-danger">
-  <mat-error [hidden]="!name.errors.required" >*ارجوا ادخال اسم المنتج</mat-error>
+  <mat-error [hidden]="!name.errors.required" >*يرجى ادخال اسم المنتج</mat-error>
 </div>
           
 <div *ngIf="price.errors && (price.dirty || price.touched)" class="alert alert-danger">
-  <mat-error [hidden]="!price.errors.required" >   *ارجو إدخال السعر المرغوب به لبيع المنتج</mat-error>
+  <mat-error [hidden]="!price.errors.required" >   *يرجى إدخال السعر المرغوب به لبيع المنتج</mat-error>
 </div>
 
 <div *ngIf="cost.errors && (cost.dirty || cost.touched)" class="alert alert-danger">
-  <mat-error [hidden]="!cost.errors.required" >*ارجو إدخال تكلفة شرائك للمنتج</mat-error>
+  <mat-error [hidden]="!cost.errors.required" >*يرجى إدخال تكلفة شرائك للمنتج</mat-error>
 </div>
 
 
 <div *ngIf="category.errors && (category.dirty || category.touched)" class="alert alert-danger">
-  <mat-error >*أرجو أن تختار تصنيف للمنتج</mat-error>
+  <mat-error >*يرجى أن تختار تصنيف للمنتج</mat-error>
 </div>
 <mat-card class="formContainer" >
 

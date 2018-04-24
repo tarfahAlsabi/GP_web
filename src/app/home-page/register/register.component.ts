@@ -105,7 +105,7 @@ export class RegisterComponent implements OnInit {
       
      
     }).catch( (err) => {
-      this.flashMensaje.show('عملية تسجيل الدخول غير صحيحة, أرجو التأكد من ادخال جميع البيانات.',
+      this.flashMensaje.show('عملية تسجيل الدخول غير صحيحة, يرجى التأكد من ادخال جميع البيانات.',
       {cssClass: 'alert-danger', timeout: 5000});
       console.log('error signup');
     });

@@ -10,7 +10,7 @@
 <div *ngIf="firstName.errors && (firstName.dirty || firstName.touched)"  class="alert alert-danger">
   <div [hidden]="!firstName.errors.minlength">   *يجب ان يكون الأسم الأول على الاقل متكون من حرفين</div>
 
-  <div [hidden]="!firstName.errors.required">*ارجوإدخال الأسم الأول</div>
+  <div [hidden]="!firstName.errors.required">*يرجى إدخال الأسم الأول</div>
 </div>
 
 
@@ -24,13 +24,13 @@
   <div [hidden]="!lastName.errors.minlength">
     *يجب ان يكون أسم العائلة على الاقل متكون من  ثلاثة أحرف</div>
 
-  <div [hidden]="!lastName.errors.required">*ارجو إدخال إسم العائلة</div>
+  <div [hidden]="!lastName.errors.required">*يرجى إدخال إسم العائلة</div>
 </div>
 
 
 <div *ngIf="email.errors && (email.dirty || email.touched)"  class="alert alert-danger">
-  <div [hidden]="!email.errors.required">*ارجو إدخال البريد الإلكتروني</div>
-  <div [hidden]="!email.errors.pattern">*فورمات البريد الإلكتروني غير صحيحة</div>
+  <div [hidden]="!email.errors.required">*يرجى إدخال البريد الإلكتروني</div>
+  <div [hidden]="!email.errors.pattern">*يرجى كتابة البريد الإلكتروني بشكل صحيح</div>
 </div>
 
 <mat-card class="formContainer" >

@@ -85,7 +85,7 @@ export class ManagerComponent implements OnInit {
           })
 
         }).catch((err) => {
-          this.flashMensaje.show('حدثت مشكلة أثناء عملية الحذف أرجو المحاولة مرة أخرى.',
+          this.flashMensaje.show('حدثت مشكلة أثناء عملية الحذف يرجى المحاولة مرة أخرى.',
           {cssClass: 'alert-danger', timeout: 40000});
           
         });

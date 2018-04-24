@@ -197,19 +197,19 @@ changeProduct()
   // }
   //if(this.products)
    }else{
-    this.flashMensaje.show('لا يجب ان يسبق تاريخ  النهاية تاريخ البداية.',
+    this.flashMensaje.show('يجب ان لا يسبق تاريخ النهاية تاريخ البداية.',
     {cssClass: 'alert-danger', timeout: 100000, 
     closeOnClick: true, showCloseBtn: true});
     }
   }else{
-    this.flashMensaje.show('يجب عليك ادخال الفترة الزمنية أولا.',
+    this.flashMensaje.show('يرجى إدخال الفترة الزمنية أولا.',
     {cssClass: 'alert-danger', timeout: 100000, 
     closeOnClick: true, showCloseBtn: true});
     }
   }
   else
   {
-    this.flashMensaje.show('الرجاء إختيار منتج',
+    this.flashMensaje.show('يرجى إختيار منتج',
     {cssClass: 'alert-danger', timeout: 100000, 
     closeOnClick: true, showCloseBtn: true});
   }
@@ -263,7 +263,7 @@ getEmployeeSales()
       }
 
       if(this.error)
-      this.flashMensaje.show('لا يوجد للموظف مبيعات في الفترة المحدةة.', {cssClass: 'alert-danger', timeout: 5000});
+      this.flashMensaje.show('لا يوجد للموظف مبيعات في الفترة المحدة.', {cssClass: 'alert-danger', timeout: 5000});
       this.creatChart(); 
   
   })

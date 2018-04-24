@@ -51,7 +51,7 @@ export class LogInComponent implements OnInit {
   if(flag == true)
     this.onSubmitLogin();
     else
-    this.flashMensaje.show('حصل خطأ الرجاء المحاولة مره اخرى',
+    this.flashMensaje.show('حصل خطأ يرجى المحاولة مره اخرى',
     {cssClass: 'alert-danger', timeout: 5000});
   }
   
@@ -65,7 +65,7 @@ export class LogInComponent implements OnInit {
       this.router.navigate(['mainPage']);
       console.log('enter login');
     }).catch((err) => {
-      this.flashMensaje.show('عملية تسجيل الدخول غير صحيحة, أرجو التأكد من البيانات.',
+      this.flashMensaje.show('عملية تسجيل الدخول غير صحيحة, يرجى التأكد من البيانات.',
       {cssClass: 'alert-danger', timeout: 5000});
      // this.router.navigate(['']);
     });

@@ -36,7 +36,7 @@ finance: Finance =new Finance;
     this.finance = financeForm.value;
     
     if(!this.finance.bank && !this.finance.box){
-      this.flashMensaje.show('(أرجو إدخال أحد الأصول المتداول على الأقل (الصندوق,البنك.',
+      this.flashMensaje.show('(يرجى إدخال أحد الأصول المتداول على الأقل (الصندوق,البنك.',
       {cssClass: 'alert-danger', timeout: 100000, 
       closeOnClick: true, showCloseBtn: true});
     }else{
