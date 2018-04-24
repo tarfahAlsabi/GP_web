@@ -1,6 +1,6 @@
 <mat-toolbar   style="background-color:transparent">
   <span class="primary">
-      <a  (click)="gobacktoProducts()" > <span>العودة إلى عرض الموظفين </span></a> 
+      <a  (click)="gobacktoProducts()" > <span>العودة إلى عرض بيانات المدير  </span></a> 
   </span>
   <span class="toolbar-spacer"></span>
 </mat-toolbar>
@@ -8,9 +8,27 @@
 
 <mat-card class="formContainer" >
   <mat-card-title>	
-    <h2> إضافة موظف </h2>
+    <h2> تعديل بيانات المدير  </h2>
   </mat-card-title>
   <flash-messages></flash-messages>
+  <div *ngIf="fname.errors && (fname.dirty || fname.touched)"  class="alert alert-danger">
+    <div [hidden]="!fname.errors.minlength">   *يجب ان يكون الأسم الأول على الاقل متكون من حرفين</div>
+
+    <div [hidden]="!fname.errors.required">*ارجوإدخال الأسم الأول</div>
+  </div>
+
+<div *ngIf="lname.errors && (lname.dirty || lname.touched)"  class="alert alert-danger">
+  <div [hidden]="!lname.errors.minlength">
+    *يجب ان يكون أسم العائلة على الاقل متكون من  ثلاثة أحرف</div>
+
+  <div [hidden]="!lname.errors.required">*ارجو إدخال إسم العائلة</div>
+</div>
+
+<div *ngIf="phone.errors && (phone.dirty || phone.touched)"  class="alert alert-danger">
+  <div [hidden]="!phone.errors.pattern">*رقم الجوال يجب ان يحتوي على أرقام فقط</div>
+  <div [hidden]="!phone.errors.minlength">
+    *رقم الجوال يجب أن لا يقل عن 10 أرقام </div>
+</div>
 <mat-card-content>
   <form #managerForm="ngForm" (ngSubmit)="onSubmit(managerForm)" dir="rtl">
 
@@ -46,13 +64,9 @@
         <input matInput   name="fname" #fname="ngModel" [(ngModel)]="manager.fname"        
         minlength="2" required  class="form-control"  
         aria-describedby="emailHelp" placeholder="مثال: منى">
-    
-      <div *ngIf="fname.errors && (fname.dirty || fname.touched)"  class="alert alert-danger">
-        <div [hidden]="!fname.errors.minlength">   *يجب ان يكون الأسم الأول على الاقل متكون من حرفين</div>
-
-        <div [hidden]="!fname.errors.required">*ارجوإدخال الأسم الأول</div>
       </div>
-    </div>
+
+ 
       
 
 
@@ -63,12 +77,7 @@
           #lname="ngModel" [(ngModel)]="manager.lname"
            class="form-control" placeholder="العائلة" required>
         
-      <div *ngIf="lname.errors && (lname.dirty || lname.touched)"  class="alert alert-danger">
-          <div [hidden]="!lname.errors.minlength">
-            *يجب ان يكون أسم العائلة على الاقل متكون من  ثلاثة أحرف</div>
 
-          <div [hidden]="!lname.errors.required">*ارجو إدخال إسم العائلة</div>
-      </div>
     </div>
 
 
@@ -81,17 +90,13 @@
   
 
 
-      <div *ngIf="phone.errors && (phone.dirty || phone.touched)"  class="alert alert-danger">
-          <div [hidden]="!phone.errors.pattern">*رقم الجوال يجب ان يحتوي على أرقام فقط</div>
-          <div [hidden]="!phone.errors.minlength">
-            *رقم الجوال يجب أن لا يقل عن 10 أرقام </div>
-    </div>
+
   </div>
 
           
     <div class="form-group custom-file col-md-6 col-sm-12 ">
       <label   >
-         <h4>صورة الموظف:</h4></label> 
+         <h4>صورة المشروع:</h4></label> 
         <input  type="file" (change)="detectFiles($event)"  class="form-control custom-file-input" accept="image/gif, image/jpeg, image/png" >
       
       <p>
@@ -108,15 +113,14 @@
  
     
 
+    <button  mat-raised-button class="Btns  blueBtn"  type="submit"  [disabled]="!managerForm.valid">
+      تعديل</button>
+
+     <button mat-raised-button  type="button"  class="Btns greyBtn "  (click)="openDialog()">
+    إلغاء</button>
+
      
-      <button class="btn ok "  type="submit"  [disabled]="!managerForm.valid">
-       <i class="fa fa-floppy-o"></i>
-       تعديل</button>
 
-
-         <button type="button"  class="btn cancle "  (click)="openDialog()">
-        <i class="fa fa-repeat"></i>
-         إلغاء</button>
 
 
       

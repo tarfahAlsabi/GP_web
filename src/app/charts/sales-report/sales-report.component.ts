@@ -1,5 +1,5 @@
 import { Component, OnInit ,ElementRef,ViewChild} from '@angular/core';
-import {Sort,MatTab} from '@angular/material';
+import {Sort,MatTab, MatPaginatorIntl} from '@angular/material';
 import {MatDatepickerInputEvent} from '@angular/material/datepicker';
 
 
@@ -54,6 +54,14 @@ export class SalesReportComponent implements OnInit {
    this.startDate.setMonth(this.startDate.getMonth() -1 );
    let x = this.reportsService.getData();
 
+   let nn :MatPaginatorIntl=new MatPaginatorIntl();
+   nn.itemsPerPageLabel="عدد الصفوف في الصفحة " ;
+   nn.firstPageLabel="الصفحة الأولى ";
+   nn.lastPageLabel="الصفحة الأخيرة " ;
+   nn.nextPageLabel="الصفحة التالية";
+   nn.previousPageLabel="الصفحة السابقة" ;
+   nn.getRangeLabel=(page: number, pageSize: number, length: number) => { if (length == 0 || pageSize == 0) { return `0 من ${length}`; } length = Math.max(length, 0); const startIndex = page * pageSize; const endIndex = startIndex < length ? Math.min(startIndex + pageSize, length) : startIndex + pageSize; return `${startIndex + 1} - ${endIndex} من ${length}`; }
+   this.paginator._intl=nn
    //table
    this.dataSource.paginator = this.paginator;
    this.dataSource.sort = this.sort;

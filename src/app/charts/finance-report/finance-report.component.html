@@ -8,7 +8,7 @@
 
        
         <!-- <span class="toolbar-spacer"></span> -->
-        <div class="reportBar col-md-4 col-sm-12" *ngIf="hasSelection" >
+        <div class="reportBar col-md-4 col-sm-12 right" *ngIf="hasSelection" >
             <mat-form-field class="headerText" >
             <mat-select placeholder="اسم الموظف" [(ngModel)]="selectedValue" name="item" (change)='changeProduct()' >
                 <mat-option *ngFor="let item of items" [value]=" item.$key ">
@@ -19,16 +19,10 @@
         </div>
 
 
-        <div  *ngIf="hasDate" class=" col-md-4 col-sm-6" > 
-        <mat-form-field class="headerText">
-            <input matInput  [value]='endDate'  [matDatepicker]="ToDate" placeholder=" إلى تاريخ " (dateChange)="changeDate('to', $event)" >
-            <mat-datepicker-toggle matSuffix [for]="ToDate"></mat-datepicker-toggle>
-            <mat-datepicker   #ToDate disabled="false"  ></mat-datepicker>
-        </mat-form-field>
-        </div> 
+   
 
 
-        <div  *ngIf="hasDate" class=" col-md-4 col-sm-6" > 
+        <div  *ngIf="hasDate" class=" col-md-4 col-sm-6 right" > 
             <mat-form-field class="headerText">
                 <input   [value]='startDate' matInput [matDatepicker]="picker" placeholder=" من تاريخ " (dateChange)="changeDate('from', $event) " >
                 <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
@@ -36,7 +30,13 @@
             </mat-form-field>
         </div>
 
-
+        <div  *ngIf="hasDate" class=" col-md-4 col-sm-6 right" > 
+            <mat-form-field class="headerText">
+                <input matInput  [value]='endDate'  [matDatepicker]="ToDate" placeholder=" إلى تاريخ " (dateChange)="changeDate('to', $event)" >
+                <mat-datepicker-toggle matSuffix [for]="ToDate"></mat-datepicker-toggle>
+                <mat-datepicker   #ToDate disabled="false"  ></mat-datepicker>
+            </mat-form-field>
+            </div> 
 
 </div>
 <div   class=" col-md-12 col-sm-12 "  >

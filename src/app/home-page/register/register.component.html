@@ -1,8 +1,8 @@
 
 <div class="Mycontainer">
-
+    <h1 class="title">  انشأ حسابك الآن </h1>
   <div class="container contactform center">
-  <h2 class="text-center  wowload fadeInUp">انشأ حسابك الآن</h2>
+  <!-- <h2 class="text-center  wowload fadeInUp">انشأ حسابك الآن</h2> -->
     <div class="row wowload fadeInLeftBig">      
         <div class="col-sm-6 col-sm-offset-3 col-xs-12">   
           <!--   
@@ -134,7 +134,7 @@
             
               <div class="form-group custom-file col-md-6 col-sm-12 ">
                 <label   >
-                   <h4>صورة الموظف:</h4></label> 
+                   <h4>صورة المشروع:</h4></label> 
                   <input  type="file" (change)="detectFiles($event)"  class="form-control custom-file-input" accept="image/gif, image/jpeg, image/png" >
                 
                 <p>
@@ -152,9 +152,10 @@
               
             
                
-                <button  class="btn ok "  type="submit" (click)="onSubmitAddUser()" 
+              <div class="form-group custom-file col-md-12 col-sm-12 center">
+                <button  mat-raised-button class="Btns  blueBtn"  type="submit" (click)="onSubmitAddUser()" 
                 [disabled]="!employeeForm.valid">انشأ حساب</button>
-             
+              </div>
                   </form>
             
         </div>

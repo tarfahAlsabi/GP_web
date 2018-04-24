@@ -154,6 +154,10 @@ mat-paginator , mat-paginator-container
 {
     display: -webkit-box;
 }
+.right
+{
+    float: right !important;
+}
 td,th
 {
     align-content: right;

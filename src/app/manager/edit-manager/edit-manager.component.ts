@@ -23,7 +23,10 @@ export class EditManagerComponent implements OnInit {
   selectedFiles: FileList;
   num: number;
 
-
+  gobacktoProducts()
+  {
+    this.router.navigate(['mainPage/manager']);
+  }
 
   constructor(private route: ActivatedRoute, private router: Router,
   public flashMensaje: FlashMessagesService,public dialog: MatDialog,

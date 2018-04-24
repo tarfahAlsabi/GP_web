@@ -44,6 +44,7 @@
 {
   align-self: center;
   text-align: center;
+  font-size: 3em;
 }
   .imgcontainer
   {
@@ -162,4 +163,35 @@ input[type="number"] {
   .red{
     color: red;
   }
+  .blueBtn
+  {
   
+      background-color: #6Dc4e2; 
+  
+  }
+  
+  .greyBtn
+  {
+      background-color:#A8A8A8;
+  
+  }
+  .Btns
+  {
+      color:white;
+      height: 3em;
+     
+      width: 12em;
+      margin: 1em !important;
+  }
+  .center{
+    text-align: center;
+  }
+  .right
+  {
+    text-align: right;
+    float: right;
+  }
+  .mainText
+  {
+    font-size: 150%;
+  }

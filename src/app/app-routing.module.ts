@@ -59,6 +59,7 @@ const routes: Routes = [
             {path: 'customer' , component: CostumersComponent },
         ]},
     {path: 'mainPage', component: HeaderComponent ,children: [
+        {path:'',redirectTo: 'manager',pathMatch: 'full'},
         {path: 'productReport' , component: ProductReportComponent },       
         {path: 'productReport/:id' , component: ProductReportComponent },         
         {path: 'empolyee' , component: EmpolyeeComponent },

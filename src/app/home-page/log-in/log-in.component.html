@@ -1,8 +1,9 @@
 <div class="Mycontainer">
+        <h1 class="title">   تسجيل الدخول </h1>
 <div class="spacer">
   
   <div class="container contactform center">
-  <h2 class="text-center  wowload fadeInUp"> تسجيل الدخول</h2>
+  <!-- <h2 class="text-center  wowload fadeInUp"> تسجيل الدخول</h2> -->
     <div class="row wowload fadeInLeftBig">      
         <div class="col-sm-6 col-sm-offset-3 col-xs-12">  
             <flash-messages></flash-messages>
@@ -31,10 +32,15 @@
                 minlength="8" required>
 
               </div>
-              
-              <button class="btn ok "  type="submit" (click)="loginTestFirst()" [disabled]="!loginForm.valid">
-                  تسجيل الدخول</button>
-              </form>
+         
+              <div class="form-group custom-file col-md-12 col-sm-12 center">
+                <button  mat-raised-button class="Btns  blueBtn"  type="submit" (click)="loginTestFirst()" [disabled]="!loginForm.valid">
+                    تسجيل الدخول</button>
+              </div>
+
+
+                  </form>
+     
               
         </div>
     </div></div></div>
