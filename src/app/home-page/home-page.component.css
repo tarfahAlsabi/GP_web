@@ -44,6 +44,7 @@
 {
   align-self: center;
   text-align: center;
+  font-size: 3em;
 }
   .imgcontainer
   {
@@ -184,4 +185,13 @@ input[type="number"] {
   }
   .center{
     text-align: center;
+  }
+  .right
+  {
+    text-align: right;
+    float: right;
+  }
+  .mainText
+  {
+    font-size: 150%;
   }
