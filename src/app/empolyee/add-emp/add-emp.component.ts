@@ -77,10 +77,10 @@ onSubmit(employeeForm: NgForm) {
      // if(r == '1'){
         this.resetForm(employeeForm);
 
-        //  this.router.navigate(['mainPage/empolyee']).then( (res) => {
-        //   this.flashMensaje.show('تم إضافة الموظف بنجاح.',
-        //   {cssClass: 'alert-success', timeout: 4000});
-        // });//}
+          this.router.navigate(['mainPage/empolyee']).then( (res) => {
+           this.flashMensaje.show('تم إضافة الموظف بنجاح.',
+           {cssClass: 'alert-success', timeout: 4000});
+         });//}
      // this.tostr.success('Submitted Succcessfully', 'Employee Register');
     }
   );
