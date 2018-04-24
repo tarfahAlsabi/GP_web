@@ -59,7 +59,24 @@ export class LogInComponent implements OnInit {
     this.authService.loginEmail(this.login.email, this.login.password)
     .then( (res) => {
   
-  
+      firebase.database().ref().on('value', (snap) => {
+        let result = snap.val();
+        for(let k in result){
+         if(result[k].manager.email == this.login.email) {
+          window.name = result[k].manager.businessname;
+        }
+    
+        }
+    });
+  /*    this.flashMensaje.show('عملية تسجيل دخول ناجحة مرحبا بك',
+      {cssClass: 'alert-success', timeout: 5000});
+      this.router.navigate(['mainPage']);
+      console.log('enter login');
+    }).catch((err) => {
+      this.flashMensaje.show('عملية تسجيل الدخول غير صحيحة, يرجى التأكد من البيانات.',
+      {cssClass: 'alert-danger', timeout: 5000});*/
+     // this.router.navigate(['']);
+    }).then((rse)=>{
       this.flashMensaje.show('عملية تسجيل دخول ناجحة مرحبا بك',
       {cssClass: 'alert-success', timeout: 5000});
       this.router.navigate(['mainPage']);
@@ -67,7 +84,6 @@ export class LogInComponent implements OnInit {
     }).catch((err) => {
       this.flashMensaje.show('عملية تسجيل الدخول غير صحيحة, يرجى التأكد من البيانات.',
       {cssClass: 'alert-danger', timeout: 5000});
-     // this.router.navigate(['']);
     });
   }
 }

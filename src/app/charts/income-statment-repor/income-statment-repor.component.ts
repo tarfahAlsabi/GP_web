@@ -9,6 +9,7 @@ import { FlashMessagesService } from 'angular2-flash-messages';
 import {MatTableDataSource,MatPaginator,MatSort} from '@angular/material';
 
 import { Chart} from'chart.js';
+import { Employee } from '../../empolyee/shared/employee.model';
 
 @Component({
   selector: 'app-income-statment-repor',
@@ -51,6 +52,7 @@ export class IncomeStatmentReporComponent implements OnInit {
   totalShiftTime:number;
   checkStartD_EndD=true;
   expens;
+  employee:Employee;
 
   constructor(private reportsService: ReportsService, private firebase: AngularFireDatabase
     ,public flashMensaje: FlashMessagesService) { }
@@ -148,9 +150,9 @@ incom()
             this.price += this.receiptList[element].totalPrice;
             this.employeeID.push(this.receiptList[element].employeeID);
 
-            for(let element2 in this.receiptList[element].products)
+            for(let element2 in this.receiptList[element].products){
               cost += (this.receiptList[element].products[element2].cost * this.receiptList[element].products[element2].quantity);
-            }
+            }}
         }
         let income:Income = {revenue:'جميع المنتجات',price:this.price,cost:cost,
         totalIncome:this.price - cost};
@@ -199,10 +201,12 @@ incom()
           shift.push(this.totalShiftTime);
         });
           
-        this.firebase.list(window.name+'/employees/'+emp).snapshotChanges().subscribe(res =>{
-          let x= res[7].payload.toJSON();
+        this.firebase.object(window.name+'/employees/'+emp).snapshotChanges().subscribe(res =>{
+          let x= res.payload.toJSON();
+          x["$key"] = res.key;
+          this.employee = x as Employee;
           let y = this.totalShiftTime;//if there a crash replace it withe shift[0]
-           netIncome.employeeSal = (parseInt(x.toString())/60) * y;
+           netIncome.employeeSal = (parseInt(this.employee.salary.toString())/60) * y;
         });
 }//end for emp
 
