@@ -46,7 +46,7 @@ export class ManagerComponent implements OnInit {
    // this.authService.resetPass();
   }
 
-  deleteProject()
+  deleteAccount()
   {
     let dialogRef = this.dialog.open(confirmDelete);
 
@@ -76,13 +76,27 @@ export class ManagerComponent implements OnInit {
                           })
         })
 
-        
+        var user = firebase.auth().currentUser;
         this.db.list(window.name).remove().then( 
           (res) => {
+            
+        user.delete().then(result => {
+          // User deleted.
+
           this.router.navigate(['']).then(n =>{
             this.flashMensaje.show('تم حذف المشروع بنجاح ',
             {cssClass: 'alert-success', timeout: 40000});
           })
+
+
+        }).catch((error)=> {
+          // An error happened.
+          this.flashMensaje.show('حدثت مشكلة أثناء عملية الحذف يرجى المحاولة مرة أخرى.',
+          {cssClass: 'alert-danger', timeout: 40000});
+          
+        });
+        
+
 
         }).catch((err) => {
           this.flashMensaje.show('حدثت مشكلة أثناء عملية الحذف يرجى المحاولة مرة أخرى.',
