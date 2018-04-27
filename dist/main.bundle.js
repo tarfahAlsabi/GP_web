@@ -533,7 +533,7 @@ var ChartsComponent = /** @class */ (function () {
 /***/ "../../../../../src/app/charts/employe-whs/employe-whs.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "    <mat-toolbar  class=\"PageTitle\" style=\"background-color:transparent\">\r\n        <span class=\"toolbar-spacer\"></span>\r\n    <span color=\"primary\">   <h2>  {{reportName}} </h2> </span>\r\n    <span class=\"toolbar-spacer\"></span>\r\n    </mat-toolbar>   \r\n    \r\n    \r\n    <div   class=\" col-md-12 col-sm-12 contaner\" dir=\"rtl\">\r\n\r\n       \r\n            <!-- <span class=\"toolbar-spacer\"></span> -->\r\n            <div class=\"reportBar col-md-4 col-sm-12\" *ngIf=\"hasSelection\" >\r\n                <mat-form-field class=\"headerText\" >\r\n                <mat-select placeholder=\"اسم الموظف\" [(ngModel)]=\"selectedValue\" name=\"item\" (change)='changeProduct()' >\r\n                    <mat-option *ngFor=\"let item of items\" [value]=\" item.$key \">\r\n                        {{item.name}}\r\n                    </mat-option>        \r\n                </mat-select>\r\n                </mat-form-field>\r\n            </div>\r\n\r\n\r\n            <div  *ngIf=\"hasDate\" class=\" col-md-4 col-sm-6\" > \r\n            <mat-form-field class=\"headerText\">\r\n                <input matInput  [value]='endDate'  [matDatepicker]=\"ToDate\" placeholder=\" إلى تاريخ \" (dateChange)=\"changeDate('to', $event)\" >\r\n                <mat-datepicker-toggle matSuffix [for]=\"ToDate\"></mat-datepicker-toggle>\r\n                <mat-datepicker   #ToDate disabled=\"false\"  ></mat-datepicker>\r\n            </mat-form-field>\r\n            </div> \r\n\r\n\r\n            <div  *ngIf=\"hasDate\" class=\" col-md-4 col-sm-6\" > \r\n                <mat-form-field class=\"headerText\">\r\n                    <input   [value]='startDate' matInput [matDatepicker]=\"picker\" placeholder=\" من تاريخ \" (dateChange)=\"changeDate('from', $event) \" >\r\n                    <mat-datepicker-toggle matSuffix [for]=\"picker\"></mat-datepicker-toggle>\r\n                    <mat-datepicker #picker disabled=\"false\" ></mat-datepicker>\r\n                </mat-form-field>\r\n            </div>\r\n\r\n\r\n\r\n </div>\r\n <div   class=\" col-md-12 col-sm-12 \"  >\r\n\r\n    <flash-messages></flash-messages>\r\n\r\n</div>\r\n    <div class=\"col-md-12 col-sm-12\">\r\n    <mat-tab-group class=\"tab-group\" (selectedTabChange)='selectChange($event)' >\r\n        <mat-tab label=\"التقرير\" >\r\n        <div class=\"tabContent\">\r\n\r\n            <mat-table #table  class=\"reportTable\" [dataSource]=\"dataSource\" matSort>\r\n\r\n                \r\n    <!--  displayedColumns=['date','checkIn','checkOut','totalShiftTime']; -->\r\n                \r\n                <ng-container matColumnDef=\"date\">\r\n                    <mat-header-cell *matHeaderCellDef mat-sort-header > التاريخ </mat-header-cell>\r\n                    <mat-cell *matCellDef=\"let row\"> {{row.date.toISOString().substring(0,10)}} </mat-cell>\r\n                    <mat-cell *matCellDef=\"let row\"> {{row.date.toISOString().substring(0,10)}} </mat-cell>\r\n                    </ng-container>\r\n                    <ng-container matColumnDef=\"checkIn\">\r\n                        <mat-header-cell *matHeaderCellDef mat-sort-header> بداية الفترة </mat-header-cell>\r\n                        <mat-cell *matCellDef=\"let row\"> {{row.checkIn.toString().substring(11)}} </mat-cell>\r\n                    </ng-container>\r\n                        <ng-container matColumnDef=\"checkOut\">\r\n                            <mat-header-cell *matHeaderCellDef mat-sort-header> نهاية الفترة  </mat-header-cell>\r\n                            <mat-cell *matCellDef=\"let row\"> {{row.checkOut.toString().substring(11)}} </mat-cell>\r\n                        </ng-container>\r\n                        <ng-container matColumnDef=\"totalShiftTime\">\r\n                            <mat-header-cell *matHeaderCellDef mat-sort-header>  مدة الفترة ( ساعات .دقائق)</mat-header-cell>\r\n                            <mat-cell *matCellDef=\"let row\"> {{row.totalShiftTime }} </mat-cell>\r\n                        </ng-container>\r\n                        \r\n                <mat-header-row *matHeaderRowDef=\"displayedColumns\"></mat-header-row>\r\n                <mat-row *matRowDef=\"let row; columns: displayedColumns;\"></mat-row>\r\n                </mat-table>\r\n                <mat-paginator dir=\"rtl\" [pageSizeOptions]=\"[5, 10, 15, 100]\" ></mat-paginator>          \r\n        </div>\r\n        </mat-tab>\r\n        <mat-tab label=\"الرسم البياني\">\r\n            <div class=\"tabContent\"  *ngIf=\"chart\" >\r\n                <canvas id=\"pie\"  class=\"chart-pie\" style=\"height:255px ; width:90% ;    overflow:hidden;\" ></canvas>\r\n            \r\n            </div>    \r\n        </mat-tab>\r\n    </mat-tab-group>\r\n    </div>\r\n    <!-- (matSortChange)=\"sortData($event)\" -->\r\n    "
+module.exports = "    <mat-toolbar  class=\"PageTitle\" style=\"background-color:transparent\">\r\n        <span class=\"toolbar-spacer\"></span>\r\n    <span color=\"primary\">   <h2>  {{reportName}} </h2> </span>\r\n    <span class=\"toolbar-spacer\"></span>\r\n    </mat-toolbar>   \r\n    \r\n    \r\n    <div   class=\" col-md-12 col-sm-12 contaner\" dir=\"rtl\">\r\n\r\n       \r\n            <!-- <span class=\"toolbar-spacer\"></span> -->\r\n            <div class=\"reportBar col-md-4 col-sm-12\" *ngIf=\"hasSelection\" >\r\n                <mat-form-field class=\"headerText\" >\r\n                <mat-select placeholder=\"اسم الموظف\" [(ngModel)]=\"selectedValue\" name=\"item\" (change)='changeProduct()' >\r\n                    <mat-option *ngFor=\"let item of items\" [value]=\" item.$key \">\r\n                        {{item.name}}\r\n                    </mat-option>        \r\n                </mat-select>\r\n                </mat-form-field>\r\n            </div>\r\n\r\n\r\n            <div  *ngIf=\"hasDate\" class=\" col-md-4 col-sm-6\" > \r\n            <mat-form-field class=\"headerText\">\r\n                <input matInput  [value]='endDate'  [matDatepicker]=\"ToDate\" placeholder=\" إلى تاريخ \" (dateChange)=\"changeDate('to', $event)\" >\r\n                <mat-datepicker-toggle matSuffix [for]=\"ToDate\"></mat-datepicker-toggle>\r\n                <mat-datepicker   #ToDate disabled=\"false\"  ></mat-datepicker>\r\n            </mat-form-field>\r\n            </div> \r\n\r\n\r\n            <div  *ngIf=\"hasDate\" class=\" col-md-4 col-sm-6\" > \r\n                <mat-form-field class=\"headerText\">\r\n                    <input   [value]='startDate' matInput [matDatepicker]=\"picker\" placeholder=\" من تاريخ \" (dateChange)=\"changeDate('from', $event) \" >\r\n                    <mat-datepicker-toggle matSuffix [for]=\"picker\"></mat-datepicker-toggle>\r\n                    <mat-datepicker #picker disabled=\"false\" ></mat-datepicker>\r\n                </mat-form-field>\r\n            </div>\r\n\r\n\r\n\r\n </div>\r\n <div   class=\" col-md-12 col-sm-12 \"  >\r\n\r\n    <flash-messages></flash-messages>\r\n\r\n</div>\r\n    <div class=\"col-md-12 col-sm-12\">\r\n    <mat-tab-group class=\"tab-group\" (selectedTabChange)='selectChange($event)' >\r\n        <mat-tab label=\"التقرير\" >\r\n        <div class=\"tabContent\">\r\n\r\n            <mat-table #table  class=\"reportTable\" [dataSource]=\"dataSource\" matSort>\r\n\r\n                \r\n    <!--  displayedColumns=['date','checkIn','checkOut','totalShiftTime']; -->\r\n                \r\n                <ng-container matColumnDef=\"date\">\r\n                    <mat-header-cell *matHeaderCellDef mat-sort-header > التاريخ </mat-header-cell>\r\n                    <mat-cell *matCellDef=\"let row\"> {{row.date.toISOString().substring(0,10)}} </mat-cell>\r\n                    <mat-cell *matCellDef=\"let row\"> {{row.date.toISOString().substring(0,10)}} </mat-cell>\r\n                    </ng-container>\r\n                    <ng-container matColumnDef=\"checkIn\">\r\n                        <mat-header-cell *matHeaderCellDef mat-sort-header> بداية الفترة </mat-header-cell>\r\n                        <mat-cell *matCellDef=\"let row\"> {{row.checkIn.toString().substring(11)}} </mat-cell>\r\n                    </ng-container>\r\n                        <ng-container matColumnDef=\"checkOut\">\r\n                            <mat-header-cell *matHeaderCellDef mat-sort-header> نهاية الفترة  </mat-header-cell>\r\n                            <mat-cell *matCellDef=\"let row\"> {{row.checkOut.toString().substring(11)}} </mat-cell>\r\n                        </ng-container>\r\n                        <ng-container matColumnDef=\"totalShiftTime\">\r\n                            <mat-header-cell *matHeaderCellDef mat-sort-header>  مدة الفترة ( ساعات .دقائق)</mat-header-cell>\r\n                            <mat-cell *matCellDef=\"let row\"> {{row.totalShiftTime }} </mat-cell>\r\n                        </ng-container>\r\n                        \r\n                <mat-header-row *matHeaderRowDef=\"displayedColumns\"></mat-header-row>\r\n                <mat-row *matRowDef=\"let row; columns: displayedColumns;\"></mat-row>\r\n                </mat-table>\r\n                <mat-paginator dir=\"rtl\" [pageSizeOptions]=\"[5, 10, 15, 100]\" ></mat-paginator>          \r\n        </div>\r\n        </mat-tab>\r\n        <mat-tab label=\"الرسم البياني\">\r\n            <div class=\"tabContent\"  *ngIf=\"chart\" >\r\n                <canvas id=\"pie\"  class=\"chart-pie\" style=\"height:455px ; width:100% ;    overflow:hidden;\" ></canvas>\r\n            \r\n            </div>    \r\n        </mat-tab>\r\n    </mat-tab-group>\r\n    </div>\r\n    <!-- (matSortChange)=\"sortData($event)\" -->\r\n    "
 
 /***/ }),
 
@@ -670,6 +670,10 @@ var EmployeWhsComponent = /** @class */ (function () {
                     }]
             },
             options: {
+                title: {
+                    display: true,
+                    text: 'ساعات عمل الموظف في الفترة المحددة'
+                },
                 responsive: true,
                 legend: {
                     display: false,
@@ -677,7 +681,10 @@ var EmployeWhsComponent = /** @class */ (function () {
                 },
                 scales: {
                     xAxes: [{
-                            display: true,
+                            scaleLabel: {
+                                labelString: "التاريخ  ",
+                                display: true,
+                            },
                             ticks: {
                                 beginAtZero: true
                             }
@@ -687,7 +694,10 @@ var EmployeWhsComponent = /** @class */ (function () {
                             ticks: {
                                 beginAtZero: true
                             },
-                            label: "الكمية المباعة"
+                            scaleLabel: {
+                                labelString: "ساعات العمل",
+                                display: true,
+                            },
                         }],
                 },
                 tooltips: {
@@ -701,7 +711,7 @@ var EmployeWhsComponent = /** @class */ (function () {
         this.x = [];
         this.y = [];
         var label = this.dataSource.data.map(function (p) { return p.date.toISOString().substring(0, 10); });
-        var values = this.dataSource.data.map(function (p) { return p.totalShiftTime; });
+        var values = this.dataSource.data.map(function (p) { return p.ChartshiftTime; });
         label.forEach(function (i) {
             var sum = 0;
             for (var n in label) {
@@ -777,7 +787,8 @@ var EmployeWhsComponent = /** @class */ (function () {
                             temp_1.checkIn = shifts[s].checkIn;
                             temp_1.checkOut = shifts[s].checkOut;
                             var p = shifts[s].totalShiftTime.split(':');
-                            temp_1.totalShiftTime = parseFloat(p[0] + (p[1] / 100) + (p[2] / 10000));
+                            temp_1.totalShiftTime = shifts[s].totalShiftTime;
+                            temp_1.ChartshiftTime = (((p[0] / 1) + (p[1] / 100) + (p[2] / 10000)));
                             _this.error = false;
                             _this.dataSource.data.push(temp_1);
                             _this.dataSource._updateChangeSubscription();
@@ -2180,8 +2191,28 @@ var SalesReportComponent = /** @class */ (function () {
                             'rgba(255, 51, 153,0.4)',
                             'rgba(255, 102, 0, 0.4)',
                             'rgba(51, 102, 255,0.4)',
+                            'rgba(255, 99, 132, 0.4)',
+                            'rgba(54, 162, 235, 0.4)',
+                            'rgba(255, 206, 86, 0.4)',
+                            'rgba(75, 192, 192, 0.4)',
+                            'rgba(153, 102, 255, 0.4)',
+                            'rgba(255, 159, 64, 0.4)',
+                            'rgba(102, 153, 255,0.4)',
+                            'rgba(255, 51, 153,0.4)',
+                            'rgba(255, 102, 0, 0.4)',
+                            'rgba(51, 102, 255,0.4)',
                         ],
                         borderColor: [
+                            'rgba(255,99,132,1)',
+                            'rgba(54, 162, 235, 1)',
+                            'rgba(255, 206, 86, 1)',
+                            'rgba(75, 192, 192, 1)',
+                            'rgba(153, 102, 255, 1)',
+                            'rgba(255, 159, 64, 1)',
+                            'rgba(102, 153, 255, 1)',
+                            'rgba(255, 51, 153, 1)',
+                            'rgba(255, 102, 0, 1)',
+                            'rgba(51, 102, 255, 1)',
                             'rgba(255,99,132,1)',
                             'rgba(54, 162, 235, 1)',
                             'rgba(255, 206, 86, 1)',
@@ -2203,7 +2234,10 @@ var SalesReportComponent = /** @class */ (function () {
                 },
                 scales: {
                     xAxes: [{
-                            display: true,
+                            scaleLabel: {
+                                labelString: "المنتجات",
+                                display: true,
+                            },
                             ticks: {
                                 beginAtZero: true
                             }
@@ -2213,7 +2247,10 @@ var SalesReportComponent = /** @class */ (function () {
                             ticks: {
                                 beginAtZero: true
                             },
-                            label: "الكمية المباعة"
+                            scaleLabel: {
+                                labelString: "الكمية المبيعة ",
+                                display: true,
+                            },
                         }],
                 },
                 tooltips: {
@@ -5828,7 +5865,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/product/ivc-report/ivc-report.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<mat-toolbar  class=\"PageTitle\" style=\"background-color:transparent\">\r\n    <span class=\"toolbar-spacer\"></span>\r\n<span color=\"primary\">   <h2>  تقرير المخزون  </h2> </span>\r\n<span class=\"toolbar-spacer\"></span>\r\n   </mat-toolbar>     \r\n\r\n<mat-tab-group class=\"tab-group\" (selectedTabChange)='selectChange($event)'>\r\n    <mat-tab label=\"التقرير\" >\r\n      <div class=\"tabContent\">\r\n          <mat-table #table [dataSource]=\"dataSource\"  matSort>\r\n\r\n              <!-- Position Column -->\r\n<!--               \r\n              <ng-container [matColumnDef]=\"header\"  *ngFor='let header of displayedColumns' >\r\n                <mat-header-cell *matHeaderCellDef> {{info[header]}} </mat-header-cell>\r\n                <mat-cell *matCellDef=\"let element; \">  {{element.date}}    </mat-cell>\r\n              </ng-container>\r\n                displayedColumns=['name','inventory','cost','price','category']; -->\r\n              \r\n              <ng-container matColumnDef=\"name\" >\r\n                  <mat-header-cell *matHeaderCellDef mat-sort-header  > اسم المنتج  </mat-header-cell>\r\n                  <mat-cell *matCellDef=\"let row\"> {{row.name}} </mat-cell>\r\n                </ng-container>\r\n                <ng-container matColumnDef=\"inventory\"  >\r\n                    <mat-header-cell *matHeaderCellDef mat-sort-header > الكمية المتوفرة </mat-header-cell>\r\n                    <mat-cell *matCellDef=\"let row\"> {{row.inventory}} </mat-cell>\r\n                  </ng-container>\r\n                  <ng-container matColumnDef=\"cost\" >\r\n                      <mat-header-cell *matHeaderCellDef mat-sort-header> تكلفة المنتج  </mat-header-cell>\r\n                      <mat-cell *matCellDef=\"let row\"> {{row.cost}} </mat-cell>\r\n                    </ng-container>\r\n\r\n                    <ng-container matColumnDef=\"price\" >\r\n                        <mat-header-cell *matHeaderCellDef mat-sort-header> سعر المنتج  </mat-header-cell>\r\n                        <mat-cell *matCellDef=\"let row\"> {{row.price}} </mat-cell>\r\n                      </ng-container>\r\n                      <ng-container matColumnDef=\"category\"  >\r\n                          <mat-header-cell *matHeaderCellDef mat-sort-header > تصنيف المنتج </mat-header-cell>\r\n                          <mat-cell *matCellDef=\"let row\"> {{row.category}} </mat-cell>\r\n                        </ng-container>\r\n\r\n              <mat-header-row *matHeaderRowDef=\"displayedColumns\"></mat-header-row>\r\n              <mat-row *matRowDef=\"let row; columns: displayedColumns;\"></mat-row>\r\n\r\n            </mat-table>\r\n\r\n            \r\n\r\n            <mat-paginator dir=\"rtl\" [pageSizeOptions]=\"[5, 10, 15, 100]\" ></mat-paginator>\r\n\r\n          \r\n      </div>\r\n    </mat-tab>\r\n\r\n         \r\n    <mat-tab label=\"الرسم البياني\"  >\r\n      <div class=\"tabContent\" (click)='creatChart()' *ngIf=\"chart\" >\r\n       <canvas id=\"pie\"  class=\"chart-pie\" style=\"height:455px ; width:90% ;    overflow:hidden;\" >{{ chart }}</canvas>\r\n      \r\n      </div>  \r\n    </mat-tab>\r\n</mat-tab-group>\r\n<!-- (matSortChange)=\"sortData($event)\" -->\r\n "
+module.exports = "<mat-toolbar  class=\"PageTitle\" style=\"background-color:transparent\">\r\n    <span class=\"toolbar-spacer\"></span>\r\n<span color=\"primary\">   <h2>  تقرير المخزون  </h2> </span>\r\n<span class=\"toolbar-spacer\"></span>\r\n   </mat-toolbar>     \r\n\r\n<mat-tab-group class=\"tab-group\" (selectedTabChange)='selectChange($event)'>\r\n    <mat-tab label=\"التقرير\" >\r\n      <div class=\"tabContent\">\r\n          <mat-table #table [dataSource]=\"dataSource\"  matSort>\r\n\r\n              <!-- Position Column -->\r\n<!--               \r\n              <ng-container [matColumnDef]=\"header\"  *ngFor='let header of displayedColumns' >\r\n                <mat-header-cell *matHeaderCellDef> {{info[header]}} </mat-header-cell>\r\n                <mat-cell *matCellDef=\"let element; \">  {{element.date}}    </mat-cell>\r\n              </ng-container>\r\n                displayedColumns=['name','inventory','cost','price','category']; -->\r\n              \r\n              <ng-container matColumnDef=\"name\" >\r\n                  <mat-header-cell *matHeaderCellDef mat-sort-header  > اسم المنتج  </mat-header-cell>\r\n                  <mat-cell *matCellDef=\"let row\"> {{row.name}} </mat-cell>\r\n                </ng-container>\r\n                <ng-container matColumnDef=\"inventory\"  >\r\n                    <mat-header-cell *matHeaderCellDef mat-sort-header > الكمية المتوفرة </mat-header-cell>\r\n                    <mat-cell *matCellDef=\"let row\"> {{row.inventory}} </mat-cell>\r\n                  </ng-container>\r\n                  <ng-container matColumnDef=\"cost\" >\r\n                      <mat-header-cell *matHeaderCellDef mat-sort-header> تكلفة المنتج  </mat-header-cell>\r\n                      <mat-cell *matCellDef=\"let row\"> {{row.cost}} </mat-cell>\r\n                    </ng-container>\r\n\r\n                    <ng-container matColumnDef=\"price\" >\r\n                        <mat-header-cell *matHeaderCellDef mat-sort-header> سعر المنتج  </mat-header-cell>\r\n                        <mat-cell *matCellDef=\"let row\"> {{row.price}} </mat-cell>\r\n                      </ng-container>\r\n                      <ng-container matColumnDef=\"category\"  >\r\n                          <mat-header-cell *matHeaderCellDef mat-sort-header > تصنيف المنتج </mat-header-cell>\r\n                          <mat-cell *matCellDef=\"let row\"> {{row.category}} </mat-cell>\r\n                        </ng-container>\r\n\r\n              <mat-header-row *matHeaderRowDef=\"displayedColumns\"></mat-header-row>\r\n              <mat-row *matRowDef=\"let row; columns: displayedColumns;\"></mat-row>\r\n\r\n            </mat-table>\r\n\r\n            \r\n\r\n            <mat-paginator dir=\"rtl\" [pageSizeOptions]=\"[5, 10, 15, 100]\" ></mat-paginator>\r\n\r\n          \r\n      </div>\r\n    </mat-tab>\r\n\r\n         \r\n    <mat-tab label=\"الرسم البياني\"  >\r\n        <div class=\"tabContent\"  *ngIf=\"chart\" >\r\n            <canvas id=\"pie\"  class=\"chart-bar\" style=\"height:255px ; width:90% ;    overflow:hidden;\" ></canvas>\r\n           \r\n           </div>     \r\n    </mat-tab>\r\n</mat-tab-group>\r\n<!-- (matSortChange)=\"sortData($event)\" -->\r\n "
 
 /***/ }),
 
@@ -5862,7 +5899,6 @@ var IvcReportComponent = /** @class */ (function () {
         this.db = db;
         this.productService = productService;
         this.dataSource = new __WEBPACK_IMPORTED_MODULE_3__angular_material__["J" /* MatTableDataSource */](new Array());
-        this.chart = [];
         this.totalS = 0;
         this.reportName = 'تقرير مبيعات موظف  ';
         this.displayedColumns = ['category', 'name', 'inventory', 'cost', 'price'];
@@ -5902,6 +5938,7 @@ var IvcReportComponent = /** @class */ (function () {
             }
         });
         this.totalInv();
+        this.creatChart();
     };
     IvcReportComponent.prototype.totalInv = function () {
         var _this = this;
@@ -5919,8 +5956,11 @@ var IvcReportComponent = /** @class */ (function () {
     IvcReportComponent.prototype.creatChart = function () {
         var label = this.dataSource.data.map(function (product) { return product.name; });
         var values = this.dataSource.data.map(function (product) { return product.inventory; });
+        if (this.chart != null)
+            if (this.chart.data)
+                this.chart.destroy();
         this.chart = new __WEBPACK_IMPORTED_MODULE_4_chart_js__["Chart"]('pie', {
-            type: 'pie',
+            type: 'bar',
             data: {
                 labels: label,
                 datasets: [{
@@ -5934,11 +5974,18 @@ var IvcReportComponent = /** @class */ (function () {
                             'rgba(255, 159, 64, 0.4)',
                             'rgba(102, 153, 255,0.4)',
                             'rgba(255, 51, 153,0.4)',
-                            'rgba(255, 102, 15, 0.4)',
+                            'rgba(255, 102, 0, 0.4)',
                             'rgba(51, 102, 255,0.4)',
-                            'rgba(51, 51, 204,0.4)',
-                            'rgba(204, 0, 204,0.4)',
-                            'rgba(255, 0, 102,0.4)'
+                            'rgba(255, 99, 132, 0.4)',
+                            'rgba(54, 162, 235, 0.4)',
+                            'rgba(255, 206, 86, 0.4)',
+                            'rgba(75, 192, 192, 0.4)',
+                            'rgba(153, 102, 255, 0.4)',
+                            'rgba(255, 159, 64, 0.4)',
+                            'rgba(102, 153, 255,0.4)',
+                            'rgba(255, 51, 153,0.4)',
+                            'rgba(255, 102, 0, 0.4)',
+                            'rgba(51, 102, 255,0.4)',
                         ],
                         borderColor: [
                             'rgba(255,99,132,1)',
@@ -5949,26 +5996,46 @@ var IvcReportComponent = /** @class */ (function () {
                             'rgba(255, 159, 64, 1)',
                             'rgba(102, 153, 255, 1)',
                             'rgba(255, 51, 153, 1)',
-                            'rgba(255, 102, 15, 1)',
+                            'rgba(255, 102, 0, 1)',
                             'rgba(51, 102, 255, 1)',
-                            'rgba(51, 51, 204,1)',
-                            'rgba(204, 0, 204,1)',
-                            'rgba(255, 0, 102,1)',
+                            'rgba(255, 99, 132, 0.4)',
+                            'rgba(54, 162, 235, 0.4)',
+                            'rgba(255, 206, 86, 0.4)',
+                            'rgba(75, 192, 192, 0.4)',
+                            'rgba(153, 102, 255, 0.4)',
+                            'rgba(255, 159, 64, 0.4)',
+                            'rgba(102, 153, 255,0.4)',
+                            'rgba(255, 51, 153,0.4)',
+                            'rgba(255, 102, 0, 0.4)',
+                            'rgba(51, 102, 255,0.4)',
                         ],
                     }]
             },
             options: {
                 responsive: true,
                 legend: {
-                    display: true,
+                    display: false,
                     position: 'right',
                 },
                 scales: {
                     xAxes: [{
-                            display: false
+                            scaleLabel: {
+                                labelString: "المنتجات",
+                                display: true,
+                            },
+                            ticks: {
+                                beginAtZero: true
+                            }
                         }],
                     yAxes: [{
-                            display: false
+                            display: true,
+                            ticks: {
+                                beginAtZero: true
+                            },
+                            scaleLabel: {
+                                labelString: "الكمية المتوفرة ",
+                                display: true,
+                            },
                         }],
                 },
                 tooltips: {

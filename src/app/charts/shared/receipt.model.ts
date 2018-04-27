@@ -72,6 +72,7 @@ export class shift
     checkIn:Date;
     checkOut:Date;
     totalShiftTime:any;
+    ChartshiftTime:any
 }
 
 export class FBReceipt
