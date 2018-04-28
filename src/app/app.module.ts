@@ -81,9 +81,10 @@ import { AddProductComponent } from './product/add-product/add-product.component
 import { ViewProductComponent } from './product/view-product/view-product.component';
 import { confirmMessage } from './product/view-product/view-product.component';
 import { EditManagerComponent, confirmMessageCancleManag } from './manager/edit-manager/edit-manager.component';
-import {confirmDelete} from './manager/manager.component';
+import {confirmDelete, ResetPassword} from './manager/manager.component';
 import { ManagerComponent } from './manager/manager.component';
 import { ShowFinanceComponent } from './finance/show-finance/show-finance.component';
+import { LogInComponent, ResetPassword2 } from './home-page/log-in/log-in.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -106,6 +107,8 @@ import { ShowFinanceComponent } from './finance/show-finance/show-finance.compon
     EditManagerComponent,
     confirmDelete,
     ShowFinanceComponent,
+    ResetPassword,
+    ResetPassword2,
    
   ],
   imports: [
@@ -169,7 +172,7 @@ import { ShowFinanceComponent } from './finance/show-finance/show-finance.compon
      updateSalary, ViewEmpComponent,addCategory ,AddProductComponent, ViewProductComponent,
      confirmMessage, confirmMessageEmp,ViewEmpComponent, confirmMessageancleEmp, AddEmpComponent,
      confirmMessageanclePro, AddProductComponent, confirmMessageCancleManag, EditManagerComponent,
-     confirmDelete ,ManagerComponent],
+     confirmDelete ,ManagerComponent, ResetPassword, LogInComponent, ResetPassword2],
   providers: [AuthService, AuthGuard, FlashMessagesService],
   bootstrap: [AppComponent]
 })

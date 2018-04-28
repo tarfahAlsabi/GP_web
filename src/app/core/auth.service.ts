@@ -21,7 +21,6 @@ export class AuthService {
    register(email:string,password:string,firstName,lastName,phone,salary,picPATH,picName){
     try{
       var secondaryApp = firebase.initializeApp(environment.firebaseConfig, "Secondary");
-  //const result = this.afAuth.auth.createUserWithEmailAndPassword(email,password);
 
   secondaryApp.auth().createUserWithEmailAndPassword(email,password).then(function(firebaseUser) {
     var x = firebaseUser.uid;
@@ -35,27 +34,11 @@ export class AuthService {
       picPATH: picPATH,
       picName: picName
       });
-    //I don't know if the next statement is necessary 
     secondaryApp.auth().signOut();
     return x;
 });
- //result.then((r)=>{
-   //console.log(r.uid);
-  // })
-
-  // if(result){
-  //  return result.uid;
-
-
-     // this.navCtrl.push(HomePage);
- //   }
-    
-     }
-     catch(e){
-      //this.navCtrl.push(WelcomePage);
+     }catch(e){
       return 'fail';
-  
-  
      }
   
      }
@@ -66,28 +49,6 @@ export class AuthService {
       this.afAuth.auth.createUserWithEmailAndPassword(email, password)
       .then( userData => { 
         resolve(userData);
-      /*  firebase.database().ref(businessname+'/manager').set({
-          ReceiptID:ReceiptID,
-          email: email,
-          fname: fname,
-          lname: lname,
-          password: password,
-          phone: phone,
-          businessname: businessname,
-          picPath: picPath,
-          picName: picName
-          });
-          firebase.database().ref(window.name+'/employees').child(userData.uid).set({
-            username: '',  
-            email: email,
-            firstName: fname,
-            lastName: lname,
-            password: password,
-            phone: phone,
-            salary: 0,
-            picPATH: picPath,
-            picName: picName
-            });*/
 
       },
       err => reject (err));
@@ -123,29 +84,9 @@ export class AuthService {
   }
 
   loginTestFirst(email: string, pass: string){
-    console.log('s')
-
    var ref= firebase.database().ref();
    ref.orderByChild("email").equalTo(email).once("value", function(snapshot) {
-    console.log(snapshot.key);
   });
-
-  /*  firebase.database().ref().child('manager').child('email').isEqual("najla123@gmail.com").snapshotChanges().subscribe(item=>{
-      for(var element2 in item) {
-        var y = item[element2].payload.key;
-      this.db.list(y+'/manager').snapshotChanges().subscribe(element => {
-        element.forEach(element2 => {
-        var y = element2.payload.toJSON();
-        y["$key"] = element2.key;
-       if(y["email"] == 'najla123@gmail.com'){
-         console.log('true')
-         return true;
-        }
-        });
-      });
-      }
-    });*/
-   // return false;
   }
  
 
@@ -157,13 +98,14 @@ export class AuthService {
     });
   }
 
-  resetPass(password: string){
+  resetPass(emailAddress: string):boolean{
 
-    firebase.auth().currentUser.updatePassword(password).then(function(){
-      console.log('s')
-    }).catch(function(){
-      console.log('fail')
-    });
+    firebase.auth().sendPasswordResetEmail(emailAddress).then(function() {
+      return true;
+    }).catch(function(error) {
+      return false;
+        });
+        return true;
   }
 
   getAuth() {

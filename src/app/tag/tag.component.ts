@@ -29,7 +29,6 @@ export class TagComponent implements OnInit {
   ngOnInit() {
       
     this.dataSource.data= [];
-    console.log( this.category);
     this.db.list(window.name+'/products').snapshotChanges().subscribe(item => {
       this.dataSource.data= [];  
     for(var element2 in item) {
@@ -48,8 +47,7 @@ delete(category: Category){
   });
 
   dialogRef.afterClosed().subscribe(result => {
-    console.log('The dialog was closed');
-    console.log(result);
+    
     if(result!=null)
     {
       {this.db.list(window.name+'/products').remove(category.$key).then( (res) => {
@@ -67,10 +65,8 @@ delete(category: Category){
     }
     else
     {
-      console.log('not deleted');
     }
   });   
-        //console.log(this.category.splice(this.category.indexOf(category)));
 }
  
 edit(category:Category)
@@ -79,15 +75,13 @@ edit(category:Category)
   let dialogRef = this.dialog.open(viewTag, { data: { name:category.$key } });
 
   dialogRef.afterClosed().subscribe(result => {
-    console.log('The dialog was closed');
-    console.log(result);
+   
     if(result!=null)
     {
       this.db.list(window.name+'/products/'+category.$key).snapshotChanges().subscribe(prods=>
       {
         prods.forEach(prod => {
           var product:any =(prod.payload.toJSON());
-          console.log(product)
           this.db.list(window.name+'/products/'+ result).push({
             name: product.name,
             price: product.price,

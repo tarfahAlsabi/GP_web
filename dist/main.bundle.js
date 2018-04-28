@@ -117,14 +117,12 @@ var AddQuantityComponent = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_30__home_page_costumers_costumers_component__ = __webpack_require__("../../../../../src/app/home-page/costumers/costumers.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_31__home_page_register_register_component__ = __webpack_require__("../../../../../src/app/home-page/register/register.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_32__home_page_log_in_log_in_component__ = __webpack_require__("../../../../../src/app/home-page/log-in/log-in.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_33__manager_change_password_change_password_component__ = __webpack_require__("../../../../../src/app/manager/change-password/change-password.component.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-
 
 
 
@@ -193,8 +191,7 @@ var routes = [
             { path: 'expenses', component: __WEBPACK_IMPORTED_MODULE_24__expenses_expenses_component__["a" /* ExpensesComponent */] },
             { path: 'finance', component: __WEBPACK_IMPORTED_MODULE_26__finance_finance_component__["a" /* FinanceComponent */] },
             { path: 'income_statment', component: __WEBPACK_IMPORTED_MODULE_25__charts_income_statment_repor_income_statment_repor_component__["a" /* IncomeStatmentReporComponent */] },
-            { path: 'finance_report', component: __WEBPACK_IMPORTED_MODULE_27__charts_finance_report_finance_report_component__["a" /* FinanceReportComponent */] },
-            { path: 'change-password', component: __WEBPACK_IMPORTED_MODULE_33__manager_change_password_change_password_component__["a" /* ChangePasswordComponent */] }
+            { path: 'finance_report', component: __WEBPACK_IMPORTED_MODULE_27__charts_finance_report_finance_report_component__["a" /* FinanceReportComponent */] }
         ] },
     { path: '**', component: __WEBPACK_IMPORTED_MODULE_17__control_no_found_page_no_found_page_component__["a" /* NoFoundPageComponent */] } //لازم تكون اخر شيء
 ];
@@ -216,7 +213,7 @@ var routingComponents = [__WEBPACK_IMPORTED_MODULE_28__home_page_main_home_main_
     __WEBPACK_IMPORTED_MODULE_2__empolyee_empolyee_component__["a" /* EmpolyeeComponent */], __WEBPACK_IMPORTED_MODULE_17__control_no_found_page_no_found_page_component__["a" /* NoFoundPageComponent */], __WEBPACK_IMPORTED_MODULE_19__manager_manager_component__["a" /* ManagerComponent */], __WEBPACK_IMPORTED_MODULE_6__my_form_my_form_component__["a" /* MyFormComponent */], __WEBPACK_IMPORTED_MODULE_5__header_header_component__["a" /* HeaderComponent */],
     __WEBPACK_IMPORTED_MODULE_8__empolyee_view_emp_view_emp_component__["a" /* ViewEmpComponent */], __WEBPACK_IMPORTED_MODULE_7__empolyee_add_emp_add_emp_component__["a" /* AddEmpComponent */], __WEBPACK_IMPORTED_MODULE_11__tag_tag_component__["a" /* TagComponent */], __WEBPACK_IMPORTED_MODULE_16__charts_sales_report_sales_report_component__["a" /* SalesReportComponent */], __WEBPACK_IMPORTED_MODULE_18__product_ivc_report_ivc_report_component__["a" /* IvcReportComponent */],
     __WEBPACK_IMPORTED_MODULE_23__manager_edit_manager_edit_manager_component__["a" /* EditManagerComponent */], __WEBPACK_IMPORTED_MODULE_24__expenses_expenses_component__["a" /* ExpensesComponent */], __WEBPACK_IMPORTED_MODULE_25__charts_income_statment_repor_income_statment_repor_component__["a" /* IncomeStatmentReporComponent */], __WEBPACK_IMPORTED_MODULE_26__finance_finance_component__["a" /* FinanceComponent */],
-    __WEBPACK_IMPORTED_MODULE_27__charts_finance_report_finance_report_component__["a" /* FinanceReportComponent */], __WEBPACK_IMPORTED_MODULE_33__manager_change_password_change_password_component__["a" /* ChangePasswordComponent */]];
+    __WEBPACK_IMPORTED_MODULE_27__charts_finance_report_finance_report_component__["a" /* FinanceReportComponent */]];
 
 
 /***/ }),
@@ -317,6 +314,7 @@ var AppComponent = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_30__manager_edit_manager_edit_manager_component__ = __webpack_require__("../../../../../src/app/manager/edit-manager/edit-manager.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_31__manager_manager_component__ = __webpack_require__("../../../../../src/app/manager/manager.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_32__finance_show_finance_show_finance_component__ = __webpack_require__("../../../../../src/app/finance/show-finance/show-finance.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_33__home_page_log_in_log_in_component__ = __webpack_require__("../../../../../src/app/home-page/log-in/log-in.component.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -333,6 +331,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 // import { MyErrorStateMatcher } from './empolyee/add-emp/add-emp.component';
+
 
 
 
@@ -389,8 +388,10 @@ var AppModule = /** @class */ (function () {
                 __WEBPACK_IMPORTED_MODULE_28__product_add_product_add_product_component__["c" /* confirmMessageanclePro */],
                 __WEBPACK_IMPORTED_MODULE_30__manager_edit_manager_edit_manager_component__["b" /* confirmMessageCancleManag */],
                 __WEBPACK_IMPORTED_MODULE_30__manager_edit_manager_edit_manager_component__["a" /* EditManagerComponent */],
-                __WEBPACK_IMPORTED_MODULE_31__manager_manager_component__["b" /* confirmDelete */],
+                __WEBPACK_IMPORTED_MODULE_31__manager_manager_component__["c" /* confirmDelete */],
                 __WEBPACK_IMPORTED_MODULE_32__finance_show_finance_show_finance_component__["a" /* ShowFinanceComponent */],
+                __WEBPACK_IMPORTED_MODULE_31__manager_manager_component__["b" /* ResetPassword */],
+                __WEBPACK_IMPORTED_MODULE_33__home_page_log_in_log_in_component__["b" /* ResetPassword2 */],
             ],
             imports: [
                 __WEBPACK_IMPORTED_MODULE_13__angular_material__["w" /* MatPaginatorModule */],
@@ -453,7 +454,7 @@ var AppModule = /** @class */ (function () {
                 __WEBPACK_IMPORTED_MODULE_18__empolyee_view_emp_view_emp_component__["c" /* updateSalary */], __WEBPACK_IMPORTED_MODULE_18__empolyee_view_emp_view_emp_component__["a" /* ViewEmpComponent */], __WEBPACK_IMPORTED_MODULE_28__product_add_product_add_product_component__["b" /* addCategory */], __WEBPACK_IMPORTED_MODULE_28__product_add_product_add_product_component__["a" /* AddProductComponent */], __WEBPACK_IMPORTED_MODULE_29__product_view_product_view_product_component__["a" /* ViewProductComponent */],
                 __WEBPACK_IMPORTED_MODULE_29__product_view_product_view_product_component__["b" /* confirmMessage */], __WEBPACK_IMPORTED_MODULE_18__empolyee_view_emp_view_emp_component__["b" /* confirmMessageEmp */], __WEBPACK_IMPORTED_MODULE_18__empolyee_view_emp_view_emp_component__["a" /* ViewEmpComponent */], __WEBPACK_IMPORTED_MODULE_17__empolyee_add_emp_add_emp_component__["b" /* confirmMessageancleEmp */], __WEBPACK_IMPORTED_MODULE_17__empolyee_add_emp_add_emp_component__["a" /* AddEmpComponent */],
                 __WEBPACK_IMPORTED_MODULE_28__product_add_product_add_product_component__["c" /* confirmMessageanclePro */], __WEBPACK_IMPORTED_MODULE_28__product_add_product_add_product_component__["a" /* AddProductComponent */], __WEBPACK_IMPORTED_MODULE_30__manager_edit_manager_edit_manager_component__["b" /* confirmMessageCancleManag */], __WEBPACK_IMPORTED_MODULE_30__manager_edit_manager_edit_manager_component__["a" /* EditManagerComponent */],
-                __WEBPACK_IMPORTED_MODULE_31__manager_manager_component__["b" /* confirmDelete */], __WEBPACK_IMPORTED_MODULE_31__manager_manager_component__["a" /* ManagerComponent */]],
+                __WEBPACK_IMPORTED_MODULE_31__manager_manager_component__["c" /* confirmDelete */], __WEBPACK_IMPORTED_MODULE_31__manager_manager_component__["a" /* ManagerComponent */], __WEBPACK_IMPORTED_MODULE_31__manager_manager_component__["b" /* ResetPassword */], __WEBPACK_IMPORTED_MODULE_33__home_page_log_in_log_in_component__["a" /* LogInComponent */], __WEBPACK_IMPORTED_MODULE_33__home_page_log_in_log_in_component__["b" /* ResetPassword2 */]],
             providers: [__WEBPACK_IMPORTED_MODULE_26__core_auth_service__["a" /* AuthService */], __WEBPACK_IMPORTED_MODULE_27__guards_auth_guard__["a" /* AuthGuard */], __WEBPACK_IMPORTED_MODULE_25_angular2_flash_messages__["FlashMessagesService"]],
             bootstrap: [__WEBPACK_IMPORTED_MODULE_6__app_component__["a" /* AppComponent */]]
         })
@@ -533,7 +534,7 @@ var ChartsComponent = /** @class */ (function () {
 /***/ "../../../../../src/app/charts/employe-whs/employe-whs.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "    <mat-toolbar  class=\"PageTitle\" style=\"background-color:transparent\">\r\n        <span class=\"toolbar-spacer\"></span>\r\n    <span color=\"primary\">   <h2>  {{reportName}} </h2> </span>\r\n    <span class=\"toolbar-spacer\"></span>\r\n    </mat-toolbar>   \r\n    \r\n    \r\n    <div   class=\" col-md-12 col-sm-12 contaner\" dir=\"rtl\">\r\n\r\n       \r\n            <!-- <span class=\"toolbar-spacer\"></span> -->\r\n            <div class=\"reportBar col-md-4 col-sm-12\" *ngIf=\"hasSelection\" >\r\n                <mat-form-field class=\"headerText\" >\r\n                <mat-select placeholder=\"اسم الموظف\" [(ngModel)]=\"selectedValue\" name=\"item\" (change)='changeProduct()' >\r\n                    <mat-option *ngFor=\"let item of items\" [value]=\" item.$key \">\r\n                        {{item.name}}\r\n                    </mat-option>        \r\n                </mat-select>\r\n                </mat-form-field>\r\n            </div>\r\n\r\n\r\n            <div  *ngIf=\"hasDate\" class=\" col-md-4 col-sm-6\" > \r\n            <mat-form-field class=\"headerText\">\r\n                <input matInput  [value]='endDate'  [matDatepicker]=\"ToDate\" placeholder=\" إلى تاريخ \" (dateChange)=\"changeDate('to', $event)\" >\r\n                <mat-datepicker-toggle matSuffix [for]=\"ToDate\"></mat-datepicker-toggle>\r\n                <mat-datepicker   #ToDate disabled=\"false\"  ></mat-datepicker>\r\n            </mat-form-field>\r\n            </div> \r\n\r\n\r\n            <div  *ngIf=\"hasDate\" class=\" col-md-4 col-sm-6\" > \r\n                <mat-form-field class=\"headerText\">\r\n                    <input   [value]='startDate' matInput [matDatepicker]=\"picker\" placeholder=\" من تاريخ \" (dateChange)=\"changeDate('from', $event) \" >\r\n                    <mat-datepicker-toggle matSuffix [for]=\"picker\"></mat-datepicker-toggle>\r\n                    <mat-datepicker #picker disabled=\"false\" ></mat-datepicker>\r\n                </mat-form-field>\r\n            </div>\r\n\r\n\r\n\r\n </div>\r\n <div   class=\" col-md-12 col-sm-12 \"  >\r\n\r\n    <flash-messages></flash-messages>\r\n\r\n</div>\r\n    <div class=\"col-md-12 col-sm-12\">\r\n    <mat-tab-group class=\"tab-group\" (selectedTabChange)='selectChange($event)' >\r\n        <mat-tab label=\"التقرير\" >\r\n        <div class=\"tabContent\">\r\n\r\n            <mat-table #table  class=\"reportTable\" [dataSource]=\"dataSource\" matSort>\r\n\r\n                \r\n    <!--  displayedColumns=['date','checkIn','checkOut','totalShiftTime']; -->\r\n                \r\n                <ng-container matColumnDef=\"date\">\r\n                    <mat-header-cell *matHeaderCellDef mat-sort-header > التاريخ </mat-header-cell>\r\n                    <mat-cell *matCellDef=\"let row\"> {{row.date.toISOString().substring(0,10)}} </mat-cell>\r\n                    <mat-cell *matCellDef=\"let row\"> {{row.date.toISOString().substring(0,10)}} </mat-cell>\r\n                    </ng-container>\r\n                    <ng-container matColumnDef=\"checkIn\">\r\n                        <mat-header-cell *matHeaderCellDef mat-sort-header> بداية الفترة </mat-header-cell>\r\n                        <mat-cell *matCellDef=\"let row\"> {{row.checkIn.toString().substring(11)}} </mat-cell>\r\n                    </ng-container>\r\n                        <ng-container matColumnDef=\"checkOut\">\r\n                            <mat-header-cell *matHeaderCellDef mat-sort-header> نهاية الفترة  </mat-header-cell>\r\n                            <mat-cell *matCellDef=\"let row\"> {{row.checkOut.toString().substring(11)}} </mat-cell>\r\n                        </ng-container>\r\n                        <ng-container matColumnDef=\"totalShiftTime\">\r\n                            <mat-header-cell *matHeaderCellDef mat-sort-header>  مدة الفترة ( ساعات .دقائق)</mat-header-cell>\r\n                            <mat-cell *matCellDef=\"let row\"> {{row.totalShiftTime }} </mat-cell>\r\n                        </ng-container>\r\n                        \r\n                <mat-header-row *matHeaderRowDef=\"displayedColumns\"></mat-header-row>\r\n                <mat-row *matRowDef=\"let row; columns: displayedColumns;\"></mat-row>\r\n                </mat-table>\r\n                <mat-paginator dir=\"rtl\" [pageSizeOptions]=\"[5, 10, 15, 100]\" ></mat-paginator>          \r\n        </div>\r\n        </mat-tab>\r\n        <mat-tab label=\"الرسم البياني\">\r\n            <div class=\"tabContent\"  *ngIf=\"chart\" >\r\n                <canvas id=\"pie\"  class=\"chart-pie\" style=\"height:255px ; width:90% ;    overflow:hidden;\" ></canvas>\r\n            \r\n            </div>    \r\n        </mat-tab>\r\n    </mat-tab-group>\r\n    </div>\r\n    <!-- (matSortChange)=\"sortData($event)\" -->\r\n    "
+module.exports = "    <mat-toolbar  class=\"PageTitle\" style=\"background-color:transparent\">\r\n        <span class=\"toolbar-spacer\"></span>\r\n    <span color=\"primary\">   <h2>  {{reportName}} </h2> </span>\r\n    <span class=\"toolbar-spacer\"></span>\r\n    </mat-toolbar>   \r\n    \r\n    \r\n    <div   class=\" col-md-12 col-sm-12 contaner\" dir=\"rtl\">\r\n\r\n       \r\n            <!-- <span class=\"toolbar-spacer\"></span> -->\r\n            <div class=\"reportBar col-md-4 col-sm-12\" *ngIf=\"hasSelection\" >\r\n                <mat-form-field class=\"headerText\" >\r\n                <mat-select placeholder=\"اسم الموظف\" [(ngModel)]=\"selectedValue\" name=\"item\" (change)='changeProduct()' >\r\n                    <mat-option *ngFor=\"let item of items\" [value]=\" item.$key \">\r\n                        {{item.name}}\r\n                    </mat-option>        \r\n                </mat-select>\r\n                </mat-form-field>\r\n            </div>\r\n\r\n\r\n            <div  *ngIf=\"hasDate\" class=\" col-md-4 col-sm-6\" > \r\n            <mat-form-field class=\"headerText\">\r\n                <input matInput  [value]='endDate'  [matDatepicker]=\"ToDate\" placeholder=\" إلى تاريخ \" (dateChange)=\"changeDate('to', $event)\" >\r\n                <mat-datepicker-toggle matSuffix [for]=\"ToDate\"></mat-datepicker-toggle>\r\n                <mat-datepicker   #ToDate disabled=\"false\"  ></mat-datepicker>\r\n            </mat-form-field>\r\n            </div> \r\n\r\n\r\n            <div  *ngIf=\"hasDate\" class=\" col-md-4 col-sm-6\" > \r\n                <mat-form-field class=\"headerText\">\r\n                    <input   [value]='startDate' matInput [matDatepicker]=\"picker\" placeholder=\" من تاريخ \" (dateChange)=\"changeDate('from', $event) \" >\r\n                    <mat-datepicker-toggle matSuffix [for]=\"picker\"></mat-datepicker-toggle>\r\n                    <mat-datepicker #picker disabled=\"false\" ></mat-datepicker>\r\n                </mat-form-field>\r\n            </div>\r\n\r\n\r\n\r\n </div>\r\n <div   class=\" col-md-12 col-sm-12 \"  >\r\n\r\n    <flash-messages></flash-messages>\r\n\r\n</div>\r\n    <div class=\"col-md-12 col-sm-12\">\r\n    <mat-tab-group class=\"tab-group\" (selectedTabChange)='selectChange($event)' >\r\n        <mat-tab label=\"التقرير\" >\r\n        <div class=\"tabContent\">\r\n\r\n            <mat-table #table  class=\"reportTable\" [dataSource]=\"dataSource\" matSort>\r\n\r\n                \r\n                \r\n                <ng-container matColumnDef=\"date\">\r\n                    <mat-header-cell *matHeaderCellDef mat-sort-header > التاريخ </mat-header-cell>\r\n                    <mat-cell *matCellDef=\"let row\"> {{row.date.toISOString().substring(0,10)}} </mat-cell>\r\n                    <mat-cell *matCellDef=\"let row\"> {{row.date.toISOString().substring(0,10)}} </mat-cell>\r\n                    </ng-container>\r\n                    <ng-container matColumnDef=\"checkIn\">\r\n                        <mat-header-cell *matHeaderCellDef mat-sort-header> بداية الفترة </mat-header-cell>\r\n                        <mat-cell *matCellDef=\"let row\"> {{row.checkIn.toString().substring(11)}} </mat-cell>\r\n                    </ng-container>\r\n                        <ng-container matColumnDef=\"checkOut\">\r\n                            <mat-header-cell *matHeaderCellDef mat-sort-header> نهاية الفترة  </mat-header-cell>\r\n                            <mat-cell *matCellDef=\"let row\"> {{row.checkOut.toString().substring(11)}} </mat-cell>\r\n                        </ng-container>\r\n                        <ng-container matColumnDef=\"totalShiftTime\">\r\n                            <mat-header-cell *matHeaderCellDef mat-sort-header>  مدة الفترة ( ساعات .دقائق)</mat-header-cell>\r\n                            <mat-cell *matCellDef=\"let row\"> {{row.totalShiftTime }} </mat-cell>\r\n                        </ng-container>\r\n                        \r\n                <mat-header-row *matHeaderRowDef=\"displayedColumns\"></mat-header-row>\r\n                <mat-row *matRowDef=\"let row; columns: displayedColumns;\"></mat-row>\r\n                </mat-table>\r\n                <mat-paginator dir=\"rtl\" [pageSizeOptions]=\"[5, 10, 15, 100]\" ></mat-paginator>          \r\n        </div>\r\n        </mat-tab>\r\n        <mat-tab label=\"الرسم البياني\">\r\n            <div class=\"tabContent\"  *ngIf=\"chart\" >\r\n                <canvas id=\"pie\"  class=\"chart-pie\" style=\"height:455px ; width:100% ;    overflow:hidden;\" ></canvas>\r\n            \r\n            </div>    \r\n        </mat-tab>\r\n    </mat-tab-group>\r\n    </div>\r\n    "
 
 /***/ }),
 
@@ -610,7 +611,6 @@ var EmployeWhsComponent = /** @class */ (function () {
             this.selectedValue = emp;
             this.changeProduct();
         }
-        //console.log(this.receiptList);
     };
     EmployeWhsComponent.prototype.selectChange = function (evet) {
         if (evet.index == 0)
@@ -628,9 +628,6 @@ var EmployeWhsComponent = /** @class */ (function () {
         }
         this.changeProduct();
         this.creatChart();
-        // this.creatChart();
-        /*  var mydate = new Date('2018-03-02');
-          console.log(mydate.toDateString());*/
     };
     EmployeWhsComponent.prototype.creatChart = function () {
         if (this.chart.data)
@@ -670,6 +667,10 @@ var EmployeWhsComponent = /** @class */ (function () {
                     }]
             },
             options: {
+                title: {
+                    display: true,
+                    text: 'ساعات عمل الموظف في الفترة المحددة'
+                },
                 responsive: true,
                 legend: {
                     display: false,
@@ -677,7 +678,10 @@ var EmployeWhsComponent = /** @class */ (function () {
                 },
                 scales: {
                     xAxes: [{
-                            display: true,
+                            scaleLabel: {
+                                labelString: "التاريخ  ",
+                                display: true,
+                            },
                             ticks: {
                                 beginAtZero: true
                             }
@@ -687,7 +691,10 @@ var EmployeWhsComponent = /** @class */ (function () {
                             ticks: {
                                 beginAtZero: true
                             },
-                            label: "الكمية المباعة"
+                            scaleLabel: {
+                                labelString: "ساعات العمل",
+                                display: true,
+                            },
                         }],
                 },
                 tooltips: {
@@ -701,14 +708,12 @@ var EmployeWhsComponent = /** @class */ (function () {
         this.x = [];
         this.y = [];
         var label = this.dataSource.data.map(function (p) { return p.date.toISOString().substring(0, 10); });
-        var values = this.dataSource.data.map(function (p) { return p.totalShiftTime; });
+        var values = this.dataSource.data.map(function (p) { return p.ChartshiftTime; });
         label.forEach(function (i) {
             var sum = 0;
             for (var n in label) {
                 if (label[n].localeCompare(i) == 0) {
-                    // console.log(label[n])
                     sum = sum + values[n];
-                    // console.log(sum)
                     values[n] = 0;
                     label[n] = '';
                 }
@@ -722,7 +727,6 @@ var EmployeWhsComponent = /** @class */ (function () {
     };
     EmployeWhsComponent.prototype.changeProduct = function () {
         this.dataSource.data = [];
-        // console.log(this.selectedValue)
         if (this.selectedValue != undefined) {
             if (this.startDate && this.endDate) {
                 if (this.startDate <= this.endDate) {
@@ -751,11 +755,8 @@ var EmployeWhsComponent = /** @class */ (function () {
         this.firebase.list(window.name + '/employees/' + this.selectedValue + '/workingTime').snapshotChanges().subscribe(function (list) {
             for (var _i = 0, list_1 = list; _i < list_1.length; _i++) {
                 var temp = list_1[_i];
-                // console.log(typeof temp.key )
                 var year = parseInt(temp.key, 10);
                 var mon = temp.payload.toJSON();
-                // console.log(mon)
-                // console.log(mon.valueOf())
                 for (var i in mon) {
                     var month = parseInt(i, 10);
                     var day = mon[i];
@@ -763,10 +764,6 @@ var EmployeWhsComponent = /** @class */ (function () {
                         var ymd = new Date(year, month - 1, parseInt(n, 10));
                         if (ymd <= _this.startDate && ymd >= _this.endDate)
                             continue;
-                        // console.log("the date from new Date ")
-                        // console.log(ymd)
-                        // console.log(n)
-                        // console.log(day[n])
                         var date = parseInt(n, 10);
                         if (ymd < _this.startDate || ymd > _this.endDate)
                             continue;
@@ -777,7 +774,8 @@ var EmployeWhsComponent = /** @class */ (function () {
                             temp_1.checkIn = shifts[s].checkIn;
                             temp_1.checkOut = shifts[s].checkOut;
                             var p = shifts[s].totalShiftTime.split(':');
-                            temp_1.totalShiftTime = parseFloat(p[0] + (p[1] / 100) + (p[2] / 10000));
+                            temp_1.totalShiftTime = shifts[s].totalShiftTime;
+                            temp_1.ChartshiftTime = (((p[0] / 1) + (p[1] / 100) + (p[2] / 10000)));
                             _this.error = false;
                             _this.dataSource.data.push(temp_1);
                             _this.dataSource._updateChangeSubscription();
@@ -822,7 +820,7 @@ var EmployeWhsComponent = /** @class */ (function () {
 /***/ "../../../../../src/app/charts/employee-sales/employee-sales.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<mat-toolbar  class=\"PageTitle\" style=\"background-color:transparent\">\r\n    <span class=\"toolbar-spacer\"></span>\r\n<span color=\"primary\">   <h2>  {{reportName}} </h2> </span>\r\n<span class=\"toolbar-spacer\"></span>\r\n   </mat-toolbar>     \r\n\r\n   <div   class=\" col-md-12 col-sm-12 contaner\" dir=\"rtl\">\r\n\r\n       \r\n    <!-- <span class=\"toolbar-spacer\"></span> -->\r\n    <div class=\"reportBar col-md-4 col-sm-12\" *ngIf=\"hasSelection\" >\r\n        <mat-form-field class=\"headerText\" >\r\n        <mat-select placeholder=\"اسم الموظف\" [(ngModel)]=\"selectedValue\" name=\"item\" (change)='changeProduct()' >\r\n            <mat-option *ngFor=\"let item of items\" [value]=\" item.$key \">\r\n                {{item.name}}\r\n            </mat-option>        \r\n        </mat-select>\r\n        </mat-form-field>\r\n    </div>\r\n\r\n\r\n    <div  *ngIf=\"hasDate\" class=\" col-md-4 col-sm-6\" > \r\n    <mat-form-field class=\"headerText\">\r\n        <input matInput  [value]='endDate'  [matDatepicker]=\"ToDate\" placeholder=\" إلى تاريخ \" (dateChange)=\"changeDate('to', $event)\" >\r\n        <mat-datepicker-toggle matSuffix [for]=\"ToDate\"></mat-datepicker-toggle>\r\n        <mat-datepicker   #ToDate disabled=\"false\"  ></mat-datepicker>\r\n    </mat-form-field>\r\n    </div> \r\n\r\n\r\n    <div  *ngIf=\"hasDate\" class=\" col-md-4 col-sm-6\" > \r\n        <mat-form-field class=\"headerText\">\r\n            <input   [value]='startDate' matInput [matDatepicker]=\"picker\" placeholder=\" من تاريخ \" (dateChange)=\"changeDate('from', $event) \" >\r\n            <mat-datepicker-toggle matSuffix [for]=\"picker\"></mat-datepicker-toggle>\r\n            <mat-datepicker #picker disabled=\"false\" ></mat-datepicker>\r\n        </mat-form-field>\r\n    </div>\r\n\r\n\r\n\r\n</div>\r\n<div   class=\" col-md-12 col-sm-12 \"  >\r\n\r\n<flash-messages></flash-messages>\r\n\r\n</div>\r\n\r\n<div class=\" col-md-12 col-sm-12 \"  >\r\n<mat-tab-group class=\"tab-group\" (selectedTabChange)='selectChange($event)' >\r\n    <mat-tab label=\"التقرير\" >\r\n      <div class=\"tabContent\">\r\n\r\n          <mat-table #table [dataSource]=\"dataSource\"  matSort>\r\n\r\n              \r\n<!--  displayedColumns=['date','time','quantity','price','pay','remains']; -->\r\n              \r\n              <ng-container matColumnDef=\"date\">\r\n                  <mat-header-cell *matHeaderCellDef mat-sort-header  > التاريخ </mat-header-cell>\r\n                  <mat-cell *matCellDef=\"let row\"> {{row.date}} </mat-cell>\r\n                </ng-container>\r\n                <ng-container matColumnDef=\"time\">\r\n                    <mat-header-cell *matHeaderCellDef mat-sort-header> وقت عملية الشراء </mat-header-cell>\r\n                    <mat-cell *matCellDef=\"let row\"> {{row.time}} </mat-cell>\r\n                  </ng-container>\r\n                    <ng-container matColumnDef=\"quantity\">\r\n                        <mat-header-cell *matHeaderCellDef mat-sort-header> الكمية المباعة </mat-header-cell>\r\n                        <mat-cell *matCellDef=\"let row\"> {{row.quantity}} </mat-cell>\r\n                      </ng-container>\r\n                    <ng-container matColumnDef=\"price\">\r\n                        <mat-header-cell *matHeaderCellDef mat-sort-header> مجموع السعر </mat-header-cell>\r\n                        <mat-cell *matCellDef=\"let row\"> {{row.price}}  ريال </mat-cell>\r\n                      </ng-container>\r\n                      <ng-container matColumnDef=\"pay\">\r\n                          <mat-header-cell *matHeaderCellDef mat-sort-header>المدفوع </mat-header-cell>\r\n                          <mat-cell *matCellDef=\"let row\"> {{row.pay}} ريال </mat-cell>\r\n                        </ng-container>\r\n                        <ng-container matColumnDef=\"remains\">\r\n                            <mat-header-cell *matHeaderCellDef mat-sort-header> الباقي  </mat-header-cell>\r\n                            <mat-cell *matCellDef=\"let row\"> {{row.remains}} </mat-cell>\r\n                          </ng-container>\r\n                          <ng-container matColumnDef=\"Id\">\r\n                              <mat-header-cell *matHeaderCellDef mat-sort-header> رقم الفاتورة  </mat-header-cell>\r\n                              <mat-cell *matCellDef=\"let row\"> {{row.Id}} </mat-cell>\r\n                            </ng-container>\r\n              <mat-header-row *matHeaderRowDef=\"displayedColumns\"></mat-header-row>\r\n              <mat-row *matRowDef=\"let row; columns: displayedColumns;\"></mat-row>\r\n            </mat-table>\r\n            <mat-paginator dir=\"rtl\" [pageSizeOptions]=\"[5, 10, 15, 100]\" ></mat-paginator>          \r\n      </div>\r\n    </mat-tab>\r\n    <mat-tab label=\"الرسم البياني\">\r\n        <div class=\"tabContent\"  *ngIf=\"chart\" >\r\n            <canvas id=\"pie\"  class=\"chart-pie\" style=\"height:255px ; width:90% ;    overflow:hidden;\" ></canvas>\r\n           \r\n           </div>    \r\n    </mat-tab>\r\n</mat-tab-group>\r\n</div>\r\n<!-- (matSortChange)=\"sortData($event)\" -->\r\n "
+module.exports = "<mat-toolbar  class=\"PageTitle\" style=\"background-color:transparent\">\r\n    <span class=\"toolbar-spacer\"></span>\r\n<span color=\"primary\">   <h2>  {{reportName}} </h2> </span>\r\n<span class=\"toolbar-spacer\"></span>\r\n   </mat-toolbar>     \r\n\r\n   <div   class=\" col-md-12 col-sm-12 contaner\" dir=\"rtl\">\r\n\r\n       \r\n    <!-- <span class=\"toolbar-spacer\"></span> -->\r\n    <div class=\"reportBar col-md-4 col-sm-12\" *ngIf=\"hasSelection\" >\r\n        <mat-form-field class=\"headerText\" >\r\n        <mat-select placeholder=\"اسم الموظف\" [(ngModel)]=\"selectedValue\" name=\"item\" (change)='changeProduct()' >\r\n            <mat-option *ngFor=\"let item of items\" [value]=\" item.$key \">\r\n                {{item.name}}\r\n            </mat-option>        \r\n        </mat-select>\r\n        </mat-form-field>\r\n    </div>\r\n\r\n\r\n    <div  *ngIf=\"hasDate\" class=\" col-md-4 col-sm-6\" > \r\n    <mat-form-field class=\"headerText\">\r\n        <input matInput  [value]='endDate'  [matDatepicker]=\"ToDate\" placeholder=\" إلى تاريخ \" (dateChange)=\"changeDate('to', $event)\" >\r\n        <mat-datepicker-toggle matSuffix [for]=\"ToDate\"></mat-datepicker-toggle>\r\n        <mat-datepicker   #ToDate disabled=\"false\"  ></mat-datepicker>\r\n    </mat-form-field>\r\n    </div> \r\n\r\n\r\n    <div  *ngIf=\"hasDate\" class=\" col-md-4 col-sm-6\" > \r\n        <mat-form-field class=\"headerText\">\r\n            <input   [value]='startDate' matInput [matDatepicker]=\"picker\" placeholder=\" من تاريخ \" (dateChange)=\"changeDate('from', $event) \" >\r\n            <mat-datepicker-toggle matSuffix [for]=\"picker\"></mat-datepicker-toggle>\r\n            <mat-datepicker #picker disabled=\"false\" ></mat-datepicker>\r\n        </mat-form-field>\r\n    </div>\r\n\r\n\r\n\r\n</div>\r\n<div   class=\" col-md-12 col-sm-12 \"  >\r\n\r\n<flash-messages></flash-messages>\r\n\r\n</div>\r\n\r\n<div class=\" col-md-12 col-sm-12 \"  >\r\n<mat-tab-group class=\"tab-group\" (selectedTabChange)='selectChange($event)' >\r\n    <mat-tab label=\"التقرير\" >\r\n      <div class=\"tabContent\">\r\n\r\n          <mat-table #table [dataSource]=\"dataSource\"  matSort>\r\n\r\n              \r\n              \r\n              <ng-container matColumnDef=\"date\">\r\n                  <mat-header-cell *matHeaderCellDef mat-sort-header  > التاريخ </mat-header-cell>\r\n                  <mat-cell *matCellDef=\"let row\"> {{row.date}} </mat-cell>\r\n                </ng-container>\r\n                <ng-container matColumnDef=\"time\">\r\n                    <mat-header-cell *matHeaderCellDef mat-sort-header> وقت عملية الشراء </mat-header-cell>\r\n                    <mat-cell *matCellDef=\"let row\"> {{row.time}} </mat-cell>\r\n                  </ng-container>\r\n                    <ng-container matColumnDef=\"quantity\">\r\n                        <mat-header-cell *matHeaderCellDef mat-sort-header> الكمية المباعة </mat-header-cell>\r\n                        <mat-cell *matCellDef=\"let row\"> {{row.quantity}} </mat-cell>\r\n                      </ng-container>\r\n                    <ng-container matColumnDef=\"price\">\r\n                        <mat-header-cell *matHeaderCellDef mat-sort-header> مجموع السعر </mat-header-cell>\r\n                        <mat-cell *matCellDef=\"let row\"> {{row.price}}  ريال </mat-cell>\r\n                      </ng-container>\r\n                      <ng-container matColumnDef=\"pay\">\r\n                          <mat-header-cell *matHeaderCellDef mat-sort-header>المدفوع </mat-header-cell>\r\n                          <mat-cell *matCellDef=\"let row\"> {{row.pay}} ريال </mat-cell>\r\n                        </ng-container>\r\n                        <ng-container matColumnDef=\"remains\">\r\n                            <mat-header-cell *matHeaderCellDef mat-sort-header> الباقي  </mat-header-cell>\r\n                            <mat-cell *matCellDef=\"let row\"> {{row.remains}} </mat-cell>\r\n                          </ng-container>\r\n                          <ng-container matColumnDef=\"Id\">\r\n                              <mat-header-cell *matHeaderCellDef mat-sort-header> رقم الفاتورة  </mat-header-cell>\r\n                              <mat-cell *matCellDef=\"let row\"> {{row.Id}} </mat-cell>\r\n                            </ng-container>\r\n              <mat-header-row *matHeaderRowDef=\"displayedColumns\"></mat-header-row>\r\n              <mat-row *matRowDef=\"let row; columns: displayedColumns;\"></mat-row>\r\n            </mat-table>\r\n            <mat-paginator dir=\"rtl\" [pageSizeOptions]=\"[5, 10, 15, 100]\" ></mat-paginator>          \r\n      </div>\r\n    </mat-tab>\r\n    <mat-tab label=\"الرسم البياني\">\r\n        <div class=\"tabContent\"  *ngIf=\"chart\" >\r\n            <canvas id=\"pie\"  class=\"chart-pie\" style=\"height:255px ; width:90% ;    overflow:hidden;\" ></canvas>\r\n           \r\n           </div>    \r\n    </mat-tab>\r\n</mat-tab-group>\r\n</div>\r\n "
 
 /***/ }),
 
@@ -896,11 +894,9 @@ var EmployeeSalesComponent = /** @class */ (function () {
         var emp;
         emp = this.route.snapshot.params.id;
         if (emp != null) {
-            console.log(emp);
             this.selectedValue = emp;
             this.changeProduct();
         }
-        //console.log(this.receiptList);
     };
     EmployeeSalesComponent.prototype.selectChange = function (evet) {
         this.changeProduct();
@@ -913,9 +909,6 @@ var EmployeeSalesComponent = /** @class */ (function () {
             this.endDate = new Date(x.getTime() + (1000 * 60 * 60 * 24));
         }
         this.changeProduct();
-        // this.creatChart();
-        /*  var mydate = new Date('2018-03-02');
-          console.log(mydate.toDateString());*/
     };
     EmployeeSalesComponent.prototype.creatChart = function () {
         if (this.chart.data)
@@ -996,16 +989,6 @@ var EmployeeSalesComponent = /** @class */ (function () {
             if (this.startDate && this.endDate) {
                 if (this.startDate <= this.endDate) {
                     this.getEmployeeSales();
-                    //   if(true){
-                    //     this.dataSource.data =x;
-                    //     console.log(x)
-                    //     this.dataSource.sort = this.sort;
-                    // }else{
-                    // this.flashMensaje.show('لم يتم بيع هذا المنتج في هذه الفترة الزمنية.',
-                    // {cssClass: 'alert-danger', timeout: 5000});
-                    //     this.dataSource.data=[];
-                    // }
-                    //if(this.products)
                 }
                 else {
                     this.flashMensaje.show('يجب ان لا يسبق تاريخ النهاية تاريخ البداية.', { cssClass: 'alert-danger', timeout: 100000,
@@ -1022,7 +1005,6 @@ var EmployeeSalesComponent = /** @class */ (function () {
                 closeOnClick: true, showCloseBtn: true });
         }
     };
-    // this.selectedValue,this.this.startDate,this.endDate
     EmployeeSalesComponent.prototype.getEmployeeSales = function () {
         var _this = this;
         this.error = true;
@@ -1048,9 +1030,7 @@ var EmployeeSalesComponent = /** @class */ (function () {
                     continue;
                 }
                 var q = 0;
-                // console.log(typeof receipt.products)
                 for (var prods in receipt.products) {
-                    // console.log( receipt.products[prods])
                     q += receipt.products[prods].quantity;
                 }
                 var info = new __WEBPACK_IMPORTED_MODULE_2__shared_receipt_model__["e" /* empsales */]();
@@ -1069,8 +1049,6 @@ var EmployeeSalesComponent = /** @class */ (function () {
                 _this.flashMensaje.show('لا يوجد للموظف مبيعات في الفترة المحدة.', { cssClass: 'alert-danger', timeout: 5000 });
             _this.creatChart();
         });
-        // console.log(this.dataSource.data);
-        // displayedColumns=['date','time','quantity','price','pay','remains'];      
     };
     EmployeeSalesComponent.prototype.getValues = function () {
         var _this = this;
@@ -1082,9 +1060,7 @@ var EmployeeSalesComponent = /** @class */ (function () {
             var sum = 0;
             for (var n in label) {
                 if (label[n].localeCompare(i) == 0) {
-                    // console.log(label[n])
                     sum = sum + values[n];
-                    // console.log(sum)
                     values[n] = 0;
                     label[n] = '';
                 }
@@ -1128,7 +1104,7 @@ var EmployeeSalesComponent = /** @class */ (function () {
 /***/ "../../../../../src/app/charts/finance-report/finance-report.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "\r\n<mat-toolbar  class=\"PageTitle\" style=\"background-color:transparent\">\r\n    <span class=\"toolbar-spacer\"></span>\r\n<span color=\"primary\">   <h2>  {{reportName}} </h2> </span>\r\n<span class=\"toolbar-spacer\"></span>\r\n   </mat-toolbar>  \r\n   <div   class=\" col-md-12 col-sm-12 contaner\" dir=\"rtl\">\r\n\r\n       \r\n        <!-- <span class=\"toolbar-spacer\"></span> -->\r\n        <div class=\"reportBar col-md-4 col-sm-12 right\" *ngIf=\"hasSelection\" >\r\n            <mat-form-field class=\"headerText\" >\r\n            <mat-select placeholder=\"اسم الموظف\" [(ngModel)]=\"selectedValue\" name=\"item\" (change)='changeProduct()' >\r\n                <mat-option *ngFor=\"let item of items\" [value]=\" item.$key \">\r\n                    {{item.name}}\r\n                </mat-option>        \r\n            </mat-select>\r\n            </mat-form-field>\r\n        </div>\r\n\r\n\r\n   \r\n\r\n\r\n        <div  *ngIf=\"hasDate\" class=\" col-md-4 col-sm-6 right\" > \r\n            <mat-form-field class=\"headerText\">\r\n                <input   [value]='startDate' matInput [matDatepicker]=\"picker\" placeholder=\" من تاريخ \" (dateChange)=\"changeDate('from', $event) \" >\r\n                <mat-datepicker-toggle matSuffix [for]=\"picker\"></mat-datepicker-toggle>\r\n                <mat-datepicker #picker disabled=\"false\" ></mat-datepicker>\r\n            </mat-form-field>\r\n        </div>\r\n\r\n        <div  *ngIf=\"hasDate\" class=\" col-md-4 col-sm-6 right\" > \r\n            <mat-form-field class=\"headerText\">\r\n                <input matInput  [value]='endDate'  [matDatepicker]=\"ToDate\" placeholder=\" إلى تاريخ \" (dateChange)=\"changeDate('to', $event)\" >\r\n                <mat-datepicker-toggle matSuffix [for]=\"ToDate\"></mat-datepicker-toggle>\r\n                <mat-datepicker   #ToDate disabled=\"false\"  ></mat-datepicker>\r\n            </mat-form-field>\r\n            </div> \r\n\r\n</div>\r\n<div   class=\" col-md-12 col-sm-12 \"  >\r\n\r\n<flash-messages></flash-messages>\r\n\r\n</div>\r\n<div class=\"col-md-12 col-sm-12\">\r\n<mat-tab-group class=\"tab-group\" (selectedTabChange)='selectChange($event)' >\r\n    <mat-tab label=\"التقرير\" >\r\n    <div class=\"tabContent\">\r\n            <!-- <mat-paginator dir=\"rtl\" [pageSizeOptions]=\"[5, 10, 15, 100]\" ></mat-paginator>\r\n             -->\r\n             <mat-table #table  class=\"reportTable\" [dataSource]=\"dataSourceIncome\" matSort>\r\n     <!--   columnsIncome=['box','bank','Debtors','fixedAssets','capital','loans','creditors']; -->   \r\n                         <!-- <ng-container matColumnDef=\"fixedAssets\">\r\n                             <mat-header-cell *matHeaderCellDef mat-sort-header> الأصول الثابتة</mat-header-cell>\r\n                             <mat-cell *matCellDef=\"let row\"> {{row.fixedAssets }} </mat-cell>\r\n                         </ng-container> -->\r\n                         <ng-container matColumnDef=\"box\">\r\n                                 <mat-header-cell *matHeaderCellDef mat-sort-header > الصندوق </mat-header-cell>\r\n                                 <mat-cell *matCellDef=\"let row\">\r\n     \r\n                                     {{row.box}} \r\n     \r\n                                 </mat-cell>\r\n                                 </ng-container>\r\n                                 <ng-container matColumnDef=\"bank\">\r\n                                     <mat-header-cell *matHeaderCellDef mat-sort-header> البنك </mat-header-cell>\r\n                                     <mat-cell *matCellDef=\"let row\"> {{row.bank}} </mat-cell>\r\n                                 </ng-container>\r\n                                     <ng-container matColumnDef=\"Debtors\">\r\n                                         <mat-header-cell *matHeaderCellDef mat-sort-header> مدينون </mat-header-cell>\r\n                                         <mat-cell *matCellDef=\"let row\"> {{row.Debtors}} </mat-cell>\r\n                                  </ng-container>\r\n     \r\n     \r\n                                  <ng-container matColumnDef=\"capital\">\r\n                                        <mat-header-cell *matHeaderCellDef mat-sort-header class=\"righborder\"> رأس المال </mat-header-cell>\r\n                                        <mat-cell *matCellDef=\"let row\"> {{row.capital }} </mat-cell>\r\n                                </ng-container>\r\n                                    \r\n                                <ng-container matColumnDef=\"loans\">\r\n                                            <mat-header-cell *matHeaderCellDef mat-sort-header>القروض  </mat-header-cell>\r\n                                            <mat-cell *matCellDef=\"let row\"> {{row.loans }} </mat-cell>\r\n                                </ng-container>\r\n                                <ng-container matColumnDef=\"creditors\">\r\n                                            <mat-header-cell *matHeaderCellDef mat-sort-header>الدائنين   </mat-header-cell>\r\n                                            <mat-cell *matCellDef=\"let row\"> {{row.creditors }} </mat-cell>\r\n                                </ng-container>\r\n            \r\n                                        \r\n                                <ng-container matColumnDef=\"fixedAssets\">\r\n                                        <mat-header-cell *matHeaderCellDef mat-sort-header>الاصول الثابته   </mat-header-cell>\r\n                                        <mat-cell *matCellDef=\"let row\"> {{row.fixedAssets }} </mat-cell>\r\n                            </ng-container>\r\n                 <ng-container *matHeaderRowDef=\"allcolumns\">\r\n                        <div class=\"mat-header-row header-group-row\">\r\n                          <div class=\"mat-header-cell header-group Theader\" role=\"columnheader\" >الأصول </div>\r\n                          <div class=\"mat-header-cell Theader\" role=\"columnheader\">الخصوم</div>\r\n                        </div>\r\n\r\n                        <mat-header-row></mat-header-row>\r\n                      </ng-container>\r\n\r\n                 <!-- <mat-header-cell matHeaderCellDef='fixed'>أصول ثابتة  </mat-header-cell>\r\n                 <mat-header-cell matHeaderCellDef='dynamic'>أصول متداولة  </mat-header-cell> -->\r\n         \r\n                 <mat-row *matRowDef=\"let row; columns: allcolumns;\"></mat-row>\r\n                 </mat-table>\r\n\r\n    </div>\r\n    </mat-tab>\r\n\r\n</mat-tab-group>\r\n</div>\r\n<!-- (matSortChange)=\"sortData($event)\" -->\r\n\r\n\r\n<!-- <mat-toolbar  class=\"PageTitle\" dir=\"rtl\" >\r\n    <mat-toolbar-row>\r\n\r\n\r\n          <span class=\"toolbar-spacer\"></span>\r\n\r\n  </mat-toolbar-row>\r\n</mat-toolbar>\r\n\r\n<div class=\"col-md-4 col-sm-12\"></div>\r\n<div class=\"col-md-4 col-sm-12\">\r\n<flash-messages></flash-messages>\r\n</div>\r\n\r\n<div class=\"col-md-12 col-sm-12\">\r\n<button (click)=\"test()\">click</button>\r\n</div> -->\r\n<!-- (matSortChange)=\"sortData($event)\" -->\r\n "
+module.exports = "\r\n<mat-toolbar  class=\"PageTitle\" style=\"background-color:transparent\">\r\n    <span class=\"toolbar-spacer\"></span>\r\n<span color=\"primary\">   <h2>  {{reportName}} </h2> </span>\r\n<span class=\"toolbar-spacer\"></span>\r\n   </mat-toolbar>  \r\n   <div   class=\" col-md-12 col-sm-12 contaner\" dir=\"rtl\">\r\n\r\n       \r\n        <!-- <span class=\"toolbar-spacer\"></span> -->\r\n        <div class=\"reportBar col-md-4 col-sm-12 right\" *ngIf=\"hasSelection\" >\r\n            <mat-form-field class=\"headerText\" >\r\n            <mat-select placeholder=\"اسم الموظف\" [(ngModel)]=\"selectedValue\" name=\"item\" (change)='changeProduct()' >\r\n                <mat-option *ngFor=\"let item of items\" [value]=\" item.$key \">\r\n                    {{item.name}}\r\n                </mat-option>        \r\n            </mat-select>\r\n            </mat-form-field>\r\n        </div>\r\n\r\n\r\n   \r\n\r\n\r\n        <div  *ngIf=\"hasDate\" class=\" col-md-4 col-sm-6 right\" > \r\n            <mat-form-field class=\"headerText\">\r\n                <input   [value]='startDate' matInput [matDatepicker]=\"picker\" placeholder=\" من تاريخ \" (dateChange)=\"changeDate('from', $event) \" >\r\n                <mat-datepicker-toggle matSuffix [for]=\"picker\"></mat-datepicker-toggle>\r\n                <mat-datepicker #picker disabled=\"false\" ></mat-datepicker>\r\n            </mat-form-field>\r\n        </div>\r\n\r\n        <div  *ngIf=\"hasDate\" class=\" col-md-4 col-sm-6 right\" > \r\n            <mat-form-field class=\"headerText\">\r\n                <input matInput  [value]='endDate'  [matDatepicker]=\"ToDate\" placeholder=\" إلى تاريخ \" (dateChange)=\"changeDate('to', $event)\" >\r\n                <mat-datepicker-toggle matSuffix [for]=\"ToDate\"></mat-datepicker-toggle>\r\n                <mat-datepicker   #ToDate disabled=\"false\"  ></mat-datepicker>\r\n            </mat-form-field>\r\n            </div> \r\n\r\n</div>\r\n<div   class=\" col-md-12 col-sm-12 \"  >\r\n\r\n<flash-messages></flash-messages>\r\n\r\n</div>\r\n<div class=\"col-md-12 col-sm-12\">\r\n<mat-tab-group class=\"tab-group\" (selectedTabChange)='selectChange($event)' >\r\n    <mat-tab label=\"التقرير\" >\r\n    <div class=\"tabContent\">\r\n           \r\n             <mat-table #table  class=\"reportTable\" [dataSource]=\"dataSourceIncome\" matSort>\r\n     <!--   columnsIncome=['box','bank','Debtors','fixedAssets','capital','loans','creditors']; -->   \r\n                         <!-- <ng-container matColumnDef=\"fixedAssets\">\r\n                             <mat-header-cell *matHeaderCellDef mat-sort-header> الأصول الثابتة</mat-header-cell>\r\n                             <mat-cell *matCellDef=\"let row\"> {{row.fixedAssets }} </mat-cell>\r\n                         </ng-container> -->\r\n                         <ng-container matColumnDef=\"box\">\r\n                                 <mat-header-cell *matHeaderCellDef mat-sort-header > الصندوق </mat-header-cell>\r\n                                 <mat-cell *matCellDef=\"let row\">\r\n     \r\n                                     {{row.box}} \r\n     \r\n                                 </mat-cell>\r\n                                 </ng-container>\r\n                                 <ng-container matColumnDef=\"bank\">\r\n                                     <mat-header-cell *matHeaderCellDef mat-sort-header> البنك </mat-header-cell>\r\n                                     <mat-cell *matCellDef=\"let row\"> {{row.bank}} </mat-cell>\r\n                                 </ng-container>\r\n                                     <ng-container matColumnDef=\"Debtors\">\r\n                                         <mat-header-cell *matHeaderCellDef mat-sort-header> مدينون </mat-header-cell>\r\n                                         <mat-cell *matCellDef=\"let row\"> {{row.Debtors}} </mat-cell>\r\n                                  </ng-container>\r\n     \r\n     \r\n                                  <ng-container matColumnDef=\"capital\">\r\n                                        <mat-header-cell *matHeaderCellDef mat-sort-header class=\"righborder\"> رأس المال </mat-header-cell>\r\n                                        <mat-cell *matCellDef=\"let row\"> {{row.capital }} </mat-cell>\r\n                                </ng-container>\r\n                                    \r\n                                <ng-container matColumnDef=\"loans\">\r\n                                            <mat-header-cell *matHeaderCellDef mat-sort-header>القروض  </mat-header-cell>\r\n                                            <mat-cell *matCellDef=\"let row\"> {{row.loans }} </mat-cell>\r\n                                </ng-container>\r\n                                <ng-container matColumnDef=\"creditors\">\r\n                                            <mat-header-cell *matHeaderCellDef mat-sort-header>الدائنين   </mat-header-cell>\r\n                                            <mat-cell *matCellDef=\"let row\"> {{row.creditors }} </mat-cell>\r\n                                </ng-container>\r\n            \r\n                                        \r\n                                <ng-container matColumnDef=\"fixedAssets\">\r\n                                        <mat-header-cell *matHeaderCellDef mat-sort-header>الاصول الثابته   </mat-header-cell>\r\n                                        <mat-cell *matCellDef=\"let row\"> {{row.fixedAssets }} </mat-cell>\r\n                            </ng-container>\r\n                 <ng-container *matHeaderRowDef=\"allcolumns\">\r\n                        <div class=\"mat-header-row header-group-row\">\r\n                          <div class=\"mat-header-cell header-group Theader\" role=\"columnheader\" >الأصول </div>\r\n                          <div class=\"mat-header-cell Theader\" role=\"columnheader\">الخصوم</div>\r\n                        </div>\r\n\r\n                        <mat-header-row></mat-header-row>\r\n                      </ng-container>\r\n\r\n                 <!-- <mat-header-cell matHeaderCellDef='fixed'>أصول ثابتة  </mat-header-cell>\r\n                 <mat-header-cell matHeaderCellDef='dynamic'>أصول متداولة  </mat-header-cell> -->\r\n         \r\n                 <mat-row *matRowDef=\"let row; columns: allcolumns;\"></mat-row>\r\n                 </mat-table>\r\n\r\n    </div>\r\n    </mat-tab>\r\n\r\n</mat-tab-group>\r\n</div>\r\n<!-- (matSortChange)=\"sortData($event)\" -->\r\n\r\n\r\n<!-- <mat-toolbar  class=\"PageTitle\" dir=\"rtl\" >\r\n    <mat-toolbar-row>\r\n\r\n\r\n          <span class=\"toolbar-spacer\"></span>\r\n\r\n  </mat-toolbar-row>\r\n</mat-toolbar>\r\n\r\n<div class=\"col-md-4 col-sm-12\"></div>\r\n<div class=\"col-md-4 col-sm-12\">\r\n<flash-messages></flash-messages>\r\n</div>\r\n\r\n<div class=\"col-md-12 col-sm-12\">\r\n<button (click)=\"test()\">click</button>\r\n</div> -->\r\n<!-- (matSortChange)=\"sortData($event)\" -->\r\n "
 
 /***/ }),
 
@@ -1254,9 +1230,7 @@ var FinanceReportComponent = /** @class */ (function () {
                                     var month = parseInt(i, 10);
                                     var day = mon[i];
                                     for (var n in day) {
-                                        // console.log(n)
                                         var ymd = new Date(year, month - 1, parseInt(n, 10));
-                                        // console.log(ymd <= this.startDate)
                                         if (ymd >= _this.startDate && ymd <= _this.endDate) {
                                             var shifts = day[n];
                                             for (var s in shifts) {
@@ -1337,8 +1311,6 @@ var FinanceReportComponent = /** @class */ (function () {
                         }
                         if (netIncome_1.netIncome == 0)
                             netIncome_1.result = 'تعادل';
-                        console.log(netIncome_1.result);
-                        console.log(_this.finance);
                         _this.dataSourceIncome.data.push(_this.finance);
                         _this.dataSourceIncome._updateChangeSubscription();
                     });
@@ -1717,7 +1689,6 @@ var ProductReportComponent = /** @class */ (function () {
         var emp;
         emp = this.route.snapshot.params.id;
         if (emp != null) {
-            console.log(emp);
             this.selectedValue = emp;
             this.changeProduct();
         }
@@ -1812,7 +1783,6 @@ var ProductReportComponent = /** @class */ (function () {
         });
     };
     ProductReportComponent.prototype.changeProduct = function () {
-        console.log(this.selectedValue);
         if (this.selectedValue != undefined) {
             if (this.startDate && this.endDate) {
                 if (this.startDate <= this.endDate) {
@@ -2144,7 +2114,6 @@ var SalesReportComponent = /** @class */ (function () {
             this.flashMensaje.show('لا تملك عمليات بيع حاليا.', { cssClass: 'alert-danger', timeout: 100000,
                 closeOnClick: true, showCloseBtn: true });
         }
-        console.log(this.dataSource.data);
     };
     SalesReportComponent.prototype.changeDate = function (type, event) {
         if (type == 'from')
@@ -2180,8 +2149,28 @@ var SalesReportComponent = /** @class */ (function () {
                             'rgba(255, 51, 153,0.4)',
                             'rgba(255, 102, 0, 0.4)',
                             'rgba(51, 102, 255,0.4)',
+                            'rgba(255, 99, 132, 0.4)',
+                            'rgba(54, 162, 235, 0.4)',
+                            'rgba(255, 206, 86, 0.4)',
+                            'rgba(75, 192, 192, 0.4)',
+                            'rgba(153, 102, 255, 0.4)',
+                            'rgba(255, 159, 64, 0.4)',
+                            'rgba(102, 153, 255,0.4)',
+                            'rgba(255, 51, 153,0.4)',
+                            'rgba(255, 102, 0, 0.4)',
+                            'rgba(51, 102, 255,0.4)',
                         ],
                         borderColor: [
+                            'rgba(255,99,132,1)',
+                            'rgba(54, 162, 235, 1)',
+                            'rgba(255, 206, 86, 1)',
+                            'rgba(75, 192, 192, 1)',
+                            'rgba(153, 102, 255, 1)',
+                            'rgba(255, 159, 64, 1)',
+                            'rgba(102, 153, 255, 1)',
+                            'rgba(255, 51, 153, 1)',
+                            'rgba(255, 102, 0, 1)',
+                            'rgba(51, 102, 255, 1)',
                             'rgba(255,99,132,1)',
                             'rgba(54, 162, 235, 1)',
                             'rgba(255, 206, 86, 1)',
@@ -2203,7 +2192,10 @@ var SalesReportComponent = /** @class */ (function () {
                 },
                 scales: {
                     xAxes: [{
-                            display: true,
+                            scaleLabel: {
+                                labelString: "المنتجات",
+                                display: true,
+                            },
                             ticks: {
                                 beginAtZero: true
                             }
@@ -2213,7 +2205,10 @@ var SalesReportComponent = /** @class */ (function () {
                             ticks: {
                                 beginAtZero: true
                             },
-                            label: "الكمية المباعة"
+                            scaleLabel: {
+                                labelString: "الكمية المبيعة ",
+                                display: true,
+                            },
                         }],
                 },
                 tooltips: {
@@ -2416,7 +2411,6 @@ var ReportsService = /** @class */ (function () {
                 _this.ProductList.push(temp);
             });
         });
-        console.log(this.ProductList);
         return this.ProductList;
     };
     ReportsService.prototype.getProductreceipts = function (key, startDate, EndDate) {
@@ -2451,8 +2445,6 @@ var ReportsService = /** @class */ (function () {
             }
         });
         this.productInfos = total;
-        console.log(total.length);
-        console.log(this.productInfos);
         return this.productInfos;
     };
     ReportsService.prototype.getEmployeeSales = function (key, startDate, EndDate) {
@@ -2470,21 +2462,15 @@ var ReportsService = /** @class */ (function () {
                 receipt = temp.payload.toJSON();
                 if (receipt.employeeID != key)
                     continue;
-                console.log("inside");
-                console.log(receipt);
                 var date = receipt.date.split('-');
                 //date[0] year , date[1] month , date[2] day
                 if (date[0] < startDate.getFullYear() || date[0] > EndDate.getFullYear() ||
                     date[1] < startDate.getUTCMonth() + 1 || date[1] > EndDate.getUTCMonth() + 1 ||
                     date[2] < startDate.getDate() || date[2] > EndDate.getDate()) {
-                    console.log('indside date if');
                     continue;
                 }
-                console.log('indside date else');
                 var q = 0;
-                console.log(typeof receipt.products);
                 for (var prods in receipt.products) {
-                    console.log(receipt.products[prods]);
                     q += receipt.products[prods].quantity;
                 }
                 var info = new __WEBPACK_IMPORTED_MODULE_2__receipt_model__["e" /* empsales */]();
@@ -2498,7 +2484,6 @@ var ReportsService = /** @class */ (function () {
                 _this.emplSales.push(info);
             }
         });
-        console.log(this.emplSales);
         // displayedColumns=['date','time','quantity','price','pay','remains'];     
         return this.emplSales;
     };
@@ -2507,7 +2492,6 @@ var ReportsService = /** @class */ (function () {
         this.firebase.list(window.name + '/employees/' + key + '/workingTime').snapshotChanges().subscribe(function (list) {
             for (var _i = 0, list_2 = list; _i < list_2.length; _i++) {
                 var temp = list_2[_i];
-                console.log(typeof temp.key);
                 var year = parseInt(temp.key, 10);
                 var mon = temp.payload.toJSON();
                 // console.log(mon)
@@ -2535,8 +2519,6 @@ var ReportsService = /** @class */ (function () {
                 }
             }
         });
-        console.log(source);
-        console.log(source.data.length);
     };
     ReportsService = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
@@ -2647,7 +2629,6 @@ var AuthService = /** @class */ (function () {
     AuthService.prototype.register = function (email, password, firstName, lastName, phone, salary, picPATH, picName) {
         try {
             var secondaryApp = __WEBPACK_IMPORTED_MODULE_1_firebase_app__["initializeApp"](__WEBPACK_IMPORTED_MODULE_6__environments_environment_prod__["a" /* environment */].firebaseConfig, "Secondary");
-            //const result = this.afAuth.auth.createUserWithEmailAndPassword(email,password);
             secondaryApp.auth().createUserWithEmailAndPassword(email, password).then(function (firebaseUser) {
                 var x = firebaseUser.uid;
                 __WEBPACK_IMPORTED_MODULE_1_firebase_app__["database"]().ref(window.name + '/employees').child(x).set({
@@ -2660,20 +2641,11 @@ var AuthService = /** @class */ (function () {
                     picPATH: picPATH,
                     picName: picName
                 });
-                //I don't know if the next statement is necessary 
                 secondaryApp.auth().signOut();
                 return x;
             });
-            //result.then((r)=>{
-            //console.log(r.uid);
-            // })
-            // if(result){
-            //  return result.uid;
-            // this.navCtrl.push(HomePage);
-            //   }
         }
         catch (e) {
-            //this.navCtrl.push(WelcomePage);
             return 'fail';
         }
     };
@@ -2683,28 +2655,6 @@ var AuthService = /** @class */ (function () {
             _this.afAuth.auth.createUserWithEmailAndPassword(email, password)
                 .then(function (userData) {
                 resolve(userData);
-                /*  firebase.database().ref(businessname+'/manager').set({
-                    ReceiptID:ReceiptID,
-                    email: email,
-                    fname: fname,
-                    lname: lname,
-                    password: password,
-                    phone: phone,
-                    businessname: businessname,
-                    picPath: picPath,
-                    picName: picName
-                    });
-                    firebase.database().ref(window.name+'/employees').child(userData.uid).set({
-                      username: '',
-                      email: email,
-                      firstName: fname,
-                      lastName: lname,
-                      password: password,
-                      phone: phone,
-                      salary: 0,
-                      picPATH: picPath,
-                      picName: picName
-                      });*/
             }, function (err) { return reject(err); });
         });
     };
@@ -2733,27 +2683,9 @@ var AuthService = /** @class */ (function () {
         });
     };
     AuthService.prototype.loginTestFirst = function (email, pass) {
-        console.log('s');
         var ref = __WEBPACK_IMPORTED_MODULE_1_firebase_app__["database"]().ref();
         ref.orderByChild("email").equalTo(email).once("value", function (snapshot) {
-            console.log(snapshot.key);
         });
-        /*  firebase.database().ref().child('manager').child('email').isEqual("najla123@gmail.com").snapshotChanges().subscribe(item=>{
-            for(var element2 in item) {
-              var y = item[element2].payload.key;
-            this.db.list(y+'/manager').snapshotChanges().subscribe(element => {
-              element.forEach(element2 => {
-              var y = element2.payload.toJSON();
-              y["$key"] = element2.key;
-             if(y["email"] == 'najla123@gmail.com'){
-               console.log('true')
-               return true;
-              }
-              });
-            });
-            }
-          });*/
-        // return false;
     };
     AuthService.prototype.loginEmail = function (email, pass) {
         var _this = this;
@@ -2762,12 +2694,13 @@ var AuthService = /** @class */ (function () {
                 .then(function (userData) { return resolve(userData); }, function (err) { return reject(err); });
         });
     };
-    AuthService.prototype.resetPass = function (password) {
-        __WEBPACK_IMPORTED_MODULE_1_firebase_app__["auth"]().currentUser.updatePassword(password).then(function () {
-            console.log('s');
-        }).catch(function () {
-            console.log('fail');
+    AuthService.prototype.resetPass = function (emailAddress) {
+        __WEBPACK_IMPORTED_MODULE_1_firebase_app__["auth"]().sendPasswordResetEmail(emailAddress).then(function () {
+            return true;
+        }).catch(function (error) {
+            return false;
         });
+        return true;
     };
     AuthService.prototype.getAuth = function () {
         return this.afAuth.authState.map(function (auth) { return auth; });
@@ -2934,22 +2867,20 @@ var AddEmpComponent = /** @class */ (function () {
                 _this.num = (uploadTask_1.snapshot.bytesTransferred / uploadTask_1.snapshot.totalBytes) * 100;
             }, function (error) {
                 // upload failed
-                console.log(error);
             }, function () {
                 // upload success
                 var r = _this.employeeService.insert(employeeForm.value, uploadTask_1.snapshot.downloadURL, file_1.name);
                 // if(r == '1'){
                 _this.resetForm(employeeForm);
                 _this.router.navigate(['mainPage/empolyee']).then(function (res) {
-                    _this.flashMensaje.show('تم إضافة الموظف بنجاح.', { cssClass: 'alert-success', timeout: 4000 });
+                    _this.flashMensaje.show('تم إضافة الموظف بنجاح.', { cssClass: 'alert-success', timeout: 100000,
+                        closeOnClick: true, showCloseBtn: true });
                 }); //}
                 // this.tostr.success('Submitted Succcessfully', 'Employee Register');
             });
         }
         else {
             var x = this.employeeService.insert(employeeForm.value, 'none', 'none');
-            console.log(x);
-            //if(x == '1'){
             this.resetForm(employeeForm);
             this.router.navigate(['mainPage/empolyee']).then(function (res) {
                 _this.flashMensaje.show('تم إضافة الموظف بنجاح.', { cssClass: 'alert-success', timeout: 100000,
@@ -2986,7 +2917,6 @@ var AddEmpComponent = /** @class */ (function () {
             data: { message: '' }
         });
         dialogRef.afterClosed().subscribe(function (result) {
-            console.log('The dialog was closed');
             if (result == true) {
                 _this.resetForm();
                 _this.router.navigate(['mainPage/empolyee']);
@@ -3201,8 +3131,6 @@ var EmployeeService = /** @class */ (function () {
         ;
         employee.password = passArray.join("");
         //end genrat password
-        //if(result){
-        // employee.username = employee.firstName; 
         if (path == 'none') {
             employee.picPATH = 'https://firebasestorage.googleapis.com/v0/b/erad-system.appspot.com/o/defaultEmployee.jpg?alt=media&token=ddf714e2-bf10-43ac-a575-75a52fde307e';
             employee.picName = 'defaultEmployee.jpg';
@@ -3217,74 +3145,8 @@ var EmployeeService = /** @class */ (function () {
         if (employee.salary == null) {
             employee.salary = 0;
         }
-        // }else{
-        //fire alarm
-        // }
-        //let n;
-        //  var fRef = firebase.database().ref(window.name+'/employees');
-        //this.temp='1';
         var x = this.authService.register(employee.email, employee.password, employee.firstName, employee.lastName, employee.phone, employee.salary, employee.picPATH, employee.picName);
         this.sendMail(employee);
-        // console.log('windo: '+window.name);
-        /* console.log(x);
-             if(x != 'fail')
-             {fRef.child(x).set({
-               username: employee.username,
-               email: employee.email,
-               firstName: employee.firstName,
-               lastName: employee.lastName,
-               password: employee.password,
-               phone: employee.phone,
-               salary: employee.salary,
-               picPATH: employee.picPATH,
-               picName: employee.picName
-               });
-               console.log('complited')
-     
-             }else{
-               console.log('error');
-             }*/
-        /* .then(
-         (v) => {
-           console.log(v)
-           if(v != 'fail')
-           {fRef.child(v).set({
-             username: employee.username,
-             email: employee.email,
-             firstName: employee.firstName,
-             lastName: employee.lastName,
-             password: employee.password,
-             phone: employee.phone,
-             salary: employee.salary,
-             picPATH: employee.picPATH,
-             picName: employee.picName
-             });
-             this.temp='1';
-             console.log('rr')
-   
-           }else{
-             console.log('s');
-             this.temp='';
-             this.temp = '0';
-           }
-          
-   
-       });
-       console.log(this.temp);
-       return this.temp;*/
-        /*this.firebase.list('employees').push({
-             username: employee.username,
-             email: employee.email,
-             firstName: employee.firstName,
-             lastName: employee.lastName,
-             password: employee.password,
-             phone: employee.phone,
-             salary: employee.salary,
-             picPATH: employee.picPATH,
-             picName: employee.picName
-             });*/
-        //  }).catch((err) =>{
-        //    x= false;
     };
     EmployeeService.prototype.sendMail = function (employee) {
         var request = __webpack_require__("../../../../request/index.js");
@@ -3303,19 +3165,15 @@ var EmployeeService = /** @class */ (function () {
         request(q, function (error, response, body) {
             if (error)
                 throw new Error(error);
-            console.log(body);
         });
     };
     EmployeeService.prototype.delete = function (employee) {
         if (confirm("هل انت متأكد من تسريح الموظف")) {
             this.employeeList.remove(employee.$key);
-            //let fileName = employee.picPATH.substring(employee.picPATH.indexOf(',')+1);
             if (employee.picName != 'defaultEmployee.jpg') {
                 var storageRef = __WEBPACK_IMPORTED_MODULE_3_firebase__["storage"]().ref();
                 storageRef.child(employee.picName).delete();
             }
-            // let admin = require('firebase-admin');
-            //   firebase.auth().currentUser.(employee.$key)..deleteUser(employee.email);
             this.router.navigate(['mainPage/empolyee']);
         }
     };
@@ -3451,7 +3309,6 @@ var ViewEmpComponent = /** @class */ (function () {
                 data: { name: this.employee.firstName, salary: this.employee.salary }
             });
             dialogRef.afterClosed().subscribe(function (result) {
-                console.log('The dialog was closed');
                 if (result) {
                     var s = __WEBPACK_IMPORTED_MODULE_2_firebase__["database"]().ref(window.name + '/employees');
                     s.child(_this.temp).update({ salary: result });
@@ -3468,7 +3325,6 @@ var ViewEmpComponent = /** @class */ (function () {
                 data: { message: this.employee.firstName }
             });
             dialogRef.afterClosed().subscribe(function (result) {
-                console.log('The dialog was closed');
                 if (result == true) {
                     _this.delete();
                 }
@@ -3610,10 +3466,7 @@ var ExpensesComponent = /** @class */ (function () {
         var _this = this;
         this.expenses = expensesForm.value;
         var d1 = new Date(this.expenses.year, this.expenses.month, 1);
-        console.log(d1);
         d1.setDate(d1.getDate() - 1);
-        console.log(d1);
-        //  this.expenses.expenses = this.expenses.expenses;
         var date = this.expenses.month + '-' + this.expenses.year;
         __WEBPACK_IMPORTED_MODULE_3_firebase_app__["database"]().ref(window.name + '/manager').child('xExpenses').child(date).set({
             expenses: (this.expenses.expenses / (d1.getDate()))
@@ -3626,8 +3479,6 @@ var ExpensesComponent = /** @class */ (function () {
     ExpensesComponent.prototype.resetForm = function (expensesForm) {
         if (expensesForm != null) {
             expensesForm.reset();
-            //  this.startDate =new Date();  
-            // this.endDate =new Date();  
         }
         this.expenses = {
             $key: null,
@@ -3687,7 +3538,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/finance/finance.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<mat-toolbar  class=\"PageTitle\">\r\n\r\n<mat-toolbar-row>\r\n  \r\n      <span class=\"toolbar-spacer\"></span>\r\n\r\n<span color=\"primary\">   <h2>  {{title}}  </h2> </span>\r\n\r\n<span class=\"toolbar-spacer\"></span>\r\n\r\n\r\n</mat-toolbar-row>\r\n</mat-toolbar>\r\n\r\n  \r\n  <mat-card class=\"formContainer\" >\r\n    <flash-messages></flash-messages>\r\n  <mat-card-content>\r\n  \r\n    <form  #financeForm=\"ngForm\" (ngSubmit)=\"onSubmit(financeForm)\" dir=\"rtl\">\r\n  \r\n     <input type=\"hidden\" name=\"$key\" #$key=\"ngModel\" [(ngModel)]=\"finance.$key\">\r\n\r\n     <div class=\"row\">\r\n        <h3>الأصول</h3>\r\n      </div>\r\n    <br>\r\n     <div class=\"row\">\r\n       <h4><b>الأصول المتداولة:</b> <span class=\"red\">* (يرجى تعبأة أحد الأصول المتداول على الأقل (الصندوق,البنك))</span> </h4> \r\n     </div>\r\n     <br>\r\n  <div class=\"row\">\r\n      <div class=\"form-group col-md-6 col-sm-12\">\r\n        <label > <h4> الصندوق \r\n          <span>(الأموال المتوفرة في اليد إن وجدت)</span> </h4> </label>\r\n           \r\n   \r\n          <input matInput type=\"number\" name=\"box\" #box=\"ngModel\" placeholder=\"مثال: 2000\"\r\n          [(ngModel)]=\"finance.box\" class=\"form-control\" pattern=\"[0-9]*\" >\r\n    \r\n  \r\n  \r\n        <div *ngIf=\"box.errors && (box.dirty || box.touched)\"  class=\"alert alert-danger\">\r\n            <!--  <div [hidden]=\"!box.errors.required\">*يرجى إدخال المصروفات الشهرية</div>  -->\r\n            <div [hidden]=\"!box.errors.pattern\">*يرجى إدخال أرقام صحيحة فقط</div>\r\n      </div>\r\n      </div>    \r\n      </div>\r\n\r\n      <div class=\"row\">\r\n          <div class=\"form-group col-md-6 col-sm-12\">\r\n            <label > <h4> البنك \r\n              <span>(الأموال المتوفرة في البنك إن وجدت)</span> </h4> </label>\r\n               \r\n       \r\n              <input matInput type=\"number\" name=\"bank\" #bank=\"ngModel\" placeholder=\"مثال: 2000\"\r\n              [(ngModel)]=\"finance.bank\" class=\"form-control\" pattern=\"[0-9]*\" >\r\n        \r\n      \r\n      \r\n            <div *ngIf=\"bank.errors && (bank.dirty || bank.touched)\"  class=\"alert alert-danger\">\r\n            <!--  <div [hidden]=\"!bank.errors.required\">*يرجى إدخال المصروفات الشهرية</div>  -->\r\n              <div [hidden]=\"!bank.errors.pattern\">*يرجى إدخال أرقام صحيحة فقط</div>\r\n          </div>\r\n          </div>    \r\n          </div>\r\n\r\n          <div class=\"row\">\r\n              <div class=\"form-group col-md-6 col-sm-12\">\r\n                <label > <h4> مدينون \r\n                  <span>(الذمم المستحقة على الغير نتيجة عمليات البيع الآجل (على الحساب) إن وجد)</span> </h4> </label>\r\n                   \r\n           \r\n                  <input matInput type=\"number\" name=\"Debtors\" #Debtors=\"ngModel\" placeholder=\"مثال: 2000\"\r\n                  [(ngModel)]=\"finance.Debtors\" class=\"form-control\" pattern=\"[0-9]*\" >\r\n            \r\n          \r\n          \r\n                <div *ngIf=\"Debtors.errors && (Debtors.dirty || Debtors.touched)\"  class=\"alert alert-danger\">\r\n                <!--  <div [hidden]=\"!Debtors.errors.required\">*يرجى إدخال المصروفات الشهرية</div>  -->\r\n                  <div [hidden]=\"!Debtors.errors.pattern\">*يرجى إدخال أرقام صحيحة فقط</div>\r\n              </div>\r\n              </div>    \r\n              </div>\r\n\r\n              <div class=\"row\">\r\n                  <h4><b>الأصول الثابتة:</b></h4>\r\n                </div> \r\n                <br>\r\n              <div class=\"row\">\r\n                  <div class=\"form-group col-md-6 col-sm-12\">\r\n                    <label > <h4> الأصول الثابتة \r\n                      <span>(السيارات,الأثاث والمعدات...)</span> </h4> </label>\r\n                       \r\n               \r\n                      <input matInput type=\"number\" name=\"fixedAssets\" #fixedAssets=\"ngModel\" placeholder=\"مثال: 2000\"\r\n                      [(ngModel)]=\"finance.fixedAssets\" class=\"form-control\" pattern=\"[0-9]*\" >\r\n                \r\n              \r\n              \r\n                    <div *ngIf=\"fixedAssets.errors && (fixedAssets.dirty || fixedAssets.touched)\"  class=\"alert alert-danger\">\r\n                    <!--  <div [hidden]=\"!fixedAssets.errors.required\">*يرجى إدخال المصروفات الشهرية</div>  -->\r\n                      <div [hidden]=\"!fixedAssets.errors.pattern\">*يرجى إدخال أرقام صحيحة فقط</div>\r\n                  </div>\r\n                  </div>    \r\n                  </div>\r\n\r\n                  <div class=\"row\">\r\n                      <h3>الخصوم</h3>\r\n                    </div>\r\n                    <br>\r\n\r\n                  <div class=\"row\">\r\n                      <div class=\"form-group col-md-6 col-sm-12\">\r\n                        <label > <h4> رأس المال <span class=\"red\">* </span></h4> </label>\r\n                           \r\n                   \r\n                          <input matInput type=\"number\" name=\"capital\" #capital=\"ngModel\" placeholder=\"مثال: 2000\"\r\n                          [(ngModel)]=\"finance.capital\" class=\"form-control\" pattern=\"[0-9]*\" required>\r\n                    \r\n                  \r\n                  \r\n                        <div *ngIf=\"capital.errors && (capital.dirty || capital.touched)\"  class=\"alert alert-danger\">\r\n                          <div [hidden]=\"!fixedAssets.errors.required\">*يرجى إدخال المصروفات الشهرية</div> \r\n                          <div [hidden]=\"!capital.errors.pattern\">*يرجى إدخال أرقام صحيحة فقط</div>\r\n                      </div>\r\n                      </div>    \r\n                      </div>\r\n\r\n                    \r\n                      <div class=\"row\">\r\n                          <div class=\"form-group col-md-6 col-sm-12\">\r\n                            <label > <h4>القروض طويلة الأجل </h4> </label>\r\n                               \r\n                       \r\n                              <input matInput type=\"number\" name=\"Loans\" #Loans=\"ngModel\" placeholder=\"مثال: 2000\"\r\n                              [(ngModel)]=\"finance.Loans\" class=\"form-control\" pattern=\"[0-9]*\" >\r\n                        \r\n                      \r\n                      \r\n                            <div *ngIf=\"Loans.errors && (Loans.dirty || Loans.touched)\"  class=\"alert alert-danger\">\r\n                            <!--  <div [hidden]=\"!Loans.errors.required\">*يرجى إدخال المصروفات الشهرية</div>  -->\r\n                              <div [hidden]=\"!Loans.errors.pattern\">*يرجى إدخال أرقام صحيحة فقط</div>\r\n                          </div>\r\n                          </div>    \r\n                          </div>\r\n\r\n                          <div class=\"row\">\r\n                              <div class=\"form-group col-md-6 col-sm-12\">\r\n                                <label > <h4> مدينون \r\n                                  <span>(الذمم المستحقة على الغير نتيجة عمليات اخرى غير البيع الآجل وتقديم الخدمات, كمنح السلف للموظفين, والذمم المستحقة على الدولة من ضرائب مرتجعة... إن وجد)</span> </h4> </label>\r\n                                   \r\n                           \r\n                                  <input matInput type=\"number\" name=\"creditors\" #creditors=\"ngModel\" placeholder=\"مثال: 2000\"\r\n                                  [(ngModel)]=\"finance.creditors\" class=\"form-control\" pattern=\"[0-9]*\" >\r\n                            \r\n                          \r\n                          \r\n                                <div *ngIf=\"creditors.errors && (creditors.dirty || creditors.touched)\"  class=\"alert alert-danger\">\r\n                                <!--  <div [hidden]=\"!creditors.errors.required\">*يرجى إدخال المصروفات الشهرية</div>  -->\r\n                                  <div [hidden]=\"!creditors.errors.pattern\">*يرجى إدخال أرقام صحيحة فقط</div>\r\n                              </div>\r\n                              </div>    \r\n                              </div>\r\n\r\n                          \r\n      \r\n      <div class=\"row\">\r\n        <button  mat-raised-button class=\"Btns  blueBtn\"  type=\"submit\"\r\n        [disabled]=\"!financeForm.valid\">\r\n            إضافة</button>\r\n          </div>\r\n          </form>\r\n  \r\n        \r\n          </mat-card-content>\r\n  </mat-card>"
+module.exports = "<mat-toolbar  class=\"PageTitle\">\r\n\r\n<mat-toolbar-row>\r\n  \r\n      <span class=\"toolbar-spacer\"></span>\r\n\r\n<span color=\"primary\">   <h2>  {{title}}  </h2> </span>\r\n\r\n<span class=\"toolbar-spacer\"></span>\r\n\r\n\r\n</mat-toolbar-row>\r\n</mat-toolbar>\r\n\r\n  \r\n  <mat-card class=\"formContainer\" >\r\n  <mat-card-content>\r\n  \r\n    <flash-messages></flash-messages>\r\n\r\n    <form  #financeForm=\"ngForm\" (ngSubmit)=\"onSubmit(financeForm)\" dir=\"rtl\">\r\n  \r\n     <input type=\"hidden\" name=\"$key\" #$key=\"ngModel\" [(ngModel)]=\"finance.$key\">\r\n\r\n     <div class=\"row\">\r\n        <h3>الأصول</h3>\r\n      </div>\r\n    <br>\r\n     <div class=\"row\">\r\n       <h4><b>الأصول المتداولة:</b> <span class=\"red\">* (يرجى تعبأة أحد الأصول المتداول على الأقل (الصندوق,البنك))</span> </h4> \r\n     </div>\r\n     <br>\r\n  <div class=\"row\">\r\n      <div class=\"form-group col-md-6 col-sm-12\">\r\n        <label > <h4> الصندوق \r\n          <span>(الأموال المتوفرة في اليد إن وجدت)</span> </h4> </label>\r\n           \r\n   \r\n          <input matInput type=\"number\" name=\"box\" #box=\"ngModel\" placeholder=\"مثال: 2000\"\r\n          [(ngModel)]=\"finance.box\" class=\"form-control\" pattern=\"[0-9]*\" >\r\n    \r\n  \r\n  \r\n        <div *ngIf=\"box.errors && (box.dirty || box.touched)\"  class=\"alert alert-danger\">\r\n            <!--  <div [hidden]=\"!box.errors.required\">*يرجى إدخال المصروفات الشهرية</div>  -->\r\n            <div [hidden]=\"!box.errors.pattern\">*يرجى إدخال أرقام صحيحة فقط</div>\r\n      </div>\r\n      </div>    \r\n      </div>\r\n\r\n      <div class=\"row\">\r\n          <div class=\"form-group col-md-6 col-sm-12\">\r\n            <label > <h4> البنك \r\n              <span>(الأموال المتوفرة في البنك إن وجدت)</span> </h4> </label>\r\n               \r\n       \r\n              <input matInput type=\"number\" name=\"bank\" #bank=\"ngModel\" placeholder=\"مثال: 2000\"\r\n              [(ngModel)]=\"finance.bank\" class=\"form-control\" pattern=\"[0-9]*\" >\r\n        \r\n      \r\n      \r\n            <div *ngIf=\"bank.errors && (bank.dirty || bank.touched)\"  class=\"alert alert-danger\">\r\n            <!--  <div [hidden]=\"!bank.errors.required\">*يرجى إدخال المصروفات الشهرية</div>  -->\r\n              <div [hidden]=\"!bank.errors.pattern\">*يرجى إدخال أرقام صحيحة فقط</div>\r\n          </div>\r\n          </div>    \r\n          </div>\r\n\r\n          <div class=\"row\">\r\n              <div class=\"form-group col-md-6 col-sm-12\">\r\n                <label > <h4> مدينون \r\n                  <span>(الذمم المستحقة على الغير نتيجة عمليات البيع الآجل (على الحساب) إن وجد)</span> </h4> </label>\r\n                   \r\n           \r\n                  <input matInput type=\"number\" name=\"Debtors\" #Debtors=\"ngModel\" placeholder=\"مثال: 2000\"\r\n                  [(ngModel)]=\"finance.Debtors\" class=\"form-control\" pattern=\"[0-9]*\" >\r\n            \r\n          \r\n          \r\n                <div *ngIf=\"Debtors.errors && (Debtors.dirty || Debtors.touched)\"  class=\"alert alert-danger\">\r\n                <!--  <div [hidden]=\"!Debtors.errors.required\">*يرجى إدخال المصروفات الشهرية</div>  -->\r\n                  <div [hidden]=\"!Debtors.errors.pattern\">*يرجى إدخال أرقام صحيحة فقط</div>\r\n              </div>\r\n              </div>    \r\n              </div>\r\n\r\n              <div class=\"row\">\r\n                  <h4><b>الأصول الثابتة:</b></h4>\r\n                </div> \r\n                <br>\r\n              <div class=\"row\">\r\n                  <div class=\"form-group col-md-6 col-sm-12\">\r\n                    <label > <h4> الأصول الثابتة \r\n                      <span>(السيارات,الأثاث والمعدات...)</span> </h4> </label>\r\n                       \r\n               \r\n                      <input matInput type=\"number\" name=\"fixedAssets\" #fixedAssets=\"ngModel\" placeholder=\"مثال: 2000\"\r\n                      [(ngModel)]=\"finance.fixedAssets\" class=\"form-control\" pattern=\"[0-9]*\" >\r\n                \r\n              \r\n              \r\n                    <div *ngIf=\"fixedAssets.errors && (fixedAssets.dirty || fixedAssets.touched)\"  class=\"alert alert-danger\">\r\n                    <!--  <div [hidden]=\"!fixedAssets.errors.required\">*يرجى إدخال المصروفات الشهرية</div>  -->\r\n                      <div [hidden]=\"!fixedAssets.errors.pattern\">*يرجى إدخال أرقام صحيحة فقط</div>\r\n                  </div>\r\n                  </div>    \r\n                  </div>\r\n\r\n                  <div class=\"row\">\r\n                      <h3>الخصوم</h3>\r\n                    </div>\r\n                    <br>\r\n\r\n                  <div class=\"row\">\r\n                      <div class=\"form-group col-md-6 col-sm-12\">\r\n                        <label > <h4> رأس المال <span class=\"red\">* </span></h4> </label>\r\n                           \r\n                   \r\n                          <input matInput type=\"number\" name=\"capital\" #capital=\"ngModel\" placeholder=\"مثال: 2000\"\r\n                          [(ngModel)]=\"finance.capital\" class=\"form-control\" pattern=\"[0-9]*\" required>\r\n                    \r\n                  \r\n                  \r\n                        <div *ngIf=\"capital.errors && (capital.dirty || capital.touched)\"  class=\"alert alert-danger\">\r\n                          <div [hidden]=\"!fixedAssets.errors.required\">*يرجى إدخال المصروفات الشهرية</div> \r\n                          <div [hidden]=\"!capital.errors.pattern\">*يرجى إدخال أرقام صحيحة فقط</div>\r\n                      </div>\r\n                      </div>    \r\n                      </div>\r\n\r\n                    \r\n                      <div class=\"row\">\r\n                          <div class=\"form-group col-md-6 col-sm-12\">\r\n                            <label > <h4>القروض طويلة الأجل </h4> </label>\r\n                               \r\n                       \r\n                              <input matInput type=\"number\" name=\"Loans\" #Loans=\"ngModel\" placeholder=\"مثال: 2000\"\r\n                              [(ngModel)]=\"finance.Loans\" class=\"form-control\" pattern=\"[0-9]*\" >\r\n                        \r\n                      \r\n                      \r\n                            <div *ngIf=\"Loans.errors && (Loans.dirty || Loans.touched)\"  class=\"alert alert-danger\">\r\n                            <!--  <div [hidden]=\"!Loans.errors.required\">*يرجى إدخال المصروفات الشهرية</div>  -->\r\n                              <div [hidden]=\"!Loans.errors.pattern\">*يرجى إدخال أرقام صحيحة فقط</div>\r\n                          </div>\r\n                          </div>    \r\n                          </div>\r\n\r\n                          <div class=\"row\">\r\n                              <div class=\"form-group col-md-6 col-sm-12\">\r\n                                <label > <h4> مدينون \r\n                                  <span>(الذمم المستحقة على الغير نتيجة عمليات اخرى غير البيع الآجل وتقديم الخدمات, كمنح السلف للموظفين, والذمم المستحقة على الدولة من ضرائب مرتجعة... إن وجد)</span> </h4> </label>\r\n                                   \r\n                           \r\n                                  <input matInput type=\"number\" name=\"creditors\" #creditors=\"ngModel\" placeholder=\"مثال: 2000\"\r\n                                  [(ngModel)]=\"finance.creditors\" class=\"form-control\" pattern=\"[0-9]*\" >\r\n                            \r\n                          \r\n                          \r\n                                <div *ngIf=\"creditors.errors && (creditors.dirty || creditors.touched)\"  class=\"alert alert-danger\">\r\n                                <!--  <div [hidden]=\"!creditors.errors.required\">*يرجى إدخال المصروفات الشهرية</div>  -->\r\n                                  <div [hidden]=\"!creditors.errors.pattern\">*يرجى إدخال أرقام صحيحة فقط</div>\r\n                              </div>\r\n                              </div>    \r\n                              </div>\r\n\r\n                          \r\n      \r\n      <div class=\"row\">\r\n        <button  mat-raised-button class=\"Btns  blueBtn\"  type=\"submit\"\r\n        [disabled]=\"!financeForm.valid\">\r\n            إضافة</button>\r\n          </div>\r\n          </form>\r\n  \r\n        \r\n          </mat-card-content>\r\n  </mat-card>"
 
 /***/ }),
 
@@ -3729,7 +3580,6 @@ var FinanceComponent = /** @class */ (function () {
     }
     FinanceComponent.prototype.ngOnInit = function () {
         var _this = this;
-        //firebase.database().ref(window.name+'manager').child('xFinance');
         this.firebase.object(window.name + '/manager/xFinance').snapshotChanges().subscribe(function (ob) {
             var x = ob.payload.toJSON();
             x["$key"] = ob.key;
@@ -3737,6 +3587,7 @@ var FinanceComponent = /** @class */ (function () {
         });
     };
     FinanceComponent.prototype.onSubmit = function (financeForm) {
+        var _this = this;
         this.finance = financeForm.value;
         if (!this.finance.bank && !this.finance.box) {
             this.flashMensaje.show('(يرجى إدخال أحد الأصول المتداول على الأقل (الصندوق,البنك.', { cssClass: 'alert-danger', timeout: 100000,
@@ -3769,6 +3620,9 @@ var FinanceComponent = /** @class */ (function () {
                 capital: this.finance.capital,
                 Loans: this.finance.loans,
                 creditors: this.finance.creditors
+            }).then(function (res) {
+                _this.flashMensaje.show('تمت العملية بنجاح.', { cssClass: 'alert-success', timeout: 100000,
+                    closeOnClick: true, showCloseBtn: true });
             });
         }
     };
@@ -4047,7 +3901,6 @@ var HeaderComponent = /** @class */ (function () {
         this.authService.logout().then(function (res) {
             _this.flashMensaje.show('تم تسجيل الخروج بنجاح.', { cssClass: 'alert-success', timeout: 4000 });
             _this.router.navigate(['']);
-            console.log('enter login');
         }).catch(function (err) {
             _this.flashMensaje.show('حدثت مشكلة اثناء عملية تسجيل الخروج, يرجى المحاولة مرة أخرى.', { cssClass: 'alert-danger', timeout: 5000 });
             _this.router.navigate(['']);
@@ -4171,7 +4024,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".boutonAlign\r\n{\r\n    margin-bottom: 8px;\r\n}\r\n  mat-form-field\r\n  {\r\n  \r\n    text-align: right;\r\n    font-size: 18px;\r\n    line-height: 2;\r\n  }\r\n  .featuresImg \r\n  {\r\n    width: 100%;\r\n    height: 100%;\r\n  }\r\n  figcaption h2\r\n  {\r\n    color: white;\r\n  }\r\n  .footertext\r\n  {\r\n    padding: 0px;\r\n    margin: 0px;\r\n  }\r\n  .Mycontainer\r\n  {\r\n    padding: 0px;\r\n    margin: 0px;\r\n    width: 100%;\r\n    display: inline-block;\r\n    -webkit-box-align: center;\r\n    -ms-flex-align: center;\r\n    align-items: center;\r\n    -ms-flex-item-align: center;\r\n        -ms-grid-row-align: center;\r\n        align-self: center;\r\n    -ms-flex-line-pack: center;\r\n        align-content: center;\r\n  }\r\n  .figureSize img\r\n  {\r\n    width: inherit;\r\n    height: 250px;\r\n}\r\n  .title\r\n{\r\n  -ms-flex-item-align: center;\r\n      -ms-grid-row-align: center;\r\n      align-self: center;\r\n  text-align: center;\r\n  font-size: 3em;\r\n}\r\n  .imgcontainer\r\n  {\r\n    margin-top: 10%;\r\n    text-align: center;\r\n  }\r\n  .figureSize\r\n  {   \r\n     width: 100%;\r\n    height: 100%;\r\n  }\r\n  footer \r\n{\r\n  position: fixed;\r\n  left: 0;\r\n  bottom: 0;\r\n  width: 100%;\r\n  text-align: center;\r\n    background-color: #111;\r\n    color: #6Dc4e2;\r\n    font-size: 1em;\r\n    width: 100%;\r\n    height: 10%;\r\n}\r\n  .RouterContainer\r\n{\r\n  height: 80%;\r\n  position: fixed;\r\n  overflow: scroll;\r\n  bottom: 7em;\r\n    top: 7.5em;\r\n}\r\n  .footerContainer\r\n{\r\n  text-align: center !important;\r\n  padding-top: 1%;\r\n}\r\n  .Mainlogo\r\n  {\r\n    float: right;\r\n    width: 50px;\r\n    height: 50px;\r\n    margin: 20px 20px 0px 20px;\r\n  }\r\n  .dialogTitle , .DialogOptionBtn\r\n  {\r\n      display: -ms-inline-grid;;\r\n      direction: rtl;\r\n      -ms-flex-line-pack: center;\r\n          align-content: center;\r\n  }\r\n  .alert.flash-message{\r\n    margin-top:8px;\r\n}\r\n  .example-form {\r\n    min-width: 150px;\r\n    width: 100%;\r\n  }\r\n  .example-full-width {\r\n    width: 100%;\r\n  }\r\n  .formContainer\r\n  {\r\n    font-family: 'Amiri' !important;\r\n      margin: 1% 2%;\r\n      -ms-flex-item-align: center;\r\n          -ms-grid-row-align: center;\r\n          align-self: center; \r\n      \r\n  }\r\n  td mat-form-field\r\n  {\r\n  \r\n    text-align: right;\r\n    font-size: 18px;\r\n    float: right;\r\n    line-height: 2;\r\n  }\r\n  input[type=\"number\"]::-webkit-outer-spin-button,\r\ninput[type=\"number\"]::-webkit-inner-spin-button {\r\n    -webkit-appearance: none;\r\n    margin: 0;\r\n}\r\n  input[type=\"number\"] {\r\n    -moz-appearance: textfield;\r\n}\r\n  .ok\r\n  {\r\n    background-color: #6dc4e2;\r\n  }\r\n  .cancle\r\n  {\r\n    background-color: #a8a8a8;\r\n  }\r\n  table\r\n {\r\n\r\n     width: 100%;\r\n }\r\n  td button\r\n {\r\n   width: 100%;\r\n   height: 100%;\r\n }\r\n  td mat-form-field app-input-file\r\n  {\r\n    float: right;\r\n    text-indent: 1.5px;\r\n    text-align: right;\r\n    font-size: 18px;\r\n  }\r\n  div {\r\n    text-align: right;\r\n  }\r\n  .red{\r\n    color: red;\r\n  }\r\n  .blueBtn\r\n  {\r\n  \r\n      background-color: #6Dc4e2; \r\n  \r\n  }\r\n  .greyBtn\r\n  {\r\n      background-color:#A8A8A8;\r\n  \r\n  }\r\n  .Btns\r\n  {\r\n      color:white;\r\n      height: 3em;\r\n     \r\n      width: 12em;\r\n      margin: 1em !important;\r\n  }\r\n  .center{\r\n    text-align: center;\r\n  }\r\n  .right\r\n  {\r\n    text-align: right;\r\n    float: right;\r\n  }\r\n  .mainText\r\n  {\r\n    font-size: 150%;\r\n  }\r\n", ""]);
+exports.push([module.i, ".boutonAlign\r\n{\r\n    margin-bottom: 8px;\r\n}\r\n  mat-form-field\r\n  {\r\n  \r\n    text-align: right;\r\n    font-size: 18px;\r\n    line-height: 2;\r\n  }\r\n  .featuresImg \r\n  {\r\n    width: 100%;\r\n    height: 100%;\r\n  }\r\n  figcaption h2\r\n  {\r\n    color: white;\r\n  }\r\n  .footertext\r\n  {\r\n    padding: 0px;\r\n    margin: 0px;\r\n  }\r\n  .Mycontainer\r\n  {\r\n    padding: 0px;\r\n    margin: 0px;\r\n    width: 100%;\r\n    display: inline-block;\r\n    -webkit-box-align: center;\r\n    -ms-flex-align: center;\r\n    align-items: center;\r\n    -ms-flex-item-align: center;\r\n        -ms-grid-row-align: center;\r\n        align-self: center;\r\n    -ms-flex-line-pack: center;\r\n        align-content: center;\r\n  }\r\n  .figureSize img\r\n  {\r\n    width: inherit;\r\n    height: 250px;\r\n}\r\n  .title\r\n{\r\n  -ms-flex-item-align: center;\r\n      -ms-grid-row-align: center;\r\n      align-self: center;\r\n  text-align: center;\r\n  font-size: 3em;\r\n}\r\n  .imgcontainer\r\n  {\r\n    margin-top: 10%;\r\n    text-align: center;\r\n  }\r\n  .figureSize\r\n  {   \r\n     width: 100%;\r\n    height: 100%;\r\n  }\r\n  footer \r\n{\r\n  position: fixed;\r\n  left: 0;\r\n  bottom: 0;\r\n  width: 100%;\r\n  text-align: center;\r\n    background-color: #111;\r\n    color: #6Dc4e2;\r\n    font-size: 1em;\r\n    width: 100%;\r\n    height: 10%;\r\n}\r\n  .RouterContainer\r\n{\r\n  height: 80%;\r\n  position: fixed;\r\n  overflow: scroll;\r\n  bottom: 7em;\r\n    top: 7.5em;\r\n}\r\n  .footerContainer\r\n{\r\n  text-align: center !important;\r\n  padding-top: 1%;\r\n}\r\n  .Mainlogo\r\n  {\r\n    float: right;\r\n    width: 50px;\r\n    height: 50px;\r\n    margin: 20px 20px 0px 20px;\r\n  }\r\n  .dialogTitle , .DialogOptionBtn\r\n  {\r\n      display: -ms-inline-grid;;\r\n      direction: rtl;\r\n      -ms-flex-line-pack: center;\r\n          align-content: center;\r\n  }\r\n  .alert.flash-message{\r\n    margin-top:8px;\r\n}\r\n  .example-form {\r\n    min-width: 150px;\r\n    width: 100%;\r\n  }\r\n  .example-full-width {\r\n    width: 100%;\r\n  }\r\n  .formContainer\r\n  {\r\n    font-family: 'Amiri' !important;\r\n      margin: 1% 2%;\r\n      -ms-flex-item-align: center;\r\n          -ms-grid-row-align: center;\r\n          align-self: center; \r\n      \r\n  }\r\n  td mat-form-field\r\n  {\r\n  \r\n    text-align: right;\r\n    font-size: 18px;\r\n    float: right;\r\n    line-height: 2;\r\n  }\r\n  input[type=\"number\"]::-webkit-outer-spin-button,\r\ninput[type=\"number\"]::-webkit-inner-spin-button {\r\n    -webkit-appearance: none;\r\n    margin: 0;\r\n}\r\n  input[type=\"number\"] {\r\n    -moz-appearance: textfield;\r\n}\r\n  .ok\r\n  {\r\n    background-color: #6dc4e2;\r\n  }\r\n  .cancle\r\n  {\r\n    background-color: #a8a8a8;\r\n  }\r\n  table\r\n {\r\n\r\n     width: 100%;\r\n }\r\n  td button\r\n {\r\n   width: 100%;\r\n   height: 100%;\r\n }\r\n  td mat-form-field app-input-file\r\n  {\r\n    float: right;\r\n    text-indent: 1.5px;\r\n    text-align: right;\r\n    font-size: 18px;\r\n  }\r\n  div {\r\n    text-align: right;\r\n  }\r\n  .red{\r\n    color: red;\r\n  }\r\n  .blueBtn\r\n  {\r\n  \r\n      background-color: #6Dc4e2; \r\n  \r\n  }\r\n  .lightBlueBtn\r\n  {\r\n    color:#9DE4F4\r\n  }\r\n  .greyBtn\r\n  {\r\n      background-color:#A8A8A8;\r\n  \r\n  }\r\n  .Btns\r\n  {\r\n      color:white;\r\n      height: 3em;\r\n     \r\n      width: 12em;\r\n      margin: 1em !important;\r\n  }\r\n  .center{\r\n    text-align: center;\r\n  }\r\n  .right\r\n  {\r\n    text-align: right;\r\n    float: right;\r\n  }\r\n  .mainText\r\n  {\r\n    font-size: 150%;\r\n  }\r\n  .ViewsContainer\r\n{\r\n    margin-right:15px; \r\n    -ms-flex-line-pack: center; \r\n        align-content: center;\r\n    -ms-flex-item-align: center;\r\n        -ms-grid-row-align: center;\r\n        align-self: center;\r\n    -webkit-box-align: center;\r\n        -ms-flex-align: center;\r\n            align-items: center;\r\n}\r\n", ""]);
 
 // exports
 
@@ -4241,14 +4094,12 @@ var HomePageComponent = /** @class */ (function () {
                 _this.isLogin = false;
             }
         });
-        console.log(window.name);
     };
     HomePageComponent.prototype.onClickLogout = function () {
         var _this = this;
         this.authService.logout().then(function (res) {
             _this.flashMensaje.show('تم تسجيل الخروج بنجاح.', { cssClass: 'alert-success', timeout: 4000 });
             _this.router.navigate(['mainPage']);
-            console.log('enter login');
         }).catch(function (err) {
             _this.flashMensaje.show('حدثت مشكلة اثناء عملية تسجيل الخروج, أرجوا المحاولة مرة أخرى.', { cssClass: 'alert-danger', timeout: 5000 });
             _this.router.navigate(['']);
@@ -4280,7 +4131,7 @@ var HomePageComponent = /** @class */ (function () {
 /***/ "../../../../../src/app/home-page/log-in/log-in.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"Mycontainer\">\r\n        <h1 class=\"title\">   تسجيل الدخول </h1>\r\n<div class=\"spacer\">\r\n  \r\n  <div class=\"container contactform center\">\r\n  <!-- <h2 class=\"text-center  wowload fadeInUp\"> تسجيل الدخول</h2> -->\r\n    <div class=\"row wowload fadeInLeftBig\">      \r\n        <div class=\"col-sm-6 col-sm-offset-3 col-xs-12\">  \r\n            <flash-messages></flash-messages>\r\n          <form #loginForm=\"ngForm\" (ngSubmit)=\"loginTestFirst()\" dir=\"rtl\">\r\n              <div *ngIf=\"email.errors && (email.dirty || email.touched)\"  class=\"alert alert-danger\">\r\n                  <div [hidden]=\"!email.errors.required\">*يرجى إدخال البريد الإلكتروني</div>\r\n                  <div [hidden]=\"!email.errors.pattern\">*يرجى كتابة البريد الإلكتروني بشكل صحيح</div>\r\n            </div>\r\n            <div *ngIf=\"password.errors && (password.dirty || password.touched)\"  class=\"alert alert-danger\">\r\n                <div [hidden]=\"!password.errors.required\">*يرجى إدخال الرقم السري</div>\r\n                <div [hidden]=\"!password.errors.minlength\">*يجب أن لا يقل الرقم السري عن 8 خانات</div>\r\n            </div>\r\n\r\n              <div class=\"form-group col-md-6 col-sm-12\">\r\n                  <label > <h4>   البريد الإلكتروني <span class=\"red\">* </span></h4> </label>\r\n                  <input matInput   type=\"email\" name=\"email\" #email=\"ngModel\"\r\n                  [(ngModel)]=\"login.email\" placeholder=\"مثال: me@gmail.com\" class=\"form-control\"\r\n                  pattern=\"^\\w+([\\.-]?\\w+)*@\\w+([\\.-]?\\w+)*(\\.\\w{2,3})+$\" required>     \r\n               \r\n              </div>\r\n              \r\n              <div class=\"form-group col-md-6 col-sm-12\">\r\n                <label > <h4>   الرقم السري <span class=\"red\">* </span></h4> </label>\r\n                <input matInput   type=\"password\" name=\"password\" #password=\"ngModel\"\r\n                [(ngModel)]=\"login.password\"  class=\"form-control\"\r\n                minlength=\"8\" required>\r\n\r\n              </div>\r\n         \r\n              <div class=\"form-group custom-file col-md-12 col-sm-12 center\">\r\n                <button  mat-raised-button class=\"Btns  blueBtn\"  type=\"submit\" (click)=\"onSubmitLogin()\" [disabled]=\"!loginForm.valid\">\r\n                    تسجيل الدخول</button>\r\n              </div>\r\n\r\n\r\n                  </form>\r\n     \r\n              \r\n        </div>\r\n    </div></div></div>\r\n\r\n  </div>"
+module.exports = "<div class=\"Mycontainer\">\r\n        <h1 class=\"title\">   تسجيل الدخول </h1>\r\n<div class=\"spacer\">\r\n  \r\n  <div class=\"container contactform center\">\r\n  <!-- <h2 class=\"text-center  wowload fadeInUp\"> تسجيل الدخول</h2> -->\r\n    <div class=\"row wowload fadeInLeftBig\">      \r\n        <div class=\"col-sm-6 col-sm-offset-3 col-xs-12\">  \r\n            <flash-messages></flash-messages>\r\n          <form #loginForm=\"ngForm\" (ngSubmit)=\"loginTestFirst()\" dir=\"rtl\">\r\n              <div *ngIf=\"email.errors && (email.dirty || email.touched)\"  class=\"alert alert-danger\">\r\n                  <div [hidden]=\"!email.errors.required\">*يرجى إدخال البريد الإلكتروني</div>\r\n                  <div [hidden]=\"!email.errors.pattern\">*يرجى كتابة البريد الإلكتروني بشكل صحيح</div>\r\n            </div>\r\n            <div *ngIf=\"password.errors && (password.dirty || password.touched)\"  class=\"alert alert-danger\">\r\n                <div [hidden]=\"!password.errors.required\">*يرجى إدخال الرقم السري</div>\r\n                <div [hidden]=\"!password.errors.minlength\">*يجب أن لا يقل الرقم السري عن 8 خانات</div>\r\n            </div>\r\n\r\n              <div class=\"form-group col-md-6 col-sm-12\">\r\n                  <label > <h4>   البريد الإلكتروني <span class=\"red\">* </span></h4> </label>\r\n                  <input matInput   type=\"email\" name=\"email\" #email=\"ngModel\"\r\n                  [(ngModel)]=\"login.email\" placeholder=\"مثال: me@gmail.com\" class=\"form-control\"\r\n                  pattern=\"^\\w+([\\.-]?\\w+)*@\\w+([\\.-]?\\w+)*(\\.\\w{2,3})+$\" required>     \r\n               \r\n              </div>\r\n              \r\n              <div class=\"form-group col-md-6 col-sm-12\">\r\n                <label > <h4>   الرقم السري <span class=\"red\">* </span></h4> </label>\r\n                <input matInput   type=\"password\" name=\"password\" #password=\"ngModel\"\r\n                [(ngModel)]=\"login.password\"  class=\"form-control\"\r\n                minlength=\"8\" required>\r\n\r\n              </div>\r\n         \r\n              <div class=\"form-group custom-file col-md-12 col-sm-12 center\">\r\n                <button  mat-raised-button class=\"Btns  blueBtn\"  type=\"submit\" (click)=\"onSubmitLogin()\" [disabled]=\"!loginForm.valid\">\r\n                    تسجيل الدخول</button>\r\n                    <a (click)=\"resetPassword()\" ><p class=\"lightBlueBtn\"> نسييت كلمة المرور؟</p> </a>\r\n              </div>\r\n\r\n\r\n                  </form>\r\n     \r\n              \r\n        </div>\r\n    </div></div></div>\r\n\r\n  </div>"
 
 /***/ }),
 
@@ -4289,6 +4140,7 @@ module.exports = "<div class=\"Mycontainer\">\r\n        <h1 class=\"title\">   
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LogInComponent; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return ResetPassword2; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("../../../router/esm5/router.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_material__ = __webpack_require__("../../../material/esm5/material.es5.js");
@@ -4306,6 +4158,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var __param = (this && this.__param) || function (paramIndex, decorator) {
+    return function (target, key) { decorator(target, key, paramIndex); }
 };
 
  // <-- do not forget to import
@@ -4359,20 +4214,40 @@ var LogInComponent = /** @class */ (function () {
                     }
                 }
             });
-            /*    this.flashMensaje.show('عملية تسجيل دخول ناجحة مرحبا بك',
-                {cssClass: 'alert-success', timeout: 5000});
-                this.router.navigate(['mainPage']);
-                console.log('enter login');
-              }).catch((err) => {
-                this.flashMensaje.show('عملية تسجيل الدخول غير صحيحة, يرجى التأكد من البيانات.',
-                {cssClass: 'alert-danger', timeout: 5000});*/
-            // this.router.navigate(['']);
         }).then(function (rse) {
             _this.flashMensaje.show('عملية تسجيل دخول ناجحة مرحبا بك', { cssClass: 'alert-success', timeout: 5000 });
             _this.router.navigate(['mainPage']);
-            console.log('enter login');
         }).catch(function (err) {
             _this.flashMensaje.show('عملية تسجيل الدخول غير صحيحة, يرجى التأكد من البيانات.', { cssClass: 'alert-danger', timeout: 5000 });
+        });
+    };
+    LogInComponent.prototype.isEmail = function (search) {
+        var serchfind;
+        var regexp = new RegExp(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/);
+        serchfind = regexp.test(search);
+        return serchfind;
+    };
+    LogInComponent.prototype.resetPassword = function () {
+        var _this = this;
+        var dialogRef = this.dialog.open(ResetPassword2);
+        dialogRef.afterClosed().subscribe(function (result) {
+            if (result != null) {
+                if (_this.isEmail(result)) {
+                    var x = _this.authService.resetPass(result);
+                    if (x) {
+                        _this.flashMensaje.show('تم ارسال طلب تغيير الرقم السري على بريدك الإلكتروني.', { cssClass: 'alert-success', timeout: 100000,
+                            closeOnClick: true, showCloseBtn: true });
+                    }
+                    else {
+                        _this.flashMensaje.show('حدثت مشكلة أثناء عملية ارسال طلب تغيير الرقم السري يرجى المحاولة مرة أخرى.', { cssClass: 'alert-danger', timeout: 100000,
+                            closeOnClick: true, showCloseBtn: true });
+                    }
+                }
+                else {
+                    _this.flashMensaje.show('يرجى كتابة البريد الإلكتروني بشكل صحيح.', { cssClass: 'alert-danger', timeout: 100000,
+                        closeOnClick: true, showCloseBtn: true });
+                }
+            }
         });
     };
     LogInComponent = __decorate([
@@ -4386,6 +4261,27 @@ var LogInComponent = /** @class */ (function () {
             __WEBPACK_IMPORTED_MODULE_4_angular2_flash_messages__["FlashMessagesService"]])
     ], LogInComponent);
     return LogInComponent;
+}());
+
+var ResetPassword2 = /** @class */ (function () {
+    function ResetPassword2(dialogRef, data) {
+        this.dialogRef = dialogRef;
+        this.data = data;
+        this.yes = 'yes';
+    }
+    ResetPassword2.prototype.resetPassword = function (email) {
+        return email;
+    };
+    ResetPassword2 = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+            selector: 'reset-password2',
+            template: __webpack_require__("../../../../../src/app/home-page/log-in/reset-password.html"),
+            styles: [__webpack_require__("../../../../../src/app/home-page/home-page.component.css")]
+        }),
+        __param(1, Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Inject"])(__WEBPACK_IMPORTED_MODULE_2__angular_material__["a" /* MAT_DIALOG_DATA */])),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__angular_material__["k" /* MatDialogRef */], Object])
+    ], ResetPassword2);
+    return ResetPassword2;
 }());
 
 
@@ -4404,6 +4300,13 @@ var Login = /** @class */ (function () {
 }());
 
 
+
+/***/ }),
+
+/***/ "../../../../../src/app/home-page/log-in/reset-password.html":
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"ViewsContainer\">\r\n    <div class=\"dialogTitle\">\r\n    <h1 mat-dialog-title> تغيير الرقم السري</h1>\r\n    <h4> يرجى إدخال البريد الإلكتروني  </h4>\r\n\r\n    <div mat-dialog-content>\r\n        <mat-form-field>\r\n          <input matInput  name=\"email\" pattern=\"^\\w+([\\.-]?\\w+)*@\\w+([\\.-]?\\w+)*(\\.\\w{2,3})+$\" [(ngModel)]=\"email\">\r\n        </mat-form-field>\r\n      </div>\r\n\r\n  </div>\r\n    <div mat-dialog-actions class=\"DialogOptionBtn\">\r\n      \r\n      <button mat-button [mat-dialog-close]=\"resetPassword(email)\"  cdkFocusInitial>إرسال </button>\r\n      <button mat-button [mat-dialog-close]=\"\"  >إلغاء الأمر </button>\r\n    </div>\r\n    \r\n    </div>"
 
 /***/ }),
 
@@ -4507,7 +4410,6 @@ var RegisterComponent = /** @class */ (function () {
     };
     RegisterComponent.prototype.onSubmitAddUser = function () {
         var _this = this;
-        console.log();
         this.authService.registerUser(this.manager.email, this.manager.password)
             .then(function (res) {
             window.name = _this.manager.businessname;
@@ -4540,7 +4442,6 @@ var RegisterComponent = /** @class */ (function () {
                     _this.authService.registerManager(ReceiptID, _this.manager.email, _this.manager.password, _this.manager.fname, _this.manager.lname, _this.manager.phone, _this.manager.businessname, _this.manager.picName, _this.manager.picPath, res.uid);
                     _this.router.navigate(['mainPage']);
                 }).catch(function (erorr) {
-                    console.log('pic error');
                 });
             }
             else {
@@ -4551,7 +4452,6 @@ var RegisterComponent = /** @class */ (function () {
             }
         }).catch(function (err) {
             _this.flashMensaje.show('عملية تسجيل الدخول غير صحيحة, يرجى التأكد من ادخال جميع البيانات.', { cssClass: 'alert-danger', timeout: 5000 });
-            console.log('error signup');
         });
     };
     RegisterComponent = __decorate([
@@ -4894,109 +4794,10 @@ var InputFileComponent = /** @class */ (function () {
 
 /***/ }),
 
-/***/ "../../../../../src/app/manager/change-password/change-password.component.css":
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
-// imports
-
-
-// module
-exports.push([module.i, ".example-form {\r\n    min-width: 150px;\r\n    width: 100%;\r\n  }\r\n  \r\n  .example-full-width {\r\n    width: 100%;\r\n  }\r\n  \r\n  .formContainer\r\n  {\r\n    font-family: 'Amiri' !important;\r\n      margin: 1% 2%;\r\n      -ms-flex-item-align: center;\r\n          -ms-grid-row-align: center;\r\n          align-self: center; \r\n      \r\n  }\r\n  \r\n  td mat-form-field\r\n  {\r\n  \r\n    text-align: right;\r\n    font-size: 18px;\r\n    float: right;\r\n    line-height: 2;\r\n  }\r\n  \r\n  input[type=\"number\"]::-webkit-outer-spin-button,\r\ninput[type=\"number\"]::-webkit-inner-spin-button {\r\n    -webkit-appearance: none;\r\n    margin: 0;\r\n}\r\n  \r\n  input[type=\"number\"] {\r\n    -moz-appearance: textfield;\r\n}\r\n  \r\n  .blueBtn\r\n{\r\n\r\n    background-color: #6Dc4e2; \r\n\r\n}\r\n  \r\n  .greyBtn\r\n{\r\n    background-color:#A8A8A8;\r\n\r\n}\r\n  \r\n  .Btns\r\n{\r\n    color:white;\r\n    height: 3em;\r\n   \r\n    width: 12em;\r\n    margin: 1em !important;\r\n}\r\n  \r\n  table\r\n {\r\n\r\n     width: 100%;\r\n }\r\n  \r\n  td button\r\n {\r\n   width: 100%;\r\n   height: 100%;\r\n }\r\n  \r\n  td mat-form-field app-input-file\r\n  {\r\n    float: right;\r\n    text-indent: 1.5px;\r\n    text-align: right;\r\n    font-size: 18px;\r\n  }\r\n  \r\n  div {\r\n    text-align: right;\r\n  }\r\n  \r\n  .red{\r\n    color: red;\r\n  }\r\n  \r\n  .dialogTitle , .DialogOptionBtn\r\n  {\r\n    display: -ms-inline-grid;;\r\n    direction: rtl;\r\n    -ms-flex-line-pack: center;\r\n        align-content: center;\r\n}\r\n", ""]);
-
-// exports
-
-
-/*** EXPORTS FROM exports-loader ***/
-module.exports = module.exports.toString();
-
-/***/ }),
-
-/***/ "../../../../../src/app/manager/change-password/change-password.component.html":
-/***/ (function(module, exports) {
-
-module.exports = "<mat-toolbar   style=\"background-color:transparent\">\r\n  <span class=\"primary\">\r\n\r\n  </span>\r\n  <span class=\"toolbar-spacer\"></span>\r\n</mat-toolbar>\r\n\r\n<mat-card class=\"formContainer\" >\r\n  <mat-card-title>\t\r\n    <h2> تغيير الرقم السري </h2>\r\n  </mat-card-title>\r\n  <flash-messages></flash-messages>\r\n<mat-card-content>\r\n\r\n  <flash-messages></flash-messages>\r\n\r\n<form #loginForm=\"ngForm\" (ngSubmit)=\"submit(loginForm)\" dir=\"rtl\">\r\n  \r\n<div *ngIf=\"password.errors && (password.dirty || password.touched)\"  class=\"alert alert-danger\">\r\n    <div [hidden]=\"!password.errors.required\">*أرجو إدخال الرقم السري</div>\r\n    <div [hidden]=\"!password.errors.minlength\">*يجب أن لا يقل الرقم السري عن 8 خانات</div>\r\n</div>\r\n\r\n  <div class=\"form-group col-md-6 col-sm-12\">\r\n      <label > <h4>   الرقم السري السابق <span class=\"red\">* </span></h4> </label>\r\n      <input matInput    name=\"email\" #email=\"ngModel\"\r\n      [(ngModel)]=\"changePass.email\"  class=\"form-control\" required>     \r\n   \r\n  </div>\r\n  \r\n  <div class=\"form-group col-md-6 col-sm-12\">\r\n    <label > <h4>   الرقم السري الجديد <span class=\"red\">* </span></h4> </label>\r\n    <input matInput   type=\"password\" name=\"password\" #password=\"ngModel\"\r\n    [(ngModel)]=\"changePass.password\"  class=\"form-control\"\r\n    minlength=\"8\" required>\r\n\r\n  </div>\r\n  \r\n  <button class=\"btn blueBtn \"  type=\"submit\" (click)=\"submit(loginForm)\" [disabled]=\"!loginForm.valid\">\r\n      تسجيل الدخول</button>\r\n  </form>\r\n</mat-card-content>\r\n</mat-card>"
-
-/***/ }),
-
-/***/ "../../../../../src/app/manager/change-password/change-password.component.ts":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ChangePasswordComponent; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__home_page_log_in_login_model__ = __webpack_require__("../../../../../src/app/home-page/log-in/login.model.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angularfire2_database__ = __webpack_require__("../../../../angularfire2/database/index.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angular2_flash_messages__ = __webpack_require__("../../../../angular2-flash-messages/module/index.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angular2_flash_messages___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_angular2_flash_messages__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__core_auth_service__ = __webpack_require__("../../../../../src/app/core/auth.service.ts");
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-
-
-var ChangePasswordComponent = /** @class */ (function () {
-    function ChangePasswordComponent(firebase, flashMensaje, authService) {
-        this.firebase = firebase;
-        this.flashMensaje = flashMensaje;
-        this.authService = authService;
-        this.changePass = new __WEBPACK_IMPORTED_MODULE_1__home_page_log_in_login_model__["a" /* Login */];
-    }
-    ChangePasswordComponent.prototype.ngOnInit = function () {
-        var _this = this;
-        this.firebase.object(window.name + '/manager').snapshotChanges().subscribe(function (ob) {
-            var x = ob.payload.toJSON();
-            x["$key"] = ob.key;
-            _this.manager = x;
-        });
-    };
-    ChangePasswordComponent.prototype.submit = function (loginForm) {
-        if (this.changePass.email != this.manager.password) {
-            this.flashMensaje.show('الرقم السري السابق غير صحيح.', { cssClass: 'alert-danger', timeout: 40000 });
-            this.resetForm(loginForm);
-        }
-        else {
-            this.authService.resetPass(this.changePass.password);
-        }
-    };
-    ChangePasswordComponent.prototype.resetForm = function (loginForm) {
-        if (loginForm != null) {
-            loginForm.reset();
-        }
-        this.changePass = {
-            email: '',
-            password: '',
-        };
-    };
-    ChangePasswordComponent = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'app-change-password',
-            template: __webpack_require__("../../../../../src/app/manager/change-password/change-password.component.html"),
-            styles: [__webpack_require__("../../../../../src/app/manager/change-password/change-password.component.css")]
-        }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2_angularfire2_database__["a" /* AngularFireDatabase */], __WEBPACK_IMPORTED_MODULE_3_angular2_flash_messages__["FlashMessagesService"],
-            __WEBPACK_IMPORTED_MODULE_4__core_auth_service__["a" /* AuthService */]])
-    ], ChangePasswordComponent);
-    return ChangePasswordComponent;
-}());
-
-
-
-/***/ }),
-
 /***/ "../../../../../src/app/manager/confirm-Message-emp.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"ViewsContainer\">\r\n    <div class=\"dialogTitle\">\r\n    <h1 mat-dialog-title> حذف الحساب</h1>\r\n    <h4> هل أنت متأكد من حذف حسابك سيتم حذف جميع بياناتك؟ </h4>\r\n  </div>\r\n    <div mat-dialog-actions class=\"DialogOptionBtn\">\r\n      \r\n      <button mat-button [mat-dialog-close]=\"confirm()\" cdkFocusInitial>حذف </button>\r\n      <button mat-button [mat-dialog-close]=\"\"  >إلغاء الأمر </button>\r\n    </div>\r\n    \r\n    </div>"
+module.exports = "<div class=\"ViewsContainer\">\r\n    <div class=\"dialogTitle\">\r\n    <h1 mat-dialog-title> حذف الحساب</h1>\r\n    <h4> هل أنت متأكد من حذف حسابك سيتم حذف جميع بياناتك؟ </h4>\r\n  </div>\r\n    <div mat-dialog-actions class=\"DialogOptionBtn\">\r\n      \r\n      <button mat-button [mat-dialog-close]=\"yes\" cdkFocusInitial>حذف </button>\r\n      <button mat-button [mat-dialog-close]=\"\"  >إلغاء الأمر </button>\r\n    </div>\r\n    \r\n    </div>"
 
 /***/ }),
 
@@ -5101,7 +4902,6 @@ var EditManagerComponent = /** @class */ (function () {
                 _this.num = (uploadTask_1.snapshot.bytesTransferred / uploadTask_1.snapshot.totalBytes) * 100;
             }, function (error) {
                 // upload failed
-                console.log(error);
             }, function () {
                 // upload success
                 __WEBPACK_IMPORTED_MODULE_1_firebase_app__["database"]().ref(window.name + '/manager').update({
@@ -5169,7 +4969,6 @@ var EditManagerComponent = /** @class */ (function () {
             data: { message: '' }
         });
         dialogRef.afterClosed().subscribe(function (result) {
-            console.log('The dialog was closed');
             if (result == true) {
                 _this.resetForm();
                 _this.router.navigate(['mainPage/manager']);
@@ -5234,7 +5033,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/manager/manager.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<mat-toolbar  style=\"background-color:transparent\" >\r\n        <mat-toolbar-row>\r\n                   \r\n                    <span class=\"toolbar-spacer\"></span>\r\n\r\n            <span color=\"primary\">   <h2 class=\"title\" > {{ title }} </h2> </span>\r\n              \r\n            <span class=\"toolbar-spacer\"></span>\r\n    \r\n        </mat-toolbar-row>\r\n      \r\n    </mat-toolbar>\r\n\r\n    <flash-messages></flash-messages>\r\n\r\n    \r\n<mat-card class=\"example-card\">\r\n\r\n    <mat-card-content>\r\n            <div class=\"col-md-12\" dir=\"rtl\" >\r\n            <div class='col-md-9   col-sm-8 '>\r\n                    \r\n            <div class='col-md-12 '> \r\n                    <h5 class='header'> الاسم :   <span class='info'>  {{manager.fname}} {{manager.lname}}</span>  </h5> \r\n            </div> \r\n                \r\n            <div class='col-md-12 '> \r\n                  <h5 class='header'> البريد الألكتروني:   <span class='info'>  {{manager.email}} </span>  </h5> \r\n            </div> \r\n\r\n           \r\n             <div class='col-md-12'> \r\n                    <h5 class='header'> الجوال: <span class='info' >  {{manager.phone}}  </span>  </h5>\r\n             </div>\r\n            </div>\r\n            <div class='col-md-3  col-sm-4' >\r\n                \r\n                    <div  class=\"example-header-image\"><img src={{manager.picPath}} ></div>\r\n                    <br>\r\n                    <h5 class=\"Imgheader\"> {{manager.businessname}} </h5>\r\n                    <br>\r\n                              \r\n                  </div>\r\n        </div>\r\n                    \r\n            </mat-card-content>\r\n        <div>\r\n            <button mat-raised-button class= \"Btns blueBtn\" (click)=\"onEdite()\" > تعديل البيانات الشخصية  </button> \r\n            <button mat-raised-button  class='Btns greenBtn' (click)=\"resetPassword()\" > تغيير كلمة سر الحساب </button>  \r\n            <button mat-raised-button  class='Btns greyBtn' (click)=\"deleteProject()\" > حذف المشروع  </button> \r\n        </div>\r\n    \r\n</mat-card>"
+module.exports = "<mat-toolbar  style=\"background-color:transparent\" >\r\n        <mat-toolbar-row>\r\n                   \r\n                    <span class=\"toolbar-spacer\"></span>\r\n\r\n            <span color=\"primary\">   <h2 class=\"title\" > {{ title }} </h2> </span>\r\n              \r\n            <span class=\"toolbar-spacer\"></span>\r\n    \r\n        </mat-toolbar-row>\r\n      \r\n    </mat-toolbar>\r\n\r\n    <flash-messages></flash-messages>\r\n\r\n    \r\n<mat-card class=\"example-card\">\r\n\r\n    <mat-card-content>\r\n            <div class=\"col-md-12\" dir=\"rtl\" >\r\n            <div class='col-md-9   col-sm-8 '>\r\n                    \r\n            <div class='col-md-12 '> \r\n                    <h5 class='header'> الاسم :   <span class='info'>  {{manager.fname}} {{manager.lname}}</span>  </h5> \r\n            </div> \r\n                \r\n            <div class='col-md-12 '> \r\n                  <h5 class='header'> البريد الألكتروني:   <span class='info'>  {{manager.email}} </span>  </h5> \r\n            </div> \r\n\r\n           \r\n             <div class='col-md-12'> \r\n                    <h5 class='header'> الجوال: <span class='info' >  {{manager.phone}}  </span>  </h5>\r\n             </div>\r\n            </div>\r\n            <div class='col-md-3  col-sm-4' >\r\n                \r\n                    <div  class=\"example-header-image\"><img src={{manager.picPath}} ></div>\r\n                    <br>\r\n                    <h5 class=\"Imgheader\"> {{manager.businessname}} </h5>\r\n                    <br>\r\n                              \r\n                  </div>\r\n        </div>\r\n                    \r\n            </mat-card-content>\r\n        <div>\r\n            <button mat-raised-button class= \"Btns blueBtn\" (click)=\"onEdite()\" > تعديل البيانات الشخصية  </button> \r\n            <button mat-raised-button  class='Btns greenBtn' (click)=\"resetPassword()\" > تغيير كلمة سر الحساب </button>  \r\n            <button mat-raised-button  class='Btns greyBtn' (click)=\"deleteAccount()\" > حذف المشروع  </button> \r\n        </div>\r\n    \r\n</mat-card>"
 
 /***/ }),
 
@@ -5243,7 +5042,8 @@ module.exports = "<mat-toolbar  style=\"background-color:transparent\" >\r\n    
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ManagerComponent; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return confirmDelete; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return confirmDelete; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return ResetPassword; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_angularfire2_database__ = __webpack_require__("../../../../angularfire2/database/index.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_router__ = __webpack_require__("../../../router/esm5/router.js");
@@ -5292,14 +5092,9 @@ var ManagerComponent = /** @class */ (function () {
     };
     ManagerComponent.prototype.onEdite = function () {
         var id = this.manager.uid;
-        console.log(this.manager.uid);
         this.router.navigate(['mainPage/edit-manager/', id]);
     };
-    ManagerComponent.prototype.resetPassword = function () {
-        this.router.navigate(['mainPage/change-password']);
-        // this.authService.resetPass();
-    };
-    ManagerComponent.prototype.deleteProject = function () {
+    ManagerComponent.prototype.deleteAccount = function () {
         var _this = this;
         var dialogRef = this.dialog.open(confirmDelete);
         dialogRef.afterClosed().subscribe(function (result) {
@@ -5311,7 +5106,6 @@ var ManagerComponent = /** @class */ (function () {
                                 prods.forEach(function (prod) {
                                     var product = prod.payload.toJSON();
                                     _this.deletephoto(product.picName);
-                                    //  console.log(product)
                                 });
                             });
                         });
@@ -5323,22 +5117,60 @@ var ManagerComponent = /** @class */ (function () {
                             _this.deletephoto(employee.picName);
                         });
                 });
+                var user = __WEBPACK_IMPORTED_MODULE_3_firebase__["auth"]().currentUser;
                 _this.db.list(window.name).remove().then(function (res) {
-                    _this.router.navigate(['']).then(function (n) {
-                        _this.flashMensaje.show('تم حذف المشروع بنجاح ', { cssClass: 'alert-success', timeout: 40000 });
+                    user.delete().then(function (result) {
+                        // User deleted.
+                        _this.router.navigate(['']).then(function (n) {
+                            _this.flashMensaje.show('تم حذف المشروع بنجاح ', { cssClass: 'alert-success', timeout: 100000,
+                                closeOnClick: true, showCloseBtn: true });
+                        });
+                    }).catch(function (error) {
+                        // An error happened.
+                        _this.flashMensaje.show('حدثت مشكلة أثناء عملية الحذف يرجى المحاولة مرة أخرى.', { cssClass: 'alert-danger', timeout: 100000,
+                            closeOnClick: true, showCloseBtn: true });
                     });
                 }).catch(function (err) {
-                    _this.flashMensaje.show('حدثت مشكلة أثناء عملية الحذف يرجى المحاولة مرة أخرى.', { cssClass: 'alert-danger', timeout: 40000 });
+                    _this.flashMensaje.show('حدثت مشكلة أثناء عملية الحذف يرجى المحاولة مرة أخرى.', { cssClass: 'alert-danger', timeout: 100000,
+                        closeOnClick: true, showCloseBtn: true });
                 });
             }
         });
     };
     ManagerComponent.prototype.deletephoto = function (picName) {
         if (picName != 'defaultproduct.png' && picName != 'defaultEmployee.jpg') {
-            console.log(picName);
             var storageRef = __WEBPACK_IMPORTED_MODULE_3_firebase__["storage"]().ref();
             storageRef.child(picName).delete();
         }
+    };
+    ManagerComponent.prototype.isEmail = function (search) {
+        var serchfind;
+        var regexp = new RegExp(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/);
+        serchfind = regexp.test(search);
+        return serchfind;
+    };
+    ManagerComponent.prototype.resetPassword = function () {
+        var _this = this;
+        var dialogRef = this.dialog.open(ResetPassword);
+        dialogRef.afterClosed().subscribe(function (result) {
+            if (result != null) {
+                if (_this.isEmail(result)) {
+                    var x = _this.authService.resetPass(result);
+                    if (x) {
+                        _this.flashMensaje.show('تم ارسال طلب تغيير الرقم السري على بريدك الإلكتروني.', { cssClass: 'alert-success', timeout: 100000,
+                            closeOnClick: true, showCloseBtn: true });
+                    }
+                    else {
+                        _this.flashMensaje.show('حدثت مشكلة أثناء عملية ارسال طلب تغيير الرقم السري يرجى المحاولة مرة أخرى.', { cssClass: 'alert-danger', timeout: 100000,
+                            closeOnClick: true, showCloseBtn: true });
+                    }
+                }
+                else {
+                    _this.flashMensaje.show('يرجى كتابة البريد الإلكتروني بشكل صحيح.', { cssClass: 'alert-danger', timeout: 100000,
+                        closeOnClick: true, showCloseBtn: true });
+                }
+            }
+        });
     };
     ManagerComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
@@ -5371,7 +5203,35 @@ var confirmDelete = /** @class */ (function () {
     return confirmDelete;
 }());
 
+var ResetPassword = /** @class */ (function () {
+    function ResetPassword(dialogRef, data) {
+        this.dialogRef = dialogRef;
+        this.data = data;
+        this.yes = 'yes';
+    }
+    ResetPassword.prototype.resetPassword = function (email) {
+        return email;
+    };
+    ResetPassword = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+            selector: 'reset-password',
+            template: __webpack_require__("../../../../../src/app/manager/reset-password.html"),
+            styles: [__webpack_require__("../../../../../src/app/manager/manager.component.css")]
+        }),
+        __param(1, Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Inject"])(__WEBPACK_IMPORTED_MODULE_4__angular_material__["a" /* MAT_DIALOG_DATA */])),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_4__angular_material__["k" /* MatDialogRef */], Object])
+    ], ResetPassword);
+    return ResetPassword;
+}());
 
+
+
+/***/ }),
+
+/***/ "../../../../../src/app/manager/reset-password.html":
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"ViewsContainer\">\r\n    <div class=\"dialogTitle\">\r\n    <h1 mat-dialog-title> تغيير الرقم السري</h1>\r\n    <h4> يرجى إدخال البريد الإلكتروني  </h4>\r\n\r\n    <div mat-dialog-content>\r\n        <mat-form-field>\r\n          <input matInput  name=\"email\" pattern=\"^\\w+([\\.-]?\\w+)*@\\w+([\\.-]?\\w+)*(\\.\\w{2,3})+$\" [(ngModel)]=\"email\">\r\n        </mat-form-field>\r\n      </div>\r\n\r\n  </div>\r\n    <div mat-dialog-actions class=\"DialogOptionBtn\">\r\n      \r\n      <button mat-button [mat-dialog-close]=\"resetPassword(email)\"  cdkFocusInitial>إرسال </button>\r\n      <button mat-button [mat-dialog-close]=\"\"  >إلغاء الأمر </button>\r\n    </div>\r\n    \r\n    </div>"
 
 /***/ }),
 
@@ -5601,7 +5461,6 @@ var AddProductComponent = /** @class */ (function () {
                 _this.category.unshift(y);
             }
             _this.cat = Array.from(_this.category);
-            console.log(_this.cat);
         });
     };
     AddProductComponent.prototype.detectFiles = function (event) {
@@ -5619,7 +5478,6 @@ var AddProductComponent = /** @class */ (function () {
                 _this.num = (uploadTask_1.snapshot.bytesTransferred / uploadTask_1.snapshot.totalBytes) * 100;
             }, function (error) {
                 // upload failed
-                console.log(error);
             }, function () {
                 // upload success
                 if (productForm.value.$key == null) {
@@ -5698,17 +5556,12 @@ var AddProductComponent = /** @class */ (function () {
     };
     AddProductComponent.prototype.addNewCategory = function () {
         var _this = this;
-        console.log("Inside new Category");
-        console.log(this.selectvalue);
-        console.log(this.New);
         if (this.selectvalue != this.New)
             return;
         var dialogRef = this.dialog.open(addCategory, {
             data: { newCategory: '' }
         });
         dialogRef.afterClosed().subscribe(function (result) {
-            console.log('The dialog was closed');
-            console.log(result);
             if (result != null) {
                 _this.New = result;
                 _this.selectvalue = result;
@@ -5728,7 +5581,6 @@ var AddProductComponent = /** @class */ (function () {
             data: { message: '' }
         });
         dialogRef.afterClosed().subscribe(function (result) {
-            console.log('The dialog was closed');
             if (result == true) {
                 _this.resetForm();
                 _this.router.navigate(['mainPage/product']);
@@ -5821,7 +5673,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/product/ivc-report/ivc-report.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<mat-toolbar  class=\"PageTitle\" style=\"background-color:transparent\">\r\n    <span class=\"toolbar-spacer\"></span>\r\n<span color=\"primary\">   <h2>  تقرير المخزون  </h2> </span>\r\n<span class=\"toolbar-spacer\"></span>\r\n   </mat-toolbar>     \r\n\r\n<mat-tab-group class=\"tab-group\" (selectedTabChange)='selectChange($event)'>\r\n    <mat-tab label=\"التقرير\" >\r\n      <div class=\"tabContent\">\r\n          <mat-table #table [dataSource]=\"dataSource\"  matSort>\r\n\r\n              <!-- Position Column -->\r\n<!--               \r\n              <ng-container [matColumnDef]=\"header\"  *ngFor='let header of displayedColumns' >\r\n                <mat-header-cell *matHeaderCellDef> {{info[header]}} </mat-header-cell>\r\n                <mat-cell *matCellDef=\"let element; \">  {{element.date}}    </mat-cell>\r\n              </ng-container>\r\n                displayedColumns=['name','inventory','cost','price','category']; -->\r\n              \r\n              <ng-container matColumnDef=\"name\" >\r\n                  <mat-header-cell *matHeaderCellDef mat-sort-header  > اسم المنتج  </mat-header-cell>\r\n                  <mat-cell *matCellDef=\"let row\"> {{row.name}} </mat-cell>\r\n                </ng-container>\r\n                <ng-container matColumnDef=\"inventory\"  >\r\n                    <mat-header-cell *matHeaderCellDef mat-sort-header > الكمية المتوفرة </mat-header-cell>\r\n                    <mat-cell *matCellDef=\"let row\"> {{row.inventory}} </mat-cell>\r\n                  </ng-container>\r\n                  <ng-container matColumnDef=\"cost\" >\r\n                      <mat-header-cell *matHeaderCellDef mat-sort-header> تكلفة المنتج  </mat-header-cell>\r\n                      <mat-cell *matCellDef=\"let row\"> {{row.cost}} </mat-cell>\r\n                    </ng-container>\r\n\r\n                    <ng-container matColumnDef=\"price\" >\r\n                        <mat-header-cell *matHeaderCellDef mat-sort-header> سعر المنتج  </mat-header-cell>\r\n                        <mat-cell *matCellDef=\"let row\"> {{row.price}} </mat-cell>\r\n                      </ng-container>\r\n                      <ng-container matColumnDef=\"category\"  >\r\n                          <mat-header-cell *matHeaderCellDef mat-sort-header > تصنيف المنتج </mat-header-cell>\r\n                          <mat-cell *matCellDef=\"let row\"> {{row.category}} </mat-cell>\r\n                        </ng-container>\r\n\r\n              <mat-header-row *matHeaderRowDef=\"displayedColumns\"></mat-header-row>\r\n              <mat-row *matRowDef=\"let row; columns: displayedColumns;\"></mat-row>\r\n\r\n            </mat-table>\r\n\r\n            \r\n\r\n            <mat-paginator dir=\"rtl\" [pageSizeOptions]=\"[5, 10, 15, 100]\" ></mat-paginator>\r\n\r\n          \r\n      </div>\r\n    </mat-tab>\r\n\r\n         \r\n    <mat-tab label=\"الرسم البياني\"  >\r\n      <div class=\"tabContent\" (click)='creatChart()' *ngIf=\"chart\" >\r\n       <canvas id=\"pie\"  class=\"chart-pie\" style=\"height:455px ; width:90% ;    overflow:hidden;\" >{{ chart }}</canvas>\r\n      \r\n      </div>  \r\n    </mat-tab>\r\n</mat-tab-group>\r\n<!-- (matSortChange)=\"sortData($event)\" -->\r\n "
+module.exports = "<mat-toolbar  class=\"PageTitle\" style=\"background-color:transparent\">\r\n    <span class=\"toolbar-spacer\"></span>\r\n<span color=\"primary\">   <h2>  تقرير المخزون  </h2> </span>\r\n<span class=\"toolbar-spacer\"></span>\r\n   </mat-toolbar>     \r\n\r\n<mat-tab-group class=\"tab-group\" (selectedTabChange)='selectChange($event)'>\r\n    <mat-tab label=\"التقرير\" >\r\n      <div class=\"tabContent\">\r\n          <mat-table #table [dataSource]=\"dataSource\"  matSort>\r\n\r\n              <!-- Position Column -->\r\n<!--               \r\n              <ng-container [matColumnDef]=\"header\"  *ngFor='let header of displayedColumns' >\r\n                <mat-header-cell *matHeaderCellDef> {{info[header]}} </mat-header-cell>\r\n                <mat-cell *matCellDef=\"let element; \">  {{element.date}}    </mat-cell>\r\n              </ng-container>\r\n                displayedColumns=['name','inventory','cost','price','category']; -->\r\n              \r\n              <ng-container matColumnDef=\"name\" >\r\n                  <mat-header-cell *matHeaderCellDef mat-sort-header  > اسم المنتج  </mat-header-cell>\r\n                  <mat-cell *matCellDef=\"let row\"> {{row.name}} </mat-cell>\r\n                </ng-container>\r\n                <ng-container matColumnDef=\"inventory\"  >\r\n                    <mat-header-cell *matHeaderCellDef mat-sort-header > الكمية المتوفرة </mat-header-cell>\r\n                    <mat-cell *matCellDef=\"let row\"> {{row.inventory}} </mat-cell>\r\n                  </ng-container>\r\n                  <ng-container matColumnDef=\"cost\" >\r\n                      <mat-header-cell *matHeaderCellDef mat-sort-header> تكلفة المنتج  </mat-header-cell>\r\n                      <mat-cell *matCellDef=\"let row\"> {{row.cost}} </mat-cell>\r\n                    </ng-container>\r\n\r\n                    <ng-container matColumnDef=\"price\" >\r\n                        <mat-header-cell *matHeaderCellDef mat-sort-header> سعر المنتج  </mat-header-cell>\r\n                        <mat-cell *matCellDef=\"let row\"> {{row.price}} </mat-cell>\r\n                      </ng-container>\r\n                      <ng-container matColumnDef=\"category\"  >\r\n                          <mat-header-cell *matHeaderCellDef mat-sort-header > تصنيف المنتج </mat-header-cell>\r\n                          <mat-cell *matCellDef=\"let row\"> {{row.category}} </mat-cell>\r\n                        </ng-container>\r\n\r\n              <mat-header-row *matHeaderRowDef=\"displayedColumns\"></mat-header-row>\r\n              <mat-row *matRowDef=\"let row; columns: displayedColumns;\"></mat-row>\r\n\r\n            </mat-table>\r\n\r\n            \r\n\r\n            <mat-paginator dir=\"rtl\" [pageSizeOptions]=\"[5, 10, 15, 100]\" ></mat-paginator>\r\n\r\n          \r\n      </div>\r\n    </mat-tab>\r\n\r\n         \r\n    <mat-tab label=\"الرسم البياني\"  >\r\n        <div class=\"tabContent\"  *ngIf=\"chart\" >\r\n            <canvas id=\"pie\"  class=\"chart-bar\" style=\"height:255px ; width:90% ;    overflow:hidden;\" ></canvas>\r\n           \r\n           </div>     \r\n    </mat-tab>\r\n</mat-tab-group>\r\n<!-- (matSortChange)=\"sortData($event)\" -->\r\n "
 
 /***/ }),
 
@@ -5855,7 +5707,6 @@ var IvcReportComponent = /** @class */ (function () {
         this.db = db;
         this.productService = productService;
         this.dataSource = new __WEBPACK_IMPORTED_MODULE_3__angular_material__["J" /* MatTableDataSource */](new Array());
-        this.chart = [];
         this.totalS = 0;
         this.reportName = 'تقرير مبيعات موظف  ';
         this.displayedColumns = ['category', 'name', 'inventory', 'cost', 'price'];
@@ -5895,6 +5746,7 @@ var IvcReportComponent = /** @class */ (function () {
             }
         });
         this.totalInv();
+        this.creatChart();
     };
     IvcReportComponent.prototype.totalInv = function () {
         var _this = this;
@@ -5912,8 +5764,11 @@ var IvcReportComponent = /** @class */ (function () {
     IvcReportComponent.prototype.creatChart = function () {
         var label = this.dataSource.data.map(function (product) { return product.name; });
         var values = this.dataSource.data.map(function (product) { return product.inventory; });
+        if (this.chart != null)
+            if (this.chart.data)
+                this.chart.destroy();
         this.chart = new __WEBPACK_IMPORTED_MODULE_4_chart_js__["Chart"]('pie', {
-            type: 'pie',
+            type: 'bar',
             data: {
                 labels: label,
                 datasets: [{
@@ -5927,11 +5782,18 @@ var IvcReportComponent = /** @class */ (function () {
                             'rgba(255, 159, 64, 0.4)',
                             'rgba(102, 153, 255,0.4)',
                             'rgba(255, 51, 153,0.4)',
-                            'rgba(255, 102, 15, 0.4)',
+                            'rgba(255, 102, 0, 0.4)',
                             'rgba(51, 102, 255,0.4)',
-                            'rgba(51, 51, 204,0.4)',
-                            'rgba(204, 0, 204,0.4)',
-                            'rgba(255, 0, 102,0.4)'
+                            'rgba(255, 99, 132, 0.4)',
+                            'rgba(54, 162, 235, 0.4)',
+                            'rgba(255, 206, 86, 0.4)',
+                            'rgba(75, 192, 192, 0.4)',
+                            'rgba(153, 102, 255, 0.4)',
+                            'rgba(255, 159, 64, 0.4)',
+                            'rgba(102, 153, 255,0.4)',
+                            'rgba(255, 51, 153,0.4)',
+                            'rgba(255, 102, 0, 0.4)',
+                            'rgba(51, 102, 255,0.4)',
                         ],
                         borderColor: [
                             'rgba(255,99,132,1)',
@@ -5942,26 +5804,46 @@ var IvcReportComponent = /** @class */ (function () {
                             'rgba(255, 159, 64, 1)',
                             'rgba(102, 153, 255, 1)',
                             'rgba(255, 51, 153, 1)',
-                            'rgba(255, 102, 15, 1)',
+                            'rgba(255, 102, 0, 1)',
                             'rgba(51, 102, 255, 1)',
-                            'rgba(51, 51, 204,1)',
-                            'rgba(204, 0, 204,1)',
-                            'rgba(255, 0, 102,1)',
+                            'rgba(255, 99, 132, 0.4)',
+                            'rgba(54, 162, 235, 0.4)',
+                            'rgba(255, 206, 86, 0.4)',
+                            'rgba(75, 192, 192, 0.4)',
+                            'rgba(153, 102, 255, 0.4)',
+                            'rgba(255, 159, 64, 0.4)',
+                            'rgba(102, 153, 255,0.4)',
+                            'rgba(255, 51, 153,0.4)',
+                            'rgba(255, 102, 0, 0.4)',
+                            'rgba(51, 102, 255,0.4)',
                         ],
                     }]
             },
             options: {
                 responsive: true,
                 legend: {
-                    display: true,
+                    display: false,
                     position: 'right',
                 },
                 scales: {
                     xAxes: [{
-                            display: false
+                            scaleLabel: {
+                                labelString: "المنتجات",
+                                display: true,
+                            },
+                            ticks: {
+                                beginAtZero: true
+                            }
                         }],
                     yAxes: [{
-                            display: false
+                            display: true,
+                            ticks: {
+                                beginAtZero: true
+                            },
+                            scaleLabel: {
+                                labelString: "الكمية المتوفرة ",
+                                display: true,
+                            },
                         }],
                 },
                 tooltips: {
@@ -6066,11 +5948,6 @@ var ProductComponent = /** @class */ (function () {
         this.selected = "ALLCAT";
         this.search = "";
     }
-    /*  dialogRef.afterClosed().subscribe(result => {
-        console.log('The dialog was closed');
-        if(result)
-        item.name = result;
-      }); */
     ProductComponent.prototype.searchProduct = function (st) {
     };
     ProductComponent.prototype.delete = function (category) {
@@ -6087,15 +5964,11 @@ var ProductComponent = /** @class */ (function () {
             });
             this.category = [];
         }
-        else
-            console.log('not deleted');
-        //console.log(this.category.splice(this.category.indexOf(category)));
     };
     ProductComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.productList = [];
         this.category = [];
-        console.log(this.category);
         this.db.list(window.name + '/products').snapshotChanges().subscribe(function (item) {
             for (var element2 in item) {
                 var y = item[element2].payload.toJSON();
@@ -6126,8 +5999,6 @@ var ProductComponent = /** @class */ (function () {
                     _this.tempProducts.unshift(item);
             });
         }
-        console.log(this.tempProducts);
-        console.log(category);
     };
     ProductComponent.prototype.viewProduct = function (product) {
         var id = product.$key + "," + product.name + "," + product.category + "," + product.cost + "," + product.description + "," + product.inventory + "," + product.picName + "," + product.picPath + "," + product.price;
@@ -6149,7 +6020,6 @@ var ProductComponent = /** @class */ (function () {
             data: { name: item.name, inventory: item.inventory }
         });
         dialogRef.afterClosed().subscribe(function (result) {
-            console.log('The dialog was closed');
             if (result) {
                 var x = _this.productService.updateProductInv(item, result);
                 if (result > item.inventory) {
@@ -6399,28 +6269,9 @@ var ViewProductComponent = /** @class */ (function () {
         this.imgName = this.tempArray[6];
         this.img = this.tempArray[7];
         this.price = Number(this.tempArray[8]);
-        /*
-         this.productList = [];
-         let x = this.productService.getData();
-         x.snapshotChanges().subscribe(item => {
-         for(var element2 in item) {
-           var y = item[element2].payload.key;
-         this.db.list('products/'+y).snapshotChanges().subscribe(element => {
-           element.forEach(element2 => {
-           var y = element2.payload.toJSON();
-           y["$key"] = element2.key;
-          this.productList.push(y as Product);
-          if(this.key == element2.key)
-            this.product = y as Product;
-         });
-         });
-         }
-         this.productList = [];
-       });*/
     };
     ViewProductComponent.prototype.onEdit = function () {
         var id = this.key + "," + this.name + "," + this.Tag + "," + this.cost + "," + this.description + "," + this.quantity + "," + this.imgName + "," + this.img + "," + this.price;
-        //this.productService.selectedProduct = Object.assign({}, this.product);
         this.router.navigate(["mainPage/Add_Product/", id]);
     };
     ViewProductComponent.prototype.delete = function () {
@@ -6430,8 +6281,6 @@ var ViewProductComponent = /** @class */ (function () {
             var storageRef = __WEBPACK_IMPORTED_MODULE_2_firebase__["storage"]().ref();
             storageRef.child(this.imgName).delete();
         }
-        //console.log(s);
-        //this.productService.deleteProduct(s as Product);
         this.router.navigate(['mainPage/product']).then(function (res) {
             _this.flashMensaje.show('تم حذف المنتج بنجاح.', { cssClass: 'alert-success', timeout: 100000,
                 closeOnClick: true, showCloseBtn: true });
@@ -6446,7 +6295,6 @@ var ViewProductComponent = /** @class */ (function () {
             data: { message: this.name }
         });
         dialogRef.afterClosed().subscribe(function (result) {
-            console.log('The dialog was closed');
             if (result == true) {
                 _this.delete();
             }
@@ -6454,7 +6302,6 @@ var ViewProductComponent = /** @class */ (function () {
     };
     ViewProductComponent.prototype.prodSales = function () {
         var id = this.key;
-        console.log;
         this.router.navigate(['mainPage/productReport/', id]);
     };
     ViewProductComponent = __decorate([
@@ -6630,7 +6477,6 @@ var TagComponent = /** @class */ (function () {
     TagComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.dataSource.data = [];
-        console.log(this.category);
         this.db.list(window.name + '/products').snapshotChanges().subscribe(function (item) {
             _this.dataSource.data = [];
             for (var element2 in item) {
@@ -6648,8 +6494,6 @@ var TagComponent = /** @class */ (function () {
             data: { name: category.$key }
         });
         dialogRef.afterClosed().subscribe(function (result) {
-            console.log('The dialog was closed');
-            console.log(result);
             if (result != null) {
                 {
                     _this.db.list(window.name + '/products').remove(category.$key).then(function (res) {
@@ -6661,22 +6505,17 @@ var TagComponent = /** @class */ (function () {
                 }
             }
             else {
-                console.log('not deleted');
             }
         });
-        //console.log(this.category.splice(this.category.indexOf(category)));
     };
     TagComponent.prototype.edit = function (category) {
         var _this = this;
         var dialogRef = this.dialog.open(viewTag, { data: { name: category.$key } });
         dialogRef.afterClosed().subscribe(function (result) {
-            console.log('The dialog was closed');
-            console.log(result);
             if (result != null) {
                 _this.db.list(window.name + '/products/' + category.$key).snapshotChanges().subscribe(function (prods) {
                     prods.forEach(function (prod) {
                         var product = (prod.payload.toJSON());
-                        console.log(product);
                         _this.db.list(window.name + '/products/' + result).push({
                             name: product.name,
                             price: product.price,

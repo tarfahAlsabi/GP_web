@@ -77,7 +77,6 @@ openDialog(check: boolean): void {
   });
 
   dialogRef.afterClosed().subscribe(result => {
-    console.log('The dialog was closed');
     if(result){
       let s= firebase.database().ref(window.name+'/employees');
       s.child(this.temp).update({salary: result});
@@ -97,7 +96,6 @@ openDialog(check: boolean): void {
   });
 
   dialogRef.afterClosed().subscribe(result => {
-    console.log('The dialog was closed');
     if(result == true){
       
     this.delete()

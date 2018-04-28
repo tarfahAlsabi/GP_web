@@ -43,8 +43,7 @@ export class EmployeeService {
     employee.password = passArray.join("");
    //end genrat password
 
-//if(result){
-  // employee.username = employee.firstName; 
+ 
    if(path == 'none'){
      employee.picPATH = 'https://firebasestorage.googleapis.com/v0/b/erad-system.appspot.com/o/defaultEmployee.jpg?alt=media&token=ddf714e2-bf10-43ac-a575-75a52fde307e';
      employee.picName = 'defaultEmployee.jpg';
@@ -61,80 +60,12 @@ export class EmployeeService {
     }
     
 
-    
- // }else{
-    //fire alarm
- // }
-     //let n;
-   //  var fRef = firebase.database().ref(window.name+'/employees');
-    //this.temp='1';
     var x=  this.authService.register(employee.email,employee.password,
       employee.firstName,employee.lastName,employee.phone,employee.salary, employee.picPATH
       , employee.picName );
 
       this.sendMail(employee);
-   // console.log('windo: '+window.name);
-
-   /* console.log(x);
-        if(x != 'fail')
-        {fRef.child(x).set({
-          username: employee.username,  
-          email: employee.email,
-          firstName: employee.firstName,
-          lastName: employee.lastName,
-          password: employee.password,
-          phone: employee.phone,
-          salary: employee.salary,
-          picPATH: employee.picPATH,
-          picName: employee.picName
-          });
-          console.log('complited')
-
-        }else{
-          console.log('error');
-        }*/
-
-     /* .then(
-      (v) => {
-        console.log(v)
-        if(v != 'fail')
-        {fRef.child(v).set({
-          username: employee.username,  
-          email: employee.email,
-          firstName: employee.firstName,
-          lastName: employee.lastName,
-          password: employee.password,
-          phone: employee.phone,
-          salary: employee.salary,
-          picPATH: employee.picPATH,
-          picName: employee.picName
-          });
-          this.temp='1';
-          console.log('rr')
-
-        }else{
-          console.log('s');
-          this.temp='';
-          this.temp = '0';
-        }
-       
-
-    });
-    console.log(this.temp);
-    return this.temp;*/
-     /*this.firebase.list('employees').push({
-          username: employee.username,  
-          email: employee.email,
-          firstName: employee.firstName,
-          lastName: employee.lastName,
-          password: employee.password,
-          phone: employee.phone,
-          salary: employee.salary,
-          picPATH: employee.picPATH,
-          picName: employee.picName
-          });*/
-    //  }).catch((err) =>{
-  //    x= false;
+   
   }
   
   sendMail(employee:Employee)
@@ -155,21 +86,17 @@ export class EmployeeService {
       request(q, function (error, response, body) {
         if (error) throw new Error(error);
       
-        console.log(body);
       });
   }
 
   delete(employee : Employee){
     if(confirm("هل انت متأكد من تسريح الموظف")){
     this.employeeList.remove(employee.$key);
-   //let fileName = employee.picPATH.substring(employee.picPATH.indexOf(',')+1);
 
     if(employee.picName != 'defaultEmployee.jpg'){
      let storageRef = firebase.storage().ref();
      storageRef.child(employee.picName).delete();
     }
-   // let admin = require('firebase-admin');
- //   firebase.auth().currentUser.(employee.$key)..deleteUser(employee.email);
     this.router.navigate(['mainPage/empolyee']);
   }
 

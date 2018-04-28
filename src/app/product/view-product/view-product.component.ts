@@ -49,29 +49,10 @@ export class ViewProductComponent implements OnInit {
     this.img = this.tempArray[7];
     this.price = Number(this.tempArray[8]);
 
- /* 
-  this.productList = [];
-  let x = this.productService.getData();
-  x.snapshotChanges().subscribe(item => {
-  for(var element2 in item) {
-    var y = item[element2].payload.key;
-  this.db.list('products/'+y).snapshotChanges().subscribe(element => {
-    element.forEach(element2 => {
-    var y = element2.payload.toJSON();
-    y["$key"] = element2.key;
-   this.productList.push(y as Product);
-   if(this.key == element2.key)
-     this.product = y as Product; 
-  });
-  });
-  }
-  this.productList = [];
-});*/ 
   }
 
   onEdit() {
     let id=this.key+","+this.name+","+this.Tag+","+this.cost+","+this.description+","+this.quantity+","+this.imgName+","+this.img+","+this.price;
-    //this.productService.selectedProduct = Object.assign({}, this.product);
     this.router.navigate(["mainPage/Add_Product/",id]);
   }
   delete(){
@@ -83,8 +64,6 @@ export class ViewProductComponent implements OnInit {
         let storageRef = firebase.storage().ref();
         storageRef.child(this.imgName).delete();
        }
-         //console.log(s);
-        //this.productService.deleteProduct(s as Product);
         this.router.navigate(['mainPage/product']).then( (res) => {
           this.flashMensaje.show('تم حذف المنتج بنجاح.',
           {cssClass: 'alert-success', timeout: 100000, 
@@ -104,7 +83,6 @@ export class ViewProductComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
       if(result == true){
         
       this.delete()
@@ -117,7 +95,6 @@ export class ViewProductComponent implements OnInit {
   prodSales()
 {
   let id=this.key
-  console.log
   this.router.navigate(['mainPage/productReport/',id]) 
 }
 }

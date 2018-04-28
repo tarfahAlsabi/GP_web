@@ -54,10 +54,10 @@
 
          
     <mat-tab label="الرسم البياني"  >
-      <div class="tabContent" (click)='creatChart()' *ngIf="chart" >
-       <canvas id="pie"  class="chart-pie" style="height:455px ; width:90% ;    overflow:hidden;" >{{ chart }}</canvas>
-      
-      </div>  
+        <div class="tabContent"  *ngIf="chart" >
+            <canvas id="pie"  class="chart-bar" style="height:255px ; width:90% ;    overflow:hidden;" ></canvas>
+           
+           </div>     
     </mat-tab>
 </mat-tab-group>
 <!-- (matSortChange)="sortData($event)" -->

@@ -14,9 +14,10 @@
 
   
   <mat-card class="formContainer" >
-    <flash-messages></flash-messages>
   <mat-card-content>
   
+    <flash-messages></flash-messages>
+
     <form  #financeForm="ngForm" (ngSubmit)="onSubmit(financeForm)" dir="rtl">
   
      <input type="hidden" name="$key" #$key="ngModel" [(ngModel)]="finance.$key">

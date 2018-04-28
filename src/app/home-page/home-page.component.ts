@@ -55,7 +55,6 @@ ngOnInit() {
       this.isLogin = false;
     }
   });
-  console.log(window.name)
 }
 
 
@@ -64,7 +63,6 @@ onClickLogout() {
     this.flashMensaje.show('تم تسجيل الخروج بنجاح.',
     {cssClass: 'alert-success', timeout: 4000});
     this.router.navigate(['mainPage']);
-    console.log('enter login');
   }).catch((err) => {
     this.flashMensaje.show('حدثت مشكلة اثناء عملية تسجيل الخروج, أرجوا المحاولة مرة أخرى.',
     {cssClass: 'alert-danger', timeout: 5000});

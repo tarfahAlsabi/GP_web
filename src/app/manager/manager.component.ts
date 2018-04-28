@@ -37,16 +37,11 @@ export class ManagerComponent implements OnInit {
   }
   onEdite(){
   let id = this.manager.uid;
-  console.log(this.manager.uid)
     this.router.navigate(['mainPage/edit-manager/',id]);
   }
 
-  resetPassword(){
-    this.router.navigate(['mainPage/change-password'])
-   // this.authService.resetPass();
-  }
-
-  deleteProject()
+  
+  deleteAccount()
   {
     let dialogRef = this.dialog.open(confirmDelete);
 
@@ -62,7 +57,6 @@ export class ManagerComponent implements OnInit {
               prods.forEach(prod=>{
                let product:any= prod.payload.toJSON();
                this.deletephoto(product.picName)
-              //  console.log(product)
                                    })                                                         })    
           })
         });
@@ -76,17 +70,34 @@ export class ManagerComponent implements OnInit {
                           })
         })
 
-        
+        var user = firebase.auth().currentUser;
         this.db.list(window.name).remove().then( 
           (res) => {
+            
+        user.delete().then(result => {
+          // User deleted.
+
           this.router.navigate(['']).then(n =>{
             this.flashMensaje.show('تم حذف المشروع بنجاح ',
-            {cssClass: 'alert-success', timeout: 40000});
+            {cssClass: 'alert-success', timeout: 100000, 
+            closeOnClick: true, showCloseBtn: true});
           })
+
+
+        }).catch((error)=> {
+          // An error happened.
+          this.flashMensaje.show('حدثت مشكلة أثناء عملية الحذف يرجى المحاولة مرة أخرى.',
+          {cssClass: 'alert-danger', timeout: 100000, 
+          closeOnClick: true, showCloseBtn: true});
+          
+        });
+        
+
 
         }).catch((err) => {
           this.flashMensaje.show('حدثت مشكلة أثناء عملية الحذف يرجى المحاولة مرة أخرى.',
-          {cssClass: 'alert-danger', timeout: 40000});
+          {cssClass: 'alert-danger', timeout: 100000, 
+          closeOnClick: true, showCloseBtn: true});
           
         });
 
@@ -99,10 +110,48 @@ export class ManagerComponent implements OnInit {
   deletephoto(picName)
   {
     if(picName != 'defaultproduct.png' &&  picName != 'defaultEmployee.jpg'  ){
-      console.log(picName)
       let storageRef = firebase.storage().ref();
       storageRef.child(picName).delete();
      }
+  }
+
+  isEmail(search:string):boolean
+    {
+        var  serchfind:boolean;
+
+       let regexp = new RegExp(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/);
+
+        serchfind = regexp.test(search);
+
+       return serchfind
+    }
+
+  resetPassword(){
+
+    let dialogRef = this.dialog.open(ResetPassword);
+
+    dialogRef.afterClosed().subscribe(result => {
+     
+      if(result!=null)
+      {
+        if(this.isEmail(result)){
+          let x = this.authService.resetPass(result);
+          if(x){
+            this.flashMensaje.show('تم ارسال طلب تغيير الرقم السري على بريدك الإلكتروني.',
+            {cssClass: 'alert-success', timeout: 100000, 
+            closeOnClick: true, showCloseBtn: true});
+          }else{
+            this.flashMensaje.show('حدثت مشكلة أثناء عملية ارسال طلب تغيير الرقم السري يرجى المحاولة مرة أخرى.',
+            {cssClass: 'alert-danger', timeout: 100000, 
+            closeOnClick: true, showCloseBtn: true});
+          }
+        }else{
+          this.flashMensaje.show('يرجى كتابة البريد الإلكتروني بشكل صحيح.',
+          {cssClass: 'alert-danger', timeout: 100000, 
+          closeOnClick: true, showCloseBtn: true});
+        }
+      }
+    });
   }
 }
 
@@ -118,6 +167,25 @@ export class confirmDelete {
   constructor(
     public dialogRef: MatDialogRef<confirmDelete>,
     @Inject(MAT_DIALOG_DATA) public data: any) { }
+
+
+}
+
+@Component({
+  selector: 'reset-password',
+  templateUrl: './reset-password.html',
+  styleUrls: ['./manager.component.css']
+})
+export class ResetPassword {
+  yes:string='yes';
+  email:string;
+  constructor(
+    public dialogRef: MatDialogRef<ResetPassword>,
+    @Inject(MAT_DIALOG_DATA) public data: any) { }
+
+    resetPassword(email:string){
+      return email;
+    }
 
 
 }

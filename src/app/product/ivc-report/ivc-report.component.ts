@@ -20,10 +20,10 @@ export class IvcReportComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   
   dataSource:MatTableDataSource<Product>=new MatTableDataSource(new Array());
-  chart = []; 
+  chart :Chart; 
   productList: Product[];
   totalS =0;
-  charts:any;
+// charts:any;
   bb:any;
 
   reportName='تقرير مبيعات موظف  ';
@@ -65,6 +65,7 @@ export class IvcReportComponent implements OnInit {
 
 
   this.totalInv()
+  this.creatChart()
   }
 
   totalInv()
@@ -83,12 +84,16 @@ export class IvcReportComponent implements OnInit {
   }
 creatChart()
 {
-
   let label =this.dataSource.data.map(product => product.name)
   let values=this.dataSource.data.map(product => product.inventory)
   
+  if(this.chart!=null )
+  if(this.chart.data)
+  this.chart.destroy();
+
+
   this.chart = new Chart('pie', {
-      type: 'pie',
+    type: 'bar',
       data: {
         labels: label,
         datasets: [{
@@ -102,11 +107,18 @@ creatChart()
             'rgba(255, 159, 64, 0.4)',
             'rgba(102, 153, 255,0.4)',
             'rgba(255, 51, 153,0.4)',
-            'rgba(255, 102, 15, 0.4)',
+          'rgba(255, 102, 0, 0.4)',
             'rgba(51, 102, 255,0.4)',
-            'rgba(51, 51, 204,0.4)',
-            'rgba(204, 0, 204,0.4)',
-            'rgba(255, 0, 102,0.4)'
+          'rgba(255, 99, 132, 0.4)',
+          'rgba(54, 162, 235, 0.4)',
+          'rgba(255, 206, 86, 0.4)',
+          'rgba(75, 192, 192, 0.4)',
+          'rgba(153, 102, 255, 0.4)',
+          'rgba(255, 159, 64, 0.4)',
+          'rgba(102, 153, 255,0.4)',
+          'rgba(255, 51, 153,0.4)',
+          'rgba(255, 102, 0, 0.4)',
+          'rgba(51, 102, 255,0.4)',
         ],
         borderColor: [
             'rgba(255,99,132,1)',
@@ -117,26 +129,48 @@ creatChart()
             'rgba(255, 159, 64, 1)',
             'rgba(102, 153, 255, 1)',
             'rgba(255, 51, 153, 1)',
-            'rgba(255, 102, 15, 1)',
+          'rgba(255, 102, 0, 1)',
             'rgba(51, 102, 255, 1)',
-            'rgba(51, 51, 204,1)',
-            'rgba(204, 0, 204,1)',
-            'rgba(255, 0, 102,1)',
+          'rgba(255, 99, 132, 0.4)',
+          'rgba(54, 162, 235, 0.4)',
+          'rgba(255, 206, 86, 0.4)',
+          'rgba(75, 192, 192, 0.4)',
+          'rgba(153, 102, 255, 0.4)',
+          'rgba(255, 159, 64, 0.4)',
+          'rgba(102, 153, 255,0.4)',
+          'rgba(255, 51, 153,0.4)',
+          'rgba(255, 102, 0, 0.4)',
+          'rgba(51, 102, 255,0.4)',
         ],
         }]
       },
       options: {
-        responsive: true,
+      responsive: true,
         legend: {
-          display: true,
+        display: false,
           position: 'right',
         },
         scales: {
           xAxes: [{
-            display: false
+          scaleLabel :
+          {
+          labelString:"المنتجات",
+          display: true,
+          },
+          ticks: {
+            beginAtZero:true
+        }
           }],
           yAxes: [{
-            display: false
+          display: true,
+          ticks: {
+            beginAtZero:true
+        },
+        scaleLabel :
+          {
+          labelString:"الكمية المتوفرة ",
+          display: true,
+          },
           }],
         },
         tooltips: {

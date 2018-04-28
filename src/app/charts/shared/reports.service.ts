@@ -62,7 +62,6 @@ getEmployeeList()
      this.ProductList.push(temp) ;
    });
  });
-      console.log(this.ProductList);  
   return this.ProductList;
 
 }
@@ -98,8 +97,7 @@ getProductreceipts(key,startDate:Date,EndDate:Date)
     }
   });
   this.productInfos=total;
-  console.log(total.length)
-  console.log(this.productInfos)
+ 
   return this.productInfos;
 }
 getEmployeeSales(key,startDate:Date,EndDate:Date)
@@ -115,24 +113,20 @@ getEmployeeSales(key,startDate:Date,EndDate:Date)
         receipt= temp.payload.toJSON()
         if(receipt.employeeID != key)
         continue;
-        console.log("inside" )
-        console.log(receipt)
+       
         let date =receipt.date.split('-')
          //date[0] year , date[1] month , date[2] day
         if(date[0]<startDate.getFullYear()||date[0]>EndDate.getFullYear()||
         date[1]<startDate.getUTCMonth()+1||date[1]>EndDate.getUTCMonth()+1||
         date[2]<startDate.getDate()||date[2]>EndDate.getDate())
       {
-        console.log('indside date if')
+        
         continue; 
       }
     
-        console.log('indside date else')
         let q=0;
-        console.log(typeof receipt.products)
         for (var prods in receipt.products)
         {
-          console.log( receipt.products[prods])
           q+=receipt.products[prods].quantity;
         }
         var info = new empsales()
@@ -147,7 +141,6 @@ getEmployeeSales(key,startDate:Date,EndDate:Date)
       }
   
   })
-  console.log(this.emplSales);
     // displayedColumns=['date','time','quantity','price','pay','remains'];     
    return this.emplSales;
 }
@@ -156,7 +149,6 @@ getEmpShifts(key,startDate:Date,EndDate:Date,source:MatTableDataSource<shift>)
   this.firebase.list(window.name+'/employees/'+key+'/workingTime').snapshotChanges().subscribe(list => {
     for(let temp of list)
     {
-      console.log(typeof temp.key )
       let year = parseInt(temp.key, 10);
       let mon= temp.payload.toJSON();
       // console.log(mon)
@@ -192,8 +184,7 @@ getEmpShifts(key,startDate:Date,EndDate:Date,source:MatTableDataSource<shift>)
       
     }
   })
- console.log(source);
- console.log(source.data.length)
+ 
 }
 
 

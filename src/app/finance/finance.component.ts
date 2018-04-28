@@ -24,7 +24,6 @@ finance: Finance =new Finance;
     private firebase: AngularFireDatabase) { }
 
   ngOnInit() {
-    //firebase.database().ref(window.name+'manager').child('xFinance');
     this.firebase.object(window.name+'/manager/xFinance').snapshotChanges().subscribe(ob =>{
       let x = ob.payload.toJSON();
       x["$key"] = ob.key;
@@ -72,6 +71,10 @@ finance: Finance =new Finance;
       capital: this.finance.capital,
       Loans: this.finance.loans,
       creditors: this.finance.creditors
+    }).then((res)=>{
+      this.flashMensaje.show('تمت العملية بنجاح.',
+      {cssClass: 'alert-success', timeout: 100000, 
+      closeOnClick: true, showCloseBtn: true});
     });
   
     }

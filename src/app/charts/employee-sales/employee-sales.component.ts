@@ -58,12 +58,10 @@ export class EmployeeSalesComponent implements OnInit {
    emp = this.route.snapshot.params.id;
 
   if(emp != null){
-    console.log(emp)
     this.selectedValue=emp;
     this.changeProduct();
    }
 
-  //console.log(this.receiptList);
   }
 
   selectChange(evet:any)
@@ -86,9 +84,7 @@ export class EmployeeSalesComponent implements OnInit {
     this.endDate = new Date(x.getTime() + (1000 * 60 * 60 * 24));
     }
     this.changeProduct();
-    // this.creatChart();
-  /*  var mydate = new Date('2018-03-02');
-    console.log(mydate.toDateString());*/
+   
 
 }
 
@@ -184,18 +180,7 @@ changeProduct()
       
   
      this.getEmployeeSales()
-  //   if(true){
-  //     this.dataSource.data =x;
-  //     console.log(x)
-
-  //     this.dataSource.sort = this.sort;
-      
-  // }else{
-  // this.flashMensaje.show('لم يتم بيع هذا المنتج في هذه الفترة الزمنية.',
-  // {cssClass: 'alert-danger', timeout: 5000});
-  //     this.dataSource.data=[];
-  // }
-  //if(this.products)
+  
    }else{
     this.flashMensaje.show('يجب ان لا يسبق تاريخ النهاية تاريخ البداية.',
     {cssClass: 'alert-danger', timeout: 100000, 
@@ -215,7 +200,6 @@ changeProduct()
   }
 }
 
-// this.selectedValue,this.this.startDate,this.endDate
 
 getEmployeeSales()
 {
@@ -243,10 +227,8 @@ getEmployeeSales()
       }
 
         let q=0;
-        // console.log(typeof receipt.products)
         for (var prods in receipt.products)
         {
-          // console.log( receipt.products[prods])
           q+=receipt.products[prods].quantity;
         }
         var info = new empsales()
@@ -267,8 +249,7 @@ getEmployeeSales()
       this.creatChart(); 
   
   })
-  // console.log(this.dataSource.data);
-    // displayedColumns=['date','time','quantity','price','pay','remains'];      
+    
 }
 
 
@@ -286,10 +267,8 @@ getValues()
     {
       if(label[n].localeCompare(i)==0)
       {
-        // console.log(label[n])
         
       sum = sum + values[n]
-      // console.log(sum)
       values[n]=0
       label[n]=''
       }

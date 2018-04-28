@@ -133,9 +133,7 @@ incom()
               
               for(let n in day)
               {
-               // console.log(n)
                 var ymd =  new Date(year,month-1,parseInt(n, 10))
-               // console.log(ymd <= this.startDate)
                 if(ymd >= this.startDate && ymd <= this.endDate ){
                 
                 let shifts=day[n]
@@ -236,8 +234,7 @@ this.finance.capital = netIncome.netIncome - this.finance.capital;
 if(netIncome.netIncome == 0)
 netIncome.result='تعادل';
 
-console.log(netIncome.result)
-console.log(this.finance)
+
 this.dataSourceIncome.data.push(this.finance as Assets);
 this.dataSourceIncome._updateChangeSubscription();
 

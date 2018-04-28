@@ -28,11 +28,7 @@ export class ProductComponent implements OnInit {
   category: Category[];
   tempProducts: Product[];
   search="";
-   /*  dialogRef.afterClosed().subscribe(result => {
-       console.log('The dialog was closed');
-       if(result)
-       item.name = result;
-     }); */
+   
      searchProduct(st:string)
      {
           
@@ -52,16 +48,11 @@ export class ProductComponent implements OnInit {
        });
         this.category= [];
      
-       } else 
-         console.log('not deleted');
-         
-         //console.log(this.category.splice(this.category.indexOf(category)));
- 
+       }
  }
      ngOnInit() {
        this.productList = [];
        this.category= [];
-       console.log( this.category);
        this.db.list(window.name+'/products').snapshotChanges().subscribe(item => {
        for(var element2 in item) {
          var y = item[element2].payload.toJSON();
@@ -92,8 +83,7 @@ export class ProductComponent implements OnInit {
              this.tempProducts.unshift(item as Product);
          });
        }
-       console.log( this.tempProducts);
-       console.log( category);
+     
      }
      viewProduct(product: Product)
  {
@@ -126,7 +116,6 @@ export class ProductComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
       if(result){
         
       let x = this.productService.updateProductInv(item,result);

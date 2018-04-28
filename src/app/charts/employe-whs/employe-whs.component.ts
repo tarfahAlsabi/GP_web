@@ -65,7 +65,6 @@ export class EmployeWhsComponent implements OnInit {
     this.selectedValue=emp;
     this.changeProduct();
    }
-  //console.log(this.receiptList);
   }
 
   selectChange(evet:any)
@@ -94,9 +93,7 @@ export class EmployeWhsComponent implements OnInit {
     }
     this.changeProduct();
     this.creatChart()
-    // this.creatChart();
-  /*  var mydate = new Date('2018-03-02');
-    console.log(mydate.toDateString());*/
+  
 
 }
 
@@ -113,7 +110,7 @@ creatChart()
   this.chart = new Chart('pie', {
       type: 'line',
       data: {
-        labels:this. y,
+        labels:this.y,
         datasets: [{
           data:this.x,
           backgroundColor: [
@@ -143,6 +140,10 @@ creatChart()
         }]
       },
       options: {
+        title: {
+          display: true,
+          text: 'ساعات عمل الموظف في الفترة المحددة'
+      },
         responsive: true,
         legend: {
           display: false,
@@ -150,7 +151,11 @@ creatChart()
         },
         scales: {
           xAxes: [{
+            scaleLabel :
+            {
+            labelString:"التاريخ  ",
             display: true,
+            },
             ticks: {
               beginAtZero:true
           }
@@ -160,7 +165,11 @@ creatChart()
             ticks: {
               beginAtZero:true
           },
-          label:"الكمية المباعة"
+          scaleLabel :
+            {
+            labelString:"ساعات العمل",
+            display: true,
+            },
           }],
         },
         tooltips: {
@@ -175,17 +184,16 @@ getValues()
   this.x=[]
   this.y=[]
   let label=this.dataSource.data.map(p=>p.date.toISOString().substring(0,10))
-  let values=this.dataSource.data.map(p=>p.totalShiftTime)
+  let values=this.dataSource.data.map(p=>p.ChartshiftTime)
+ 
   label.forEach(i =>{
     var sum =0
     for(let n in label)
     {
       if(label[n].localeCompare(i)==0)
       {
-        // console.log(label[n])
         
       sum = sum + values[n]
-      // console.log(sum)
       values[n]=0
       label[n]=''
       }
@@ -204,7 +212,6 @@ getValues()
 changeProduct()
 {
   this.dataSource.data=[]
-  // console.log(this.selectedValue)
 
   if(this.selectedValue!=undefined)
   { 
@@ -241,11 +248,9 @@ getEmpShifts()
   this.firebase.list(window.name+'/employees/'+this.selectedValue+'/workingTime').snapshotChanges().subscribe(list => {
     for(let temp of list)
     {
-      // console.log(typeof temp.key )
       let year = parseInt(temp.key, 10);
       let mon= temp.payload.toJSON();
-      // console.log(mon)
-      // console.log(mon.valueOf())
+     
       for(let i in mon)
       {
         let month= parseInt(i, 10);
@@ -255,10 +260,7 @@ getEmpShifts()
           var ymd =  new Date(year,month-1,parseInt(n, 10))
           if(ymd <= this.startDate && ymd >= this.endDate )
           continue;
-          // console.log("the date from new Date ")
-          // console.log(ymd)
-          // console.log(n)
-          // console.log(day[n])
+         
           let date=parseInt(n,10)
           if(ymd < this.startDate || ymd > this.endDate )//compare date with satr ang End date
           continue;
@@ -270,7 +272,8 @@ getEmpShifts()
           temp.checkIn=shifts[s].checkIn;
           temp.checkOut=shifts[s].checkOut;
           let p = shifts[s].totalShiftTime.split(':')
-          temp.totalShiftTime=parseFloat(p[0]+(p[1]/100)+(p[2]/10000))
+          temp.totalShiftTime=shifts[s].totalShiftTime
+          temp.ChartshiftTime=(((p[0]/1)+(p[1]/100)+(p[2]/10000)))
           this.error=false
           this.dataSource.data.push(temp)
           this.dataSource._updateChangeSubscription()

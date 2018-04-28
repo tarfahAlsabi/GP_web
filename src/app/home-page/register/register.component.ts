@@ -49,7 +49,6 @@ export class RegisterComponent implements OnInit {
   }
 
   onSubmitAddUser() {
-    console.log()
    this.authService.registerUser(this.manager.email,this.manager.password)
     .then((res:any) => {
       window.name = this.manager.businessname;
@@ -88,7 +87,6 @@ export class RegisterComponent implements OnInit {
               this.manager.picName,this.manager.picPath,res.uid);
               this.router.navigate(['mainPage']);
         }).catch((erorr)=>{
-          console.log('pic error');
         });
       }else{
         this.manager.picPath = 'https://firebasestorage.googleapis.com/v0/b/erad-system.appspot.com/o/defaultEmployee.jpg?alt=media&token=ddf714e2-bf10-43ac-a575-75a52fde307e';
@@ -107,7 +105,6 @@ export class RegisterComponent implements OnInit {
     }).catch( (err) => {
       this.flashMensaje.show('عملية تسجيل الدخول غير صحيحة, يرجى التأكد من ادخال جميع البيانات.',
       {cssClass: 'alert-danger', timeout: 5000});
-      console.log('error signup');
     });
   
   }

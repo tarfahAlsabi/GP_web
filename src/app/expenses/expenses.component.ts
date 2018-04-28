@@ -35,10 +35,7 @@ export class ExpensesComponent implements OnInit {
 onSubmit(expensesForm: NgForm) {
     this.expenses = expensesForm.value;
     let d1= new Date(this.expenses.year,this.expenses.month,1);
-    console.log(d1)
     d1.setDate(d1.getDate()-1);
-    console.log(d1)
-  //  this.expenses.expenses = this.expenses.expenses;
     let date = this.expenses.month+'-'+this.expenses.year;
 
     firebase.database().ref(window.name+'/manager').child('xExpenses').child(date).set({
@@ -55,8 +52,6 @@ onSubmit(expensesForm: NgForm) {
 resetForm(expensesForm?: NgForm){
   if (expensesForm != null){ 
     expensesForm.reset();
-  //  this.startDate =new Date();  
-   // this.endDate =new Date();  
   }
   this.expenses = {
     $key: null,

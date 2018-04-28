@@ -82,7 +82,6 @@ export class HeaderComponent  {
       this.flashMensaje.show('تم تسجيل الخروج بنجاح.',
       {cssClass: 'alert-success', timeout: 4000});
       this.router.navigate(['']);
-      console.log('enter login');
     }).catch((err) => {
       this.flashMensaje.show('حدثت مشكلة اثناء عملية تسجيل الخروج, يرجى المحاولة مرة أخرى.',
       {cssClass: 'alert-danger', timeout: 5000});

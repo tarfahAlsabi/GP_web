@@ -57,7 +57,6 @@ export class ProductReportComponent implements OnInit {
    let emp;
    emp = this.route.snapshot.params.id;
   if(emp != null){
-    console.log(emp)
     this.selectedValue=emp;
     this.changeProduct();
    }
@@ -174,7 +173,6 @@ creatChart()
 
 changeProduct()
 {
-  console.log(this.selectedValue)
 
   if(this.selectedValue!=undefined)
   { 

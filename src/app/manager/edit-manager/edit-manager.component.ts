@@ -63,7 +63,6 @@ export class EditManagerComponent implements OnInit {
         },
         (error) => {
           // upload failed
-          console.log(error) 
         },
         () => {
           // upload success
@@ -140,7 +139,6 @@ export class EditManagerComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
       if(result == true){
         
         this.resetForm();

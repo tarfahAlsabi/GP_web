@@ -96,6 +96,8 @@ footer
       align-content: center;
   }
 
+  
+
   .alert.flash-message{
     margin-top:8px;
 }
@@ -169,6 +171,11 @@ input[type="number"] {
       background-color: #6Dc4e2; 
   
   }
+
+  .lightBlueBtn
+  {
+    color:#9DE4F4
+  }
   
   .greyBtn
   {
@@ -195,3 +202,12 @@ input[type="number"] {
   {
     font-size: 150%;
   }
+
+
+.ViewsContainer
+{
+    margin-right:15px; 
+    align-content: center;
+    align-self: center;
+    align-items: center;
+}

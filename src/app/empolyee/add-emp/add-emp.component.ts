@@ -69,7 +69,6 @@ onSubmit(employeeForm: NgForm) {
     },
     (error) => {
       // upload failed
-      console.log(error)
     },
     () => { 
       // upload success
@@ -79,15 +78,15 @@ onSubmit(employeeForm: NgForm) {
 
           this.router.navigate(['mainPage/empolyee']).then( (res) => {
            this.flashMensaje.show('تم إضافة الموظف بنجاح.',
-           {cssClass: 'alert-success', timeout: 4000});
+           {cssClass: 'alert-success', timeout: 100000, 
+           closeOnClick: true, showCloseBtn: true});
          });//}
      // this.tostr.success('Submitted Succcessfully', 'Employee Register');
     }
   );
 }else{
   let x = this.employeeService.insert(employeeForm.value, 'none','none');
-  console.log(x);
-  //if(x == '1'){
+  
     this.resetForm(employeeForm);
     
      this.router.navigate(['mainPage/empolyee']).then( (res) => {
@@ -131,7 +130,6 @@ openDialog(): void {
   });
 
   dialogRef.afterClosed().subscribe(result => {
-    console.log('The dialog was closed');
     if(result == true){
       
       this.resetForm();

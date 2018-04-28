@@ -46,7 +46,6 @@ import { FeatursComponent } from './home-page/featurs/featurs.component';
 import { CostumersComponent } from './home-page/costumers/costumers.component';
 import { RegisterComponent } from './home-page/register/register.component';
 import { LogInComponent } from './home-page/log-in/log-in.component';
-import { ChangePasswordComponent } from './manager/change-password/change-password.component';
 
 
 const routes: Routes = [
@@ -85,8 +84,7 @@ const routes: Routes = [
         {path: 'expenses',component:ExpensesComponent},
         {path: 'finance',component:FinanceComponent},
         {path: 'income_statment',component:IncomeStatmentReporComponent},
-        {path: 'finance_report',component:FinanceReportComponent},
-        {path: 'change-password',component:ChangePasswordComponent}
+        {path: 'finance_report',component:FinanceReportComponent}
 
     ]},   
     {path: '**', component: NoFoundPageComponent} //لازم تكون اخر شيء
@@ -105,4 +103,4 @@ export const routingComponents = [MainHomeComponent,FeatursComponent,CostumersCo
     EmpolyeeComponent,NoFoundPageComponent, ManagerComponent, MyFormComponent, HeaderComponent, 
     ViewEmpComponent , AddEmpComponent , TagComponent, SalesReportComponent ,IvcReportComponent, 
     EditManagerComponent,ExpensesComponent, IncomeStatmentReporComponent,FinanceComponent,
-    FinanceReportComponent,ChangePasswordComponent];
+    FinanceReportComponent];

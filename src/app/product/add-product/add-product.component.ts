@@ -56,7 +56,6 @@ export class AddProductComponent  {
       this.category.unshift(y as Category);
     }
     this.cat=Array.from(this.category)
-    console.log( this.cat);
   });
  
   }
@@ -80,7 +79,6 @@ export class AddProductComponent  {
         },
         (error) => {
           // upload failed
-          console.log(error) 
         },
         () => {
           // upload success
@@ -169,9 +167,6 @@ export class AddProductComponent  {
   
   addNewCategory()
   {
-    console.log("Inside new Category");
-    console.log(this.selectvalue);
-    console.log(this.New);
    if(this.selectvalue != this.New)
    return;
     
@@ -180,8 +175,6 @@ export class AddProductComponent  {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-      console.log(result);
       if(result!=null)
       {
         this.New=result;
@@ -206,7 +199,6 @@ export class AddProductComponent  {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
       if(result == true){
         
         this.resetForm();
