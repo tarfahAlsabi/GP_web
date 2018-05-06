@@ -47,10 +47,10 @@
         [style.box-shadow]="true ? '0 0 0 ':'0 0 0 ' ">
             <mat-expansion-panel-header>
               <mat-panel-title>
-                  <mat-icon> work </mat-icon> <span>المنتجات  </span>
+                  <mat-icon> shopping_basket </mat-icon> <span>المنتجات  </span>
               </mat-panel-title>
             </mat-expansion-panel-header>
-              <a mat-list-item routerLink="product" >  <mat-icon>work </mat-icon> <span>عرض المنتجات    </span></a>
+              <a mat-list-item routerLink="product" >  <mat-icon>shopping_basket </mat-icon> <span>عرض المنتجات    </span></a>
               <a mat-list-item routerLink="Add_Product/:id" >  <mat-icon>add </mat-icon> <span>إضافة منتج جديد   </span></a>               
               <a  *ngIf="false" mat-list-item routerLink="Add_Tag" >  <mat-icon>add</mat-icon> <span>إضافة تصنيف جديد   </span></a>
             </mat-expansion-panel>
@@ -78,7 +78,7 @@
                 [style.box-shadow]="true ? '0 0 0 ':'0 0 0 ' ">
                     <mat-expansion-panel-header>
                       <mat-panel-title>
-                          <a class="sideNItemav" routerLink="expenses" >  <mat-icon>work </mat-icon> <span>مصروفات أخرى     </span></a>
+                          <a class="sideNItemav" routerLink="expenses" >  <mat-icon>note_add </mat-icon> <span>مصروفات أخرى     </span></a>
                       </mat-panel-title>
                     </mat-expansion-panel-header>
                     </mat-expansion-panel>
@@ -92,7 +92,7 @@
                 [style.box-shadow]="true ? '0 0 0 ':'0 0 0 ' ">
                     <mat-expansion-panel-header>
                       <mat-panel-title>
-                          <a  class="sideNItemav" routerLink="finance" >  <mat-icon>work </mat-icon> <span>الأصول والخصوم     </span></a>
+                          <a  class="sideNItemav" routerLink="finance" >  <mat-icon> description  </mat-icon> <span>الأصول والخصوم     </span></a>
                       </mat-panel-title>
                     </mat-expansion-panel-header>
                     </mat-expansion-panel>

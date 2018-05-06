@@ -80,7 +80,7 @@ export class ProductReportComponent implements OnInit {
   
   if(type == 'to'){
     var x = new Date(event.value);
-    this.endDate = new Date(x.getTime() + (1000 * 60 * 60 * 24));
+    this.endDate = new Date(x.getTime() );
     }
     this.changeProduct();
     // this.creatChart();
@@ -215,16 +215,23 @@ getProductreceipts()
   this.error=true;
   this.dataSource.data=[]
   this.firebase.list(window.name+'/receipts').snapshotChanges().subscribe(list => {
+    
     for(var m in list)
     {
+      
       let receipt :any
       receipt =list[m].payload.toJSON()
       let date =receipt.date.split('-') //date[0] year , date[1] month , date[2] day
-      if(date[0]<this.startDate.getFullYear()||date[0]>this.endDate.getFullYear()||
-      date[1]<this.startDate.getUTCMonth()+1||date[1]>this.endDate.getUTCMonth()+1||
-      date[2]<this.startDate.getDate()||date[2]>this.endDate.getDate()
-    )
+      let dd = new Date(date[0],date[1],date[2])
+      let strDate=new Date(this.startDate.getFullYear(),this.startDate.getUTCMonth()+1,this.startDate.getDate())
+      let endDate=new Date(this.endDate.getFullYear(),this.endDate.getUTCMonth()+1,this.endDate.getDate())
+    //   if(date[0]<this.startDate.getFullYear()||date[0]>this.endDate.getFullYear()||
+    //   date[1]<this.startDate.getUTCMonth()+1||date[1]>this.endDate.getUTCMonth()+1||
+    //   date[2]<this.startDate.getDate()||date[2]>this.endDate.getDate()
+    // )
+    if(dd<strDate || dd> endDate )
       continue; 
+      console.log(receipt)
       for (var prods in receipt.products)
         if(prods == this.selectedValue)
         {

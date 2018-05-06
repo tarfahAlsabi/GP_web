@@ -38,17 +38,7 @@
     width: fit-content;
     height: fit-content;
 }
-.PageTitle
-{
-    width: auto;
-    margin: 15px;
-    height: 40px;
-}
-.PageTitle span h2
-{
-    font-size: 22px;
-    margin: 0px;
-}
+
 mat-toolbar mat-toolbar-row span mat-form-field
 {
     text-align: right;
@@ -67,4 +57,35 @@ mat-toolbar mat-toolbar-row span mat-form-field
 .btn-Add
 {
     float: left;
+}
+.contaner
+{
+    background-color: whitesmoke;
+    border-radius: 1%;
+    /* height: 60px;
+    display: flex; */
+    box-sizing: border-box;
+    padding: 0 16px;
+    width: 100%;
+    flex-direction: row;
+    align-items: center;
+    white-space: nowrap;
+}
+
+.PageTitle
+{
+    min-height: 60px;
+    width: 99%;
+    margin: 2% 0.5%;
+
+}
+.contaner div
+{
+    margin-top:2em ;
+    margin-bottom: 1em;
+}
+.onClick
+{
+    cursor: pointer;
+
 }

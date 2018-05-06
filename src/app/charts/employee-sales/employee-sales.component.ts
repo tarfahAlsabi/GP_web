@@ -81,7 +81,7 @@ export class EmployeeSalesComponent implements OnInit {
   
   if(type == 'to'){
     var x = new Date(event.value);
-    this.endDate = new Date(x.getTime() + (1000 * 60 * 60 * 24));
+    this.endDate = new Date(x.getTime() );
     }
     this.changeProduct();
    
@@ -194,7 +194,7 @@ changeProduct()
   }
   else
   {
-    this.flashMensaje.show('يرجى إختيار منتج',
+    this.flashMensaje.show('يرجى إختيار موظف',
     {cssClass: 'alert-danger', timeout: 100000, 
     closeOnClick: true, showCloseBtn: true});
   }
@@ -219,12 +219,12 @@ getEmployeeSales()
 
         let date =receipt.date.split('-')
          //date[0] year , date[1] month , date[2] day
-        if(date[0]<this.startDate.getFullYear()||date[0]>this.endDate.getFullYear()||
-        date[1]<this.startDate.getUTCMonth()+1||date[1]>this.endDate.getUTCMonth()+1||
-        date[2]<this.startDate.getDate()||date[2]>this.endDate.getDate())
-      {
+         let dd = new Date(date[0],date[1],date[2])
+         let strDate=new Date(this.startDate.getFullYear(),this.startDate.getUTCMonth()+1,this.startDate.getDate())
+         let endDate=new Date(this.endDate.getFullYear(),this.endDate.getUTCMonth()+1,this.endDate.getDate())
+       if(dd<strDate || dd> endDate )
         continue; 
-      }
+      
 
         let q=0;
         for (var prods in receipt.products)
@@ -245,7 +245,7 @@ getEmployeeSales()
       }
 
       if(this.error)
-      this.flashMensaje.show('لا يوجد للموظف مبيعات في الفترة المحدة.', {cssClass: 'alert-danger', timeout: 5000});
+      this.flashMensaje.show('لا يوجد للموظف مبيعات في الفترة المحددة.', {cssClass: 'alert-danger', timeout: 5000});
       this.creatChart(); 
   
   })

@@ -1,7 +1,9 @@
-
+<div >
+<header>
 <div class="topbar animated fadeInLeftBig"></div>
 
 <!-- Header Starts -->
+
 <div class="navbar-wrapper">
       <div class="container">
         <div class="navbar navbar-default navbar-fixed-top" role="navigation" id="top-nav">
@@ -30,7 +32,7 @@
               <li [routerLinkActive]="['active']"><a routerLink='/register'>اشترك الآن</a></li> 
                <li [routerLinkActive]="['active']"><a routerLink='/customer'>المستفيدون</a></li>
                <li [routerLinkActive]="['active']"><a routerLink='/features' >المميزات</a></li>
-              <li [routerLinkActive]="['active']"><a routerLink='' >الصفحة الرئيسة</a></li>
+              <li [routerLinkActive]="['active']"><a routerLink='/ ' >الصفحة الرئيسة</a></li>
               </ul>
             </div>
 
@@ -41,31 +43,33 @@
      
       </div>
     </div>
-
-<!-- #Header Starts -->
-
-<div class="col-md-12 col-sm-12 RouterContainer">
+  </header>
+  <main role="main" class="container RouterContainer">
+<div class="col-md-12 col-sm-12 container content  ">
     <flash-messages></flash-messages>
 
 <router-outlet> </router-outlet>
 
 </div>
 
-<footer class="col-md-12 col-sm-12">
-<!-- Footer Starts -->
-<div class="footerContainer">
-<p class="wowload flipInX footertext">
-<a href="https://twitter.com/Erad_System"> <i class="fa fa-twitter fa-2x"></i></a>
-<a href="https://www.youtube.com/channel/UC_ZZTu0-NN5nQzjdgzJ3wcg"><i class="fa fa-youtube fa-2x"></i></a> </p> <p class="footertext">
-جميع الحقوق محفوظة لإيراد @2018  </p>
+
+</main>
+<div>
+
+
+<footer>
+  <!-- Footer Starts -->
+  <div class="footerContainer ">
+  <p class="wowload flipInX footertext">
+  <a href="https://twitter.com/Erad_System"> <i class="fa fa-twitter fa-2x"></i></a>
+  <a href="https://www.youtube.com/channel/UC_ZZTu0-NN5nQzjdgzJ3wcg"><i class="fa fa-youtube fa-2x"></i></a> </p> <p class="footertext">
+  جميع الحقوق محفوظة لإيراد @2018  </p>
+  </div>
+  <!-- # Footer Ends -->
+  </footer>
 </div>
-<!-- # Footer Ends -->
 
-
-
-
-</footer>
-
+</div>
 <!-- jquery -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="assets/jquery.js"></script>

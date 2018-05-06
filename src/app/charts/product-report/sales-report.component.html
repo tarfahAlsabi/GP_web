@@ -4,48 +4,50 @@
 <span class="toolbar-spacer"></span>
    </mat-toolbar>  
       
-   <div   class=" col-md-12 col-sm-12 contaner" dir="rtl">
-
-       
-    <!-- <span class="toolbar-spacer"></span> -->
-    <div class="reportBar col-md-4 col-sm-12" *ngIf="hasSelection" >
-        <mat-form-field class="headerText" >
-        <mat-select placeholder="اسم المنتج" [(ngModel)]="selectedValue" name="item" (change)='changeProduct()' >
-            <mat-option *ngFor="let item of items" [value]=" item.$key ">
-                {{item.name}}
-            </mat-option>        
-        </mat-select>
-        </mat-form-field>
-    </div>
-
-
-    <div  *ngIf="hasDate" class=" col-md-4 col-sm-6" > 
-    <mat-form-field class="headerText">
-        <input matInput  [value]='endDate'  [matDatepicker]="ToDate" placeholder=" إلى تاريخ " (dateChange)="changeDate('to', $event)" >
-        <mat-datepicker-toggle matSuffix [for]="ToDate"></mat-datepicker-toggle>
-        <mat-datepicker   #ToDate disabled="false"  ></mat-datepicker>
-    </mat-form-field>
-    </div> 
+  
+   <div  class="PageTitl col-md-12 col-sm-12 right">
+        <div   class=" col-md-12 col-sm-12 contane"  dir="rtl"  >
+     
+                <div  *ngIf="hasDate" class=" col-md-4 col-sm-6 right" > 
+                        <mat-form-field class="headerText">
+                            <input   [value]='startDate' matInput [matDatepicker]="picker" placeholder=" من تاريخ " (dateChange)="changeDate('from', $event) " >
+                            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                            <mat-datepicker #picker disabled="false" ></mat-datepicker>
+                        </mat-form-field>
+                    </div>
+        <!-- <span class="toolbar-spacer"></span> -->
+  
 
 
-    <div  *ngIf="hasDate" class=" col-md-4 col-sm-6" > 
+        <div  *ngIf="hasDate" class=" col-md-4 col-sm-6 right" > 
         <mat-form-field class="headerText">
-            <input   [value]='startDate' matInput [matDatepicker]="picker" placeholder=" من تاريخ " (dateChange)="changeDate('from', $event) " >
-            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-            <mat-datepicker #picker disabled="false" ></mat-datepicker>
+            <input matInput  [value]='endDate'  [matDatepicker]="ToDate" placeholder=" إلى تاريخ " (dateChange)="changeDate('to', $event)" >
+            <mat-datepicker-toggle matSuffix [for]="ToDate"></mat-datepicker-toggle>
+            <mat-datepicker   #ToDate disabled="false"  ></mat-datepicker>
         </mat-form-field>
-    </div>
+        </div> 
+
+        <div class="reportBar col-md-4 col-sm-12 right" *ngIf="hasSelection" >
+                <mat-form-field class="headerText" >
+                <mat-select placeholder="اسم المنتج" [(ngModel)]="selectedValue" name="item" (change)='changeProduct()' >
+                    <mat-option *ngFor="let item of items" [value]=" item.$key ">
+                        {{item.name}}
+                    </mat-option>        
+                </mat-select>
+                </mat-form-field>
+            </div>
+      
 
 
 
+</div>
 </div>
 <div   class=" col-md-12 col-sm-12 "  >
 
 <flash-messages></flash-messages>
 
 </div>
-
-<div class=" col-md-12 col-sm-12 "  >
+<div class="col-md-12 col-sm-12 right">
 <mat-tab-group class="tab-group" (selectedTabChange)='selectChange($event)' >
     <mat-tab label="التقرير" >
       <div class="tabContent">
@@ -115,7 +117,7 @@
     </mat-tab>
     <mat-tab label="الرسم البياني">
         <div class="tabContent"  *ngIf="chart" >
-            <canvas id="pie"  class="chart-pie" style="height:255px ; width:90% ;    overflow:hidden;" ></canvas>
+            <canvas id="pie"  class="chart-pie" style=" width:fit-content ; height:fit-content;     overflow:hidden;" ></canvas>
            
            </div>    
     </mat-tab>

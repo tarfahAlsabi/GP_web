@@ -4,47 +4,50 @@
 <span color="primary">   <h2>  {{reportName}} </h2> </span>
 <span class="toolbar-spacer"></span>
    </mat-toolbar>  
-   <div   class=" col-md-12 col-sm-12 contaner" dir="rtl">
 
-       
+   <div  class="PageTitl col-md-12 col-sm-12 right">
+        <div   class=" col-md-12 col-sm-12 contane"  dir="rtl"  >
+     
+                <div  *ngIf="hasDate" class=" col-md-4 col-sm-6 right" > 
+                        <mat-form-field class="headerText">
+                            <input   [value]='startDate' matInput [matDatepicker]="picker" placeholder=" من تاريخ " (dateChange)="changeDate('from', $event) " >
+                            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                            <mat-datepicker #picker disabled="false" ></mat-datepicker>
+                        </mat-form-field>
+                    </div>
         <!-- <span class="toolbar-spacer"></span> -->
+  
+
+
+        <div  *ngIf="hasDate" class=" col-md-4 col-sm-6 right" > 
+        <mat-form-field class="headerText">
+            <input matInput  [value]='endDate'  [matDatepicker]="ToDate" placeholder=" إلى تاريخ " (dateChange)="changeDate('to', $event)" >
+            <mat-datepicker-toggle matSuffix [for]="ToDate"></mat-datepicker-toggle>
+            <mat-datepicker   #ToDate disabled="false"  ></mat-datepicker>
+        </mat-form-field>
+        </div> 
+
         <div class="reportBar col-md-4 col-sm-12 right" *ngIf="hasSelection" >
-            <mat-form-field class="headerText" >
-            <mat-select placeholder="اسم الموظف" [(ngModel)]="selectedValue" name="item" (change)='changeProduct()' >
-                <mat-option *ngFor="let item of items" [value]=" item.$key ">
-                    {{item.name}}
-                </mat-option>        
-            </mat-select>
-            </mat-form-field>
-        </div>
+                <mat-form-field class="headerText" >
+                <mat-select placeholder="اسم الموظف" [(ngModel)]="selectedValue" name="item" (change)='changeProduct()' >
+                    <mat-option *ngFor="let item of items" [value]=" item.$key ">
+                        {{item.name}}
+                    </mat-option>        
+                </mat-select>
+                </mat-form-field>
+            </div>
+      
 
 
-   
 
-
-        <div  *ngIf="hasDate" class=" col-md-4 col-sm-6 right" > 
-            <mat-form-field class="headerText">
-                <input   [value]='startDate' matInput [matDatepicker]="picker" placeholder=" من تاريخ " (dateChange)="changeDate('from', $event) " >
-                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                <mat-datepicker #picker disabled="false" ></mat-datepicker>
-            </mat-form-field>
-        </div>
-
-        <div  *ngIf="hasDate" class=" col-md-4 col-sm-6 right" > 
-            <mat-form-field class="headerText">
-                <input matInput  [value]='endDate'  [matDatepicker]="ToDate" placeholder=" إلى تاريخ " (dateChange)="changeDate('to', $event)" >
-                <mat-datepicker-toggle matSuffix [for]="ToDate"></mat-datepicker-toggle>
-                <mat-datepicker   #ToDate disabled="false"  ></mat-datepicker>
-            </mat-form-field>
-            </div> 
-
+</div>
 </div>
 <div   class=" col-md-12 col-sm-12 "  >
 
 <flash-messages></flash-messages>
 
 </div>
-<div class="col-md-12 col-sm-12">
+<div class="col-md-12 col-sm-12 right">
 <mat-tab-group class="tab-group" (selectedTabChange)='selectChange($event)' >
     <mat-tab label="التقرير" >
     <div class="tabContent">
@@ -55,47 +58,45 @@
                              <mat-header-cell *matHeaderCellDef mat-sort-header> الأصول الثابتة</mat-header-cell>
                              <mat-cell *matCellDef="let row"> {{row.fixedAssets }} </mat-cell>
                          </ng-container> -->
-                         <ng-container matColumnDef="box">
-                                 <mat-header-cell *matHeaderCellDef mat-sort-header > الصندوق </mat-header-cell>
-                                 <mat-cell *matCellDef="let row">
-     
-                                     {{row.box}} 
-     
+                         <ng-container matColumnDef="box" >
+                                 <mat-header-cell *matHeaderCellDef mat-sort-header  class='assets' > الصندوق </mat-header-cell>
+                                 <mat-cell *matCellDef="let row">     
+                                     {{row.box | number:'.0-3' }}  
                                  </mat-cell>
                                  </ng-container>
-                                 <ng-container matColumnDef="bank">
-                                     <mat-header-cell *matHeaderCellDef mat-sort-header> البنك </mat-header-cell>
-                                     <mat-cell *matCellDef="let row"> {{row.bank}} </mat-cell>
+                                 <ng-container matColumnDef="bank" >
+                                     <mat-header-cell *matHeaderCellDef mat-sort-header  class='assets' > البنك </mat-header-cell>
+                                     <mat-cell *matCellDef="let row"> {{row.bank | number:'.0-3'}} </mat-cell>
                                  </ng-container>
-                                     <ng-container matColumnDef="Debtors">
-                                         <mat-header-cell *matHeaderCellDef mat-sort-header> مدينون </mat-header-cell>
-                                         <mat-cell *matCellDef="let row"> {{row.Debtors}} </mat-cell>
+                                     <ng-container matColumnDef="Debtors"  >
+                                         <mat-header-cell *matHeaderCellDef mat-sort-header  class='assets'> مدينون </mat-header-cell>
+                                         <mat-cell *matCellDef="let row"> {{row.Debtors | number:'.0-3' }} </mat-cell>
                                   </ng-container>
      
      
-                                  <ng-container matColumnDef="capital">
-                                        <mat-header-cell *matHeaderCellDef mat-sort-header class="righborder"> رأس المال </mat-header-cell>
-                                        <mat-cell *matCellDef="let row"> {{row.capital }} </mat-cell>
+                                  <ng-container matColumnDef="capital" >
+                                        <mat-header-cell *matHeaderCellDef mat-sort-header class="liabilities"> رأس المال </mat-header-cell>
+                                        <mat-cell *matCellDef="let row"> {{row.capital | number:'.0-3' }} </mat-cell>
                                 </ng-container>
                                     
                                 <ng-container matColumnDef="loans">
-                                            <mat-header-cell *matHeaderCellDef mat-sort-header>القروض  </mat-header-cell>
-                                            <mat-cell *matCellDef="let row"> {{row.loans }} </mat-cell>
+                                            <mat-header-cell *matHeaderCellDef mat-sort-header class="liabilities">القروض  </mat-header-cell>
+                                            <mat-cell *matCellDef="let row"> {{row.loans | number:'.0-3' }} </mat-cell>
                                 </ng-container>
                                 <ng-container matColumnDef="creditors">
-                                            <mat-header-cell *matHeaderCellDef mat-sort-header>الدائنين   </mat-header-cell>
-                                            <mat-cell *matCellDef="let row"> {{row.creditors }} </mat-cell>
+                                            <mat-header-cell *matHeaderCellDef mat-sort-header class="liabilities">الدائنين   </mat-header-cell>
+                                            <mat-cell *matCellDef="let row"> {{row.creditors | number:'.0-3' }} </mat-cell>
                                 </ng-container>
             
                                         
-                                <ng-container matColumnDef="fixedAssets">
-                                        <mat-header-cell *matHeaderCellDef mat-sort-header>الاصول الثابته   </mat-header-cell>
-                                        <mat-cell *matCellDef="let row"> {{row.fixedAssets }} </mat-cell>
+                                <ng-container matColumnDef="fixedAssets"  >
+                                        <mat-header-cell *matHeaderCellDef mat-sort-header class='assets'>الاصول الثابته   </mat-header-cell>
+                                        <mat-cell *matCellDef="let row"> {{row.fixedAssets | number:'.0-3' }} </mat-cell>
                             </ng-container>
                  <ng-container *matHeaderRowDef="allcolumns">
                         <div class="mat-header-row header-group-row">
-                          <div class="mat-header-cell header-group Theader" role="columnheader" >الأصول </div>
-                          <div class="mat-header-cell Theader" role="columnheader">الخصوم</div>
+                          <div class="mat-header-cell  Theader assets " role="columnheader" >الأصول </div>
+                          <div class="mat-header-cell Theader liabilities " role="columnheader">الخصوم</div>
                         </div>
 
                         <mat-header-row></mat-header-row>

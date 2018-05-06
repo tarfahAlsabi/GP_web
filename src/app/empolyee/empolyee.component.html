@@ -12,22 +12,32 @@
 
   </mat-card> 
    -->
-  <mat-toolbar  class="PageTitle">
-        <mat-toolbar-row>
-                <button mat-button (click)="add()"color="primary"> <mat-icon>person_add</mat-icon>
-                    {{AddBtn}}</button>   
-                    <span class="toolbar-spacer"></span>
 
-            <span color="primary">   <h2> {{ title }} </h2> </span>
-              
-            <span class="toolbar-spacer"></span>
+   <div  class="PageTitle col-md-12 col-sm-12">
+        <div class=" col-md-12 col-sm-12 contaner" dir="rtl">
+       
+        <!-- <span class="toolbar-spacer"></span> -->
+        <div  class=" col-md-4 col-sm-12" > 
+                <button mat-button (click)="add()"color="primary" class='BtnPos'> <mat-icon>person_add</mat-icon>
+                    {{AddBtn}}</button> 
+        </div>
 
 
-    
-        </mat-toolbar-row>
-      
-    </mat-toolbar>
+
+        <div   class=" col-md-4 col-sm-12" > 
+                <span color="primary">   <h2  class='title'> {{ title }} </h2> </span>
+             
+        </div> 
+
+        <div class="col-md-4 col-sm-12"  >
+            
+        </div>
+   
+        </div>
+        </div>
+<div class=" col-md-12 col-sm-12">
     <flash-messages></flash-messages>
+</div>
   <section class="ViewsContainer"  >
   
   <mat-card class="viewProduct"  *ngFor="let employee of employeeList" >

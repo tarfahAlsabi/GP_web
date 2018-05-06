@@ -1,14 +1,17 @@
 
+<div class=" col-md-12 col-sm-12">
 <mat-toolbar  class="PageTitle" style="background-color:transparent">
     <span class="toolbar-spacer"></span>
 <span color="primary">   <h2>  {{reportName}} </h2> </span>
 <span class="toolbar-spacer"></span>
    </mat-toolbar>  
-   <div   class=" col-md-12 col-sm-12 contaner" dir="rtl">
+</div>
+   <div  class="PageTitl col-md-12 col-sm-12 right">
+   <div   class=" col-md-12 col-sm-12 contane" >
 
        
         <!-- <span class="toolbar-spacer"></span> -->
-        <div class="reportBar col-md-4 col-sm-12 right" *ngIf="hasSelection" >
+        <div class="reportBar col-md-4 col-sm-12 " *ngIf="hasSelection" >
             <mat-form-field class="headerText" >
             <mat-select placeholder="اسم الموظف" [(ngModel)]="selectedValue" name="item" (change)='changeProduct()' >
                 <mat-option *ngFor="let item of items" [value]=" item.$key ">
@@ -22,7 +25,7 @@
    
 
 
-        <div  *ngIf="hasDate" class=" col-md-4 col-sm-6 right" > 
+        <div  *ngIf="hasDate" class=" col-md-4 col-sm-12 right " > 
             <mat-form-field class="headerText">
                 <input   [value]='startDate' matInput [matDatepicker]="picker" placeholder=" من تاريخ " (dateChange)="changeDate('from', $event) " >
                 <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
@@ -30,22 +33,24 @@
             </mat-form-field>
         </div>
 
-        <div  *ngIf="hasDate" class=" col-md-4 col-sm-6 right" > 
+        <div  *ngIf="hasDate" class=" col-md-4 col-sm-12 right  " > 
             <mat-form-field class="headerText">
                 <input matInput  [value]='endDate'  [matDatepicker]="ToDate" placeholder=" إلى تاريخ " (dateChange)="changeDate('to', $event)" >
                 <mat-datepicker-toggle matSuffix [for]="ToDate"></mat-datepicker-toggle>
                 <mat-datepicker   #ToDate disabled="false"  ></mat-datepicker>
             </mat-form-field>
-            </div> 
+        </div> 
 
 </div>
+</div>
 
-<div class="col-md-4 col-sm-12"></div>
-<div class="col-md-4 col-sm-12">
+<div class="col-md-4 col-sm-12 "></div>
+
+<div class="col-md-12 col-sm-12 right ">
 <flash-messages></flash-messages>
 </div>
 
-<div class="col-md-12 col-sm-12">
+<div class="col-md-12 col-sm-12 right">
 <mat-tab-group class="tab-group" (selectedTabChange)='selectChange($event)' >
     <mat-tab label="التقرير" >
       <div class="tabContent">
@@ -54,19 +59,19 @@
 
               <ng-container matColumnDef="revenue" >
                   <mat-header-cell *matHeaderCellDef mat-sort-header > الاملاك </mat-header-cell>
-                  <mat-cell *matCellDef="let row"> {{row.revenue}} </mat-cell>
+                  <mat-cell *matCellDef="let row"> {{row.revenue }} </mat-cell>
                 </ng-container>
                 <ng-container matColumnDef="price"  >
-                    <mat-header-cell *matHeaderCellDef mat-sort-header > الإرادات </mat-header-cell>
-                    <mat-cell *matCellDef="let row"> {{row.price}} </mat-cell>
+                    <mat-header-cell *matHeaderCellDef mat-sort-header > الإيرادات </mat-header-cell>
+                    <mat-cell *matCellDef="let row"> {{row.price | number:'.0-3' }} </mat-cell>
                   </ng-container>
                   <ng-container matColumnDef="cost" >
                       <mat-header-cell *matHeaderCellDef mat-sort-header> المصاريف </mat-header-cell>
-                      <mat-cell *matCellDef="let row"> {{row.cost}} </mat-cell>
+                      <mat-cell *matCellDef="let row"> {{row.cost | number:'.0-3' }} </mat-cell>
                     </ng-container>
                     <ng-container matColumnDef="totalIncome"  >
                         <mat-header-cell *matHeaderCellDef mat-sort-header> إجمالي الربح </mat-header-cell>
-                        <mat-cell *matCellDef="let row"> {{row.totalIncome}} </mat-cell>
+                        <mat-cell *matCellDef="let row"> {{row.totalIncome | number:'.0-3' }} </mat-cell>
                       </ng-container>
                    
               <mat-header-row *matHeaderRowDef="columnsIncome"></mat-header-row>
@@ -78,23 +83,23 @@
 
             <ng-container matColumnDef="totalIncome" >
                 <mat-header-cell *matHeaderCellDef mat-sort-header  > إجمالي الربح </mat-header-cell>
-                <mat-cell *matCellDef="let row"> {{row.totalIncome}} </mat-cell>
+                <mat-cell *matCellDef="let row"> {{row.totalIncome | number:'.0-3' }} </mat-cell>
               </ng-container>
               <ng-container matColumnDef="employeeSal"  >
                   <mat-header-cell *matHeaderCellDef mat-sort-header > رواتب الموظفين </mat-header-cell>
-                  <mat-cell *matCellDef="let row"> {{row.employeeSal}} </mat-cell>
+                  <mat-cell *matCellDef="let row"> {{row.employeeSal | number:'.0-3' }} </mat-cell>
                 </ng-container>
                 <ng-container matColumnDef="expences" >
                     <mat-header-cell *matHeaderCellDef mat-sort-header> مصاريف أخرى </mat-header-cell>
-                    <mat-cell *matCellDef="let row"> {{row.expences}} </mat-cell>
+                    <mat-cell *matCellDef="let row"> {{row.expences | number:'.0-3' }} </mat-cell>
                   </ng-container>
                   <ng-container matColumnDef="netIncome"  >
                       <mat-header-cell *matHeaderCellDef mat-sort-header> صافي الربح </mat-header-cell>
-                      <mat-cell *matCellDef="let row"> {{row.netIncome}} </mat-cell>
+                      <mat-cell *matCellDef="let row"> {{row.netIncome | number:'.0-3' }} </mat-cell>
                     </ng-container>
                     <ng-container matColumnDef="result"  >
                       <mat-header-cell *matHeaderCellDef mat-sort-header> النتيجة </mat-header-cell>
-                      <mat-cell *matCellDef="let row"> {{row.result}} </mat-cell>
+                      <mat-cell *matCellDef="let row"> {{row.result }} </mat-cell>
                     </ng-container>
             <mat-header-row *matHeaderRowDef="columnsNetIncome"></mat-header-row>
             <mat-row *matRowDef="let row; columns: columnsNetIncome;"></mat-row>

@@ -51,7 +51,8 @@ import { LogInComponent } from './home-page/log-in/log-in.component';
 const routes: Routes = [
     {path: '', component: HomePageComponent,children:
         [
-            {path: '' , component: MainHomeComponent },
+            {path:'',redirectTo: ' ',pathMatch: 'full'},
+            {path: ' ' , component: MainHomeComponent },
             {path: 'features' , component: FeatursComponent },
             {path: 'LogIn' , component: LogInComponent },
             {path: 'register' , component: RegisterComponent },

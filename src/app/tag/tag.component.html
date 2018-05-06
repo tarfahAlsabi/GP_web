@@ -1,13 +1,27 @@
-<mat-toolbar  class="PageTitle" >
-  <span class="toolbar-spacer"></span>
-  <span color="primary">   <h2> {{ title }} </h2> </span>
-  <span class="toolbar-spacer"></span>
- </mat-toolbar>  
+
+   <div  class="PageTitl col-md-12 col-sm-12">
+      <div class=" col-md-12 col-sm-12 contane" dir="rtl">
+     
+      <!-- <span class="toolbar-spacer"></span> -->
+      <div  class=" col-md-4 col-sm-4" > </div>
 
 
-<section class="ViewsContainer"  >
-    <flash-messages></flash-messages>
 
+      <div   class=" col-md-4 col-sm-4" > 
+              <span color="primary">   <h2  class='title'> {{ title }} </h2> </span>           
+      </div> 
+
+      <div class="col-md-4 col-sm-4"  >
+          
+      </div>
+ 
+      </div>
+      </div>
+<div class=" col-md-12 col-sm-12">
+  <flash-messages></flash-messages>
+</div>
+<section class="ViewsContainer  col-md-12 col-sm-12"  >
+  
   <mat-table #table [dataSource]="dataSource"  matSort>
 
     <!-- Position Column -->

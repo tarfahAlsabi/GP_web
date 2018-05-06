@@ -110,7 +110,13 @@ tr:nth-child(even) {
 .contaner
 {
     background-color: whitesmoke;
-    border-radius: 5%;
+    border-radius: 1%;
+    box-sizing: border-box;
+    padding: 0 16px;
+    width: 100%;
+    flex-direction: row;
+    align-items: center;
+    white-space: nowrap;
 }
 .headerText
 {
@@ -171,4 +177,45 @@ Theader
     padding-right: 10px;
     text-align: center !important;
     color: blue;
+}
+.assets , .mat-header-cell , mat-header-cell
+{
+    color:  #4989A5;
+}
+.liabilities
+{
+    color: #6Dc4e2;
+}
+
+
+.contane
+{
+    background-color: whitesmoke;
+    border-radius: 1%;
+    /* height: 60px;
+    display: flex; */
+    box-sizing: border-box;
+    padding: 0 16px;
+    width: 100%;
+    flex-direction: row;
+    align-items: center;
+    white-space: nowrap;
+}
+
+.PageTitl
+{
+    min-height: 60px;
+    width: 99%;
+    margin: 2% 0.5%;
+
+}
+.contane div
+{
+    margin-top:2em ;
+    margin-bottom: 1em;
+}
+.onClick
+{
+    cursor: pointer;
+
 }
